@@ -112,3 +112,6 @@ iOSInjectionProject/
 *.xcuserstate
 
 # .gitignore 중...
+ARTX-PoliceScience/ARTX-PoliceScience/GoogleService-Info.plist
+GoogleService-Info.plist
+ARTX-PoliceScience/GoogleService-Info.plist
