@@ -11,8 +11,9 @@
 ## 브랜치명 규칙
 - 브랜치는 "브랜치카테고리/#이슈넘버-이슈타이틀"
 - 이슈 타이틀은 영어로 작성한다.
+- 이슈 생성시 라벨을 단다.(main, develop, feature, release, hotfix)
 ```shell
-git branch "feature/#32-logout"
+git branch "feature/#32-fix maintitle View"
 ```
 
 ## 커밋 메시지 규칙 (대문자)
