@@ -45,7 +45,7 @@
 		5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0E2ACD0B8A00B01779 /* View.swift */; };
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
 		5E86FC132ACD0D4100B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC122ACD0D4100B01779 /* Model.swift */; };
-		5E86FC152ACD0D4A00B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Model.swift */; };
+		5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Resources.swift */; };
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		5E86FC0E2ACD0B8A00B01779 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E86FC122ACD0D4100B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		5E86FC142ACD0D4A00B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5E86FC142ACD0D4A00B01779 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,7 @@
 		5E44DC9C2ACD002D00DAC94A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5E86FC142ACD0D4A00B01779 /* Model.swift */,
+				5E86FC142ACD0D4A00B01779 /* Resources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E86FC152ACD0D4A00B01779 /* Model.swift in Sources */,
+				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
