@@ -19,7 +19,8 @@
 - 💬 Rename: 파일 이름 변경이 있을 때 사용합니다
 - 🎉 Init: 프로젝트 생성
 - 🚚 Move: 프로젝트 내 파일이나 코드의 이동
-- ex) [FEAT] 로그아웃 및 회원탈퇴 구현, [CHORE] 코드리뷰 반영, [FIX] 초대코드 복사 토스트가 계속 내려오는 문제 해결, [ADD] ToastView 컴포넌트화
+- ex) 이슈 규칙 : [FEAT] 로그아웃 및 회원탈퇴 구현, [CHORE] 코드리뷰 반영, [FIX] 초대코드 복사 토스트가 계속 내려오는 문제 해결, [ADD] ToastView 컴포넌트화
+- ex) 브랜치 규칙 : FEAT/#32-logout, FIX/#12-MainVIewController
 ## 깃 조작방법
 - 새로운 feature 개발: 최신 develop의 변경사항을 local에 반영시킨다.
 - 이슈를 열어서 이슈번호를 확인한다. 라벨로 표기하면 더욱 보기에 좋다. ex) [FEAT] 팀 관리 모달 api 연결
