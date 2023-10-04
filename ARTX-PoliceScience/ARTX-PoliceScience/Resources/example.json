@@ -1,0 +1,121 @@
+{
+  "quiz": [
+    {
+      "part": 1,
+      "part_name": "경찰의 의의",
+      "chapters": [
+        {
+          "chapter": 1,
+          "chapter_name": "대륙법계와 영미법계의 경찰",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 2,
+          "chapter_name": "형식적 의미의 경찰과 실질적 의미의 경찰",
+          "questions": [
+            {"question": "문제 1", "answer": "X", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "O", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "X", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "O", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "X", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 3,
+          "chapter_name": "경찰의 분류",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        }
+      ]
+    },
+    {
+      "part": 2,
+      "part_name": "경찰법학",
+      "chapters": [
+        {
+          "chapter": 1,
+          "chapter_name": "경찰법학의 기초",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 2,
+          "chapter_name": "경찰조직법",
+          "questions": [
+            {"question": "문제 1", "answer": "X", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "O", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "X", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "O", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "X", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 3,
+          "chapter_name": "경찰공무원법",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        }
+      ]
+    },
+    {
+      "part": 3,
+      "part_name": "경찰관리",
+      "chapters": [
+        {
+          "chapter": 1,
+          "chapter_name": "경찰조직관리",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 2,
+          "chapter_name": "경찰인사관리",
+          "questions": [
+            {"question": "문제 1", "answer": "X", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "O", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "X", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "O", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "X", "explanation": "해설 5"}
+          ]
+        },
+        {
+          "chapter": 3,
+          "chapter_name": "경찰예산관리",
+          "questions": [
+            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
+            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
+            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
+            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
+            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+          ]
+        }
+      ]
+    }
+  ]
+}
