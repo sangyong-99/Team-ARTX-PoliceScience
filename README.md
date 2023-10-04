@@ -30,18 +30,32 @@ git branch "feature/#32-fix maintitle View"
 - 🚚 Move: 프로젝트 내 파일이나 코드의 이동
 - 커밋메세지는 한글로 작성한다.
 ```shell
-git commit -m "[Feat] 로그아웃 및 회원탈퇴 구현, [Chore] 코드리뷰 반영, [Fix] 초대코드 복사 토스트가 계속 내려오는 문제 해결, [Add] ToastView 컴포넌트화"
+git commit -m "[Feat] Make SignIn, SignOut, [Chore] Add title Image in asset, [Fix] Fix func addBookMark, [Add] Add ToastView"
 ```
 
 ## 깃 조작방법
-- 새로운 feature 개발: 최신 develop의 변경사항을 local에 반영시킨다.
-- 이슈를 열어서 이슈번호를 확인한다. 라벨로 표기하면 더욱 보기에 좋다. ex) [FEAT] 팀 관리 모달 api 연결
-- $ git checkout develop : develop 브랜치로 checkout
-- $ git pull : develop 브랜치의 최신 변경사항을 로컬로 가져온다.
-- $ git checkout -b <닉네임_branch명/이슈번호> :명령어를 통해 브랜치 생성 후 checkout한다 ex) puppy_feat/#320
-- 코드작성
-- $ git add <file 명>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다.
-- $ git commit -m "커밋메세지" ex) 커밋 규칙 확인
-- $ git push origin : origin(원격 저장소)의 feature branch로 로컬 변경 내역을 push
-- github에서 develop branch <- feature branch 방향으로 Pull Request 진행
-- 리뷰가 종료되고 모두 Approve 된다면 Merge한다.
+- 이슈 등록
+- 이슈에서 라벨 등록, 어싸인, Development에서 create branch
+- Local에서 pull 한다.
+```shell
+git pull
+```
+- 이슈 넘버를 포함하는 브랜치로 switch
+```shell
+git switch feat/#1~~~~~~
+```
+## 코드작성
+- 변경 파일을 추가한다.
+```shell
+git add <file 명>: git add .
+```
+- 커밋 규칙에 맞춰서 커밋
+- 커밋은 최대한 자주, 잘게 조게서 한다.
+```shell
+git commit -m "커밋메세지"
+```
+- 레포에 반영한다.
+```shell
+git push
+```
+- pr한다
