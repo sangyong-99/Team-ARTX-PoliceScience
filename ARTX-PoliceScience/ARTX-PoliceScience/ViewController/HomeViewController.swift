@@ -8,22 +8,45 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    
+    let settingViewController = SettingViewController()
+    
+    let stackView = UIStackView()
+    let settingViewButton = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        style()
+        layout()
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension HomeViewController {
+    func style() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        
+        settingViewButton.translatesAutoresizingMaskIntoConstraints = false
+        settingViewButton.setTitle("Setting View 바로가기", for: [])
+        settingViewButton.addTarget(self, action: #selector(settingViewButtonTapped), for: .primaryActionTriggered)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func layout() {
+        stackView.addArrangedSubview(settingViewButton)
+        
+        view.addSubview(stackView)
+        
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
-    */
+}
 
+extension HomeViewController {
+    @objc func settingViewButtonTapped(sender: UIButton) {
+        navigationController?.pushViewController(settingViewController, animated: true)
+    }
 }
