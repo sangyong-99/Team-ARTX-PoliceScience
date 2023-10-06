@@ -9,11 +9,24 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private let tableView: UITableView = {
+    private let settingTableView: UITableView = {
         let table = UITableView(frame:.zero, style: .insetGrouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         return table
     }()
+    
+    private let settingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "버전 정보\nVer 1.0001\nDeveloped by Team ARTX"
+        label.numberOfLines = 0 // 여러 줄을 허용합니다.
+        label.textColor = UIColor.secondaryLabel
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 13)
+        return label
+    }()
+    
+//    let label = UILabel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +48,24 @@ extension SettingViewController {
         view.backgroundColor = .bgGroupedPrimary
         
         //tableview 설정
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = view.bounds
+        settingTableView.isScrollEnabled = false
+        view.addSubview(settingTableView)
+        settingTableView.delegate = self
+        settingTableView.dataSource = self
+        settingTableView.frame = view.bounds
+        
+        
+        
+        view.addSubview(settingLabel)
     }
     
     func layout() {
+        settingLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        NSLayoutConstraint.activate([
+            settingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            settingLabel.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -65),
+        ])
     }
 }
 
