@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Section {
+struct SettingTableSection {
     let title: String
     let options: [SettingsOption]
 }

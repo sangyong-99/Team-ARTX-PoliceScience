@@ -8,15 +8,15 @@
 import UIKit
 
 class SettingViewModel {
-    static var models = [Section]()
+    static var models = [SettingTableSection]()
     
     static func configure(){
-        models.append(Section(title: "Information", options: [
+        models.append(SettingTableSection(title: "Information", options: [
             SettingsOption(title: "조현 경찰학이란?", icon: UIImage(systemName: "book.closed")) {
                 print("IntroductionViewConroller Connect")
             },
         ]))
-        models.append(Section(title: "CodeSetting", options: [
+        models.append(SettingTableSection(title: "CodeSetting", options: [
             SettingsOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder")) {
                 print("CodeActiveAlertWindow")
             },
@@ -24,7 +24,7 @@ class SettingViewModel {
                 print("Reset Alert")
             },
         ]))
-        models.append(Section(title: "AppReset", options: [
+        models.append(SettingTableSection(title: "AppReset", options: [
             SettingsOption(title: "학습 기록 초기화", icon: UIImage(systemName: "arrow.triangle.2.circlepath")) {
                 print("AppResetAlert")
             },
