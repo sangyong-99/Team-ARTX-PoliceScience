@@ -47,6 +47,7 @@
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
 		5E86FC132ACD0D4100B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC122ACD0D4100B01779 /* Model.swift */; };
 		5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Resources.swift */; };
+		5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */; };
 		5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */; };
 		5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FB2ACF088F00083E93 /* SettingModel.swift */; };
 		5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */; };
@@ -70,6 +71,7 @@
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E86FC122ACD0D4100B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5E86FC142ACD0D4A00B01779 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		5ECE29FB2ACF088F00083E93 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		5E3451882AB42F33004A3047 /* ARTX-PoliceScience */ = {
 			isa = PBXGroup;
 			children = (
+				5EA61BE62AD06A6800F6D771 /* Firestore */,
 				5ECE29FF2ACF0AD800083E93 /* Utils */,
 				5EDDA55F2ACD116F006E13DE /* UserDefault */,
 				5E44DC9B2ACD001A00DAC94A /* Views */,
@@ -195,6 +198,14 @@
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5EA61BE62AD06A6800F6D771 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */,
+			);
+			path = Firestore;
 			sourceTree = "<group>";
 		};
 		5ECE29FF2ACF0AD800083E93 /* Utils */ = {
@@ -318,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
+				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
