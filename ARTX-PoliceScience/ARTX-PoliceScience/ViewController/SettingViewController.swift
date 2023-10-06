@@ -7,13 +7,22 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let stackView = UIStackView()
-    let label = UILabel()
+    private let tableView: UITableView = {
+        let table = UITableView(frame:.zero, style: .insetGrouped)
+        table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.configureNavigationBar(withTitle: "환경 설정")
+        navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
+        
+        SettingViewModel.configure()
+        
         style()
         layout()
     }
@@ -21,52 +30,58 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController {
     func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
         
-        //네비게이션 세팅
-        navigationBarSetting()
+        //네비게이션바 세팅
         view.backgroundColor = .bgGroupedPrimary
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Setting view"
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        //tableview 설정
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = view.bounds
     }
     
     func layout() {
-        stackView.addArrangedSubview(label)
         
-        view.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
-    }
-    @objc func backButtonTapped() {
-        // Handle the back button tap here
-        navigationController?.popViewController(animated: true)
     }
 }
 
+extension SettingViewController {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return SettingViewModel.models.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SettingViewModel.models[section].options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = SettingViewModel.models[indexPath.section].options[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingTableViewCell.identifier,
+            for: indexPath
+        ) as? SettingTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.configure(with: model)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let model = SettingViewModel.models[indexPath.section].options[indexPath.row]
+        model.handler()
+    }
+    
+}
+
+
 //네비게이션 관련 extension
 extension SettingViewController {
-    private func navigationBarSetting() {
-        title = "환경 설정"
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .bgBlue
-        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.graysWhite]
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.graysWhite]
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        
-        let backArrowImage = UIImage(systemName: "chevron.backward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        let backButton = UIBarButtonItem(image: backArrowImage, style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = .graysWhite
-        self.navigationItem.leftBarButtonItem = backButton
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
