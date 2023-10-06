@@ -15,6 +15,12 @@ class FirebaseManager {
     
     static func setCodeFirestore(code authenticationCode: String, completion: @escaping (Bool) -> Void) {
         // Firestore 데이터베이스 참조
+        if authenticationCode == "" {
+            print("코드 입력하지 않았습니다.")
+            completion(false)
+            return
+        }
+        
         let db = Firestore.firestore()
         let documentReference = db.collection("code").document(authenticationCode)
         
