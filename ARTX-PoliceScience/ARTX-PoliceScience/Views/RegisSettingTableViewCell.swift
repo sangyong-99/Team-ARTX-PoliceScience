@@ -74,7 +74,7 @@ class RegisSettingTableViewCell: UITableViewCell {
         print("click regis configure")
     }
     
-    public func rerendering() {
-        codeLabel.text = "\(LocalState.isCodeActivated)"
-    }
+//    public func rerendering() {
+//        codeLabel.text = "\(LocalState.isCodeActivated)"
+//    }
 }

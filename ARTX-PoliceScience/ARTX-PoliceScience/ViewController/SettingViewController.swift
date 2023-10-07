@@ -114,7 +114,7 @@ extension SettingViewController {
         
         switch type.self {
         case .staticCell(let model):
-            model.handler()
+            model.handler(tableView, indexPath)
             
         case .regisCell(let model):
             model.handler(tableView, indexPath)

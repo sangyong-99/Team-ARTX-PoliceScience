@@ -42,9 +42,13 @@ class SettingViewAlert {
                 if success {
                     successCodeAlert()
                     
-                        if let cell = tableView.cellForRow(at: indexPath) as? RegisSettingTableViewCell {
-                            cell.rerendering()
-                        }
+//                        if let cell = tableView.cellForRow(at: indexPath) as? RegisSettingTableViewCell {
+//                            cell.rerendering()
+//                        }
+                    
+                    
+                    
+                    tableView.reloadRows(at: [indexPath], with: .automatic)
                 } else {
                     failCodeAlert()
                 }
@@ -101,7 +105,7 @@ class SettingViewAlert {
         }
     }
     
-    static func changeDevice(authenticationCode: String) {
+    static func changeDevice(authenticationCode: String, tableView: UITableView, indexPath: IndexPath) {
         let changeDeviceAlert = UIAlertController(
             title: "현재 기기의 인증 코드를\n비활성화 하시겠습니까?",
             message: "학습 기록이 초기화됩니다.\n비활성화 된 코드는 새로운 기기에 다시\n사용할 수 있습니다.",
@@ -113,6 +117,11 @@ class SettingViewAlert {
                 print("기기변경 성공여부 : \(success)")
                 if success {
                     successChangeDeviceAlert()
+                    
+                    let currentCellIndexPath = IndexPath(row: 0, section: 1)
+                    
+                    tableView.reloadRows(at: [currentCellIndexPath], with: .automatic)
+                    
                     print("성공")
                 } else {
                     failChangeDeviceAlert()

@@ -28,5 +28,5 @@ struct SettingsRegisOption {
 struct SettingsOption {
     let title: String
     let icon: UIImage?
-    let handler: (()-> Void)
+    let handler: (UITableView, IndexPath) -> Void
 }
