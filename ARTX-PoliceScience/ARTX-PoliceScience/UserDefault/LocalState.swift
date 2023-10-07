@@ -10,6 +10,7 @@ import Foundation
 public class LocalState {
     private enum Keys: String {
         case isCodeActivated
+        case authenticationCode
     }
     
     public static var isCodeActivated: Bool {
@@ -18,6 +19,16 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.isCodeActivated.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    public static var authenticationCode: String? {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.authenticationCode.rawValue)
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.authenticationCode.rawValue)
             UserDefaults.standard.synchronize()
         }
     }

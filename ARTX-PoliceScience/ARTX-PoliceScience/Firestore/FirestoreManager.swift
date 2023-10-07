@@ -47,6 +47,7 @@ class FirebaseManager {
                         completion(false)
                     } else {
                         print("code 입력 성공 업데이트 완료")
+                        LocalState.authenticationCode = authenticationCode
                         LocalState.isCodeActivated = true
                         completion(true)
                     }

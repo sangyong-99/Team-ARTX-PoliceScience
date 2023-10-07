@@ -96,5 +96,17 @@ class SettingViewAlert {
             }
         }
     }
+    
+    static func changeDevice() {
+        let changeDeviceAlert = UIAlertController(
+            title: "현재 기기의 인증 코드를\n비활성화 하시겠습니까?",
+            message: "학습 기록이 초기화됩니다.\n비활성화 된 코드는 새로운 기기에 다시\n사용할 수 있습니다.",
+            preferredStyle: .alert
+        )
+        
+        changeDeviceAlert.addAction(UIAlertAction(title: "비활성화", style: .default, handler: { _ in
+            print("dd")
+        }))
+    }
 }
 

@@ -24,9 +24,7 @@ class SettingViewModel {
             SettingsOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder"), handler: SettingViewAlert.showCodeSettingAlert),
             
             // MARK: - code reset alert 연결
-            SettingsOption(title: "기기 변경", icon: UIImage(systemName: "iphone.and.arrow.forward")) {
-                print("Reset Alert")
-            },
+            SettingsOption(title: "기기 변경", icon: UIImage(systemName: "iphone.and.arrow.forward"), handler: SettingViewAlert.changeDevice),
         ]))
         
         // MARK: - app reset alert 연결

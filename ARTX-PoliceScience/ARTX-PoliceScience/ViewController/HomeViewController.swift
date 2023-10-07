@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     let settingViewButton = UIButton(type: .system)
     //UserDefault 확인용 label
     let isCodeActivatedLabel = UILabel()
+    let authenticationCodeLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,15 @@ extension HomeViewController {
         //userdefaults 보여주는 label style 설정
         isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
         isCodeActivatedLabel.textColor = .white
+        
+        authenticationCodeLabel.text = "현재 LocalState.authenticationCode = \(LocalState.authenticationCode ?? "미등록")"
+        authenticationCodeLabel.textColor = .white
     }
     
     func layout() {
         stackView.addArrangedSubview(settingViewButton)
         stackView.addArrangedSubview(isCodeActivatedLabel)
+        stackView.addArrangedSubview(authenticationCodeLabel)
         
         view.addSubview(stackView)
         
@@ -58,15 +63,15 @@ extension HomeViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // UserDefaults에서 isCodeActivated 값을 읽어옴
-        let isCodeActivated = LocalState.isCodeActivated
+        isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
+        authenticationCodeLabel.text = "현재 LocalState.authenticationCode = \(LocalState.authenticationCode ?? "미등록")"
         
         // isCodeActivated 값을 기반으로 뷰 업데이트
-        if isCodeActivated {
-            isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
-        } else {
-            isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
-        }
+//        if isCodeActivated {
+//            isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
+//        } else {
+//            isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
+//        }
     }
 }
 
