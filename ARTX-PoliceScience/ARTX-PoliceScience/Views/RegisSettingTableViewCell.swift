@@ -71,5 +71,10 @@ class RegisSettingTableViewCell: UITableViewCell {
         label.text = model.title
         iconImageView.image = model.icon
         codeLabel.text = "\(LocalState.isCodeActivated)"
+        print("click regis configure")
+    }
+    
+    public func rerendering() {
+        codeLabel.text = "\(LocalState.isCodeActivated)"
     }
 }

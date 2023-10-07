@@ -60,5 +60,8 @@ class SettingTableViewCell: UITableViewCell {
     public func configure(with model: SettingsOption) {
         label.text = model.title
         iconImageView.image = model.icon
+        print("click static configure")
     }
+    
+    
 }

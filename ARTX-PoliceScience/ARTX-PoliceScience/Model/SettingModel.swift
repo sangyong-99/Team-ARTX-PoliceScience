@@ -21,7 +21,7 @@ struct SettingsRegisOption {
     let title: String
     let icon: UIImage?
     var regisCodeBool: Bool
-    let handler: (()-> Void)
+    let handler: (UITableView, IndexPath) -> Void
     
 }
 

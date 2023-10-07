@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class SettingViewAlert {
-    static func showCodeSettingAlert() {
+    static func showCodeSettingAlert(tableView: UITableView, indexPath: IndexPath) {
         let codeSettingAlert = UIAlertController(
             title: "인증 코드를 입력해 주세요",
             message: "코드를 입력해 잠금을 해제해 주세요.",
@@ -41,6 +41,10 @@ class SettingViewAlert {
                 print("성공여부 : \(success)")
                 if success {
                     successCodeAlert()
+                    
+                        if let cell = tableView.cellForRow(at: indexPath) as? RegisSettingTableViewCell {
+                            cell.rerendering()
+                        }
                 } else {
                     failCodeAlert()
                 }

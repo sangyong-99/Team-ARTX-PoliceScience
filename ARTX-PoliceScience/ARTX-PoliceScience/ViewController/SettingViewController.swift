@@ -26,7 +26,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return label
     }()
     
-//    let label = UILabel()
+    //    let label = UILabel()
     
     
     override func viewDidLoad() {
@@ -116,9 +116,8 @@ extension SettingViewController {
         case .staticCell(let model):
             model.handler()
             
-            
         case .regisCell(let model):
-            model.handler()
+            model.handler(tableView, indexPath)
         }
     }
     

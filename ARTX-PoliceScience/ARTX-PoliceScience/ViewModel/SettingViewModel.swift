@@ -20,12 +20,12 @@ class SettingViewModel {
         // MARK: - CodeSetting alert연결
         models.append(SettingTableSection(title: "CodeSetting", options: [
             
-            .regisCell(model: SettingsRegisOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder"), regisCodeBool: true, handler: {
+            .regisCell(model: SettingsRegisOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder"), regisCodeBool: true, handler: { tableView, indexPath in
                 if LocalState.isCodeActivated == true {
                     print("이미 코드가 등록되어 활성화 되어있습니다.")
                     return
                 }
-                SettingViewAlert.showCodeSettingAlert()
+                SettingViewAlert.showCodeSettingAlert(tableView: tableView, indexPath: indexPath)
             })),
             
             // MARK: - code reset alert 연결
