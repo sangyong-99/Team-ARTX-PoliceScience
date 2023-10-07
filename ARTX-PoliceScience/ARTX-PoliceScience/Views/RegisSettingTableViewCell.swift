@@ -26,7 +26,7 @@ class RegisSettingTableViewCell: UITableViewCell {
     
     private let codeLabel: UILabel = {
         let codeLabel = UILabel()
-        codeLabel.text = "\(LocalState.isCodeActivated)"
+        
         codeLabel.textColor = .secondaryLabel
         codeLabel.numberOfLines = 1
         return codeLabel
@@ -51,30 +51,34 @@ class RegisSettingTableViewCell: UITableViewCell {
         
         iconImageView.frame = CGRect(x: 16, y: contentView.frame.size.height/2-11, width: 24, height: 22)
         
-        
         label.frame = CGRect(x: 28 + size,
                              y: 0,
                              width: contentView.frame.size.width-85-51,
                              height: contentView.frame.size.height)
-        
-        codeLabel.frame = CGRect(x: contentView.frame.size.width - 61, y: 0, width: 61, height: contentView.frame.size.height)
+        codeLabel.sizeToFit()
+        codeLabel.frame = CGRect(x: contentView.frame.size.width - codeLabel.frame.size.width - 14, y: 0, width: codeLabel.frame.size.width, height: contentView.frame.size.height)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         iconImageView.image = nil
         label.text = nil
-        codeLabel.text = "\(LocalState.isCodeActivated)"
     }
     
     public func configure(with model: SettingsRegisOption) {
         label.text = model.title
         iconImageView.image = model.icon
-        codeLabel.text = "\(LocalState.isCodeActivated)"
+        codeLabel.text = codeSettingLabelText(isCodeActivated: LocalState.isCodeActivated)
+        codeLabel.sizeToFit()
+        codeLabel.frame = CGRect(x: contentView.frame.size.width - codeLabel.frame.size.width - 14, y: 0, width: codeLabel.frame.size.width, height: contentView.frame.size.height)
         print("click regis configure")
     }
     
-//    public func rerendering() {
-//        codeLabel.text = "\(LocalState.isCodeActivated)"
-//    }
+    private func codeSettingLabelText(isCodeActivated: Bool) -> String {
+        if isCodeActivated {
+            return "등록"
+        } else {
+            return "미등록"
+        }
+    }
 }
