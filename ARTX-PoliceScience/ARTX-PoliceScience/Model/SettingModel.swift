@@ -9,7 +9,20 @@ import UIKit
 
 struct SettingTableSection {
     let title: String
-    let options: [SettingsOption]
+    let options: [SettingsOptionType]
+}
+
+enum SettingsOptionType{
+    case staticCell(model: SettingsOption)
+    case regisCell(model: SettingsRegisOption)
+}
+
+struct SettingsRegisOption {
+    let title: String
+    let icon: UIImage?
+    var regisCodeBool: Bool
+    let handler: (()-> Void)
+    
 }
 
 struct SettingsOption {

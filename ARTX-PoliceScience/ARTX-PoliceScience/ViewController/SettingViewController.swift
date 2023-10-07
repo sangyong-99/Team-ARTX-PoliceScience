@@ -12,6 +12,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     private let settingTableView: UITableView = {
         let table = UITableView(frame:.zero, style: .insetGrouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
+        table.register(RegisSettingTableViewCell.self, forCellReuseIdentifier: RegisSettingTableViewCell.identifier)
         return table
     }()
     
@@ -81,21 +82,44 @@ extension SettingViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = SettingViewModel.models[indexPath.section].options[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SettingTableViewCell.identifier,
-            for: indexPath
-        ) as? SettingTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.configure(with: model)
         
-        return cell
+        switch model.self {
+        case .staticCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingTableViewCell.identifier,
+                for: indexPath
+            ) as? SettingTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            
+            return cell
+            
+        case .regisCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: RegisSettingTableViewCell.identifier,
+                for: indexPath
+            ) as? RegisSettingTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: model)
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let model = SettingViewModel.models[indexPath.section].options[indexPath.row]
-        model.handler()
+        let type = SettingViewModel.models[indexPath.section].options[indexPath.row]
+        
+        switch type.self {
+        case .staticCell(let model):
+            model.handler()
+            
+            
+        case .regisCell(let model):
+            model.handler()
+        }
     }
     
 }
