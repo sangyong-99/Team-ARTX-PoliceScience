@@ -8,13 +8,13 @@
 import UIKit
 
 class BookViewController: UIViewController {
-
+    
+    private lazy var bookViewModel = BooksViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
         layout()
-       
     }
     
     private func setup() {
@@ -22,27 +22,39 @@ class BookViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "조현 경찰학이란?"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
-        view.addSubview(mainStackView)
+        tableView.dataSource = self
+        tableView.delegate = self
         
         mainStackView.addArrangedSubview(mainImageView)
         mainStackView.addArrangedSubview(introLabelStack)
         
         introLabelStack.addArrangedSubview(introTitleLabel)
         introLabelStack.addArrangedSubview(introSubLabel)
-//        introLabelStack.addArrangedSubview(emptyView)
+    
+        allMainStackView.addArrangedSubview(mainStackView)
+        allMainStackView.addArrangedSubview(tableView)
+        
+        view.addSubview(allMainStackView)
         
     }
     
     private func layout() {
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        allMainStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
+            allMainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            allMainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            allMainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            allMainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
+    let allMainStackView: UIStackView = {
+        let stackView = UIStackView(frame: .zero)
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        return stackView
+    }()
     
     let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
@@ -74,7 +86,9 @@ class BookViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.textColor = .black
-        label.text = "헤드라인"
+        label.text = "헤드라인 헤드라인 헤드라인 헤드라인 헤드라인"
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
@@ -83,15 +97,41 @@ class BookViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = .black
-        label.text = "상세설명"
+        label.text = "상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명"
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
     
-    let emptyView: UIView = {
-        let view = UIView(frame: .zero)
-        return view
+    private lazy var tableView: UITableView = {
+        let tv =  UITableView(frame: .zero, style: .insetGrouped)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = .clear
+        tv.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.cellId)
+        tv.sectionFooterHeight = 12
+        tv.sectionHeaderHeight = 0
+        return tv
     }()
+}
+
+extension BookViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return bookViewModel.books.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let book = bookViewModel.books[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.cellId, for: indexPath) as! BookTableViewCell
+        cell.selectionStyle = .none
+        cell.configure(with: book)
+        cell.layer.cornerRadius = 14
+        
+        return cell
+    }
     
 }
