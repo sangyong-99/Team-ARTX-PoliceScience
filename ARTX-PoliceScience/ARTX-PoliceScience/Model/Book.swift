@@ -10,4 +10,5 @@ import UIKit
 struct Book {
     let id: BookType
     let authorName: String
+    let bookUrl: String
 }

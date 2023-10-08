@@ -9,6 +9,7 @@ import UIKit
 
 class BookTableViewCell: UITableViewCell {
     static let cellId = "BookTableViewCell"
+    var bookIndex: Int = 0
     
     //MARK: - UI
     private lazy var labelStackView: UIStackView = {
@@ -53,6 +54,7 @@ class BookTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "cart.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 35)), for: .normal)
         button.tintColor = UIColor(hexCode: "007AFF")
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -61,11 +63,15 @@ class BookTableViewCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    func configure(with item: Book) {
+    func configure(with item: Book, at index: Int) {
         
         bookImageView.image = item.id.bookimage
         bookNameLabel.text = item.id.bookname
         authorNameLabel.text = "\(item.authorName) 저"
+        
+        purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
+        bookIndex = index
+                
 
         labelStackView.addArrangedSubview(bookNameLabel)
         labelStackView.addArrangedSubview(authorNameLabel)
@@ -94,4 +100,13 @@ class BookTableViewCell: UITableViewCell {
         ])
 
     }
+    
+    @objc private func purchaseButtonTapped() {
+        let viewModel = BooksViewModel()
+        guard let bookURL = viewModel.bookURL(at: bookIndex) else {
+            return
+        }
+        UIApplication.shared.open(bookURL, options: [:], completionHandler: nil)
+    }
+        
 }

@@ -128,7 +128,7 @@ extension BookViewController: UITableViewDataSource, UITableViewDelegate {
         let book = bookViewModel.books[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.cellId, for: indexPath) as! BookTableViewCell
         cell.selectionStyle = .none
-        cell.configure(with: book)
+        cell.configure(with: book, at: indexPath.section)
         cell.layer.cornerRadius = 14
         
         return cell
