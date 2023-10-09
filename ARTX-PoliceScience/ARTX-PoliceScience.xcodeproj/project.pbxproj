@@ -57,6 +57,7 @@
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 		B416173F2AD41621002C9335 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416173E2AD41621002C9335 /* HomeTableViewCell.swift */; };
 		B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7A2AD422080047CCE9 /* HomeModel.swift */; };
+		B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */; };
 		B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		B416173E2AD41621002C9335 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B49D4A7A2AD422080047CCE9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC102ACD0D3B00B01779 /* ViewModel.swift */,
+				B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */,
 				5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
@@ -346,6 +349,7 @@
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
+				B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,

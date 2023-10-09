@@ -7,9 +7,10 @@
 
 import UIKit
 
-struct HomeTableSectionHeader {
+struct HomeTableSection {
     let partNumber: String
     let partTitle: String
+    let chapters: [HomeTableCell]
 }
 
 struct HomeTableCell {
