@@ -7,11 +7,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private let homeTableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        return table
+    }()
     
     let settingViewController = SettingViewController()
     
-    let stackView = UIStackView()
+    let testStackView = UIStackView()
     // settingViewButton Navigation Button
     let settingViewButton = UIButton(type: .system)
     //UserDefault 확인용 label
@@ -20,16 +26,50 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HomeViewModel.configure()
         style()
         layout()
+        testUI() // Code활성화 테스트 & 설정화면 작업 코드
     }
 }
 
 extension HomeViewController {
     func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
+        
+        view.backgroundColor = .bgGroupedPrimary
+        
+        //tableview 설정
+        view.addSubview(homeTableView)
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        homeTableView.frame = view.bounds
+        
+    }
+    
+    func layout() {
+        
+        
+    }
+}
+
+extension HomeViewController {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+}
+
+// MARK: - Code활성화 테스트 & 설정화면 작업 코드
+extension HomeViewController {
+    func testUI() {
+        // style
+        testStackView.translatesAutoresizingMaskIntoConstraints = false
+        testStackView.axis = .vertical
+        testStackView.spacing = 20
         
         //settingview들어가는 navigation button
         settingViewButton.translatesAutoresizingMaskIntoConstraints = false
@@ -42,18 +82,17 @@ extension HomeViewController {
         
         authenticationCodeLabel.text = "현재 LocalState.authenticationCode = \(LocalState.authenticationCode ?? "미등록")"
         authenticationCodeLabel.textColor = .white
-    }
-    
-    func layout() {
-        stackView.addArrangedSubview(settingViewButton)
-        stackView.addArrangedSubview(isCodeActivatedLabel)
-        stackView.addArrangedSubview(authenticationCodeLabel)
         
-        view.addSubview(stackView)
+        // layout
+        testStackView.addArrangedSubview(settingViewButton)
+        testStackView.addArrangedSubview(isCodeActivatedLabel)
+        testStackView.addArrangedSubview(authenticationCodeLabel)
+        
+        view.addSubview(testStackView)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            testStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            testStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
