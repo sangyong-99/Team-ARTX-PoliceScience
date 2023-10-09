@@ -59,6 +59,7 @@
 		B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7A2AD422080047CCE9 /* HomeModel.swift */; };
 		B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */; };
 		B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */; };
+		B49D4A812AD4A4BC0047CCE9 /* HomeTableViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A802AD4A4BC0047CCE9 /* HomeTableViewSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		B49D4A7A2AD422080047CCE9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		B49D4A802AD4A4BC0047CCE9 /* HomeTableViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				5E86FC0E2ACD0B8A00B01779 /* View.swift */,
 				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
+				B49D4A802AD4A4BC0047CCE9 /* HomeTableViewSectionHeader.swift */,
 				B416173E2AD41621002C9335 /* HomeTableViewCell.swift */,
 				5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */,
 				5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */,
@@ -367,6 +370,7 @@
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
 				B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
+				B49D4A812AD4A4BC0047CCE9 /* HomeTableViewSectionHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

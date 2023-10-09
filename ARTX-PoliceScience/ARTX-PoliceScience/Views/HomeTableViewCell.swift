@@ -21,8 +21,7 @@ class HomeTableViewCell: UITableViewCell {
     
     private let chapterNumber: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
-        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         label.textColor = .textBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -30,8 +29,7 @@ class HomeTableViewCell: UITableViewCell {
     
     private let chapterTitle: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,7 +45,6 @@ class HomeTableViewCell: UITableViewCell {
     
     private let quizCount: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 1
         label.font = UIFont.preferredFont(forTextStyle: .caption1)
         label.textColor = .secondaryLabel // 컬러 체크
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        table.register(HomeTableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: HomeTableViewSectionHeader.identifier)
         table.rowHeight = HomeTableViewCell.rowHeight
         return table
     }()
@@ -57,6 +58,18 @@ extension HomeViewController {
 extension HomeViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return HomeViewModel.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeTableViewSectionHeader.identifier) as! HomeTableViewSectionHeader
+        
+        header.configure(with: HomeViewModel.sections[section])
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
