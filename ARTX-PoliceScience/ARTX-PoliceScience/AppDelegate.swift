@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .orange
-        window?.rootViewController = HomeViewController()
+//        window?.rootViewController = HomeViewController()
+        window?.rootViewController = BookViewController()
         FirebaseApp.configure()
         return true
     }

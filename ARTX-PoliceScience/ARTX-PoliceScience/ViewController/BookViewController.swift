@@ -25,38 +25,38 @@ class BookViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        mainStackView.addArrangedSubview(mainImageView)
-        mainStackView.addArrangedSubview(introLabelStack)
+        labelStackView.addArrangedSubview(mainImageView)
+        labelStackView.addArrangedSubview(introLabelStack)
         
         introLabelStack.addArrangedSubview(introTitleLabel)
         introLabelStack.addArrangedSubview(introSubLabel)
     
-        allMainStackView.addArrangedSubview(mainStackView)
-        allMainStackView.addArrangedSubview(tableView)
+        mainStackView.addArrangedSubview(labelStackView)
+        mainStackView.addArrangedSubview(tableView)
         
-        view.addSubview(allMainStackView)
+        view.addSubview(mainStackView)
         
     }
     
     private func layout() {
-        allMainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            allMainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            allMainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            allMainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            allMainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
-    let allMainStackView: UIStackView = {
+    let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
         stackView.spacing = 0
         return stackView
     }()
     
-    let mainStackView: UIStackView = {
+    let labelStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
         stackView.spacing = 0
