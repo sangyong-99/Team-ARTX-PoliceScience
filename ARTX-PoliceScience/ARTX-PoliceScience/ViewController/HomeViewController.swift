@@ -12,6 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        table.rowHeight = HomeTableViewCell.rowHeight
         return table
     }()
     
@@ -30,7 +31,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         HomeViewModel.configure()
         style()
         layout()
-        testUI() // Code활성화 테스트 & 설정화면 작업 코드
+//        testUI() // Code활성화 테스트 & 설정화면 작업 코드
     }
 }
 
@@ -54,14 +55,31 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return HomeViewModel.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return HomeViewModel.sections[section].chapters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let model = HomeViewModel.sections[indexPath.section].chapters[indexPath.row]
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
+        
+        cell.configure(with: model)
+        
+        return cell
+    }
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // 진행 상황 체크 후 Alert
+        // 문제 푸는 곳으로 넘어가기
     }
 }
+
 
 // MARK: - Code활성화 테스트 & 설정화면 작업 코드
 extension HomeViewController {

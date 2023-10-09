@@ -10,48 +10,63 @@ import UIKit
 class HomeTableViewCell: UITableViewCell {
     
     static let identifier = "HomeTableViewCell"
+    static let rowHeight: CGFloat = 69
     
     private let completionIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let chapterNumber: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.preferredFont(forTextStyle: .caption2)
+        label.textColor = .textBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let chapterTitle: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let chapterStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .leading
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private let quizCount: UILabel = {
         let label = UILabel()
-        label.textColor = .secondaryLabel // 컬러 체크
         label.numberOfLines = 1
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textColor = .secondaryLabel // 컬러 체크
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    private let navigationIcon: UIImageView = {
-        let imageView = UIImageView()
-        imageView.tintColor = .secondaryLabel // 컬러 체크
-        imageView.contentMode = .scaleAspectFit
-        return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(completionIcon)
-        contentView.addSubview(chapterNumber)
-        contentView.addSubview(chapterTitle)
+        
+        contentView.addSubview(chapterStackView)
+        chapterStackView.addArrangedSubview(chapterNumber)
+        chapterStackView.addArrangedSubview(chapterTitle)
+        
         contentView.addSubview(quizCount)
-        contentView.addSubview(navigationIcon)
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
+        
+        layout()
     }
     
     required init?(coder: NSCoder) {
@@ -75,14 +90,26 @@ class HomeTableViewCell: UITableViewCell {
         completionIcon.image = model.completionIcon
         chapterNumber.text = model.chapterNumber
         chapterTitle.text = model.chapterTitle
-        quizCount.text = quizCountLabel(isCodeActivated: LocalState.isCodeActivated)
-        navigationIcon.image = UIImage(systemName: "chevron.right")
+        // 인증 여부에 따라 변경
+        quizCount.text = model.quizCount
     }
+}
 
-    
-// MARK: - 몇 문제 풀었는지 확인
-    private func quizCountLabel(isCodeActivated: Bool) -> String {
-        guard isCodeActivated else { return "􀎠" }
-            return "30 / 30"
+extension HomeTableViewCell {
+    private func layout() {
+        NSLayoutConstraint.activate([
+            completionIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            completionIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            completionIcon.widthAnchor.constraint(equalToConstant: 28),
+            completionIcon.heightAnchor.constraint(equalToConstant: 28),
+            
+            chapterStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            chapterStackView.leadingAnchor.constraint(equalTo: completionIcon.trailingAnchor, constant: 10),
+            chapterStackView.heightAnchor.constraint(equalToConstant: 37),
+            
+            quizCount.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            quizCount.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
+            
+        ])
     }
 }
