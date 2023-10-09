@@ -57,6 +57,7 @@
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 		B416173F2AD41621002C9335 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B416173E2AD41621002C9335 /* HomeTableViewCell.swift */; };
 		B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7A2AD422080047CCE9 /* HomeModel.swift */; };
+		B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		B416173E2AD41621002C9335 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B49D4A7A2AD422080047CCE9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC122ACD0D4100B01779 /* Model.swift */,
+				B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */,
 				5ECE29FB2ACF088F00083E93 /* SettingModel.swift */,
 				B49D4A7A2AD422080047CCE9 /* HomeModel.swift */,
 			);
@@ -358,6 +361,7 @@
 				5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
+				B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
