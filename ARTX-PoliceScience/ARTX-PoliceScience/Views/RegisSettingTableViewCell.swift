@@ -71,7 +71,7 @@ class RegisSettingTableViewCell: UITableViewCell {
         codeLabel.text = codeSettingLabelText(isCodeActivated: LocalState.isCodeActivated)
         codeLabel.sizeToFit()
         codeLabel.frame = CGRect(x: contentView.frame.size.width - codeLabel.frame.size.width - 14, y: 0, width: codeLabel.frame.size.width, height: contentView.frame.size.height)
-        print("click regis configure")
+        // ("click regis configure")
     }
     
     private func codeSettingLabelText(isCodeActivated: Bool) -> String {

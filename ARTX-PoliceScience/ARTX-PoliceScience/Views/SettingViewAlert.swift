@@ -33,12 +33,10 @@ class SettingViewAlert {
             guard let authenticationCode = authenticationCode.text else {
                 return
             }
-            //alert창 입력 값
-            //                    print(authenticationCode)
             
             //firestore 연결 코드 성공 여부 bool 값리턴
             FirebaseManager.setCodeFirestore(code: authenticationCode) { success in
-                print("성공여부 : \(success)")
+                // ("성공여부 : \(success)")
                 if success {
                     successCodeAlert()
                     
@@ -114,7 +112,7 @@ class SettingViewAlert {
         
         changeDeviceAlert.addAction(UIAlertAction(title: "비활성화", style: .default, handler: { _ in
             FirebaseManager.changeDeviceFirestore(authenticationCode: authenticationCode) { success in
-                print("기기변경 성공여부 : \(success)")
+                // ("기기변경 성공여부 : \(success)")
                 if success {
                     successChangeDeviceAlert()
                     
@@ -122,10 +120,10 @@ class SettingViewAlert {
                     
                     tableView.reloadRows(at: [currentCellIndexPath], with: .automatic)
                     
-                    print("성공")
+                    // ("성공")
                 } else {
                     failChangeDeviceAlert()
-                    print("실패")
+                    // ("실패")
                 }
             }
         }))
@@ -193,13 +191,13 @@ class SettingViewAlert {
         //alert button 이랑 action
         appResetAlert.addAction(UIAlertAction(title: "초기화", style: .destructive, handler: { _ in
             appResetFunction() { success in
-                print("학습 기록 초기화 성공여부 : \(success)")
+                // ("학습 기록 초기화 성공여부 : \(success)")
                 if success {
                     successappResetAlert()
-                    print("성공")
+                    // ("성공")
                 } else {
                     failappResetAlert()
-                    print("실패")
+                    // ("실패")
                 }
 
             }
@@ -217,7 +215,7 @@ class SettingViewAlert {
     }
     
     static func appResetFunction(completion: @escaping (Bool) -> Void) {
-        print("app reset 학습 기록 초기화 하는 함수 들어가야 되는 곳")
+        // ("app reset 학습 기록 초기화 하는 함수 들어가야 되는 곳")
         completion(true)
     }
     
