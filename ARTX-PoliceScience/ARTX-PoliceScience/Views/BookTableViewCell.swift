@@ -52,7 +52,8 @@ class BookTableViewCell: UITableViewCell {
     private lazy var purchaseButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "cart.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 35)), for: .normal)
+        if let symbolImage = Symbol.purchaseButton.image {
+            button.setImage(symbolImage, for: .normal) }
         button.tintColor = UIColor(named: "ColorsBlue")
         button.isUserInteractionEnabled = true
         return button
@@ -63,8 +64,7 @@ class BookTableViewCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    func configure(with item: Book, at index: Int) {
-        
+    func setup(with item: Book, at index: Int) {
         bookImageView.image = item.id.bookimage
         bookNameLabel.text = item.id.bookname
         authorNameLabel.text = "\(item.authorName) 저"
@@ -81,7 +81,10 @@ class BookTableViewCell: UITableViewCell {
         contentView.addSubview(labelStackView)
         contentView.addSubview(purchaseButton)
         
-        
+        layout()
+    }
+    
+    func layout() {
         NSLayoutConstraint.activate([
             
             bookImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
@@ -98,7 +101,6 @@ class BookTableViewCell: UITableViewCell {
             purchaseButton.centerYAnchor.constraint(equalTo: labelStackView.centerYAnchor)
             
         ])
-
     }
     
     @objc private func purchaseButtonTapped() {

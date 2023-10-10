@@ -11,44 +11,6 @@ class BookViewController: UIViewController {
     
     private lazy var bookViewModel = BooksViewModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-        layout()
-    }
-    
-    private func setup() {
-        
-        self.navigationController?.navigationBar.topItem?.title = "조현 경찰학이란?"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        labelStackView.addArrangedSubview(mainImageView)
-        labelStackView.addArrangedSubview(introLabelStack)
-        
-        introLabelStack.addArrangedSubview(introTitleLabel)
-        introLabelStack.addArrangedSubview(introSubLabel)
-    
-        mainStackView.addArrangedSubview(labelStackView)
-        mainStackView.addArrangedSubview(tableView)
-        
-        view.addSubview(mainStackView)
-        
-    }
-    
-    private func layout() {
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-    
     let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
@@ -113,6 +75,44 @@ class BookViewController: UIViewController {
         tv.sectionHeaderHeight = 0
         return tv
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        layout()
+    }
+    
+    private func setup() {
+        
+        self.navigationController?.navigationBar.topItem?.title = NavigationTitle.bookView.title
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        labelStackView.addArrangedSubview(mainImageView)
+        labelStackView.addArrangedSubview(introLabelStack)
+        
+        introLabelStack.addArrangedSubview(introTitleLabel)
+        introLabelStack.addArrangedSubview(introSubLabel)
+    
+        mainStackView.addArrangedSubview(labelStackView)
+        mainStackView.addArrangedSubview(tableView)
+        
+        view.addSubview(mainStackView)
+        
+    }
+    
+    private func layout() {
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
 
 extension BookViewController: UITableViewDataSource, UITableViewDelegate {
@@ -128,7 +128,7 @@ extension BookViewController: UITableViewDataSource, UITableViewDelegate {
         let book = bookViewModel.books[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.cellId, for: indexPath) as! BookTableViewCell
         cell.selectionStyle = .none
-        cell.configure(with: book, at: indexPath.section)
+        cell.setup(with: book, at: indexPath.section)
         cell.layer.cornerRadius = 14
         
         return cell
