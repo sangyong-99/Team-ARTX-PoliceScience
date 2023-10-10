@@ -26,7 +26,7 @@ class BookTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byCharWrapping
         label.font = .systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = UIColor(hexCode: "000000")
+        label.textColor = UIColor(named: "PrimaryBlack")
         label.numberOfLines = 0
         return label
     }()
@@ -37,7 +37,7 @@ class BookTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byCharWrapping
         label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor(hexCode: "3C3C43")
+        label.textColor = UIColor.secondaryLabel
         label.numberOfLines = 0
         return label
     }()
@@ -53,7 +53,7 @@ class BookTableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "cart.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 35)), for: .normal)
-        button.tintColor = UIColor(hexCode: "007AFF")
+        button.tintColor = UIColor(named: "ColorsBlue")
         button.isUserInteractionEnabled = true
         return button
     }()

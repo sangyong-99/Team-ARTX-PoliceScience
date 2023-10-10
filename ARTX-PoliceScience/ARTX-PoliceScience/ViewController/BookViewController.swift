@@ -85,7 +85,7 @@ class BookViewController: UIViewController {
     let introTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        label.textColor = .black
+        label.textColor = UIColor(named: "PrimaryBlack")
         label.text = "헤드라인 헤드라인 헤드라인 헤드라인 헤드라인"
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
@@ -96,7 +96,7 @@ class BookViewController: UIViewController {
     let introSubLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .black
+        label.textColor = UIColor(named: "PrimaryBlack")
         label.text = "상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명"
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
