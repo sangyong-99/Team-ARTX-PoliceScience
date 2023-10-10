@@ -11,9 +11,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
-        table.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
-        table.register(HomeTableViewSectionHeader.self, forHeaderFooterViewReuseIdentifier: HomeTableViewSectionHeader.identifier)
-        table.rowHeight = HomeTableViewCell.rowHeight
+        table.register(HomeTableCellView.self, forCellReuseIdentifier: HomeTableCellView.identifier)
+        table.register(HomeTableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: HomeTableSectionHeaderView.identifier)
+        table.rowHeight = HomeTableCellView.rowHeight
         return table
     }()
     
@@ -30,27 +30,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         HomeViewModel.configure()
-        style()
-        layout()
+        
+        view.backgroundColor = .bgGroupedPrimary
+        
+        setupTableView()
+        setupTableHeaderView()
 //        testUI() // Code활성화 테스트 & 설정화면 작업 코드
     }
 }
 
 extension HomeViewController {
-    func style() {
-        
-        view.backgroundColor = .bgGroupedPrimary
-        
-        //tableview 설정
+    func setupTableView() {
         view.addSubview(homeTableView)
         homeTableView.delegate = self
         homeTableView.dataSource = self
         homeTableView.frame = view.bounds
-        
     }
     
-    func layout() {
-        
+    func setupTableHeaderView() {
         
     }
 }
@@ -61,7 +58,7 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeTableViewSectionHeader.identifier) as! HomeTableViewSectionHeader
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeTableSectionHeaderView.identifier) as! HomeTableSectionHeaderView
         
         header.configure(with: HomeViewModel.sections[section])
         
@@ -79,7 +76,7 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = HomeViewModel.sections[indexPath.section].chapters[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableCellView.identifier, for: indexPath) as? HomeTableCellView else { return UITableViewCell() }
         
         cell.configure(with: model)
         

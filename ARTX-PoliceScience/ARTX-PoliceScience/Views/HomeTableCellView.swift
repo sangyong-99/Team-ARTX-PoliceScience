@@ -1,5 +1,5 @@
 //
-//  HomeTableViewCell.swift
+//  HomeTableCellView.swift
 //  ARTX-PoliceScience
 //
 //  Created by Jae Ho Yoon on 10/9/23.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HomeTableViewCell: UITableViewCell {
+class HomeTableCellView: UITableViewCell {
     
-    static let identifier = "HomeTableViewCell"
+    static let identifier = "HomeTableCellView"
     static let rowHeight: CGFloat = 69
     
     private let completionIcon: UIImageView = {
@@ -92,7 +92,7 @@ class HomeTableViewCell: UITableViewCell {
     }
 }
 
-extension HomeTableViewCell {
+extension HomeTableCellView {
     private func layout() {
         NSLayoutConstraint.activate([
             completionIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

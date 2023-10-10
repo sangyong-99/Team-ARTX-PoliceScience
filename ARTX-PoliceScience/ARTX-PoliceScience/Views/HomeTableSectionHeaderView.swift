@@ -1,5 +1,5 @@
 //
-//  HomeTableViewSectionHeader.swift
+//  HomeTableSectionHeaderView.swift
 //  ARTX-PoliceScience
 //
 //  Created by Jae Ho Yoon on 10/10/23.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HomeTableViewSectionHeader: UITableViewHeaderFooterView {
+class HomeTableSectionHeaderView: UITableViewHeaderFooterView {
     
-    static let identifier = "HomeTableViewHeader"
+    static let identifier = "HomeTableHeaderView"
     
     private let partNumber: UILabel = {
         let label = UILabel()
