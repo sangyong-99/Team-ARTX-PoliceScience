@@ -103,10 +103,27 @@ class BookTableViewCell: UITableViewCell {
     
     @objc private func purchaseButtonTapped() {
         let viewModel = BooksViewModel()
+        
+        // 책 구매 주소
         guard let bookURL = viewModel.bookURL(at: bookIndex) else {
             return
         }
-        UIApplication.shared.open(bookURL, options: [:], completionHandler: nil)
+
+        // 에러가 났을 경우 카페로 이동
+        let bookErrorURL = URL(string: "https://cafe.naver.com/khneng")!
+        
+        let task = URLSession.shared.dataTask(with: bookURL) { (_, response, _) in
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(bookURL, options: [:], completionHandler: nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(bookErrorURL, options: [:], completionHandler: nil)
+                }
+            }
+        }
+        task.resume()
     }
         
 }
