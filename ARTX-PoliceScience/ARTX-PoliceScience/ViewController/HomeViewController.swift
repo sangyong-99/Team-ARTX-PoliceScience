@@ -45,10 +45,13 @@ extension HomeViewController {
         homeTableView.delegate = self
         homeTableView.dataSource = self
         homeTableView.frame = view.bounds
+        homeTableView.contentInsetAdjustmentBehavior = .never
     }
     
     func setupTableHeaderView() {
-        
+        let header = HomeTableHeaderView()
+        header.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: HomeTableHeaderView.height)
+        homeTableView.tableHeaderView = header
     }
 }
 
