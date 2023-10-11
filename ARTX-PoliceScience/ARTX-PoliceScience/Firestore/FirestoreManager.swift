@@ -41,7 +41,7 @@ class FirebaseManager {
                 }
                 
                 documentReference.updateData(["count": 1]) { error in
-                    if let error = error {
+                    if let _ = error {
                         // ("업데이트 중 오류 발생: \(error)")
                         completion(false)
                     } else {
@@ -84,7 +84,7 @@ class FirebaseManager {
                 }
                 
                 documentReference.updateData(["count": 0]) { error in
-                    if let error = error {
+                    if let _ = error {
                         // ("업데이트 중 오류 발생: \(error)")
                         completion(false)
                     } else {
