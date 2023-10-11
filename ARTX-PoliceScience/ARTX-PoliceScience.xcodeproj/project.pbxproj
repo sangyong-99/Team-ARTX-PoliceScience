@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A7706212ACDB25F00E546E0 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A7706202ACDB25F00E546E0 /* example.json */; };
 		4AA0925C2AD577A4006DB2BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0925B2AD577A4006DB2BB /* GoogleService-Info.plist */; };
-		4AA0925E2AD57F19006DB2BB /* Quizzes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0925D2AD57F19006DB2BB /* Quizzes.swift */; };
+		4AA0925E2AD57F19006DB2BB /* QuizzesPuppy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0925D2AD57F19006DB2BB /* QuizzesPuppy.swift */; };
 		5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3451892AB42F33004A3047 /* AppDelegate.swift */; };
 		5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451922AB42F34004A3047 /* Assets.xcassets */; };
 		5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */; };
@@ -42,7 +42,7 @@
 		5E86FBFD2ACD07AE00B01779 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBFC2ACD07AE00B01779 /* FirebaseStorageCombine-Community */; };
 		5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC062ACD0A9900B01779 /* HomeViewController.swift */; };
 		5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC082ACD0AC800B01779 /* SettingViewController.swift */; };
-		5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */; };
+		5E86FC0B2ACD0ADF00B01779 /* QuizViewControllerPuppy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0A2ACD0ADF00B01779 /* QuizViewControllerPuppy.swift */; };
 		5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */; };
 		5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0E2ACD0B8A00B01779 /* View.swift */; };
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
@@ -54,7 +54,7 @@
 /* Begin PBXFileReference section */
 		4A7706202ACDB25F00E546E0 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		4AA0925B2AD577A4006DB2BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		4AA0925D2AD57F19006DB2BB /* Quizzes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quizzes.swift; sourceTree = "<group>"; };
+		4AA0925D2AD57F19006DB2BB /* QuizzesPuppy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzesPuppy.swift; sourceTree = "<group>"; };
 		5E3451862AB42F33004A3047 /* ARTX-PoliceScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARTX-PoliceScience.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3451892AB42F33004A3047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E3451922AB42F34004A3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		5E3451972AB42F34004A3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		5E86FC0A2ACD0ADF00B01779 /* QuizViewControllerPuppy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewControllerPuppy.swift; sourceTree = "<group>"; };
 		5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
 		5E86FC0E2ACD0B8A00B01779 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			children = (
 				4A7706202ACDB25F00E546E0 /* example.json */,
 				5E86FC142ACD0D4A00B01779 /* Resources.swift */,
-				4AA0925D2AD57F19006DB2BB /* Quizzes.swift */,
+				4AA0925D2AD57F19006DB2BB /* QuizzesPuppy.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 			children = (
 				5E86FC062ACD0A9900B01779 /* HomeViewController.swift */,
 				5E86FC082ACD0AC800B01779 /* SettingViewController.swift */,
-				5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */,
+				5E86FC0A2ACD0ADF00B01779 /* QuizViewControllerPuppy.swift */,
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
 			);
 			path = ViewController;
@@ -300,7 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AA0925E2AD57F19006DB2BB /* Quizzes.swift in Sources */,
+				4AA0925E2AD57F19006DB2BB /* QuizzesPuppy.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
@@ -308,7 +308,7 @@
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */,
-				5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */,
+				5E86FC0B2ACD0ADF00B01779 /* QuizViewControllerPuppy.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
 			);

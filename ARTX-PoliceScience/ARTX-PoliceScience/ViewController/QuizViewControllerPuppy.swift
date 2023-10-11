@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewControllerPuppy: UIViewController {
     
     let chapterStackView: UIStackView = {
         let stackView = UIStackView()
@@ -158,22 +158,7 @@ class QuizViewController: UIViewController {
         button.backgroundColor = UIColor(named: "GraysGray 5")
         return button
     }()
-    
-//    let correctImageView: UIImageView = {
-//        let imageview = UIImageView()
-//        imageview.image = UIImage(named: "OImage")
-//
-//        imageview.contentMode = .scaleToFill
-//        return imageview
-//    }()
-//
-//    let wrongImageView: UIImageView = {
-//        let imageview = UIImageView()
-//        imageview.image = UIImage(named: "XImage")
-//        imageview.contentMode = .scaleToFill
-//        return imageview
-//    }()
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -189,9 +174,6 @@ class QuizViewController: UIViewController {
         view.addSubview(quizTitleStackview)
         view.addSubview(quizLabel)
         view.addSubview(buttonStackView)
-//        view.addSubview(wrongImageView)
-//        view.addSubview(correctImageView)
-        
         
         chapterStackView.addArrangedSubview(chapterNumberLabel)
         chapterStackView.addArrangedSubview(chapterTitleLabel)
