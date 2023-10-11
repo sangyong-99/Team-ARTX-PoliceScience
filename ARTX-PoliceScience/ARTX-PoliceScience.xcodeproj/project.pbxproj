@@ -47,6 +47,13 @@
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
 		5E86FC132ACD0D4100B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC122ACD0D4100B01779 /* Model.swift */; };
 		5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Resources.swift */; };
+		5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */; };
+		5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */; };
+		5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */; };
+		5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */; };
+		5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FB2ACF088F00083E93 /* SettingModel.swift */; };
+		5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */; };
+		5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE2A002ACF0AFB00083E93 /* UINavigationController+Util.swift */; };
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +73,13 @@
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E86FC122ACD0D4100B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5E86FC142ACD0D4A00B01779 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewAlert.swift; sourceTree = "<group>"; };
+		5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisSettingTableViewCell.swift; sourceTree = "<group>"; };
+		5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		5ECE29FB2ACF088F00083E93 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		5ECE2A002ACF0AFB00083E93 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +140,8 @@
 		5E3451882AB42F33004A3047 /* ARTX-PoliceScience */ = {
 			isa = PBXGroup;
 			children = (
+				5EA61BE62AD06A6800F6D771 /* Firestore */,
+				5ECE29FF2ACF0AD800083E93 /* Utils */,
 				5EDDA55F2ACD116F006E13DE /* UserDefault */,
 				5E44DC9B2ACD001A00DAC94A /* Views */,
 				5E44DC9D2ACD003F00DAC94A /* ViewController */,
@@ -145,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC122ACD0D4100B01779 /* Model.swift */,
+				5ECE29FB2ACF088F00083E93 /* SettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC102ACD0D3B00B01779 /* ViewModel.swift */,
+				5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -161,6 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC0E2ACD0B8A00B01779 /* View.swift */,
+				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
+				5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */,
+				5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +204,22 @@
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5EA61BE62AD06A6800F6D771 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		5ECE29FF2ACF0AD800083E93 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5ECE2A002ACF0AFB00083E93 /* UINavigationController+Util.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		5EDDA55F2ACD116F006E13DE /* UserDefault */ = {
@@ -297,16 +334,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
+				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
+				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
+				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
+				5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */,
 				5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */,
 				5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */,
+				5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
+				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +418,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -428,7 +472,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -442,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -469,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
