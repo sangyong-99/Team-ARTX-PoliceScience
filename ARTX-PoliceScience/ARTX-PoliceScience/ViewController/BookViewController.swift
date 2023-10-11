@@ -69,7 +69,7 @@ class BookViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tv =  UITableView(frame: .zero, style: .insetGrouped)
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .clear
+        tv.backgroundColor = .bgGroupedPrimary
         tv.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.cellId)
         tv.sectionFooterHeight = 12
         tv.sectionHeaderHeight = 0
@@ -78,6 +78,7 @@ class BookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .bgGroupedPrimary
         navigationController?.configureNavigationBar(withTitle: NavigationTitle.bookView.title)
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         setup()

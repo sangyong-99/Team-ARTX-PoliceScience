@@ -65,6 +65,7 @@ class BookTableViewCell: UITableViewCell {
     }
     
     func setup(with item: Book, at index: Int) {
+        
         bookImageView.image = item.id.bookimage
         bookNameLabel.text = item.id.bookname
         authorNameLabel.text = "\(item.authorName) 저"
