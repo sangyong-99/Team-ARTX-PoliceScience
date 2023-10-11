@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     let settingViewController = SettingViewController()
+    let bookViewController = BookViewController()
     
     let stackView = UIStackView()
     // settingViewButton Navigation Button

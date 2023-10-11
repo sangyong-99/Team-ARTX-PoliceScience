@@ -78,14 +78,13 @@ class BookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.configureNavigationBar(withTitle: NavigationTitle.bookView.title)
+        navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         setup()
         layout()
     }
     
     private func setup() {
-        
-        self.navigationController?.navigationBar.topItem?.title = NavigationTitle.bookView.title
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -134,4 +133,10 @@ extension BookViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+}
+
+extension BookViewController {
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }

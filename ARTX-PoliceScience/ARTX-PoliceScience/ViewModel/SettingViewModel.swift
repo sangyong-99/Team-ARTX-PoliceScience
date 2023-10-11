@@ -12,8 +12,14 @@ class SettingViewModel {
     
     static func configure(){
         // MARK: - InformationViewController 연결
-        models.append(SettingTableSection(title: "Information", options: [.staticCell(model: SettingsOption(title: "조현 경찰학이란?", icon: UIImage(systemName: "book.closed")) { tableView, indexPath in
-            // ("IntroductionViewConroller Connect")
+        models.append(SettingTableSection(title: "Information", options: [.staticCell(model: SettingsOption(title: NavigationTitle.bookView.title, icon: UIImage(systemName: "book.closed")) { tableView, indexPath in
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    if let navigationController = window.rootViewController as? UINavigationController {
+                        navigationController.pushViewController(BookViewController(), animated: true)
+                    }
+                }
+            }
         })]))
         
         
