@@ -8,6 +8,7 @@
 import UIKit
 
 class ChapterTitleLabel: UILabel {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureLabel()
