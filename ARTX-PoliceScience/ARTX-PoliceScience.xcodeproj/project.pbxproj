@@ -60,6 +60,12 @@
 		5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE2A002ACF0AFB00083E93 /* UINavigationController+Util.swift */; };
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 		FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */; };
+		FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */; };
+		FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */; };
+		FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */; };
+		FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */; };
+		FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */; };
+		FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +97,12 @@
 		5ECE2A002ACF0AFB00083E93 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterNumberLabel.swift; sourceTree = "<group>"; };
+		FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleLabel.swift; sourceTree = "<group>"; };
+		FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareBackgroundLabel.swift; sourceTree = "<group>"; };
+		FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +195,7 @@
 				5E86FC102ACD0D3B00B01779 /* ViewModel.swift */,
 				4AA092512AD29759006DB2BB /* BookViewModel.swift */,
 				5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */,
+				FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -190,6 +203,7 @@
 		5E44DC9B2ACD001A00DAC94A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */,
 				5E86FC0E2ACD0B8A00B01779 /* View.swift */,
 				4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */,
 				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
@@ -217,6 +231,7 @@
 				5E86FC082ACD0AC800B01779 /* SettingViewController.swift */,
 				5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */,
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
+				FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -243,6 +258,17 @@
 				5EDDA5622ACD11E2006E13DE /* LocalState.swift */,
 			);
 			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */ = {
+			isa = PBXGroup;
+			children = (
+				FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */,
+				FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */,
+				FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */,
+				FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */,
+			);
+			path = BookmarkView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,18 +376,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AA092522AD29759006DB2BB /* BookViewModel.swift in Sources */,
+				FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */,
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
+				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
+				FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
+				FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */,
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */,
+				FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */,
 				5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */,
 				5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */,
 				4AA092502AD296D3006DB2BB /* Book.swift in Sources */,
@@ -369,6 +400,7 @@
 				5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */,
 				5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
+				FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
