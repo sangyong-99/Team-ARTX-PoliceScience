@@ -51,6 +51,8 @@
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
 		5E86FC132ACD0D4100B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC122ACD0D4100B01779 /* Model.swift */; };
 		5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Resources.swift */; };
+		5E9952C32AD6810A00C204F8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9952C22AD6810A00C204F8 /* QuestionModel.swift */; };
+		5E9952C52AD68E2B00C204F8 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9952C42AD68E2B00C204F8 /* MainViewCell.swift */; };
 		5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */; };
 		5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */; };
 		5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */; };
@@ -81,6 +83,8 @@
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E86FC122ACD0D4100B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5E86FC142ACD0D4A00B01779 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		5E9952C22AD6810A00C204F8 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		5E9952C42AD68E2B00C204F8 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewAlert.swift; sourceTree = "<group>"; };
 		5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				5E86FC122ACD0D4100B01779 /* Model.swift */,
 				4AA0924F2AD296D3006DB2BB /* Book.swift */,
+				5E9952C22AD6810A00C204F8 /* QuestionModel.swift */,
 				5ECE29FB2ACF088F00083E93 /* SettingModel.swift */,
 			);
 			path = Model;
@@ -192,6 +197,7 @@
 				4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */,
 				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
 				5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */,
+				5E9952C42AD68E2B00C204F8 /* MainViewCell.swift */,
 				5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */,
 			);
 			path = Views;
@@ -354,11 +360,13 @@
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
+				5E9952C52AD68E2B00C204F8 /* MainViewCell.swift in Sources */,
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */,
+				5E9952C32AD6810A00C204F8 /* QuestionModel.swift in Sources */,
 				5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */,
 				4AA092502AD296D3006DB2BB /* Book.swift in Sources */,
 				4AA092542AD29F64006DB2BB /* BookTableViewCell.swift in Sources */,
