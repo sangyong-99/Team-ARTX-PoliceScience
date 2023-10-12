@@ -1,5 +1,5 @@
 //
-//  chapterNumberLabel.swift
+//  ChapterTitleLabel.swift
 //  ARTX-PoliceScience
 //
 //  Created by apple on 10/12/23.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-class chapterNumberLabel: UILabel {
-
+class ChapterTitleLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureLabel()
@@ -20,11 +19,11 @@ class chapterNumberLabel: UILabel {
     
     private func configureLabel() {
         self.textAlignment = .left
-        self.font = .caption2Bold
-        self.textColor = .textBlue
+        self.font = .subHeadBold
+        self.textColor = .black
     }
     
-    func updateText(to number: String) {
-        self.text = "CHAPTER " + String(format: "02d", number)
+    func updateText(to title: String) {
+        self.text = title
     }
 }

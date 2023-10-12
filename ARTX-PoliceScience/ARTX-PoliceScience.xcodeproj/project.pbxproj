@@ -62,7 +62,8 @@
 		FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */; };
 		FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */; };
 		FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */; };
-		FF41EAEC2AD81D06002FD4A9 /* chapterNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEB2AD81D06002FD4A9 /* chapterNumberLabel.swift */; };
+		FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */; };
+		FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,7 +97,8 @@
 		FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
-		FF41EAEB2AD81D06002FD4A9 /* chapterNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chapterNumberLabel.swift; sourceTree = "<group>"; };
+		FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterNumberLabel.swift; sourceTree = "<group>"; };
+		FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,7 +259,8 @@
 		FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */ = {
 			isa = PBXGroup;
 			children = (
-				FF41EAEB2AD81D06002FD4A9 /* chapterNumberLabel.swift */,
+				FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */,
+				FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */,
 			);
 			path = BookmarkView;
 			sourceTree = "<group>";
@@ -367,12 +370,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AA092522AD29759006DB2BB /* BookViewModel.swift in Sources */,
-				FF41EAEC2AD81D06002FD4A9 /* chapterNumberLabel.swift in Sources */,
+				FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */,
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
+				FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
