@@ -61,6 +61,7 @@
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 		FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */; };
 		FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */; };
+		FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +222,7 @@
 				5E86FC082ACD0AC800B01779 /* SettingViewController.swift */,
 				5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */,
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
+				FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
+				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
