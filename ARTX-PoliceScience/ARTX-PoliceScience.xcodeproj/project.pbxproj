@@ -64,6 +64,7 @@
 		FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */; };
 		FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */; };
 		FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */; };
+		FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterNumberLabel.swift; sourceTree = "<group>"; };
 		FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleLabel.swift; sourceTree = "<group>"; };
+		FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareBackgroundLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			children = (
 				FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */,
 				FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */,
+				FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */,
 			);
 			path = BookmarkView;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */,
 				5ECE2A012ACF0AFB00083E93 /* UINavigationController+Util.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
+				FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
