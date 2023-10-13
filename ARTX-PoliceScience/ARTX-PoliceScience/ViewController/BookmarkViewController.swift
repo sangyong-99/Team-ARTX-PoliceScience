@@ -63,15 +63,18 @@ final class BookmarkViewController: UIViewController {
 
 
 extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return bookmarkViewModel.getPartCount()
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 89
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 69
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return bookmarkViewModel.getPartCount()
+    }
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.bookmarkViewModel.getChapterCount()
     }

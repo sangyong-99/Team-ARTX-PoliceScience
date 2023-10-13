@@ -45,10 +45,10 @@ class BookmarkTableViewHeader: UITableViewHeaderFooterView {
         partTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            partNumberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0),
+            partNumberLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 26),
             partNumberLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
 
-            partTitleLabel.topAnchor.constraint(equalTo: self.partNumberLabel.topAnchor, constant: 8),
+            partTitleLabel.topAnchor.constraint(equalTo: self.partNumberLabel.bottomAnchor, constant: 8),
             partTitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0)
         ])
     }
