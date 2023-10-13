@@ -20,8 +20,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let settingViewController = SettingViewController()
     
     let testStackView = UIStackView()
-    // settingViewButton Navigation Button
-    let settingViewButton = UIButton(type: .system)
+
     //UserDefault 확인용 label
     let isCodeActivatedLabel = UILabel()
     let authenticationCodeLabel = UILabel()
@@ -35,7 +34,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setupTableView()
         setupTableHeaderView()
-//        testUI() // Code활성화 테스트 & 설정화면 작업 코드
     }
 }
 
@@ -90,41 +88,6 @@ extension HomeViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         // 진행 상황 체크 후 Alert
         // 문제 푸는 곳으로 넘어가기
-    }
-}
-
-
-// MARK: - Code활성화 테스트 & 설정화면 작업 코드
-extension HomeViewController {
-    func testUI() {
-        // style
-        testStackView.translatesAutoresizingMaskIntoConstraints = false
-        testStackView.axis = .vertical
-        testStackView.spacing = 20
-        
-        //settingview들어가는 navigation button
-        settingViewButton.translatesAutoresizingMaskIntoConstraints = false
-        settingViewButton.setTitle("Setting View 바로가기", for: [])
-        settingViewButton.addTarget(self, action: #selector(settingViewButtonTapped), for: .primaryActionTriggered)
-        
-        //userdefaults 보여주는 label style 설정
-        isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
-        isCodeActivatedLabel.textColor = .white
-        
-        authenticationCodeLabel.text = "현재 LocalState.authenticationCode = \(LocalState.authenticationCode ?? "미등록")"
-        authenticationCodeLabel.textColor = .white
-        
-        // layout
-        testStackView.addArrangedSubview(settingViewButton)
-        testStackView.addArrangedSubview(isCodeActivatedLabel)
-        testStackView.addArrangedSubview(authenticationCodeLabel)
-        
-        view.addSubview(testStackView)
-        
-        NSLayoutConstraint.activate([
-            testStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            testStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
     }
 }
 

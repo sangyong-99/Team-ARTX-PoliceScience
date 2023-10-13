@@ -39,6 +39,7 @@ class HomeTableCellView: UITableViewCell {
         stack.axis = .vertical
         stack.spacing = 4
         stack.alignment = .leading
+        stack.distribution = .fillProportionally
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
