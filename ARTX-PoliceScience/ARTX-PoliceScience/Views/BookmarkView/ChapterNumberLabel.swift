@@ -25,6 +25,6 @@ class ChapterNumberLabel: UILabel {
     }
     
     func updateText(to number: Int) {
-        self.text = "CHAPTER " + String(format: "02d", number)
+        self.text = "CHAPTER " + String(format: "%02d", number)
     }
 }
