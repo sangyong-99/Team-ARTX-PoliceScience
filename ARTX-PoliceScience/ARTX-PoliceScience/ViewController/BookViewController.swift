@@ -9,7 +9,15 @@ import UIKit
 
 class BookViewController: UIViewController {
     
+    var safeAreaLength = 0
     private lazy var bookViewModel = BooksViewModel()
+    
+    private let navBackView: UIView = {
+        let settingNavBackView = UIView()
+        settingNavBackView.backgroundColor = .bgBlue
+        
+        return settingNavBackView
+    }()
     
     let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
@@ -76,11 +84,19 @@ class BookViewController: UIViewController {
         return tv
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .bgGroupedPrimary
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.configureNavigationBar(withTitle: NavigationTitle.bookView.title)
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let window = UIApplication.shared.windows.first {
+            safeAreaLength = Int(window.safeAreaInsets.top)
+        }
+        view.backgroundColor = .bgGroupedPrimary
         setup()
         layout()
     }
@@ -99,6 +115,7 @@ class BookViewController: UIViewController {
         mainStackView.addArrangedSubview(labelStackView)
         mainStackView.addArrangedSubview(tableView)
         
+        view.addSubview(navBackView)
         view.addSubview(mainStackView)
         
     }
@@ -111,6 +128,13 @@ class BookViewController: UIViewController {
             mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+        navBackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
         ])
     }
 }
@@ -139,5 +163,6 @@ extension BookViewController: UITableViewDataSource, UITableViewDelegate {
 extension BookViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
 }

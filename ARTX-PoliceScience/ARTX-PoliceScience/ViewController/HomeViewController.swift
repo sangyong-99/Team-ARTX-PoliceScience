@@ -9,31 +9,77 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var safeAreaLength = 0
+    var isScrollEnabled = true
+    
+    let settingViewController = SettingViewController()
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(MainViewCell.self, forCellReuseIdentifier: MainViewCell.identifier)
         return table
     }()
     
+    var header: UIView = UIView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isScrollEnabled = true
+        navigationController?.isNavigationBarHidden = true
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         
-        let header: UIView = tableHeaderView()
-        homeTableView.tableHeaderView = header
+        header = tableHeaderView()
         
-        style()
-        layout()
+        homeTableView.tableHeaderView = header
+        view.addSubview(homeTableView)
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        homeTableView.frame = view.bounds
+        homeTableView.contentInsetAdjustmentBehavior = .never
+        
+        title = "조현 경찰학"
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .regular)
+        let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
+        
+        let rightBarButtonItem = UIBarButtonItem(
+            image: symbolImage,
+            style: .plain,
+            target: self,
+            action: #selector(rightItemTapped)
+        )
+        
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if isScrollEnabled {
+            let offsetY = scrollView.contentOffset.y
+            
+            if offsetY > CGFloat(safeAreaLength + 210) {
+                navigationController?.setNavigationBarHidden(false, animated: true)
+            } else {
+                navigationController?.setNavigationBarHidden(true, animated: true)
+            }
+        }
     }
 }
 
 extension HomeViewController {
     
-    
-    
     func tableHeaderView() -> UIView {
-        var safeAreaLength = 0
         
         if let window = UIApplication.shared.windows.first {
             safeAreaLength = Int(window.safeAreaInsets.top)
@@ -92,14 +138,6 @@ extension HomeViewController {
             return titleLabel
         }()
         
-        //        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        header.addSubview(titleLabel)
-        //
-        //        NSLayoutConstraint.activate([
-        //            titleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
-        //            titleLabel.topAnchor.constraint(equalTo: header.topAnchor, constant: 86)
-        //        ])
-        
         let subTitleLabel: UILabel = {
             let subTitleLabel = UILabel()
             subTitleLabel.text = "OX 문제집"
@@ -107,14 +145,6 @@ extension HomeViewController {
             subTitleLabel.font = UIFont.systemFont(ofSize: 34, weight: .medium)
             return subTitleLabel
         }()
-        
-        //        subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        header.addSubview(subTitleLabel)
-        //
-        //        NSLayoutConstraint.activate([
-        //            subTitleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
-        //            subTitleLabel.topAnchor.constraint(equalTo: header.topAnchor, constant: 94)
-        //        ])
         
         let titleStackView: UIStackView = {
             let titleStackView = UIStackView()
@@ -151,8 +181,6 @@ extension HomeViewController {
                 introduceButtonImageLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
                 introduceButtonImageLabel.textColor = .white
                 
-                
-                
                 introduceButtonImageLabel.isUserInteractionEnabled = true
                 let introduceTapGesture = UITapGestureRecognizer(target: self, action: #selector(introduceButtonTapped))
                 introduceButtonImageLabel.addGestureRecognizer(introduceTapGesture)
@@ -181,7 +209,7 @@ extension HomeViewController {
         header.addSubview(studyProgressView)
         
         NSLayoutConstraint.activate([
-            studyProgressView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 138),
+            studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -22),
             studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
             studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
             studyProgressView.heightAnchor.constraint(equalToConstant: 148)
@@ -217,40 +245,32 @@ extension HomeViewController {
             progressTitleLabel.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 16),
             progressTitleLabel.topAnchor.constraint(equalTo: studyProgressView.topAnchor, constant: 16)
         ])
-        
-        
-        
-        
-        
-        
-        
         return header
     }
-    
-    
+}
+
+// MARK: - HomeViewButtonTapped
+extension HomeViewController {
     @objc func SettingButtonTapped() {
-        print("SettingButtonTapped")
+        isScrollEnabled = false
+        navigationController?.pushViewController(settingViewController, animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
     
     @objc func introduceButtonTapped() {
-        print("introduceButtonTapped")
-    }
-}
-
-extension HomeViewController {
-    func style() {
-        view.addSubview(homeTableView)
-        homeTableView.delegate = self
-        homeTableView.dataSource = self
-        homeTableView.frame = view.bounds
-        homeTableView.contentInsetAdjustmentBehavior = .never
+        isScrollEnabled = false
+        navigationController?.pushViewController(BookViewController(), animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
     
-    func layout() {
-        
+    @objc func rightItemTapped() {
+        isScrollEnabled = false
+        navigationController?.pushViewController(BookViewController(), animated: true)
+        navigationController?.isNavigationBarHidden = false
     }
 }
 
+// MARK: - TableView Delegate, DataSource
 extension HomeViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return globalQuestion.quiz.count
@@ -278,7 +298,6 @@ extension HomeViewController {
         print("\(indexPath.section), \(indexPath.row)")
     }
     
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let quizPartModel = globalQuestion.quiz[section]
         let headerView = UIView()
@@ -304,9 +323,9 @@ extension HomeViewController {
         
         let stackView: UIStackView = {
             let stackView = UIStackView()
-            stackView.axis = .vertical // 수직 스택뷰
-            stackView.alignment = .leading // 왼쪽 정렬
-            stackView.spacing = 8 // 아래에 작은 간격을 두도록 설정
+            stackView.axis = .vertical
+            stackView.alignment = .leading
+            stackView.spacing = 8
             stackView.addArrangedSubview(partLabel)
             stackView.addArrangedSubview(partNameLabel)
             return stackView
@@ -333,11 +352,4 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 69.0
     }
-    
-    
 }
-
-
-
-
-
