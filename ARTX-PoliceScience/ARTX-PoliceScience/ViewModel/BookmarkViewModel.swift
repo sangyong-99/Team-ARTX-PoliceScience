@@ -10,7 +10,7 @@ import Foundation
 class BookmarkViewModel {
 
     func getChapterNumber() -> Int {
-        return 0
+        return 3
     }
     
     func getChapterTitle() -> String {
@@ -22,14 +22,14 @@ class BookmarkViewModel {
     }
     
     func getChapterCount() -> Int {
-        return 0
+        return 3
     }
     
     func getPartCount() -> Int {
-        return 0
+        return 3
     }
     
     func getQuizeCount() -> Int {
-        return 0
+        return 3
     }
 }
