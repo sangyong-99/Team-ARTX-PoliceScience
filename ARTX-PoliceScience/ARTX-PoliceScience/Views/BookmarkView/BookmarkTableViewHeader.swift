@@ -1,5 +1,5 @@
 //
-//  BookmarkViewHeader.swift
+//  BookmarkTableViewHeader.swift
 //  ARTX-PoliceScience
 //
 //  Created by apple on 10/13/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookmarkViewHeader: UITableViewHeaderFooterView {
+class BookmarkTableViewHeader: UITableViewHeaderFooterView {
     
     static let identifier = "BookmarkViewHeader"
     
