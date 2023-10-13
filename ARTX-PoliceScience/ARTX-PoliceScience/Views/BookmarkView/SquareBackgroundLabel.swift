@@ -8,7 +8,6 @@
 import UIKit
 
 class SquareBackgroundLabel: UILabel {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureLabel()
@@ -28,6 +27,6 @@ class SquareBackgroundLabel: UILabel {
     }
     
     func updateText(to quizeCount: Int) {
-        self.text = "\(quizeCount)"
+        self.text = " \(quizeCount) "
     }
 }
