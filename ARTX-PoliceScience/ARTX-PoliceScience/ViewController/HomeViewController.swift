@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var progress: Float = 0.6
     var safeAreaLength = 0
     var isScrollEnabled = true
     
@@ -19,6 +20,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return table
     }()
     
+    
+    
     var header: UIView = UIView()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,12 +29,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         isScrollEnabled = true
         navigationController?.isNavigationBarHidden = true
         
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white
-        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.homeViewconfigureNavigationBar()
         
         
     }
@@ -49,7 +47,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         homeTableView.frame = view.bounds
         homeTableView.contentInsetAdjustmentBehavior = .never
         
-        title = "조현 경찰학"
+        homeViewNavBar()
+        
+    }
+    
+    
+}
+
+// MARK: - navigation 관련 세팅
+extension HomeViewController {
+    func homeViewNavBar() {
+        self.title = "조현 경찰학"
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .regular)
         let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
         
@@ -59,9 +67,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             target: self,
             action: #selector(rightItemTapped)
         )
-        
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -77,8 +83,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 }
 
+
+// MARK: - HomeViewHeader 그리는 코드
 extension HomeViewController {
-    
     func tableHeaderView() -> UIView {
         
         if let window = UIApplication.shared.windows.first {
@@ -112,7 +119,7 @@ extension HomeViewController {
         
         let settingViewButton: UIButton = {
             let settingButton = UIButton(type: .system)
-            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 28)
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 22)
             settingButton.setImage(UIImage(systemName: "gearshape.fill", withConfiguration: symbolConfiguration), for: .normal)
             
             settingButton.addTarget(self, action: #selector(SettingButtonTapped), for: .touchUpInside)
@@ -245,12 +252,104 @@ extension HomeViewController {
             progressTitleLabel.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 16),
             progressTitleLabel.topAnchor.constraint(equalTo: studyProgressView.topAnchor, constant: 16)
         ])
+        
+        
+        let progressViewLabel: UILabel = {
+            let progressViewLabel = UILabel()
+            progressViewLabel.text = "%"
+            progressViewLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            
+            return progressViewLabel
+        }()
+        
+        progressViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        studyProgressView.addSubview(progressViewLabel)
+        
+        NSLayoutConstraint.activate([
+            progressViewLabel.topAnchor.constraint(equalTo: studyProgressView.topAnchor, constant: 40.5),
+            progressViewLabel.trailingAnchor.constraint(equalTo: studyProgressView.trailingAnchor, constant: -14)
+        ])
+        
+        let progressValueLabel: UILabel = {
+            let progressValueLabel = UILabel()
+            progressValueLabel.text = "\(Int(progress * 100))"
+            progressValueLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+            
+            return progressValueLabel
+        }()
+        
+        progressValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        studyProgressView.addSubview(progressValueLabel)
+        
+        NSLayoutConstraint.activate([
+            progressValueLabel.trailingAnchor.constraint(equalTo: progressViewLabel.leadingAnchor),
+            progressValueLabel.centerYAnchor.constraint(equalTo: progressViewLabel.centerYAnchor),
+        ])
+        
+        
+        
+        let progressView: UIProgressView = {
+            let progressView = UIProgressView()
+            progressView.trackTintColor = .pointGray
+            progressView.progressTintColor = .barPoint
+            progressView.progress = progress
+            progressView.layer.cornerRadius = 6
+            progressView.clipsToBounds = true
+            return progressView
+        }()
+        
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        studyProgressView.addSubview(progressView)
+        
+        NSLayoutConstraint.activate([
+            progressView.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 16),
+            progressView.trailingAnchor.constraint(equalTo: progressValueLabel.leadingAnchor, constant: -22),
+            progressView.centerYAnchor.constraint(equalTo: progressViewLabel.centerYAnchor),
+            progressView.heightAnchor.constraint(equalToConstant: 12),
+        ])
+        
+        let headerBookmarkButton: UIButton = {
+            let headerBookmarkButton = UIButton()
+//            headerBookmarkButton.backgroundColor = .systemBlue
+            headerBookmarkButton.layer.cornerRadius = 20
+            headerBookmarkButton.clipsToBounds = true
+            headerBookmarkButton.layer.borderWidth = 1
+            headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
+            
+            let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
+            headerBookmarkButton.setImage(UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration), for: .normal)
+            let attributedText = NSMutableAttributedString()
+            attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]))
+            headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
+            
+            headerBookmarkButton.setTitleColor(.textBlue, for: .normal)
+            
+            headerBookmarkButton.contentHorizontalAlignment = .center
+            headerBookmarkButton.contentVerticalAlignment = .center
+            headerBookmarkButton.addTarget(self, action: #selector(bookMarkButtonTapped), for: .touchUpInside)
+//            headerBookmarkButton.clipsToBounds = true
+            return headerBookmarkButton
+        }()
+        
+        headerBookmarkButton.translatesAutoresizingMaskIntoConstraints = false
+        studyProgressView.addSubview(headerBookmarkButton)
+        
+        NSLayoutConstraint.activate([
+            headerBookmarkButton.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 36),
+            headerBookmarkButton.trailingAnchor.constraint(equalTo: studyProgressView.trailingAnchor, constant: -36),
+            headerBookmarkButton.bottomAnchor.constraint(equalTo: studyProgressView.bottomAnchor, constant: -16),
+            headerBookmarkButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
         return header
+        
     }
 }
 
 // MARK: - HomeViewButtonTapped
 extension HomeViewController {
+    
+    
     @objc func SettingButtonTapped() {
         isScrollEnabled = false
         navigationController?.pushViewController(settingViewController, animated: true)
@@ -267,6 +366,11 @@ extension HomeViewController {
         isScrollEnabled = false
         navigationController?.pushViewController(BookViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    @objc func bookMarkButtonTapped() {
+        isScrollEnabled = false
+        
     }
 }
 

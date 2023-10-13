@@ -8,6 +8,15 @@
 import UIKit
 
 extension UINavigationController {
+    func homeViewconfigureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     func configureNavigationBar(withTitle title: String) {
         topViewController?.title = title
         let appearance = UINavigationBarAppearance()
