@@ -26,8 +26,8 @@ class BookmarkTableViewHeader: UITableViewHeaderFooterView {
     
     
     func update(bookmarkViewModel: BookmarkViewModel) {
-        self.partNumberLabel.updateText(to: bookmarkViewModel.getChapterNumber())
-        self.partTitleLabel.updateText(to: bookmarkViewModel.getChapterTitle())
+        self.partNumberLabel.updateText(to: bookmarkViewModel.getPartNumber())
+        self.partTitleLabel.updateText(to: bookmarkViewModel.getPartTitle())
     }
     
     private func configureBookmarkViewHeader() {
