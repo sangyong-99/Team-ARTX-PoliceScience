@@ -31,10 +31,10 @@ final class BookmarkViewController: UIViewController {
     }
     
     private func configureTableView() {
-//        self.bookmarkTableView.separatorStyle = .singleLine
-//        self.bookmarkTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        self.bookmarkTableView.separatorInsetReference = .fromCellEdges
-//        self.bookmarkTableView.separatorColor = .lineGray
+        self.bookmarkTableView.separatorStyle = .singleLine
+        self.bookmarkTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.bookmarkTableView.separatorInsetReference = .fromCellEdges
+        self.bookmarkTableView.separatorColor = .lineGray
         
         self.bookmarkTableView.backgroundColor = .bgGroupedPrimary
         self.bookmarkTableView.delegate = self
@@ -87,14 +87,15 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier, for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
         
-        cell.contentView.layer.cornerRadius = 30 // Set your desired corner radius
-        cell.contentView.layer.masksToBounds = true
-        
+        cell.accessoryType = .disclosureIndicator
         cell.update(bookmarkViewModel: bookmarkViewModel)
         return cell
     }
     
-    
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = QuizViewController()
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
