@@ -66,6 +66,9 @@
 		FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */; };
 		FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */; };
 		FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */; };
+		FF41EB222AD96D19002FD4A9 /* BookmarkViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB212AD96D19002FD4A9 /* BookmarkViewHeader.swift */; };
+		FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB232AD96DCA002FD4A9 /* PartNumberLabel.swift */; };
+		FF41EB262AD96DD4002FD4A9 /* PartTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +106,9 @@
 		FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTitleLabel.swift; sourceTree = "<group>"; };
 		FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareBackgroundLabel.swift; sourceTree = "<group>"; };
 		FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewCell.swift; sourceTree = "<group>"; };
+		FF41EB212AD96D19002FD4A9 /* BookmarkViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewHeader.swift; sourceTree = "<group>"; };
+		FF41EB232AD96DCA002FD4A9 /* PartNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartNumberLabel.swift; sourceTree = "<group>"; };
+		FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTitleLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,8 +271,11 @@
 			children = (
 				FF41EAEB2AD81D06002FD4A9 /* ChapterNumberLabel.swift */,
 				FF41EAED2AD81DCA002FD4A9 /* ChapterTitleLabel.swift */,
+				FF41EB232AD96DCA002FD4A9 /* PartNumberLabel.swift */,
+				FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */,
 				FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */,
 				FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */,
+				FF41EB212AD96D19002FD4A9 /* BookmarkViewHeader.swift */,
 			);
 			path = BookmarkView;
 			sourceTree = "<group>";
@@ -379,6 +388,7 @@
 				FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */,
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
+				FF41EB222AD96D19002FD4A9 /* BookmarkViewHeader.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
@@ -387,7 +397,9 @@
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
 				FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */,
+				FF41EB262AD96DD4002FD4A9 /* PartTitleLabel.swift in Sources */,
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
+				FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,

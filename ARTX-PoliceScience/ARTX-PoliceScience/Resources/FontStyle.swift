@@ -19,6 +19,8 @@ enum FontSize {
     static let footNote: CGFloat = 13
     static let caption1: CGFloat = 12
     static let caption2: CGFloat = 11
+    
+    static let partText: CGFloat = 12
 }
 
 extension UIFont {
@@ -61,4 +63,6 @@ extension UIFont {
     
     static let caption2 = UIFont.systemFont(ofSize: FontSize.caption2, weight: .regular)
     static let caption2Bold = UIFont.systemFont(ofSize: FontSize.caption2, weight: .bold)
+    
+    static let partText = UIFont.systemFont(ofSize: FontSize.partText, weight: .heavy)
 }
