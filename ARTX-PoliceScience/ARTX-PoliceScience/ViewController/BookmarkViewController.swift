@@ -9,7 +9,7 @@ import UIKit
 
 final class BookmarkViewController: UIViewController {
     
-    private var bookmarkTableView = UITableView()
+    private var bookmarkTableView = UITableView(frame: .zero, style: .insetGrouped)
     private var bookmarkViewModel = BookmarkViewModel()
     
     override func viewDidLoad() {
@@ -60,8 +60,8 @@ final class BookmarkViewController: UIViewController {
         NSLayoutConstraint.activate([
             bookmarkTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 26),
             bookmarkTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            bookmarkTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            bookmarkTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+            bookmarkTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            bookmarkTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0)
         ])
     }
 }
