@@ -41,6 +41,11 @@ final class BookmarkViewController: UIViewController {
         self.bookmarkTableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         self.bookmarkTableView.register(BookmarkTableViewHeader.self, forHeaderFooterViewReuseIdentifier: BookmarkTableViewHeader.identifier)
         
+        self.bookmarkTableView.sectionHeaderTopPadding = 0
+        self.bookmarkTableView.sectionHeaderHeight = 89
+        self.bookmarkTableView.sectionFooterHeight = 0
+        self.bookmarkTableView.rowHeight = 69
+        
         self.view.addSubview(self.bookmarkTableView)
     }
     
@@ -63,14 +68,6 @@ final class BookmarkViewController: UIViewController {
 
 
 extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 89
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 69
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return bookmarkViewModel.getPartCount()
     }
