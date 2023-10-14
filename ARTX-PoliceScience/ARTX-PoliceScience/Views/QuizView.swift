@@ -9,7 +9,7 @@ import UIKit
 
 class TitleView: UIView {
     
-    private let chapterNumberLabel: UILabel = {
+    let chapterNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let text = "CHAPTER 01"
@@ -20,7 +20,7 @@ class TitleView: UIView {
         return label
     }()
     
-    private let chapterTitleLabel: UILabel = {
+    let chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let text = "경찰 개념의 연혁"
@@ -31,43 +31,20 @@ class TitleView: UIView {
         return label
     }()
     
-    private lazy var chapterStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [
-            chapterNumberLabel,
-            chapterTitleLabel
-        ])
+    lazy var chapterStackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .vertical
         view.spacing = 4
         view.alignment = .center
+        
         return view
     }()
-    
-    init() {
-        super.init(frame: .zero)
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func layout() {
-        addSubview(chapterStackView)
-        chapterStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            chapterNumberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            chapterNumberLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 124),
-            chapterTitleLabel.topAnchor.constraint(equalTo: chapterNumberLabel.bottomAnchor, constant: 26),
-            chapterTitleLabel.centerXAnchor.constraint(equalTo: chapterNumberLabel.centerXAnchor),
-            chapterStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        ])
-    }
 }
 
-class ProgressView: UIView {
+class ProgressbarView: UIView {
     
-    private lazy var progressView: UIProgressView = {
+    lazy var progressView: UIProgressView = {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.trackTintColor = .white
@@ -77,43 +54,27 @@ class ProgressView: UIView {
         view.setProgress(0.3, animated: true)
         return view
     }()
-    
-    private let progressNumberLabel: UILabel = {
+
+    let progressNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        var text = "0"
-        text += " /"
-        label.text = text
+        label.text = " 0/30"
+        label.textAlignment = .right
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         //assets에 alpha값 고려한거 추가하면 고칠게요...
         label.textColor = UIColor(hex: "#000000", alpha: 0.6)
         return label
     }()
     
-    private let progressTotalLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "30"
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        //assets에 alpha값 고려한거 추가하면 고칠게요...
-        label.textColor = UIColor(hex: "#000000", alpha: 0.6)
-        return label
-    }()
-    
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let view = UIImageView(image: UIImage(systemName: "heart.fill"))
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
     
-    private lazy var progressStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [
-            progressView,
-            progressNumberLabel,
-            progressTotalLabel,
-            imageView
-        ])
+    lazy var progressStackView: UIStackView = {
+        let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.spacing = 10
@@ -121,82 +82,26 @@ class ProgressView: UIView {
         return view
     }()
     
-    init() {
-        super.init(frame: .zero)
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func layout() {
-        addSubview(progressStackView)
-        
-        progressStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            
-            //            progressView.centerYAnchor.constraint(equalTo: progressStackView.centerYAnchor),
-            //            progressView.leadingAnchor.constraint(equalTo: progressStackView.leadingAnchor, constant: 0),
-            //            progressView.trailingAnchor.constraint(equalTo: progressStackView.trailingAnchor, constant: -88),
-            //
-            //            progressNumberLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 10),
-            //            progressNumberLabel.trailingAnchor.constraint(equalTo: progressStackView.trailingAnchor, constant: -38),
-            //            progressNumberLabel.centerYAnchor.constraint(equalTo: progressStackView.centerYAnchor),
-            //
-            //            imageView.centerYAnchor.constraint(equalTo: progressStackView.centerYAnchor),
-            //            imageView.leadingAnchor.constraint(equalTo: progressNumberLabel.trailingAnchor, constant: 10),
-            //            imageView.trailingAnchor.constraint(equalTo: progressStackView.trailingAnchor, constant: 0),
-            
-            progressStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 183),
-            progressStackView.heightAnchor.constraint(equalToConstant: 28),
-            progressStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            progressStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
-        ])
-        
-    }
-    
 }
 
 class QuizView: UIView {
     
-    private lazy var contentStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [
-            quizBackgroundView,
-            quizTitleStackview,
-            quizLabel
-        ])
+    let quizBackgroundView: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 14
-        view.backgroundColor = .white
-        
-        //경계 넘어가지 못하게 막을려고
-        view.layer.masksToBounds = true
-        view.clipsToBounds = true
         return view
     }()
     
-    private let quizBackgroundView: UIView = {
+    lazy var quizTitlBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(resource: .bgGroupedPrimary)
         return view
     }()
     
-    private lazy var quizTitleStackview: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [
-            quizNumberLabel,
-            bookMarkButton
-        ])
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.axis = .horizontal
-        view.spacing = 207
-        return view
-    }()
-    
-    private let quizNumberLabel: UILabel = {
+    let quizNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Quiz 5"
@@ -205,7 +110,7 @@ class QuizView: UIView {
         return label
     }()
     
-    private lazy var bookMarkButton: UIButton = {
+    lazy var bookMarkButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
@@ -223,19 +128,7 @@ class QuizView: UIView {
         }
     }
     
-    // 원래는 uilabel로 글자수랑 줄 정할려고 했음
-    //    private let quizLabel: UILabel = {
-    //        let label = UILabel()
-    //        label.text = "감찰관은 소속 경찰기관의 관할구역 안에서 활동하는 것을 원칙으로 한다. 다만, 필요한 경우에는 관할구역 밖에서도 활동할 수 있다"
-    //
-    //        //글자 수 제한 무제한
-    //        label.numberOfLines = 0
-    //        label.preferredMaxLayoutWidth = UIScreen.main.bounds.width / 2 - 15
-    //
-    //        return label
-    //    }()
-    
-    private let quizLabel: UITextView = {
+    let quizLabel: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont.systemFont(ofSize: 20, weight: .medium)
@@ -245,57 +138,12 @@ class QuizView: UIView {
         view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
         return view
     }()
-    
-    init() {
-        super.init(frame: .zero)
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func layout() {
-        addSubview(contentStackView)
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 227),
-            contentStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-            
-//            contentStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//            contentStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-//            contentStackView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -206),
-//            
-//            quizBackgroundView.topAnchor.constraint(equalTo: contentStackView.topAnchor, constant: 16),
-//            quizBackgroundView.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: 16),
-//            quizBackgroundView.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -16),
-//            quizBackgroundView.heightAnchor.constraint(equalToConstant: 40),
-//            
-//            quizTitleStackview.topAnchor.constraint(equalTo: quizBackgroundView.topAnchor, constant: 9),
-//            quizTitleStackview.leadingAnchor.constraint(equalTo: quizBackgroundView.leadingAnchor, constant: 10),
-//            quizTitleStackview.bottomAnchor.constraint(equalTo: quizBackgroundView.bottomAnchor, constant: -9),
-//            quizTitleStackview.trailingAnchor.constraint(equalTo: quizBackgroundView.trailingAnchor, constant: -10),
-//            
-//            quizLabel.topAnchor.constraint(equalTo: quizBackgroundView.bottomAnchor, constant: 16),
-//            quizLabel.leadingAnchor.constraint(equalTo: contentStackView.leadingAnchor, constant: 26),
-//            quizLabel.trailingAnchor.constraint(equalTo: contentStackView.trailingAnchor, constant: -26),
-//            quizLabel.bottomAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: -26),
-//            
-        ])
-        
-        
-        
-        
-    }
 }
 
 class OXbuttonView:UIView {
     
-    private lazy var buttonStackView: UIStackView = {
-        let stackview = UIStackView(arrangedSubviews: [
-            correctButton,
-            wrongButton
-        ])
+    lazy var buttonStackView: UIStackView = {
+        let stackview = UIStackView()
         stackview.translatesAutoresizingMaskIntoConstraints = false
         stackview.spacing = 16
         stackview.distribution = .fillEqually
@@ -303,7 +151,7 @@ class OXbuttonView:UIView {
         return stackview
     }()
     
-    private lazy var correctButton: UIButton = {
+    lazy var correctButton: UIButton = {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 54, weight: .bold)
         let image = UIImage(systemName: "circle", withConfiguration: imageConfig)
@@ -317,7 +165,7 @@ class OXbuttonView:UIView {
         return button
     }()
     
-    private lazy var wrongButton: UIButton = {
+    lazy var wrongButton: UIButton = {
         let button = UIButton()
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 54, weight: .bold)
         let image = UIImage(systemName: "xmark", withConfiguration: imageConfig)
@@ -341,25 +189,6 @@ class OXbuttonView:UIView {
         wrongButton.backgroundColor = UIColor(hex: "#FF3B30", alpha: 0.7)
     }
     
-    init() {
-        super.init(frame: .zero)
-        layout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func layout() {
-        addSubview(buttonStackView)
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            buttonStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 672),
-            buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
-        
-        ])
-        
-    }
 }
 
 extension UIColor {
