@@ -18,6 +18,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     let settingViewController = SettingViewController()
+    let bookViewController = BookViewController()
     
     let testStackView = UIStackView()
 

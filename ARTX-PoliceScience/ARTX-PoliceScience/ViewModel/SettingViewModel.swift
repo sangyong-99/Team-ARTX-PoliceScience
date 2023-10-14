@@ -12,8 +12,14 @@ class SettingViewModel {
     
     static func configure(){
         // MARK: - InformationViewController 연결
-        models.append(SettingTableSection(title: "Information", options: [.staticCell(model: SettingsOption(title: "조현 경찰학이란?", icon: UIImage(systemName: "book.closed")) { tableView, indexPath in
-            print("IntroductionViewConroller Connect")
+        models.append(SettingTableSection(title: "Information", options: [.staticCell(model: SettingsOption(title: NavigationTitle.bookView.title, icon: UIImage(systemName: "book.closed")) { tableView, indexPath in
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    if let navigationController = window.rootViewController as? UINavigationController {
+                        navigationController.pushViewController(BookViewController(), animated: true)
+                    }
+                }
+            }
         })]))
         
         
@@ -22,7 +28,7 @@ class SettingViewModel {
             
             .regisCell(model: SettingsRegisOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder"), regisCodeBool: true, handler: { tableView, indexPath in
                 if LocalState.isCodeActivated == true {
-                    print("이미 코드가 등록되어 활성화 되어있습니다.")
+                    // ("이미 코드가 등록되어 활성화 되어있습니다.")
                     return
                 }
                 SettingViewAlert.showCodeSettingAlert(tableView: tableView, indexPath: indexPath)
@@ -31,13 +37,13 @@ class SettingViewModel {
             // MARK: - code reset alert 연결
             .staticCell(model: SettingsOption(title: "기기 변경", icon: UIImage(systemName: "iphone.and.arrow.forward"), handler: { tableView, indexPath in
                 guard let authenticationCode = LocalState.authenticationCode else {
-                    print("LocalState.authenticationCode에 코드가 없음 alert 코드 비활성화 실행불가")
+                    // ("LocalState.authenticationCode에 코드가 없음 alert 코드 비활성화 실행불가")
                     return
                 }
                 if (LocalState.isCodeActivated == true) {
                     SettingViewAlert.changeDevice(authenticationCode: authenticationCode, tableView: tableView, indexPath: indexPath)
                 } else {
-                    print("LocalState.isCodeActivated와 LocalState.authenticationCode의 동기화 error")
+                    // ("LocalState.isCodeActivated와 LocalState.authenticationCode의 동기화 error")
                 }
                 
             }))

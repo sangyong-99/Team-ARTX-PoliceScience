@@ -46,7 +46,7 @@ extension SettingViewController {
     func style() {
         
         //네비게이션바 세팅
-        view.backgroundColor = .bgGroupedPrimary
+//        view.backgroundColor = .bgGroupedPrimary
         
         //tableview 설정
         settingTableView.isScrollEnabled = false
