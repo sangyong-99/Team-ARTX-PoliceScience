@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationController = UINavigationController(rootViewController: HomeViewController())
         window?.rootViewController = navigationController
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         return true
     }
 }
