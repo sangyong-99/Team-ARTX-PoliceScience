@@ -16,19 +16,19 @@ struct QuestionModel: Codable {
 struct Quiz: Codable {
     let part: Int
     let part_name: String
-    let chapters: [Chapter]
+    var chapters: [Chapter]
 }
 
 struct Chapter: Codable {
     let chapter: Int
     let chapter_name: String
-    let questions: [Question]
+    var questions: [Question]
 }
 
 struct Question : Codable{
     let question: String
     let answer: String
-    let explanation: String
+    var explanation: String
 }
 
 class LoadQuestionModel {

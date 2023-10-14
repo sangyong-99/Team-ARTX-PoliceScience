@@ -8,36 +8,41 @@
 import Foundation
 
 class BookmarkViewModel {
-    private let Quizs: [Quiz] = [
-            Quiz(part: 1, partName: "경찰학", chapters: [
-                Chapter(chapter: 1, chapterName: "경찰이란", questions: [
-                    Question(question: "문제 1", answer: "O", explanation: "해설 1"),
-                    Question(question: "문제 2", answer: "X", explanation: "해설 2"),
-                    Question(question: "문제 3", answer: "O", explanation: "해설 3")
-                ]),
-                Chapter(chapter: 2, chapterName: "경찰 연혁", questions: [
-                    Question(question: "문제 1", answer: "O", explanation: "해설 1")
-                ])
-            ]),
-            Quiz(part: 2, partName: "경찰행정", chapters: [
-                Chapter(chapter: 1, chapterName: "경찰행정법", questions: [
-                    Question(question: "문제 1", answer: "O", explanation: "해설 1"),
-                    Question(question: "문제 2", answer: "X", explanation: "해설 2"),
-                    Question(question: "문제 3", answer: "O", explanation: "해설 3"),
-                    Question(question: "문제 4", answer: "O", explanation: "해설 4")
-                ])
-            ]),
-            Quiz(part: 3, partName: "경찰메롱", chapters: []),
-            Quiz(part: 4, partName: "경찰법률", chapters: [
-                 Chapter(chapter: 1, chapterName: "경찰의 미래", questions: [
-                     Question(question: "문제 1", answer: "O", explanation: "해설 1"),
-                     Question(question: "문제 2", answer: "X", explanation: "해설 2"),
-                     Question(question: "문제 3", answer: "O", explanation: "해설 3")
-                 ])
-             ]),
-        ]
+    private let quizzes: [Quiz]
+    
     private var currentPart: Int = 0
     private var currentChapter: Int = 0
+    
+    init() {
+        let bookmarks = ["0101001", "0101002", "0301001"]
+        var quizzes: [Quiz] = []
+        
+        for quiz in globalQuestion.quiz {
+            let quizNumber = quiz.part
+            var newQuiz = quiz
+            
+            for chapter in quiz.chapters {
+                let chapterNumber = chapter.chapter
+                var newChapter = chapter
+                
+                newChapter.questions = []
+                for index in chapter.questions.indices {
+                    let quizId = String(format: "%02d", quizNumber) + String(format: "%02d", chapterNumber) + String(format: "%03d", index)
+                    
+                    print(quizId)
+                    print(bookmarks.contains(quizId))
+                    if bookmarks.contains(quizId) {
+                        newChapter.questions.append(chapter.questions[index])
+                    }
+                }
+                print(newChapter.questions)
+                newQuiz.chapters.append(newChapter)
+            }
+            quizzes.append(newQuiz)
+        }
+        
+        self.quizzes = quizzes
+    }
 
     func changeCurrentPart(to number: Int) {
         self.currentPart = number
@@ -48,30 +53,34 @@ class BookmarkViewModel {
     }
     
     func partNumber() -> Int {
-        return Quizs[self.currentPart].part
+        return quizzes[self.currentPart].part
     }
     
     func partTitle() -> String {
-        return Quizs[self.currentPart].partName
+        return quizzes[self.currentPart].part_name
     }
     
     func chapterNumber() -> Int {
-        return Quizs[self.currentPart].chapters[self.currentChapter].chapter
+        return quizzes[self.currentPart].chapters[self.currentChapter].chapter
     }
     
     func chapterTitle() -> String {
-        return Quizs[self.currentPart].chapters[self.currentChapter].chapterName
+        return quizzes[self.currentPart].chapters[self.currentChapter].chapter_name
+    }
+    
+    func chapter() -> Chapter {
+        return quizzes[self.currentPart].chapters[self.currentChapter]
     }
     
     func partCount() -> Int {
-        return Quizs.count
+        return quizzes.count
     }
     
     func chapterCount() -> Int {
-        return Quizs[self.currentPart].chapters.count
+        return quizzes[self.currentPart].chapters.count
     }
     
     func bookmarkQuizeCount() -> Int {
-        return Quizs[self.currentPart].chapters[self.currentChapter].questions.count
+        return quizzes[self.currentPart].chapters[self.currentChapter].questions.count
     }
 }
