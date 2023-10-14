@@ -9,13 +9,13 @@ import UIKit
 
 struct Quiz {
     let part: Int
-    let part_name: String
+    let partName: String
     let chapters: [Chapter]
 }
 
 struct Chapter {
     let chapter: Int
-    let chapter_name: String
+    let chapterName: String
     let questions: [Question]
 }
 

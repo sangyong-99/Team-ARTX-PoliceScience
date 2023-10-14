@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E426AC32AD5E2E700C5A60E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E426AC22AD5E2E700C5A60E /* QuizView.swift */; };
-		0E4A8FF32AD7A1DF00BBC335 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF22AD7A1DF00BBC335 /* UINavigationController+Util.swift */; };
 		4A7706212ACDB25F00E546E0 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A7706202ACDB25F00E546E0 /* example.json */; };
 		4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924D2AD2963F006DB2BB /* Books.swift */; };
 		4AA092502AD296D3006DB2BB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924F2AD296D3006DB2BB /* Book.swift */; };
@@ -65,7 +64,7 @@
 		FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */; };
 		FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */; };
 		FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */; };
-		FF2C67A32ADA2DA800F40863 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C67A22ADA2DA800F40863 /* UINavigationController+Util.swift */; };
+		FF2C67A62ADA2E7B00F40863 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */; };
 		FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */; };
 		FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */; };
 		FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */; };
@@ -80,7 +79,6 @@
 
 /* Begin PBXFileReference section */
 		0E426AC22AD5E2E700C5A60E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		0E4A8FF22AD7A1DF00BBC335 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
 		4A7706202ACDB25F00E546E0 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		4AA0924D2AD2963F006DB2BB /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		4AA0924F2AD296D3006DB2BB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -112,7 +110,7 @@
 		FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCellView.swift; sourceTree = "<group>"; };
 		FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderView.swift; sourceTree = "<group>"; };
-		FF2C67A22ADA2DA800F40863 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
+		FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
 		FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		FF41EAE82AD81C6C002FD4A9 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			children = (
 				5E3451882AB42F33004A3047 /* ARTX-PoliceScience */,
 				5E3451872AB42F33004A3047 /* Products */,
-				FF2C67942ADA2D2100F40863 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,8 +180,8 @@
 		5E3451882AB42F33004A3047 /* ARTX-PoliceScience */ = {
 			isa = PBXGroup;
 			children = (
+				FF2C67A42ADA2E6A00F40863 /* Utils */,
 				5EA61BE62AD06A6800F6D771 /* Firestore */,
-				5ECE29FF2ACF0AD800083E93 /* Utils */,
 				5EDDA55F2ACD116F006E13DE /* UserDefault */,
 				5E44DC9B2ACD001A00DAC94A /* Views */,
 				5E44DC9D2ACD003F00DAC94A /* ViewController */,
@@ -269,28 +266,12 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
-		5ECE29FF2ACF0AD800083E93 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C67A22ADA2DA800F40863 /* UINavigationController+Util.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		5EDDA55F2ACD116F006E13DE /* UserDefault */ = {
 			isa = PBXGroup;
 			children = (
 				5EDDA5622ACD11E2006E13DE /* LocalState.swift */,
 			);
 			path = UserDefault;
-			sourceTree = "<group>";
-		};
-		FF2C67942ADA2D2100F40863 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				0E4A8FF22AD7A1DF00BBC335 /* UINavigationController+Util.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		FF2C67952ADA2D4A00F40863 /* HomeView */ = {
@@ -301,6 +282,14 @@
 				FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		FF2C67A42ADA2E6A00F40863 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */ = {
@@ -438,6 +427,7 @@
 				FF41EB282AD979DD002FD4A9 /* BookmarkTableViewHeader.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
+				FF2C67A62ADA2E7B00F40863 /* UINavigationController+Util.swift in Sources */,
 				FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */,
 				FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */,
 				FF41EB262AD96DD4002FD4A9 /* PartTitleLabel.swift in Sources */,
@@ -453,11 +443,9 @@
 				4AA092502AD296D3006DB2BB /* Book.swift in Sources */,
 				4AA092542AD29F64006DB2BB /* BookTableViewCell.swift in Sources */,
 				5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */,
-				0E4A8FF32AD7A1DF00BBC335 /* UINavigationController+Util.swift in Sources */,
 				5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */,
 				FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
-				FF2C67A32ADA2DA800F40863 /* UINavigationController+Util.swift in Sources */,
 				B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
