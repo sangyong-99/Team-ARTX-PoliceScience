@@ -43,7 +43,6 @@ class BookmarkViewModel {
             quizzes.append(newQuiz)
         }
         self.quizzes = quizzes
-        print(self.quizzes)
     }
 
     func changeCurrentPart(to number: Int) {
