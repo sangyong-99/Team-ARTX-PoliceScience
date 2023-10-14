@@ -22,7 +22,7 @@ class HomeViewController1: UIViewController, UITableViewDelegate, UITableViewDat
     let settingViewController = SettingViewController()
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
-        table.register(MainViewCell.self, forCellReuseIdentifier: MainViewCell.identifier)
+        table.register(HomeViewCell.self, forCellReuseIdentifier: HomeViewCell.identifier)
         return table
     }()
     
@@ -194,6 +194,11 @@ class HomeViewController1: UIViewController, UITableViewDelegate, UITableViewDat
         homeTableView.frame = view.bounds
         homeTableView.contentInsetAdjustmentBehavior = .never
         
+        progressFunction()
+    }
+    
+    
+    func progressFunction() {
         observeProgress = observe(\.progress, options: [.new]) { [weak self] (object, change) in
             if let newValue = change.newValue {
                 self?.updateViewsForProgress(newValue)
@@ -384,9 +389,9 @@ extension HomeViewController1 {
         let quizChapterModel = globalQuestion.quiz[indexPath.section].chapters[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: MainViewCell.identifier,
+            withIdentifier: HomeViewCell.identifier,
             for: indexPath
-        ) as? MainViewCell else {
+        ) as? HomeViewCell else {
             return UITableViewCell()
         }
         cell.configure(with: quizChapterModel)

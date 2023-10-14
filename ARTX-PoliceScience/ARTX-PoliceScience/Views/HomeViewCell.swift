@@ -7,8 +7,8 @@
 
 import UIKit
 
-class MainViewCell: UITableViewCell {
-    static let identifier = "MainViewCell"
+class HomeViewCell: UITableViewCell {
+    static let identifier = "HomeViewCell"
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -86,23 +86,14 @@ class MainViewCell: UITableViewCell {
             questionProgressCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             questionProgressCountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
-        
-        
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        chapterNameLabel.text = nil
-        iconImageView.image = nil
-        questionProgressCountLabel.text = nil
-    }
-    
-    public func configure(with model: Chapter) {
-        chapterNameLabel.text = model.chapter_name
-        chapterLabel.text = "CHAPTER 0\(model.chapter)"
+    public func configure(with chapter: Chapter) {
+        chapterNameLabel.text = chapter.chapter_name
+        chapterLabel.text = "CHAPTER 0\(chapter.chapter)"
         iconImageView.image = UIImage(named: "MainQuestionDefault")
         // 풀은 갯수 추가
-        questionProgressCountLabel.text = "0 / \(model.questions.count)"
+        questionProgressCountLabel.text = "0 / \(chapter.questions.count)"
         // iconImageView Setting 하는 곳
         
     }
