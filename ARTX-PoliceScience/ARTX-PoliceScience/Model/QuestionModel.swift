@@ -2,8 +2,7 @@
 //  QuestionModel.swift
 //  ARTX-PoliceScience
 //
-//  Created by yusang on 10/14/23.
-//
+
 
 import UIKit
 
@@ -50,3 +49,4 @@ class LoadQuestionModel {
         return QuestionModel(quiz: [Quiz(part: 0, part_name: "0", chapters: [Chapter(chapter: 0, chapter_name: "0", questions: [Question(question: "0", answer: "0", explanation: "0")])])])
     }
 }
+

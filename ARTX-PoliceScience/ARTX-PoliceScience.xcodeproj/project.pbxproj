@@ -48,7 +48,7 @@
 		5E86FBF92ACD07AE00B01779 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBF82ACD07AE00B01779 /* FirebaseRemoteConfigSwift */; };
 		5E86FBFB2ACD07AE00B01779 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBFA2ACD07AE00B01779 /* FirebaseStorage */; };
 		5E86FBFD2ACD07AE00B01779 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBFC2ACD07AE00B01779 /* FirebaseStorageCombine-Community */; };
-		5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC062ACD0A9900B01779 /* HomeViewController.swift */; };
+		5E86FC072ACD0A9900B01779 /* HomeViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */; };
 		5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC082ACD0AC800B01779 /* SettingViewController.swift */; };
 		5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */; };
 		5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */; };
@@ -56,6 +56,8 @@
 		5E86FC112ACD0D3B00B01779 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC102ACD0D3B00B01779 /* ViewModel.swift */; };
 		5E86FC132ACD0D4100B01779 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC122ACD0D4100B01779 /* Model.swift */; };
 		5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC142ACD0D4A00B01779 /* Resources.swift */; };
+		5E9952C32AD6810A00C204F8 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9952C22AD6810A00C204F8 /* QuestionModel.swift */; };
+		5E9952C52AD68E2B00C204F8 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9952C42AD68E2B00C204F8 /* HomeViewCell.swift */; };
 		5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */; };
 		5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */; };
 		5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */; };
@@ -99,7 +101,7 @@
 		5E3451922AB42F34004A3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E3451952AB42F34004A3047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E3451972AB42F34004A3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController1.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,8 @@
 		5E86FC102ACD0D3B00B01779 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		5E86FC122ACD0D4100B01779 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5E86FC142ACD0D4A00B01779 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		5E9952C22AD6810A00C204F8 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		5E9952C42AD68E2B00C204F8 /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		5EA61BE72AD06A8600F6D771 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewAlert.swift; sourceTree = "<group>"; };
 		5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisSettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				5E86FC122ACD0D4100B01779 /* Model.swift */,
 				0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */,
 				4AA0924F2AD296D3006DB2BB /* Book.swift */,
+				5E9952C22AD6810A00C204F8 /* QuestionModel.swift */,
 				5ECE29FB2ACF088F00083E93 /* SettingModel.swift */,
 				B49D4A7A2AD422080047CCE9 /* HomeModel.swift */,
 			);
@@ -252,6 +257,7 @@
 				4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */,
 				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
 				5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */,
+				5E9952C42AD68E2B00C204F8 /* HomeViewCell.swift */,
 				5EA61BE92AD073A800F6D771 /* SettingViewAlert.swift */,
 			);
 			path = Views;
@@ -271,7 +277,7 @@
 		5E44DC9D2ACD003F00DAC94A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5E86FC062ACD0A9900B01779 /* HomeViewController.swift */,
+				5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */,
 				5E86FC082ACD0AC800B01779 /* SettingViewController.swift */,
 				5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */,
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
@@ -455,6 +461,10 @@
 				FF41EB282AD979DD002FD4A9 /* BookmarkTableViewHeader.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
+				5E9952C52AD68E2B00C204F8 /* HomeViewCell.swift in Sources */,
+				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
+				5E86FC072ACD0A9900B01779 /* HomeViewController1.swift in Sources */,
+
 				FF2C67A62ADA2E7B00F40863 /* UINavigationController+Util.swift in Sources */,
 				FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */,
 				FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */,
@@ -462,11 +472,13 @@
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
 				FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
+
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */,
 				FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */,
 				5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */,
+				5E9952C32AD6810A00C204F8 /* QuestionModel.swift in Sources */,
 				5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */,
 				4AA092502AD296D3006DB2BB /* Book.swift in Sources */,
 				4AA092542AD29F64006DB2BB /* BookTableViewCell.swift in Sources */,
