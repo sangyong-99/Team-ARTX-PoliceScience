@@ -20,7 +20,7 @@ class PartTitleLabel: UILabel {
     
     private func configureLabel() {
         self.textAlignment = .left
-        self.font = .title3
+        self.font = .title3Bold
         self.textColor = .black
     }
     
