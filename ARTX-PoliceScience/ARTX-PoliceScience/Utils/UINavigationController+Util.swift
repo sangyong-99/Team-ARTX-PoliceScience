@@ -21,8 +21,8 @@ extension UINavigationController {
         topViewController?.title = title
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .bgBlue
-        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.graysWhite]
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.graysWhite]
+        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
     }
@@ -30,7 +30,7 @@ extension UINavigationController {
     func addBackButton(target: UIViewController, action: Selector) {
         let backArrowImage = UIImage(systemName: "chevron.backward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         let backButton = UIBarButtonItem(image: backArrowImage, style: .plain, target: target, action: action)
-        backButton.tintColor = .graysWhite
+        backButton.tintColor = .white
         topViewController?.navigationItem.leftBarButtonItem = backButton
         
     }

@@ -34,9 +34,9 @@ final class BookmarkViewController: UIViewController {
         self.bookmarkTableView.separatorStyle = .singleLine
         self.bookmarkTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.bookmarkTableView.separatorInsetReference = .fromCellEdges
-        self.bookmarkTableView.separatorColor = .lineGray
+        self.bookmarkTableView.separatorColor = .pointGray
         
-        self.bookmarkTableView.backgroundColor = .bgGroupedPrimary
+        self.bookmarkTableView.backgroundColor = .bgPrimary
         self.bookmarkTableView.delegate = self
         self.bookmarkTableView.register(BookmarkTableViewCell.self, forCellReuseIdentifier: BookmarkTableViewCell.identifier)
         self.bookmarkTableView.register(BookmarkTableViewHeader.self, forHeaderFooterViewReuseIdentifier: BookmarkTableViewHeader.identifier)

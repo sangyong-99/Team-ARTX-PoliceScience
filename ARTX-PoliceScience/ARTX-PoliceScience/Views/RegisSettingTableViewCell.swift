@@ -13,7 +13,7 @@ class RegisSettingTableViewCell: UITableViewCell {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .colorsBlue
+        imageView.tintColor = .pointBlue
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
