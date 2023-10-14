@@ -7,55 +7,88 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private let homeTableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.register(HomeTableCellView.self, forCellReuseIdentifier: HomeTableCellView.identifier)
+        table.register(HomeTableSectionHeaderView.self, forHeaderFooterViewReuseIdentifier: HomeTableSectionHeaderView.identifier)
+        table.rowHeight = HomeTableCellView.rowHeight
+        return table
+    }()
     
     let settingViewController = SettingViewController()
     let bookViewController = BookViewController()
     
-    let stackView = UIStackView()
-    // settingViewButton Navigation Button
-    let settingViewButton = UIButton(type: .system)
+    let testStackView = UIStackView()
+
     //UserDefault 확인용 label
     let isCodeActivatedLabel = UILabel()
     let authenticationCodeLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        style()
-        layout()
+        
+        HomeViewModel.configure()
+        
+        view.backgroundColor = .bgGroupedPrimary
+        
+        setupTableView()
+        setupTableHeaderView()
     }
 }
 
 extension HomeViewController {
-    func style() {
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        
-        //settingview들어가는 navigation button
-        settingViewButton.translatesAutoresizingMaskIntoConstraints = false
-        settingViewButton.setTitle("Setting View 바로가기", for: [])
-        settingViewButton.addTarget(self, action: #selector(settingViewButtonTapped), for: .primaryActionTriggered)
-        
-        //userdefaults 보여주는 label style 설정
-        isCodeActivatedLabel.text = " 현재 LocalState.isCodeActivated = \(String(LocalState.isCodeActivated))"
-        isCodeActivatedLabel.textColor = .white
-        
-        authenticationCodeLabel.text = "현재 LocalState.authenticationCode = \(LocalState.authenticationCode ?? "미등록")"
-        authenticationCodeLabel.textColor = .white
+    func setupTableView() {
+        view.addSubview(homeTableView)
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        homeTableView.frame = view.bounds
+        homeTableView.contentInsetAdjustmentBehavior = .never
     }
     
-    func layout() {
-        stackView.addArrangedSubview(settingViewButton)
-        stackView.addArrangedSubview(isCodeActivatedLabel)
-        stackView.addArrangedSubview(authenticationCodeLabel)
+    func setupTableHeaderView() {
+        let header = HomeTableHeaderView()
+        header.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: HomeTableHeaderView.height)
+        homeTableView.tableHeaderView = header
+    }
+}
+
+extension HomeViewController {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return HomeViewModel.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeTableSectionHeaderView.identifier) as! HomeTableSectionHeaderView
         
-        view.addSubview(stackView)
+        header.configure(with: HomeViewModel.sections[section])
         
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return HomeViewModel.sections[section].chapters.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = HomeViewModel.sections[indexPath.section].chapters[indexPath.row]
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableCellView.identifier, for: indexPath) as? HomeTableCellView else { return UITableViewCell() }
+        
+        cell.configure(with: model)
+        
+        return cell
+    }
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // 진행 상황 체크 후 Alert
+        // 문제 푸는 곳으로 넘어가기
     }
 }
 
