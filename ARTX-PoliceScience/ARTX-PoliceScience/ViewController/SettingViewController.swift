@@ -31,7 +31,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationController?.configureNavigationBar(withTitle: "환경 설정")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
