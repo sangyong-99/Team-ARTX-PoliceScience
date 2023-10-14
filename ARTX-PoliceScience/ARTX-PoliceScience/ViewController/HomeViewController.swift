@@ -365,7 +365,6 @@ extension HomeViewController {
     }
     
     @objc func bookMarkButtonTapped() {
-        print("bookMarkButtonTapped")
         navigationController?.pushViewController(BookViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
