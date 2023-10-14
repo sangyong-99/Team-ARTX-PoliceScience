@@ -19,7 +19,7 @@ class QuizView: UIView {
     lazy var quizTitlBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(resource: .bgGroupedPrimary)
+        view.backgroundColor = UIColor(resource: .bgPrimary)
         return view
     }()
     

@@ -82,7 +82,7 @@ class BookViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tv =  UITableView(frame: .zero, style: .insetGrouped)
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .bgGroupedPrimary
+        tv.backgroundColor = .bgPrimary
         tv.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.cellId)
         tv.sectionFooterHeight = 12
         tv.sectionHeaderHeight = 0
@@ -101,7 +101,7 @@ class BookViewController: UIViewController {
         if let window = UIApplication.shared.windows.first {
             safeAreaLength = Int(window.safeAreaInsets.top)
         }
-        view.backgroundColor = .bgGroupedPrimary
+        view.backgroundColor = .bgPrimary
         setup()
         layout()
     }
