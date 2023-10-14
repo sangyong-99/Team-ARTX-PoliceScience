@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0E426AC32AD5E2E700C5A60E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E426AC22AD5E2E700C5A60E /* QuizView.swift */; };
+		0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */; };
+		0E4A8FF72ADA5FF800BBC335 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */; };
+		0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */; };
+		0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */; };
+		0E4A8FFE2ADA780000BBC335 /* OXbuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */; };
 		4A7706212ACDB25F00E546E0 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A7706202ACDB25F00E546E0 /* example.json */; };
 		4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924D2AD2963F006DB2BB /* Books.swift */; };
 		4AA092502AD296D3006DB2BB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924F2AD296D3006DB2BB /* Book.swift */; };
@@ -60,7 +65,6 @@
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
 		B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7A2AD422080047CCE9 /* HomeModel.swift */; };
 		B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */; };
-		B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */; };
 		FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */; };
 		FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */; };
 		FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */; };
@@ -80,6 +84,11 @@
 
 /* Begin PBXFileReference section */
 		0E426AC22AD5E2E700C5A60E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuiizTitleView.swift; sourceTree = "<group>"; };
+		0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProgressView.swift; sourceTree = "<group>"; };
+		0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXbuttonView.swift; sourceTree = "<group>"; };
 		4A7706202ACDB25F00E546E0 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		4AA0924D2AD2963F006DB2BB /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		4AA0924F2AD296D3006DB2BB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -107,7 +116,6 @@
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		B49D4A7A2AD422080047CCE9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCellView.swift; sourceTree = "<group>"; };
 		FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderView.swift; sourceTree = "<group>"; };
@@ -163,6 +171,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4A8FF82ADA625F00BBC335 /* QuizView */ = {
+			isa = PBXGroup;
+			children = (
+				0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */,
+				0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */,
+				0E426AC22AD5E2E700C5A60E /* QuizView.swift */,
+				0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */,
+			);
+			path = QuizView;
+			sourceTree = "<group>";
+		};
 		5E34517D2AB42F33004A3047 = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				5E86FC122ACD0D4100B01779 /* Model.swift */,
-				B49D4A7E2AD4795E0047CCE9 /* QuizModel.swift */,
+				0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */,
 				4AA0924F2AD296D3006DB2BB /* Book.swift */,
 				5ECE29FB2ACF088F00083E93 /* SettingModel.swift */,
 				B49D4A7A2AD422080047CCE9 /* HomeModel.swift */,
@@ -218,6 +237,7 @@
 				4AA092512AD29759006DB2BB /* BookViewModel.swift */,
 				5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */,
 				FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */,
+				0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -227,8 +247,8 @@
 			children = (
 				FF2C67952ADA2D4A00F40863 /* HomeView */,
 				FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */,
+				0E4A8FF82ADA625F00BBC335 /* QuizView */,
 				5E86FC0E2ACD0B8A00B01779 /* View.swift */,
-				0E426AC22AD5E2E700C5A60E /* QuizView.swift */,
 				4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */,
 				5ECE29F92ACEE6E100083E93 /* SettingTableViewCell.swift */,
 				5EA61BEB2AD1834C00F6D771 /* RegisSettingTableViewCell.swift */,
@@ -414,19 +434,24 @@
 			files = (
 				4AA092522AD29759006DB2BB /* BookViewModel.swift in Sources */,
 				FF41EAEC2AD81D06002FD4A9 /* ChapterNumberLabel.swift in Sources */,
+				0E4A8FF72ADA5FF800BBC335 /* QuestionModel.swift in Sources */,
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
 				FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */,
 				B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */,
+				0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */,
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
+				0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
+				0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */,
 				FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */,
 				FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
 				0E426AC32AD5E2E700C5A60E /* QuizView.swift in Sources */,
+				0E4A8FFE2ADA780000BBC335 /* OXbuttonView.swift in Sources */,
 				FF41EB282AD979DD002FD4A9 /* BookmarkTableViewHeader.swift in Sources */,
 				5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */,
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
