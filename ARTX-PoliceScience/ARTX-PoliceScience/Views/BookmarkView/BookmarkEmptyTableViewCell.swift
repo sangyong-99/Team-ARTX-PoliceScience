@@ -30,7 +30,7 @@ class BookmarkEmptyTableViewCell: UITableViewCell {
     }
     
     private func configureBookmarkEmptyTableViewCell() {
-        self.contentView.backgroundColor = .white
+        self.contentView.backgroundColor = .bgGroupedPrimary
         [
             self.emptyText
         ].forEach {
