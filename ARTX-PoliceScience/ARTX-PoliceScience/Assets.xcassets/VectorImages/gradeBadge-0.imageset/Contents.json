@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "iconCompletion-on.png",
+      "filename" : "gradeBadge-0.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }
