@@ -27,9 +27,9 @@ class BookmarkTableViewCell: UITableViewCell {
     
     
     func update(bookmarkViewModel: BookmarkViewModel) {
-        self.chapterNumberLabel.updateText(to: bookmarkViewModel.getChapterNumber())
-        self.chapterTitleLabel.updateText(to: bookmarkViewModel.getChapterTitle())
-        self.bookmarkCountLabel.updateText(to: bookmarkViewModel.getBookmarkQuizeCount())
+        self.chapterNumberLabel.updateText(to: bookmarkViewModel.chapterNumber())
+        self.chapterTitleLabel.updateText(to: bookmarkViewModel.chapterTitle())
+        self.bookmarkCountLabel.updateText(to: bookmarkViewModel.bookmarkQuizeCount())
     }
     
     private func configureBookmarkTableViewCell() {
