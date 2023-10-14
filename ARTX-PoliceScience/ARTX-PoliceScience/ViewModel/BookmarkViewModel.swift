@@ -12,9 +12,10 @@ class BookmarkViewModel {
     
     private var currentPart: Int = 0
     private var currentChapter: Int = 0
-    
+
     init() {
-        let bookmarks = ["0101001", "0101002", "0301001"]
+        let bookmarks = LocalState.bookmarkList
+        
         var quizzes: [Quiz] = []
         
         for quiz in globalQuestion.quiz {
