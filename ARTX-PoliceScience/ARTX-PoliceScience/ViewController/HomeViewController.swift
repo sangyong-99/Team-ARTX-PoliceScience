@@ -393,6 +393,7 @@ extension HomeViewController {
         ) as? HomeViewCell else {
             return UITableViewCell()
         }
+        cell.separatorInset = UIEdgeInsets.zero
         cell.configure(with: quizChapterModel)
         
         return cell
