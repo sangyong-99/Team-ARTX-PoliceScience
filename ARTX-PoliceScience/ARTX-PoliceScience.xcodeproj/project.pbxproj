@@ -43,7 +43,7 @@
 		5E86FBF92ACD07AE00B01779 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBF82ACD07AE00B01779 /* FirebaseRemoteConfigSwift */; };
 		5E86FBFB2ACD07AE00B01779 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBFA2ACD07AE00B01779 /* FirebaseStorage */; };
 		5E86FBFD2ACD07AE00B01779 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBFC2ACD07AE00B01779 /* FirebaseStorageCombine-Community */; };
-		5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC062ACD0A9900B01779 /* HomeViewController.swift */; };
+		5E86FC072ACD0A9900B01779 /* HomeViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */; };
 		5E86FC092ACD0AC800B01779 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC082ACD0AC800B01779 /* SettingViewController.swift */; };
 		5E86FC0B2ACD0ADF00B01779 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */; };
 		5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */; };
@@ -75,7 +75,7 @@
 		5E3451922AB42F34004A3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E3451952AB42F34004A3047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E3451972AB42F34004A3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController1.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		5E44DC9D2ACD003F00DAC94A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5E86FC062ACD0A9900B01779 /* HomeViewController.swift */,
+				5E86FC062ACD0A9900B01779 /* HomeViewController1.swift */,
 				5E86FC082ACD0AC800B01779 /* SettingViewController.swift */,
 				5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */,
 				5E86FC0C2ACD0AF300B01779 /* BookViewController.swift */,
@@ -362,7 +362,7 @@
 				5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */,
 				5E9952C52AD68E2B00C204F8 /* MainViewCell.swift in Sources */,
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
-				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
+				5E86FC072ACD0A9900B01779 /* HomeViewController1.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */,

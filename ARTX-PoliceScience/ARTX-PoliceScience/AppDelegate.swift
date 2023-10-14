@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.backgroundColor = .bgGroupedPrimary
 //        globalQuestion = LoadQuestionModel.loadQuestionModel()
-        let navigationController = UINavigationController(rootViewController: HomeViewController())
+        let navigationController = UINavigationController(rootViewController: HomeViewController1())
         window?.rootViewController = navigationController
         FirebaseApp.configure()
         return true

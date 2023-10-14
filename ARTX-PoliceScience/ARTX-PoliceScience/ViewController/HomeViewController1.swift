@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController1: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var observeProgress: NSKeyValueObservation?
     var observeProgressViewWidth: NSKeyValueObservation?
@@ -209,7 +209,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 }
 
 // MARK: - HomeViewHeader 그리는 코드
-extension HomeViewController {
+extension HomeViewController1 {
     func tableHeaderView() -> UIView {
         if let window = UIApplication.shared.windows.first {
             safeAreaLength = Int(window.safeAreaInsets.top)
@@ -343,7 +343,7 @@ extension HomeViewController {
     }
 }
 // MARK: - HomeViewButtonTapped 버튼 클릭
-extension HomeViewController {
+extension HomeViewController1 {
     
     
     @objc func SettingButtonTapped() {
@@ -371,7 +371,7 @@ extension HomeViewController {
 }
 
 // MARK: - TableView Delegate, DataSource
-extension HomeViewController {
+extension HomeViewController1 {
     func numberOfSections(in tableView: UITableView) -> Int {
         return globalQuestion.quiz.count
     }
@@ -455,7 +455,7 @@ extension HomeViewController {
 }
 
 // MARK: - navigation 관련 세팅
-extension HomeViewController {
+extension HomeViewController1 {
     func homeViewNavBar() {
         self.title = "조현 경찰학"
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .regular)
