@@ -41,9 +41,7 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
-
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         return viewControllers.count > 1
     }
     
