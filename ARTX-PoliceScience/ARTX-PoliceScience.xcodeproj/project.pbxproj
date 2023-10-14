@@ -75,6 +75,7 @@
 		FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB232AD96DCA002FD4A9 /* PartNumberLabel.swift */; };
 		FF41EB262AD96DD4002FD4A9 /* PartTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */; };
 		FF41EB282AD979DD002FD4A9 /* BookmarkTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EB272AD979DD002FD4A9 /* BookmarkTableViewHeader.swift */; };
+		FFF2FBB02ADA6C6F00A4D2F0 /* BookmarkEmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF2FBAF2ADA6C6F00A4D2F0 /* BookmarkEmptyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		FF41EB232AD96DCA002FD4A9 /* PartNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartNumberLabel.swift; sourceTree = "<group>"; };
 		FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTitleLabel.swift; sourceTree = "<group>"; };
 		FF41EB272AD979DD002FD4A9 /* BookmarkTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkTableViewHeader.swift; sourceTree = "<group>"; };
+		FFF2FBAF2ADA6C6F00A4D2F0 /* BookmarkEmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkEmptyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 				FF41EB252AD96DD4002FD4A9 /* PartTitleLabel.swift */,
 				FF41EAEF2AD81E5B002FD4A9 /* SquareBackgroundLabel.swift */,
 				FF41EAF12AD820F5002FD4A9 /* BookmarkTableViewCell.swift */,
+				FFF2FBAF2ADA6C6F00A4D2F0 /* BookmarkEmptyTableViewCell.swift */,
 				FF41EB272AD979DD002FD4A9 /* BookmarkTableViewHeader.swift */,
 			);
 			path = BookmarkView;
@@ -447,6 +450,7 @@
 				FF41EAF02AD81E5B002FD4A9 /* SquareBackgroundLabel.swift in Sources */,
 				5E86FC132ACD0D4100B01779 /* Model.swift in Sources */,
 				B49D4A7F2AD4795E0047CCE9 /* QuizModel.swift in Sources */,
+				FFF2FBB02ADA6C6F00A4D2F0 /* BookmarkEmptyTableViewCell.swift in Sources */,
 				5EA61BEC2AD1834C00F6D771 /* RegisSettingTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
