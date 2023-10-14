@@ -21,26 +21,27 @@ class BookmarkViewModel {
             let quizNumber = quiz.part
             var newQuiz = quiz
             
+            newQuiz.chapters = []
             for chapter in quiz.chapters {
                 let chapterNumber = chapter.chapter
                 var newChapter = chapter
                 
                 newChapter.questions = []
-                for index in chapter.questions.indices {
-                    let quizId = String(format: "%02d", quizNumber) + String(format: "%02d", chapterNumber) + String(format: "%03d", index)
-                    
-                    print(quizId)
-                    print(bookmarks.contains(quizId))
+                for index in 0..<chapter.questions.count {
+                    let quizId =
+                        String(format: "%02d", quizNumber)
+                        + String(format: "%02d", chapterNumber)
+                        + String(format: "%03d", index)
                     if bookmarks.contains(quizId) {
                         newChapter.questions.append(chapter.questions[index])
                     }
                 }
-                print(newChapter.questions)
-                newQuiz.chapters.append(newChapter)
+                if newChapter.questions.count != 0 {
+                    newQuiz.chapters.append(newChapter)
+                }
             }
             quizzes.append(newQuiz)
         }
-        
         self.quizzes = quizzes
     }
 
