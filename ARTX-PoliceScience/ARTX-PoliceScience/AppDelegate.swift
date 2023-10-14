@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.backgroundColor = .white
-//        window?.rootViewController = QuizViewController()
-        let navigationController = UINavigationController(rootViewController: QuizViewController())
+        window?.backgroundColor = .bgGroupedPrimary
+        
+        let navigationController = UINavigationController(rootViewController: HomeViewController())
         window?.rootViewController = navigationController
         FirebaseApp.configure()
         return true
