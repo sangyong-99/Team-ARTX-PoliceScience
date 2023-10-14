@@ -49,6 +49,11 @@ class BookViewController: UIViewController {
         stackView.spacing = 20
         stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.1).cgColor
+        stackView.layer.shadowOpacity = 1
+        stackView.layer.shadowRadius = 5
+        stackView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
         return stackView
     }()
     
