@@ -39,11 +39,11 @@ class BookmarkViewModel {
     private var currentPart: Int = 0
     private var currentChapter: Int = 0
 
-    func ChangeCurrentPart(to number: Int) {
+    func changeCurrentPart(to number: Int) {
         self.currentPart = number
     }
     
-    func ChangeCurrentChapter(to number: Int) {
+    func changeCurrentChapter(to number: Int) {
         self.currentChapter = number
     }
     
