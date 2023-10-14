@@ -14,7 +14,9 @@ class BookmarkViewModel {
     private var currentChapter: Int = 0
     
     init() {
-        let bookmarks = ["0101001", "0101002", "0301001"]
+        let defaults = UserDefaults.standard
+        let bookmarks = defaults.array(forKey: "bookmark")  as? [String] ?? [String]()
+        
         var quizzes: [Quiz] = []
         
         for quiz in globalQuestion.quiz {
