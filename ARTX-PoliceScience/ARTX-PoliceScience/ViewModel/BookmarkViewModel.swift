@@ -12,10 +12,9 @@ class BookmarkViewModel {
     
     private var currentPart: Int = 0
     private var currentChapter: Int = 0
-    
+
     init() {
-        let defaults = UserDefaults.standard
-        let bookmarks = defaults.array(forKey: "bookmark")  as? [String] ?? [String]()
+        let bookmarks = LocalState.bookmarkList
         
         var quizzes: [Quiz] = []
         

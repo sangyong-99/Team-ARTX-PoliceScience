@@ -11,6 +11,7 @@ public class LocalState {
     private enum Keys: String {
         case isCodeActivated
         case authenticationCode
+        case bookmark
     }
     
     public static var isCodeActivated: Bool {
@@ -29,6 +30,16 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.authenticationCode.rawValue)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    public static var bookmarkList: [String] {
+        get {
+            return UserDefaults.standard.array(forKey: Keys.bookmark.rawValue)  as? [String] ?? [String]()
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.bookmark.rawValue)
             UserDefaults.standard.synchronize()
         }
     }
