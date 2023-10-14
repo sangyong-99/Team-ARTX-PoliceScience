@@ -35,7 +35,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     let settingViewButton: UIButton = {
-        let settingButton = UIButton(type: .system)
+        let settingButton = UIButton(type: .custom)
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 22)
         settingButton.setImage(UIImage(systemName: "gearshape.fill", withConfiguration: symbolConfiguration), for: .normal)
         settingButton.tintColor = .white
@@ -88,6 +88,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         studyProgressView.backgroundColor = .white
         studyProgressView.layer.cornerRadius = 14
         studyProgressView.layer.masksToBounds = true
+        studyProgressView.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.1).cgColor
+        studyProgressView.layer.shadowOpacity = 1
+        studyProgressView.layer.shadowOffset = CGSize(width: 4, height: 4)
+        studyProgressView.layer.shadowRadius = 8
+        studyProgressView.layer.masksToBounds = false
+        
         return studyProgressView
     }()
     
