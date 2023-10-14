@@ -8,32 +8,51 @@
 import Foundation
 
 class BookmarkViewModel {
+    private let Quizs: [Quiz] = [
+            Quiz(part: 1, partName: "경찰학", chapters: [
+                Chapter(chapter: 1, chapterName: "경찰 연혁", questions: [
+                    Question(question: "문제 1", answer: "O", explanation: "해설 1"),
+                    Question(question: "문제 2", answer: "X", explanation: "해설 2"),
+                    Question(question: "문제 3", answer: "O", explanation: "해설 3")
+                ])
+            ])
+        ]
+    private var currentPart: Int = 0
+    private var currentChapter: Int = 0
 
-    func getPartNumber() -> Int {
-        return 1
+    func ChangeCurrentPart(to number: Int) {
+        self.currentPart = number
     }
     
-    func getPartTitle() -> String {
-        return "경찰학 기초"
+    func ChangeCurrentChapter(to number: Int) {
+        self.currentChapter = number
     }
     
-    func getChapterNumber() -> Int {
-        return 3
+    func partNumber() -> Int {
+        return Quizs[self.currentPart].part
     }
     
-    func getChapterTitle() -> String {
-        return "경찰 연혁"
+    func partTitle() -> String {
+        return Quizs[self.currentPart].partName
     }
     
-    func getPartCount() -> Int {
-        return 3
+    func chapterNumber() -> Int {
+        return Quizs[self.currentPart].chapters[self.currentChapter].chapter
     }
     
-    func getChapterCount() -> Int {
-        return 3
+    func chapterTitle() -> String {
+        return Quizs[self.currentPart].chapters[self.currentChapter].chapterName
     }
     
-    func getBookmarkQuizeCount() -> Int {
-        return 0
+    func partCount() -> Int {
+        return Quizs.count
+    }
+    
+    func chapterCount() -> Int {
+        return Quizs[self.currentPart].chapters.count
+    }
+    
+    func bookmarkQuizeCount() -> Int {
+        return Quizs[self.currentPart].chapters[self.currentChapter].questions.count
     }
 }

@@ -69,16 +69,17 @@ final class BookmarkViewController: UIViewController {
 
 extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return bookmarkViewModel.getPartCount()
+        return bookmarkViewModel.partCount()
     }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.bookmarkViewModel.getChapterCount()
+        return self.bookmarkViewModel.chapterCount()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BookmarkTableViewHeader.identifier) as? BookmarkTableViewHeader else { return UIView() }
         
+        bookmarkViewModel.ChangeCurrentChapter(to: section)
         header.update(bookmarkViewModel: bookmarkViewModel)
         return header
     }
@@ -87,6 +88,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarkTableViewCell.identifier, for: indexPath) as? BookmarkTableViewCell else { return UITableViewCell() }
         
+        bookmarkViewModel.ChangeCurrentChapter(to: indexPath.row)
         cell.accessoryType = .disclosureIndicator
         cell.update(bookmarkViewModel: bookmarkViewModel)
         return cell
