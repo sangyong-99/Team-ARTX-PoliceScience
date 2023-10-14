@@ -20,7 +20,6 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.isCodeActivated.rawValue)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -30,7 +29,6 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.authenticationCode.rawValue)
-            UserDefaults.standard.synchronize()
         }
     }
     
@@ -40,7 +38,6 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.bookmark.rawValue)
-            UserDefaults.standard.synchronize()
         }
     }
 }
