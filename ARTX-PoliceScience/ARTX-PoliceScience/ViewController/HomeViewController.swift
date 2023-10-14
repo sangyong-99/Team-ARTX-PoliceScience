@@ -350,7 +350,6 @@ extension HomeViewController {
 // MARK: - HomeViewButtonTapped 버튼 클릭
 extension HomeViewController {
     
-    
     @objc func SettingButtonTapped() {
         isScrollEnabled = false
         navigationController?.pushViewController(settingViewController, animated: true)
@@ -365,12 +364,12 @@ extension HomeViewController {
     
     @objc func rightItemTapped() {
         isScrollEnabled = false
-        navigationController?.pushViewController(BookViewController(), animated: true)
+        navigationController?.pushViewController(BookmarkViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
     
     @objc func bookMarkButtonTapped() {
-        navigationController?.pushViewController(BookViewController(), animated: true)
+        navigationController?.pushViewController(BookmarkViewController(), animated: true)
         navigationController?.isNavigationBarHidden = false
     }
 }
