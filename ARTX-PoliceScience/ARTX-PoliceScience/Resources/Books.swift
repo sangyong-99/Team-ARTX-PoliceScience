@@ -47,6 +47,7 @@ extension Symbol {
 
 enum NavigationTitle {
     case bookView
+    case bookmarkView
 }
 
 extension NavigationTitle {
@@ -54,6 +55,8 @@ extension NavigationTitle {
         switch self {
         case .bookView:
             return "조현 경찰학이란?"
+        case .bookmarkView:
+            return "오답노트"
         }
     }
 }
