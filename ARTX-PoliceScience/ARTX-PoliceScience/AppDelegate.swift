@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        globalQuestion = LoadQuestionModel.loadQuestionModel()
         let navigationController = UINavigationController(rootViewController: HomeViewController1())
         window?.rootViewController = navigationController
-        FirebaseApp.configure()
+//        FirebaseApp.configure()
         return true
     }
 }

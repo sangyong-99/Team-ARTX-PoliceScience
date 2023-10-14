@@ -37,6 +37,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //    let label = UILabel()
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.configureNavigationBar(withTitle: "환경 설정")
