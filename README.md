@@ -1,9 +1,6 @@
 # ARTX-PoliceScience
 ![ex_screenshot](./img/artx_logo_gray.svg)
 
-## ✨ 배포 도메인
-### [AppStore]( ???? )
-
 ## 👉 프로젝트 소개
 
 2024 해커스 조현 경찰학 문제를 풀기위한 "OX퀴즈 문제집" 앱 입니다. 
@@ -30,6 +27,9 @@
 
 ## ❗️그라운드 룰
 ### [Wiki](https://github.com/sangyong-99/Team-ARTX-PoliceScience/wiki/%EA%B7%B8%EB%9D%BC%EC%9A%B4%EB%93%9C-%EB%A3%B0)
+
+## ✨ 앱 다운로드
+### [AppStore]( ???? )
 
 ## 📱앱화면
 <div align="center">
