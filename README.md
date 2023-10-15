@@ -33,7 +33,7 @@
 
 ## 📱앱화면
 <div align="center">
-<img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/dd002967-77c8-4c7b-bbc3-65ffad01760c" height="500"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/fa5c96fb-10f9-41cc-a8d6-744d3c922be3" height="500"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/bcc6dc18-b1f9-447d-8fc8-9d154660a9db" height="500"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/41f98720-e34c-4394-9f1e-89c46cd0155f" height="500">
+<img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/dd002967-77c8-4c7b-bbc3-65ffad01760c"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/fa5c96fb-10f9-41cc-a8d6-744d3c922be3"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/bcc6dc18-b1f9-447d-8fc8-9d154660a9db"> <img src="https://github.com/sangyong-99/Team-ARTX-PoliceScience/assets/86761640/41f98720-e34c-4394-9f1e-89c46cd0155f">
 </div>
 
 ## 📘기능 목록
