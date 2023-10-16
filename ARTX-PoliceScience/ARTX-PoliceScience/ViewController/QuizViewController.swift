@@ -138,7 +138,10 @@ extension QuizViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         navigationController?.isNavigationBarHidden = true
+<<<<<<< HEAD
         NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+=======
+>>>>>>> #84-fix-homeview
     }
     
     @objc func nextQuestionButtonTapped() {

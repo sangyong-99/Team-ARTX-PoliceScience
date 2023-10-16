@@ -9,6 +9,7 @@ import UIKit
 
 class SettingViewModel {
     static var models = [SettingTableSection]()
+    static let settingViewController = SettingViewController()
     
     static func configure(){
         // MARK: - InformationViewController 연결
