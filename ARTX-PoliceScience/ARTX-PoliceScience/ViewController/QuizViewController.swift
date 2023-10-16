@@ -136,7 +136,8 @@ class QuizViewController: UIViewController {
 
 extension QuizViewController {
     @objc func backButtonTapped() {
-        
+        navigationController?.popViewController(animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
     
     @objc func nextQuestionButtonTapped() {

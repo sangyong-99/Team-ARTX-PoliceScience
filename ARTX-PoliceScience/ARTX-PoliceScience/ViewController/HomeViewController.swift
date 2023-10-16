@@ -19,7 +19,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isScrollEnabled = true
     
     // MARK: - TableView
-    let settingViewController = SettingViewController()
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(HomeViewCell.self, forCellReuseIdentifier: HomeViewCell.identifier)
@@ -367,7 +366,7 @@ extension HomeViewController {
     
     @objc func SettingButtonTapped() {
         isScrollEnabled = false
-        navigationController?.pushViewController(settingViewController, animated: true)
+        navigationController?.pushViewController(SettingViewModel.settingViewController, animated: true)
         navigationController?.isNavigationBarHidden = false
     }
     
@@ -419,14 +418,26 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section), \(indexPath.row)")
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let partIndexString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
         let currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
-        
+        let totalQuizNumber = globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions.count
         let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
-        navigationController?.pushViewController(quizViewController, animated: true)
-        navigationController?.isNavigationBarHidden = false
         
+        if indexPath.section > 1 && !LocalState.isCodeActivated {
+            HomeViewAlert.needActivateAlert(from: self)
+        } else {
+            switch currentQuizNumber {
+            case 0:
+                navigationController?.pushViewController(quizViewController, animated: true)
+                navigationController?.isNavigationBarHidden = false
+            case totalQuizNumber - 1:
+                HomeViewAlert.restartAlert(from: self, indexPath: indexPath)
+            default:
+                HomeViewAlert.continueAlert(from: self, indexPath: indexPath, currentQuizNumber: currentQuizNumber)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
