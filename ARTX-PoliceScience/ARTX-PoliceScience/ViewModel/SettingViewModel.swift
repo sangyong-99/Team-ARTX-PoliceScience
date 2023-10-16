@@ -28,6 +28,7 @@ class SettingViewModel {
             
             .regisCell(model: SettingsRegisOption(title: "인증코드 등록", icon: UIImage(systemName: "barcode.viewfinder"), regisCodeBool: true, handler: { tableView, indexPath in
                 if LocalState.isCodeActivated == true {
+                    SettingViewAlert.alreadyRegisterCodeAlert()
                     // ("이미 코드가 등록되어 활성화 되어있습니다.")
                     return
                 }
@@ -38,6 +39,8 @@ class SettingViewModel {
             .staticCell(model: SettingsOption(title: "기기 변경", icon: UIImage(systemName: "iphone.and.arrow.forward"), handler: { tableView, indexPath in
                 guard let authenticationCode = LocalState.authenticationCode else {
                     // ("LocalState.authenticationCode에 코드가 없음 alert 코드 비활성화 실행불가")
+                    SettingViewAlert.noRegisterCodeAlert()
+                    
                     return
                 }
                 if (LocalState.isCodeActivated == true) {
