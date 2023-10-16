@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class QuizProgressView: UIView {
-    
+
     lazy var progressView: UIProgressView = {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false

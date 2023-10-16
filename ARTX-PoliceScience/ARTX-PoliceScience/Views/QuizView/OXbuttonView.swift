@@ -42,7 +42,7 @@ class OXbuttonView:UIView {
         button.tintColor = .white
         button.layer.cornerRadius = 14
         button.backgroundColor = UIColor(resource: .pointGray)
-        button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
+        button.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside )
         
         return button
     }()
@@ -52,7 +52,7 @@ class OXbuttonView:UIView {
         correctButton.backgroundColor = UIColor(hex: "#007AFF", alpha: 0.7)
     }
     
-    @objc func myButtonTapped() {
+    @objc func wrongButtonTapped() {
         //alpha값 세팅된거 나오면 고칠 예정...
         wrongButton.backgroundColor = UIColor(hex: "#FF3B30", alpha: 0.7)
     }
