@@ -88,14 +88,19 @@ class HomeViewCell: UITableViewCell {
         ])
     }
     
-    public func configure(with chapter: Chapter) {
+    public func configure(with chapter: Chapter, partChapter: String) {
         chapterNameLabel.text = chapter.chapter_name
         chapterLabel.text = "CHAPTER 0\(chapter.chapter)"
-        iconImageView.image = UIImage(named: "MainQuestionDefault")
-        // 풀은 갯수 추가
-        questionProgressCountLabel.text = "0 / \(chapter.questions.count)"
-        // iconImageView Setting 하는 곳
         
+        // 풀은 갯수 추가
+        let currentChapterSolveNum = UserDefaults.standard.integer(forKey: partChapter)
+        questionProgressCountLabel.text = "\(currentChapterSolveNum) / \(chapter.questions.count)"
+        // iconImageView Setting 하는 곳
+        if currentChapterSolveNum == chapter.questions.count {
+            iconImageView.image = UIImage(named: "MainQuestionComplete")
+        } else {
+            iconImageView.image = UIImage(named: "MainQuestionDefault")
+        }
     }
     
     

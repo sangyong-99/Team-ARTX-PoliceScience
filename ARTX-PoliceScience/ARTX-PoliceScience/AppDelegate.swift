@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             LocalState.firstInstall = true
         }
         
+        totalQuestionCountModel.totalQuestionCount()
+        
         return true
     }
 }

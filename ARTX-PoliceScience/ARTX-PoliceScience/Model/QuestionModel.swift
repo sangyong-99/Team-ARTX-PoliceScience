@@ -7,6 +7,8 @@
 import UIKit
 
 var globalQuestion: QuestionModel = LoadQuestionModel.loadQuestionModel()
+var totalQuestionNumber = 0
+
 
 struct QuestionModel: Codable {
     let quiz: [Quiz]
@@ -50,3 +52,12 @@ class LoadQuestionModel {
     }
 }
 
+class totalQuestionCountModel {
+    static func totalQuestionCount() {
+        for (_, part) in globalQuestion.quiz.enumerated() {
+            for (_, chapter) in part.chapters.enumerated() {
+                totalQuestionNumber += chapter.questions.count
+            }
+        }
+    }
+}

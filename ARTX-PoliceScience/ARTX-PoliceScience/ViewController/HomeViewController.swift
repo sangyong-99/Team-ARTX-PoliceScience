@@ -12,7 +12,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var observeProgress: NSKeyValueObservation?
     var observeProgressViewWidth: NSKeyValueObservation?
     
-    @objc dynamic var progress: Float = (20/30)
+    @objc dynamic var progress: Float = 0.0
     @objc dynamic var progressViewWidth: CGFloat = 0.0
     
     var safeAreaLength = 0
@@ -174,8 +174,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewWillAppear(animated)
         isScrollEnabled = true
         navigationController?.isNavigationBarHidden = true
-        
         navigationController?.homeViewconfigureNavigationBar()
+        
+        
+        progress = 0.5
+        
         
     }
     
@@ -193,6 +196,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         header = tableHeaderView()
         homeTableView.tableHeaderView = header
+        
+        var totalQuestionNum = Float(totalQuestionNumber)
+        var totalSolveQuestionNum = Float(PartChapter.totalCurrentSolveQuestionNum())
+        print(totalSolveQuestionNum/totalQuestionNum)
+        
+        
         
         view.addSubview(homeTableView)
         homeTableView.delegate = self
@@ -400,13 +409,24 @@ extension HomeViewController {
             return UITableViewCell()
         }
         cell.separatorInset = UIEdgeInsets.zero
-        cell.configure(with: quizChapterModel)
+        
+        let partChaper = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
+        
+        cell.configure(with: quizChapterModel, partChapter: partChaper)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.section), \(indexPath.row)")
+        
+        let partIndexString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
+        let currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
+        
+        let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
+        navigationController?.pushViewController(quizViewController, animated: true)
+        navigationController?.isNavigationBarHidden = false
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -493,3 +513,5 @@ extension HomeViewController {
         }
     }
 }
+
+
