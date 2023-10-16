@@ -23,6 +23,7 @@
 		5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3451892AB42F33004A3047 /* AppDelegate.swift */; };
 		5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451922AB42F34004A3047 /* Assets.xcassets */; };
 		5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */; };
+		5E5477772ADD3AC30085638F /* PartChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5477762ADD3AC30085638F /* PartChapter.swift */; };
 		5E86FBC92ACD07AE00B01779 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBC82ACD07AE00B01779 /* FirebaseAnalytics */; };
 		5E86FBCB2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCA2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion */; };
 		5E86FBCD2ACD07AE00B01779 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCC2ACD07AE00B01779 /* FirebaseAnalyticsSwift */; };
@@ -110,6 +111,7 @@
 		5E3451922AB42F34004A3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E3451952AB42F34004A3047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E3451972AB42F34004A3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5477762ADD3AC30085638F /* PartChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartChapter.swift; sourceTree = "<group>"; };
 		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				5EDDA5622ACD11E2006E13DE /* LocalState.swift */,
+				5E5477762ADD3AC30085638F /* PartChapter.swift */,
 			);
 			path = UserDefault;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */,
 				B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */,
 				0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */,
+				5E5477772ADD3AC30085638F /* PartChapter.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
 				B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */,
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,

@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: HomeViewController())
         window?.rootViewController = navigationController
         FirebaseApp.configure()
+        
+        //처음 설치시 UserDefaults 초기화
+        if !LocalState.firstInstall {
+            PartChapter.resetPartChapter()
+            LocalState.firstInstall = true
+        }
+        
         return true
     }
 }

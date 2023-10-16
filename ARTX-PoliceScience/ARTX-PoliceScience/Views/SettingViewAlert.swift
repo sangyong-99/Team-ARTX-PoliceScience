@@ -152,7 +152,7 @@ class SettingViewAlert {
                     failappResetAlert()
                     // ("실패")
                 }
-
+                
             }
         }))
         
@@ -161,7 +161,7 @@ class SettingViewAlert {
     }
     
     static func appResetFunction(completion: @escaping (Bool) -> Void) {
-        // ("app reset 학습 기록 초기화 하는 함수 들어가야 되는 곳")
+        PartChapter.resetPartChapter()
         completion(true)
     }
     
