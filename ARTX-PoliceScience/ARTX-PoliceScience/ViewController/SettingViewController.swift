@@ -9,6 +9,8 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var safeAreaLength = 0
+    
     private let settingTableView: UITableView = {
         let table = UITableView(frame:.zero, style: .insetGrouped)
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
@@ -26,13 +28,25 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         return label
     }()
     
-    //    let label = UILabel()
+    private let navBackView: UIView = {
+        let settingNavBackView = UIView()
+        settingNavBackView.backgroundColor = .bgBlue
+        
+        return settingNavBackView
+    }()
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.configureNavigationBar(withTitle: "환경 설정")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
+        navigationController?.isNavigationBarHidden = false
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let window = UIApplication.shared.windows.first {
+            safeAreaLength = Int(window.safeAreaInsets.top)
+        }
+        
         
         SettingViewModel.configure()
         
@@ -54,9 +68,9 @@ extension SettingViewController {
         settingTableView.dataSource = self
         settingTableView.frame = view.bounds
         
-        
-        
+        view.addSubview(navBackView)
         view.addSubview(settingLabel)
+        
     }
     
     func layout() {
@@ -66,8 +80,17 @@ extension SettingViewController {
             settingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             settingLabel.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -65),
         ])
+        
+        navBackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
+        ])
     }
 }
+
+
 
 extension SettingViewController {
     
@@ -127,6 +150,7 @@ extension SettingViewController {
 extension SettingViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
