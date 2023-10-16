@@ -10,21 +10,22 @@ import UIKit
 
 class SettingViewAlert {
     static func showCodeSettingAlert(tableView: UITableView, indexPath: IndexPath) {
+        let text = SettingShowCodeAlertText.self
+        
         let codeSettingAlert = UIAlertController(
-            title: "인증 코드를 입력해 주세요",
-            message: "코드를 입력해 잠금을 해제해 주세요.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
         codeSettingAlert.addTextField { codeSettingField in
-            codeSettingField.placeholder = "코드 입력"
+            codeSettingField.placeholder = text.placeholder
             codeSettingField.returnKeyType = .next
             codeSettingField.keyboardType = .default
         }
         
-        //alert button 이랑 action
-        codeSettingAlert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
-        codeSettingAlert.addAction(UIAlertAction(title: "입력", style: .cancel, handler: {_ in
+        codeSettingAlert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel, handler: nil))
+        codeSettingAlert.addAction(UIAlertAction(title: text.button, style: .default, handler: {_ in
             // 입력 클릭했을때 실행하는 로직
             guard let codeSettingField = codeSettingAlert.textFields else {
                 return
@@ -39,13 +40,6 @@ class SettingViewAlert {
                 // ("성공여부 : \(success)")
                 if success {
                     successCodeAlert()
-                    
-//                        if let cell = tableView.cellForRow(at: indexPath) as? RegisSettingTableViewCell {
-//                            cell.rerendering()
-//                        }
-                    
-                    
-                    
                     tableView.reloadRows(at: [indexPath], with: .automatic)
                 } else {
                     failCodeAlert()
@@ -53,64 +47,45 @@ class SettingViewAlert {
             }
         }))
         
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(codeSettingAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        codeSettingAlert.show()
     }
     
     static func successCodeAlert() {
+        let text = SuccessCodeAlertText.self
+        
         let codeSettingAlert = UIAlertController(
-            title: "코드 인증이 완료되었습니다",
-            message: "모든 문제의 잠금이 해제되었습니다.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        codeSettingAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(codeSettingAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        codeSettingAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        codeSettingAlert.show()
     }
     
     static func failCodeAlert() {
+        let text = FailCodeAlertText.self
+        
         let codeSettingAlert = UIAlertController(
-            title: "잘못된 인증 코드입니다",
-            message: "코드를 확인하고 다시 시도해 주세요.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        codeSettingAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(codeSettingAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        codeSettingAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        codeSettingAlert.show()
     }
     
     static func changeDevice(authenticationCode: String, tableView: UITableView, indexPath: IndexPath) {
+        let text = ChangeDeviceText.self
+        
         let changeDeviceAlert = UIAlertController(
-            title: "현재 기기의 인증 코드를\n비활성화 하시겠습니까?",
-            message: "학습 기록이 초기화됩니다.\n비활성화 된 코드는 새로운 기기에 다시\n사용할 수 있습니다.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        changeDeviceAlert.addAction(UIAlertAction(title: "비활성화", style: .default, handler: { _ in
+        changeDeviceAlert.addAction(UIAlertAction(title: text.button, style: .default, handler: { _ in
             FirebaseManager.changeDeviceFirestore(authenticationCode: authenticationCode) { success in
                 // ("기기변경 성공여부 : \(success)")
                 if success {
@@ -128,68 +103,46 @@ class SettingViewAlert {
             }
         }))
         
-        //alert button 이랑 action
-        changeDeviceAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(changeDeviceAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        changeDeviceAlert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel, handler: nil))
+        changeDeviceAlert.show()
     }
     
     static func successChangeDeviceAlert() {
+        let text = SuccessChangeDeviceText.self
+        
         let successChangeDeviceAlert = UIAlertController(
-            title: "코드가 비활성화 되었습니다",
-            message: "코드를 새로운 기기에 등록 해주세요.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        successChangeDeviceAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(successChangeDeviceAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        successChangeDeviceAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        successChangeDeviceAlert.show()
     }
     
     static func failChangeDeviceAlert() {
+        let text = FailChangeDeviceText.self
+        
         let failChangeDeviceAlert = UIAlertController(
-            title: "기기 변경에 실패하였습니다.",
-            message: "",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        failChangeDeviceAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(failChangeDeviceAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        failChangeDeviceAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        failChangeDeviceAlert.show()
     }
     
     static func appResetAlert() {
+        let text = AppResetText.self
+        
         let appResetAlert = UIAlertController(
-            title: "전체 학습기록을\n초기화 하시겠습니까?",
-            message: "이 작업은 되돌릴 수 없습니다.",
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        appResetAlert.addAction(UIAlertAction(title: "초기화", style: .destructive, handler: { _ in
+        appResetAlert.addAction(UIAlertAction(title: text.button, style: .destructive, handler: { _ in
             appResetFunction() { success in
                 // ("학습 기록 초기화 성공여부 : \(success)")
                 if success {
@@ -202,16 +155,9 @@ class SettingViewAlert {
 
             }
         }))
-        appResetAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(appResetAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        appResetAlert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel, handler: nil))
+        appResetAlert.show()
     }
     
     static func appResetFunction(completion: @escaping (Bool) -> Void) {
@@ -220,43 +166,55 @@ class SettingViewAlert {
     }
     
     static func successappResetAlert() {
-        let successappResetAlert = UIAlertController(
-            title: "학습 기록 초기화가\n완료되었습니다",
-            message: "",
+        let text = SuccessAppResetText.self
+        
+        let successAppResetAlert = UIAlertController(
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        successappResetAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
-        
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(successappResetAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        successAppResetAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        successAppResetAlert.show()
     }
     
     static func failappResetAlert() {
-        let successappResetAlert = UIAlertController(
-            title: "학습 기록 초기화가\n실패되었습니다",
-            message: "",
+        let text = FailAppResetText.self
+        
+        let successAppResetAlert = UIAlertController(
+            title: text.title,
+            message: text.message,
             preferredStyle: .alert
         )
         
-        //alert button 이랑 action
-        successappResetAlert.addAction(UIAlertAction(title: "확인", style: .cancel, handler: nil))
+        successAppResetAlert.addAction(UIAlertAction(title: text.button, style: .cancel, handler: nil))
+        successAppResetAlert.show()
+    }
+    
+    static func alreadyRegisterCodeAlert() {
+        let text = AlreadyRegisterCodeText.self
         
-        // alert 창을 현재화면에 띄어주는 로직
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            if let window = scene.windows.first {
-                if let rootViewController = window.rootViewController {
-                    rootViewController.present(successappResetAlert, animated: true, completion: nil)
-                }
-            }
-        }
+        let alreadyRegisterCodeAlert = UIAlertController(
+            title: text.title,
+            message: text.message,
+            preferredStyle: .alert
+        )
+        
+        alreadyRegisterCodeAlert.addAction(UIAlertAction(title: text.button, style: .default))
+        alreadyRegisterCodeAlert.show()
+    }
+    
+    static func noRegisterCodeAlert() {
+        let text = NoRegisterCodeText.self
+        
+        let noRegisterCodeAlert = UIAlertController(
+            title: text.title,
+            message: text.message,
+            preferredStyle: .alert
+        )
+        
+        noRegisterCodeAlert.addAction(UIAlertAction(title: text.button, style: .default))
+        noRegisterCodeAlert.show()
     }
 }
 
