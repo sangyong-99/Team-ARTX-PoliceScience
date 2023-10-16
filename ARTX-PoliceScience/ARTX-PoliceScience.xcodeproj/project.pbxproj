@@ -101,7 +101,6 @@
 		0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalView.swift; sourceTree = "<group>"; };
 		0E4A90012ADA9A3700BBC335 /* QuizModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalViewController.swift; sourceTree = "<group>"; };
 		0E4A90032ADAAB5600BBC335 /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
-		4A7706202ACDB25F00E546E0 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		4AA0924D2AD2963F006DB2BB /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		4AA0924F2AD296D3006DB2BB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4AA092512AD29759006DB2BB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
@@ -207,7 +206,6 @@
 			children = (
 				5E3451882AB42F33004A3047 /* ARTX-PoliceScience */,
 				5E3451872AB42F33004A3047 /* Products */,
-				B4E7730A2ADD331D007B3AF3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -322,14 +320,6 @@
 				5EDDA5622ACD11E2006E13DE /* LocalState.swift */,
 			);
 			path = UserDefault;
-			sourceTree = "<group>";
-		};
-		B4E7730A2ADD331D007B3AF3 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				4A7706202ACDB25F00E546E0 /* example.json */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		FF2C67952ADA2D4A00F40863 /* HomeView */ = {
