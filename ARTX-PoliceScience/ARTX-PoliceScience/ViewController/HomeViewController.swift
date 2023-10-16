@@ -441,7 +441,7 @@ extension HomeViewController {
             case 0:
                 navigationController?.pushViewController(quizViewController, animated: true)
                 navigationController?.isNavigationBarHidden = false
-            case totalQuizNumber - 1:
+            case totalQuizNumber:
                 HomeViewAlert.restartAlert(from: self, indexPath: indexPath)
             default:
                 HomeViewAlert.continueAlert(from: self, indexPath: indexPath, currentQuizNumber: currentQuizNumber)
