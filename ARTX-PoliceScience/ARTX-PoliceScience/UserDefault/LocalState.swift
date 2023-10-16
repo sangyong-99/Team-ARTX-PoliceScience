@@ -12,6 +12,7 @@ public class LocalState {
         case isCodeActivated
         case authenticationCode
         case bookmark
+        case firstInstall
     }
     
     public static var isCodeActivated: Bool {
@@ -20,6 +21,15 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.isCodeActivated.rawValue)
+        }
+    }
+    
+    public static var firstInstall: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: Keys.firstInstall.rawValue)
+        }
+        set(newValue) {
+            UserDefaults.standard.set(newValue, forKey: Keys.firstInstall.rawValue)
         }
     }
     
