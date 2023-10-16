@@ -28,7 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Header View
     let headerBackImage: UIImageView = {
         let headerBackImage = UIImageView()
-        headerBackImage.image = UIImage(named: "MainViewTopImage")
+        headerBackImage.image = .mainViewTop
         headerBackImage.contentMode = .scaleAspectFill
         return headerBackImage
     }()
@@ -139,14 +139,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     let headerBookmarkButton: UIButton = {
-        let headerBookmarkButton = UIButton()
+        let headerBookmarkButton = UIButton(type: .system)
         headerBookmarkButton.layer.cornerRadius = 20
         headerBookmarkButton.clipsToBounds = true
         headerBookmarkButton.layer.borderWidth = 1
         headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
         
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
-        headerBookmarkButton.setImage(UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration), for: .normal)
+        if let image = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration) {
+                headerBookmarkButton.setImage(image, for: .normal)
+            }
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]))
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
