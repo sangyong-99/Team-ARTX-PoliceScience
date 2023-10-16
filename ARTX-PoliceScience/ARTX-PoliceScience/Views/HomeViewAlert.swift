@@ -16,6 +16,9 @@ class HomeViewAlert {
         alert.addAction(UIAlertAction(title: text.restartButton, style: .default) { _ in
             let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: 0)
             
+            let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
+            UserDefaults.standard.set(0, forKey: partChapterString)
+            
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false
         })
@@ -38,6 +41,9 @@ class HomeViewAlert {
         let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
             let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: 0)
+            
+            let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
+            UserDefaults.standard.set(0, forKey: partChapterString)
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false

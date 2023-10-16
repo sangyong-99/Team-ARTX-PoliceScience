@@ -433,9 +433,6 @@ extension HomeViewController {
         let totalQuizNumber = globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions.count
         let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
         
-<<<<<<< HEAD
-        
-=======
         if indexPath.section > 1 && !LocalState.isCodeActivated {
             HomeViewAlert.needActivateAlert(from: self)
         } else {
@@ -443,13 +440,13 @@ extension HomeViewController {
             case 0:
                 navigationController?.pushViewController(quizViewController, animated: true)
                 navigationController?.isNavigationBarHidden = false
-            case totalQuizNumber - 1:
+            case totalQuizNumber:
                 HomeViewAlert.restartAlert(from: self, indexPath: indexPath)
             default:
                 HomeViewAlert.continueAlert(from: self, indexPath: indexPath, currentQuizNumber: currentQuizNumber)
             }
         }
->>>>>>> #84-fix-homeview
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
