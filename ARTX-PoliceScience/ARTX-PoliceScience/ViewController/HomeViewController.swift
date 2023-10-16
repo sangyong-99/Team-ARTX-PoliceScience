@@ -177,10 +177,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController?.homeViewconfigureNavigationBar()
         
         
+        
         progress = 0.5
         
         
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         let newLeadingConstant = progressView.frame.size.width * CGFloat(progress)
@@ -201,7 +203,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var totalSolveQuestionNum = Float(PartChapter.totalCurrentSolveQuestionNum())
         print(totalSolveQuestionNum/totalQuestionNum)
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeQuizToHomeview"), object: nil)
         
         view.addSubview(homeTableView)
         homeTableView.delegate = self
@@ -225,6 +227,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let progressValueText = "\(Int(newProgress * 100))"
         progressValueLabel.text = progressValueText
         progressView.progress = newProgress
+    }
+    
+    @objc func rerenderTableCell() {
+        OperationQueue.main.addOperation { // DispatchQueue도 가능.
+            self.homeTableView.reloadData()
+        }
     }
 }
 
@@ -356,7 +364,7 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             progressImages.centerYAnchor.constraint(equalTo: progressView.centerYAnchor),
-//            progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor)
+            //            progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor)
         ])
         
         return header
@@ -426,6 +434,7 @@ extension HomeViewController {
         let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
         navigationController?.pushViewController(quizViewController, animated: true)
         navigationController?.isNavigationBarHidden = false
+        
         
     }
     
@@ -512,6 +521,8 @@ extension HomeViewController {
             }
         }
     }
+    
+    
 }
 
 
