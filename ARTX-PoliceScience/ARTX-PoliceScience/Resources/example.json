@@ -110,33 +110,33 @@
           "chapter": 1,
           "chapter_name": "경찰조직관리",
           "questions": [
-            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
-            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
-            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
-            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
-            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+            {"question": "문제 1", "answer": true, "explanation": "해설 1"},
+            {"question": "문제 2", "answer": false, "explanation": "해설 2"},
+            {"question": "문제 3", "answer": true, "explanation": "해설 3"},
+            {"question": "문제 4", "answer": false, "explanation": "해설 4"},
+            {"question": "문제 5", "answer": true, "explanation": "해설 5"}
           ]
         },
         {
           "chapter": 2,
           "chapter_name": "경찰인사관리",
           "questions": [
-            {"question": "문제 1", "answer": "X", "explanation": "해설 1"},
-            {"question": "문제 2", "answer": "O", "explanation": "해설 2"},
-            {"question": "문제 3", "answer": "X", "explanation": "해설 3"},
-            {"question": "문제 4", "answer": "O", "explanation": "해설 4"},
-            {"question": "문제 5", "answer": "X", "explanation": "해설 5"}
+            {"question": "문제 1", "answer": false, "explanation": "해설 1"},
+            {"question": "문제 2", "answer": true, "explanation": "해설 2"},
+            {"question": "문제 3", "answer": false, "explanation": "해설 3"},
+            {"question": "문제 4", "answer": true, "explanation": "해설 4"},
+            {"question": "문제 5", "answer": false, "explanation": "해설 5"}
           ]
         },
         {
           "chapter": 3,
           "chapter_name": "경찰예산관리",
           "questions": [
-            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
-            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
-            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
-            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
-            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+            {"question": "문제 1", "answer": true, "explanation": "해설 1"},
+            {"question": "문제 2", "answer": false, "explanation": "해설 2"},
+            {"question": "문제 3", "answer": true, "explanation": "해설 3"},
+            {"question": "문제 4", "answer": false, "explanation": "해설 4"},
+            {"question": "문제 5", "answer": true, "explanation": "해설 5"}
           ]
         }
       ]
@@ -149,22 +149,22 @@
           "chapter": 1,
           "chapter_name": "경찰통제",
           "questions": [
-            {"question": "문제 1", "answer": "O", "explanation": "해설 1"},
-            {"question": "문제 2", "answer": "X", "explanation": "해설 2"},
-            {"question": "문제 3", "answer": "O", "explanation": "해설 3"},
-            {"question": "문제 4", "answer": "X", "explanation": "해설 4"},
-            {"question": "문제 5", "answer": "O", "explanation": "해설 5"}
+            {"question": "문제 1", "answer": true, "explanation": "해설 1"},
+            {"question": "문제 2", "answer": false, "explanation": "해설 2"},
+            {"question": "문제 3", "answer": true, "explanation": "해설 3"},
+            {"question": "문제 4", "answer": false, "explanation": "해설 4"},
+            {"question": "문제 5", "answer": true, "explanation": "해설 5"}
           ]
         },
         {
           "chapter": 2,
           "chapter_name": "경찰홍보",
           "questions": [
-            {"question": "문제 1", "answer": "X", "explanation": "해설 1"},
-            {"question": "문제 2", "answer": "O", "explanation": "해설 2"},
-            {"question": "문제 3", "answer": "X", "explanation": "해설 3"},
-            {"question": "문제 4", "answer": "O", "explanation": "해설 4"},
-            {"question": "문제 5", "answer": "X", "explanation": "해설 5"}
+            {"question": "문제 1", "answer": false, "explanation": "해설 1"},
+            {"question": "문제 2", "answer": true, "explanation": "해설 2"},
+            {"question": "문제 3", "answer": false, "explanation": "해설 3"},
+            {"question": "문제 4", "answer": true, "explanation": "해설 4"},
+            {"question": "문제 5", "answer": false, "explanation": "해설 5"}
           ]
         }
       ]

@@ -26,7 +26,7 @@ struct Chapter: Codable {
 
 struct Question : Codable{
     let question: String
-    let answer: String
+    let answer: Bool
     var explanation: String
 }
 
@@ -46,7 +46,7 @@ class LoadQuestionModel {
         } else {
             print("JSON 파일을 찾을 수 없습니다.")
         }
-        return QuestionModel(quiz: [Quiz(part: 0, part_name: "0", chapters: [Chapter(chapter: 0, chapter_name: "0", questions: [Question(question: "0", answer: "0", explanation: "0")])])])
+        return QuestionModel(quiz: [Quiz(part: 0, part_name: "0", chapters: [Chapter(chapter: 0, chapter_name: "0", questions: [Question(question: "0", answer: false, explanation: "0")])])])
     }
 }
 

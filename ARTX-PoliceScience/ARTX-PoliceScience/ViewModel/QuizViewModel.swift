@@ -23,7 +23,7 @@ class QuizViewModel {
         return self.chapter.questions[index].question
     }
     
-    func answer(to index: Int) -> String {
+    func answer(to index: Int) -> Bool {
         return self.chapter.questions[index].answer
     }
     
