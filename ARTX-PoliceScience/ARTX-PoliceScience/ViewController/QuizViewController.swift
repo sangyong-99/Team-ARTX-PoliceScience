@@ -12,6 +12,8 @@ class QuizViewController: UIViewController {
     let partNumber: Int
     let partTitle: String
     
+    let nextQuiz: Notification.Name = Notification.Name("nextQuiz")
+    
     private var currentQuizNumber: Int = 0
     
     private let titleView = QuizTitleView()
@@ -20,11 +22,14 @@ class QuizViewController: UIViewController {
     private let oxbuttonView = OXbuttonView()
     private let viewmodel: QuizViewModel
     
+    private let quizModal = QuizModalViewController()
+    
     init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
         self.partNumber = partNumber
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
+        print(currentQuizNumber)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,13 +44,18 @@ class QuizViewController: UIViewController {
         navigationController?.configureNavigationBar(withTitle: "01 경찰학의 기초이론")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
-        
-        layout()
+        oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
+        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         update()
+        layout()
+        //update()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.nextQuiz(_:)), name: nextQuiz, object: nil)
     }
     
     private func layout() {
-       
+        
         view.addSubview(titleView.chapterStackView)
         view.addSubview(progressbarView.progressView)
         view.addSubview(progressbarView.progressNumberLabel)
@@ -115,9 +125,13 @@ class QuizViewController: UIViewController {
     }
     
     private func update() {
+        //title 관련 정보는 HomeView에서 넘어올때 받아오는걸로
+        //json파일에 quiznumber추가하면 업뎃 예정
+        titleView.chapterNumberLabel.text = String( viewmodel.chapterNumber(to: self.currentQuizNumber))
+        titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
+        quizView.quizNumberLabel.text = ("Quiz\(viewmodel.question(to: self.currentQuizNumber))")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber)
     }
-    
 }
 
 extension QuizViewController {
@@ -125,7 +139,44 @@ extension QuizViewController {
         
     }
     
-    @objc func nextQuizButtonTapped() {
-        self.currentQuizNumber += 1
+    @objc func nextQuestionButtonTapped() {
+        //self.currentQuizNumber += 1
+        //if else로 마지막 문제인지 아닌지 판단해야하는데 어케할지 고민
+        self.dismiss(animated: true) { [weak self] in
+            NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
+            //print(self?.currentQuizNumber)
+        }
+    }
+    
+    @objc func wrongButtonTapped() {
+        quizModal.modalPresentationStyle = .custom
+        quizModal.transitioningDelegate = self
+        present(quizModal, animated: true, completion: nil)
+    }
+    
+    @objc func correctButtonTapped() {
+        quizModal.modalPresentationStyle = .custom
+        quizModal.transitioningDelegate = self
+        present(quizModal, animated: true, completion: nil)
+    }
+    
+    @objc func nextQuiz(_ noti: Notification) {
+        //currentQuizNumber += 1
+        update()
+        quizView.quizNumberLabel.text = "Quiz\(currentQuizNumber + 1)"
+        OperationQueue.main.addOperation { // DispatchQueue도 가능.
+            [weak self] in
+            self?.currentQuizNumber += 1
+            print(self?.currentQuizNumber)
+            UserDefaults.standard.set(self?.currentQuizNumber, forKey: String(self!.partNumber)+String(self!.viewmodel.chapterNumber(to: self!.currentQuizNumber)))
+            //self?.update()
+        }
+    }
+    
+}
+
+extension QuizViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

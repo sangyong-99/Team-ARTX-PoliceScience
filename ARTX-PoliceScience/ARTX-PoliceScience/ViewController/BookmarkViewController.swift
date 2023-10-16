@@ -104,9 +104,9 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = QuizViewController()
+        //let viewController = QuizViewController()
         
         tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -15,9 +15,17 @@ class QuizViewModel {
         self.chapter = chapter
     }
     
+    func chapterNumber(to index: Int) -> Int {
+        return self.chapter.chapter
+    }
     func chapterTitle(to index: Int) -> String {
         return self.chapter.chapter_name
     }
+//    나중에 json파일 수정하면 고칠 예정
+//    func questionNumber(to index: Int) -> Int {
+//        return self.chapter.questions.indices
+//        return self.chapter.questions.
+//    }
     
     func question(to index: Int) -> String {
         return self.chapter.questions[index].question
