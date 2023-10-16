@@ -58,6 +58,7 @@ class HomeViewCell: UITableViewCell {
         
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -97,9 +98,9 @@ class HomeViewCell: UITableViewCell {
         questionProgressCountLabel.text = "\(currentChapterSolveNum) / \(chapter.questions.count)"
         // iconImageView Setting 하는 곳
         if currentChapterSolveNum == chapter.questions.count {
-            iconImageView.image = UIImage(named: "MainQuestionComplete")
+            iconImageView.image = .iconCompletionTrue
         } else {
-            iconImageView.image = UIImage(named: "MainQuestionDefault")
+            iconImageView.image = .iconCompletionFalse
         }
     }
     

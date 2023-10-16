@@ -138,6 +138,9 @@ extension QuizViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         navigationController?.isNavigationBarHidden = true
+
+        NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+
     }
     
     @objc func nextQuestionButtonTapped() {
@@ -164,8 +167,10 @@ extension QuizViewController {
     @objc func nextQuiz(_ noti: Notification) {
         currentQuizNumber += 1
         update()
-        var solving = PartChapter.partIntToString(partIndex: self.partNumber-1, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
-        UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
+        var solving = PartChapter.partIntToString(partIndex: partNumber, chapterIndex: viewmodel.chapterNumber(to: currentQuizNumber)-1)
+        print("currentQuizNumber = \(currentQuizNumber)")
+        print("solving = \(solving)")
+        UserDefaults.standard.set(currentQuizNumber, forKey: solving)
         print(self.currentQuizNumber, solving)
         for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
           print("\(key) = \(value) \n")

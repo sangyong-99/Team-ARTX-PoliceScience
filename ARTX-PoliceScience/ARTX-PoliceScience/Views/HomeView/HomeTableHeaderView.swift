@@ -13,7 +13,7 @@ class HomeTableHeaderView: UIView {
     
     private let bgImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(resource: .homeBG)
+        imageView.image = UIImage(resource: .mainViewTop)
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
