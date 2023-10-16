@@ -129,7 +129,7 @@ class QuizViewController: UIViewController {
         //json파일에 quiznumber추가하면 업뎃 예정
         titleView.chapterNumberLabel.text = String( viewmodel.chapterNumber(to: self.currentQuizNumber))
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
-        quizView.quizNumberLabel.text = ("Quiz\(viewmodel.question(to: self.currentQuizNumber))")
+        quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber)
     }
 }
@@ -161,16 +161,10 @@ extension QuizViewController {
     }
     
     @objc func nextQuiz(_ noti: Notification) {
-        //currentQuizNumber += 1
+        currentQuizNumber += 1
         update()
-        quizView.quizNumberLabel.text = "Quiz\(currentQuizNumber + 1)"
-        OperationQueue.main.addOperation { // DispatchQueue도 가능.
-            [weak self] in
-            self?.currentQuizNumber += 1
-            print(self?.currentQuizNumber)
-            UserDefaults.standard.set(self?.currentQuizNumber, forKey: String(self!.partNumber)+String(self!.viewmodel.chapterNumber(to: self!.currentQuizNumber)))
-            //self?.update()
-        }
+        quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber)")
+        UserDefaults.standard.set(self.currentQuizNumber, forKey: String(self.partNumber)+String(self.viewmodel.chapterNumber(to: self.currentQuizNumber)))
     }
     
 }
