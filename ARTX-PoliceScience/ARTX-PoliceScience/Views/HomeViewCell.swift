@@ -97,10 +97,10 @@ class HomeViewCell: UITableViewCell {
         let currentChapterSolveNum = UserDefaults.standard.integer(forKey: partChapter)
         questionProgressCountLabel.text = "\(currentChapterSolveNum) / \(chapter.questions.count)"
         // iconImageView Setting 하는 곳
-        if currentChapterSolveNum == chapter.questions.count {
-            iconImageView.image = UIImage(named: "MainQuestionComplete")
+        if currentChapterSolveNum == chapter.questions.count - 1 {
+            iconImageView.image = .iconCompletionTrue
         } else {
-            iconImageView.image = UIImage(named: "MainQuestionDefault")
+            iconImageView.image = .iconCompletionFalse
         }
     }
     

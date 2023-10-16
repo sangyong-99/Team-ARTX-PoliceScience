@@ -161,7 +161,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let progressImages: UIImageView = {
         let progressImage = UIImageView()
-        progressImage.image = UIImage(named: "HeaderImage1")
+        progressImage.image = .gradeBadge0
         progressImage.frame = CGRect(x: 0, y: 0, width: 22, height: 22) // 원하는 크기로 설정
         
         return progressImage
@@ -174,11 +174,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         isScrollEnabled = true
         navigationController?.isNavigationBarHidden = true
         navigationController?.homeViewconfigureNavigationBar()
-        
-        
-        
-        progress = 0.5
-        
         
     }
     
@@ -198,9 +193,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         header = tableHeaderView()
         homeTableView.tableHeaderView = header
         
-        var totalQuestionNum = Float(totalQuestionNumber)
-        var totalSolveQuestionNum = Float(PartChapter.totalCurrentSolveQuestionNum())
-        print(totalSolveQuestionNum/totalQuestionNum)
+        updateViewsForProgress(calculateProgress())
         
         NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeQuizToHomeview"), object: nil)
         
@@ -213,6 +206,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         progressFunction()
     }
     
+    func calculateProgress() -> Float{
+        var totalQuestionNum = Float(totalQuestionNumber)
+        var totalSolveQuestionNum = Float(PartChapter.totalCurrentSolveQuestionNum())
+        return (totalSolveQuestionNum/totalQuestionNum)
+    }
     
     func progressFunction() {
         observeProgress = observe(\.progress, options: [.new]) { [weak self] (object, change) in
@@ -231,6 +229,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func rerenderTableCell() {
         OperationQueue.main.addOperation { // DispatchQueue도 가능.
             self.homeTableView.reloadData()
+            
+            self.progress = self.calculateProgress()
+            
         }
     }
 }
@@ -440,7 +441,7 @@ extension HomeViewController {
             case 0:
                 navigationController?.pushViewController(quizViewController, animated: true)
                 navigationController?.isNavigationBarHidden = false
-            case totalQuizNumber:
+            case totalQuizNumber - 1:
                 HomeViewAlert.restartAlert(from: self, indexPath: indexPath)
             default:
                 HomeViewAlert.continueAlert(from: self, indexPath: indexPath, currentQuizNumber: currentQuizNumber)
