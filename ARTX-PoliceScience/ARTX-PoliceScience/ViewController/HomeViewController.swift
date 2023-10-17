@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var newLeadingConstraint: NSLayoutConstraint?
+    
     var observeProgress: NSKeyValueObservation?
     var observeProgressViewWidth: NSKeyValueObservation?
     
@@ -163,7 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let progressImages: UIImageView = {
         let progressImage = UIImageView()
-        progressImage.image = .gradeBadge0
+//        progressImage.image = .gradeBadge0
         progressImage.frame = CGRect(x: 0, y: 0, width: 22, height: 22) // 원하는 크기로 설정
         
         return progressImage
@@ -181,18 +183,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidAppear(_ animated: Bool) {
-//        print("ViewDidAppear 실행")
+        //        print("ViewDidAppear 실행")
         
-
+        super.viewDidAppear(animated)
+        
+        
+        
+        switch calculateProgress() {
+        case ..<0.333:
+            progressImages.image = .gradeBadge0
+        case ..<0.666:
+            progressImages.image = .gradeBadge1
+        default:
+            progressImages.image = .gradeBadge2
+        }
+        
         progressView.progress = calculateProgress()
-        var newLeadingConstant = (progressView.frame.size.width * CGFloat(progressView.progress)) - (progressImages.frame.size.width / 2)
-        var newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
-        newLeadingConstraint.isActive = true
+        let newLeadingConstant = (progressView.frame.size.width * CGFloat(progressView.progress)) - 11
+        print(progressImages.frame.size.width)
         
-        self.view.layoutIfNeeded()
+        // Deactivate the old constraint before creating a new one
+        newLeadingConstraint?.isActive = false
+        
+        newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
+        newLeadingConstraint?.isActive = true
+        
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
+        
         
         print(newLeadingConstant)
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -237,7 +261,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateViewsForProgress(_ newProgress: Float) {
         let progressValueText = "\(Int(newProgress * 100))"
         progressValueLabel.text = progressValueText
-//        progressView.progress = newProgress
+        //        progressView.progress = newProgress
         print(progressView.frame.size.width)
         
         
