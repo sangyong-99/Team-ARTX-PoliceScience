@@ -41,7 +41,7 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.systemGray5
-        navigationController?.configureNavigationBar(withTitle: "01 경찰학의 기초이론")
+        navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
@@ -203,7 +203,7 @@ extension QuizViewController {
             showToast(message: "토스트 실험")
             print(partNumber)
             print(viewmodel.chapterNumber(to: currentQuizNumber))
-            var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber))
+            var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
         }
 //        print(self.currentQuizNumber, solving)
