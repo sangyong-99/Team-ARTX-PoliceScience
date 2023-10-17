@@ -29,7 +29,7 @@ class QuizViewController: UIViewController {
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
-        print(currentQuizNumber)
+//        print(currentQuizNumber)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -163,11 +163,6 @@ extension QuizViewController {
         alret.addAction(cancel)
         alret.addAction(back)
         present(alret, animated: true, completion: nil)
-        //navigationController?.popViewController(animated: true)
-        //navigationController?.isNavigationBarHidden = true
-        
-        //NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-        
     }
     
     @objc func nextQuestionButtonTapped() {
@@ -192,19 +187,15 @@ extension QuizViewController {
     }
     
     @objc func nextQuiz(_ noti: Notification) {
-        print(globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count)
-        if currentQuizNumber + 1 == globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count {
-            navigationController?.pushViewController(HomeViewController(), animated: true)
-            print("gogogo")
-        } else {
-            currentQuizNumber += 1
-            print(currentQuizNumber)
-            update()
-            showToast(message: "토스트 실험")
-            print(partNumber)
-            print(viewmodel.chapterNumber(to: currentQuizNumber))
-            var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber))
-            UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
+        currentQuizNumber += 1
+        update()
+        var solving = PartChapter.partIntToString(partIndex: partNumber, chapterIndex: viewmodel.chapterNumber(to: currentQuizNumber)-1)
+        print("currentQuizNumber = \(currentQuizNumber)")
+        print("solving = \(solving)")
+        UserDefaults.standard.set(currentQuizNumber, forKey: solving)
+        print(self.currentQuizNumber, solving)
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+          print("\(key) = \(value) \n")
         }
 //        print(self.currentQuizNumber, solving)
 //                for (key, value) in UserDefaults.standard.dictionaryRepresentation() {

@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var newLeadingConstraint: NSLayoutConstraint?
+    
     var observeProgress: NSKeyValueObservation?
     var observeProgressViewWidth: NSKeyValueObservation?
     
@@ -147,8 +149,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
         if let image = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration) {
-                headerBookmarkButton.setImage(image, for: .normal)
-            }
+            headerBookmarkButton.setImage(image, for: .normal)
+        }
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]))
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
@@ -163,7 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let progressImages: UIImageView = {
         let progressImage = UIImageView()
-        progressImage.image = .gradeBadge0
+//        progressImage.image = .gradeBadge0
         progressImage.frame = CGRect(x: 0, y: 0, width: 22, height: 22) // 원하는 크기로 설정
         
         return progressImage
@@ -181,11 +183,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidAppear(_ animated: Bool) {
-        let newLeadingConstant = progressView.frame.size.width * CGFloat(progress)
-        let newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
+        //        print("ViewDidAppear 실행")
         
-        newLeadingConstraint.isActive = true
+        super.viewDidAppear(animated)
+        
+        
+        
+        switch calculateProgress() {
+        case ..<0.333:
+            progressImages.image = .gradeBadge0
+        case ..<0.666:
+            progressImages.image = .gradeBadge1
+        default:
+            progressImages.image = .gradeBadge2
+        }
+        
+        progressView.progress = calculateProgress()
+        let newLeadingConstant = (progressView.frame.size.width * CGFloat(progressView.progress)) - 11
+        print(progressImages.frame.size.width)
+        
+        // Deactivate the old constraint before creating a new one
+        newLeadingConstraint?.isActive = false
+        
+        newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
+        newLeadingConstraint?.isActive = true
+        
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
+        
+        
+        print(newLeadingConstant)
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,7 +225,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         header = tableHeaderView()
         homeTableView.tableHeaderView = header
-        
         updateViewsForProgress(calculateProgress())
         
         NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeQuizToHomeview"), object: nil)
@@ -205,7 +235,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         homeTableView.frame = view.bounds
         homeTableView.contentInsetAdjustmentBehavior = .never
         
+        
+        
+        
+        
         progressFunction()
+        
     }
     
     func calculateProgress() -> Float{
@@ -222,18 +257,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+    
     func updateViewsForProgress(_ newProgress: Float) {
         let progressValueText = "\(Int(newProgress * 100))"
         progressValueLabel.text = progressValueText
-        progressView.progress = newProgress
+        //        progressView.progress = newProgress
+        print(progressView.frame.size.width)
+        
+        
     }
     
     @objc func rerenderTableCell() {
         OperationQueue.main.addOperation { // DispatchQueue도 가능.
             self.homeTableView.reloadData()
-            
             self.progress = self.calculateProgress()
-            
         }
     }
 }
@@ -366,7 +403,7 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             progressImages.centerYAnchor.constraint(equalTo: progressView.centerYAnchor),
-            //            progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor)
+            //                        progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor)
         ])
         
         return header
@@ -428,7 +465,7 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.section), \(indexPath.row)")
+        //        print("\(indexPath.section), \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
         
         let partIndexString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
@@ -449,7 +486,7 @@ extension HomeViewController {
                 HomeViewAlert.continueAlert(from: self, indexPath: indexPath, currentQuizNumber: currentQuizNumber)
             }
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
