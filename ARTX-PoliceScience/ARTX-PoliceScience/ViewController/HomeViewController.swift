@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let titleLabel = UILabel()
         titleLabel.text = "조현 경찰학"
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+        titleLabel.font = UIFont(name: "GmarketSansTTFBold", size: 34)
         return titleLabel
     }()
     
@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let subTitleLabel = UILabel()
         subTitleLabel.text = "OX 문제집"
         subTitleLabel.textColor = .white
-        subTitleLabel.font = UIFont.systemFont(ofSize: 34, weight: .medium)
+        subTitleLabel.font = UIFont(name: "GmarketSansTTFMedium", size: 34)
         return subTitleLabel
     }()
     
@@ -187,8 +187,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidAppear(animated)
         
-        
-        
         switch calculateProgress() {
         case ..<0.333:
             progressImages.image = .gradeBadge0
@@ -219,6 +217,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidLoad() {
+        switch calculateProgress() {
+        case ..<0.333:
+            progressImages.image = .gradeBadge0
+        case ..<0.666:
+            progressImages.image = .gradeBadge1
+        default:
+            progressImages.image = .gradeBadge2
+        }
+        
         super.viewDidLoad()
         homeViewNavBar()
         navigationController?.isNavigationBarHidden = true
@@ -235,9 +242,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         homeTableView.frame = view.bounds
         homeTableView.contentInsetAdjustmentBehavior = .never
         
+        newLeadingConstraint?.isActive = false
         
-        
-        
+        newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: 0)
+        newLeadingConstraint?.isActive = true
         
         progressFunction()
         
@@ -459,7 +467,20 @@ extension HomeViewController {
         
         let partChaper = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
         
-        cell.configure(with: quizChapterModel, partChapter: partChaper)
+        if LocalState.isCodeActivated {
+            cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true)
+        } else {
+            if indexPath.section <= 1 {
+                cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true)
+            } else {
+                cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: false)
+            }
+        }
+        
+        if indexPath.section <= 1 {
+            
+            
+        }
         
         return cell
     }

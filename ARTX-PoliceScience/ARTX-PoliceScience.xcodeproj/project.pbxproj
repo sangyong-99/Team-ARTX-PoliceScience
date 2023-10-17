@@ -24,6 +24,9 @@
 		5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451922AB42F34004A3047 /* Assets.xcassets */; };
 		5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */; };
 		5E5477772ADD3AC30085638F /* PartChapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5477762ADD3AC30085638F /* PartChapter.swift */; };
+		5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF0882ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf */; };
+		5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF0892ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf */; };
+		5E5CF08D2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF08A2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf */; };
 		5E86FBC92ACD07AE00B01779 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBC82ACD07AE00B01779 /* FirebaseAnalytics */; };
 		5E86FBCB2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCA2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion */; };
 		5E86FBCD2ACD07AE00B01779 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCC2ACD07AE00B01779 /* FirebaseAnalyticsSwift */; };
@@ -112,6 +115,9 @@
 		5E3451952AB42F34004A3047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E3451972AB42F34004A3047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E5477762ADD3AC30085638F /* PartChapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartChapter.swift; sourceTree = "<group>"; };
+		5E5CF0882ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
+		5E5CF0892ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
+		5E5CF08A2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
 		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +291,7 @@
 		5E44DC9C2ACD002D00DAC94A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5E5CF0872ADEBCA500EAD4D7 /* Font */,
 				B4E773112ADD37FD007B3AF3 /* example.json */,
 				5E86FC142ACD0D4A00B01779 /* Resources.swift */,
 				4AA0924D2AD2963F006DB2BB /* Books.swift */,
@@ -306,6 +313,16 @@
 				0E4A90032ADAAB5600BBC335 /* HalfModalPresentationController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5E5CF0872ADEBCA500EAD4D7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5E5CF0892ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf */,
+				5E5CF08A2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf */,
+				5E5CF0882ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		5EA61BE62AD06A6800F6D771 /* Firestore */ = {
@@ -450,9 +467,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E773122ADD37FD007B3AF3 /* example.json in Resources */,
+				5E5CF08D2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf in Resources */,
 				B4E773102ADD33CD007B3AF3 /* GoogleService-Info.plist in Resources */,
 				5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */,
 				5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */,
+				5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */,
+				5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
