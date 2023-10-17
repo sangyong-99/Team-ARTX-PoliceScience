@@ -7,12 +7,12 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, UISheetPresentationControllerDelegate {
     
     let partNumber: Int
     let partTitle: String
-    
     let nextQuiz: Notification.Name = Notification.Name("nextQuiz")
+    let indexPath: IndexPath
     
     private var currentQuizNumber: Int = 0
     
@@ -21,13 +21,13 @@ class QuizViewController: UIViewController {
     private let quizView = QuizView()
     private let oxbuttonView = OXbuttonView()
     private let viewmodel: QuizViewModel
-    private let quizModal = QuizModalViewController()
-    
-    init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
+
+    init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int, indexPath: IndexPath) {
         self.partNumber = partNumber
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
+        self.indexPath = indexPath
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,10 +44,10 @@ class QuizViewController: UIViewController {
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
-        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
+
         update()
         layout()
-        
+ 
         NotificationCenter.default.addObserver(self, selector: #selector(self.nextQuiz(_:)), name: nextQuiz, object: nil)
     }
     
@@ -67,6 +67,7 @@ class QuizViewController: UIViewController {
         titleView.chapterStackView.addArrangedSubview(titleView.chapterNumberLabel)
         titleView.chapterStackView.addArrangedSubview(titleView.chapterTitleLabel)
         
+
         oxbuttonView.buttonStackView.addArrangedSubview(oxbuttonView.correctButton)
         oxbuttonView.buttonStackView.addArrangedSubview(oxbuttonView.wrongButton)
         
@@ -170,22 +171,64 @@ extension QuizViewController {
         alert.show()
     }
     
-    @objc func nextQuestionButtonTapped() {
-        self.dismiss(animated: true) { [weak self] in
-            NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
-        }
-    }
-    
     @objc func wrongButtonTapped() {
-        quizModal.modalPresentationStyle = .custom
+        let quizModal = QuizModalViewController(question: globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions[currentQuizNumber], selectedAnswer: false)
+        NotificationCenter.default.post(name: Notification.Name("changeViewCorrect"), object: nil)
+        quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
+        
+        if let sheet = quizModal.sheetPresentationController {
+            let height = view.frame.height
+            let multiplier = 0.42
+            if #available(iOS 16.0, *) {
+                let fraction = UISheetPresentationController.Detent.custom { context in
+                    height * multiplier
+                }
+                sheet.detents = [fraction]
+            } else {
+                sheet.detents = [.medium()]
+            }
+           
+            sheet.delegate = self
+            sheet.prefersGrabberVisible = true
+        }
+        quizModal.sheetPresentationController?.prefersGrabberVisible = false
+        quizModal.sheetPresentationController?.prefersScrollingExpandsWhenScrolledToEdge = true
         present(quizModal, animated: true, completion: nil)
+//        self.currentQuizNumber += 1
     }
     
     @objc func correctButtonTapped() {
-        quizModal.modalPresentationStyle = .custom
+        let quizModal = QuizModalViewController(question: globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions[currentQuizNumber], selectedAnswer: true)
+        NotificationCenter.default.post(name: Notification.Name("changeViewCorrect"), object: nil)
         quizModal.transitioningDelegate = self
+        quizModal.modalPresentationStyle = .pageSheet
+        
+        if let sheet = quizModal.sheetPresentationController {
+            let height = view.frame.height
+            let multiplier = 0.42
+            if #available(iOS 16.0, *) {
+                let fraction = UISheetPresentationController.Detent.custom { context in
+                    height * multiplier }
+                sheet.detents = [fraction]
+            } else {
+                sheet.detents = [.medium()]
+            }
+            
+            sheet.delegate = self
+            sheet.prefersGrabberVisible = true
+        }
+        quizModal.sheetPresentationController?.prefersGrabberVisible = false
+        quizModal.sheetPresentationController?.prefersScrollingExpandsWhenScrolledToEdge = true
         present(quizModal, animated: true, completion: nil)
+//        self.currentQuizNumber += 1
+    }
+    
+    @objc func nextQuestionButtonTapped() {
+        print("클릭")
+        self.dismiss(animated: true) { [weak self] in
+            NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
+        }
     }
     
     @objc func nextQuiz(_ noti: Notification) {

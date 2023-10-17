@@ -9,10 +9,41 @@ import UIKit
 
 class QuizModalViewController: UIViewController {
     
+    let question: Question
+    let selectedAnswer: Bool
     let quizModalView = QuizModalView()
+    
+    init(question: Question, selectedAnswer: Bool) {
+        
+        self.question = question
+        self.selectedAnswer = selectedAnswer
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        view.backgroundColor = .white
+        
+        if question.answer == selectedAnswer {
+            quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textBlue)
+            quizModalView.bookMarkButton.tintColor = UIColor(resource: .pointBlue)
+            quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
+            quizModalView.correctNotificationLabel.text = "맞았습니다."
+            quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
+            quizModalView.explanationLabel.text = question.explanation
+        } else {
+            quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
+            quizModalView.bookMarkButton.tintColor = UIColor(resource: .pointRed)
+            quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
+            quizModalView.correctNotificationLabel.text = "틀렸습니다."
+            quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
+            quizModalView.explanationLabel.text = question.explanation
+        }
     }
     
     func layout() {
@@ -50,10 +81,11 @@ class QuizModalViewController: UIViewController {
             
             quizModalView.nextQuestionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             quizModalView.nextQuestionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            quizModalView.nextQuestionButton.topAnchor.constraint(equalTo: quizModalView.explanationLabel.bottomAnchor, constant: 31),
+            quizModalView.nextQuestionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -42),
             quizModalView.nextQuestionButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
+    
 }
 

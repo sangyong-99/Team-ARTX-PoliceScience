@@ -9,6 +9,8 @@ import UIKit
 
 final class BookmarkViewController: UIViewController {
     
+    var indexPath = IndexPath(row: 0, section: 0)
+    
     private var bookmarkTableView = UITableView(frame: .zero, style: .insetGrouped)
     private var bookmarkViewModel = BookmarkViewModel()
     private var safeAreaLength = 0
@@ -135,7 +137,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         let partTitle = bookmarkViewModel.partTitle()
         let chapter = bookmarkViewModel.chapter()
         
-        let viewController = QuizViewController(partNumber: partNumber, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0)
+        let viewController = QuizViewController(partNumber: partNumber, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0, indexPath: indexPath)
         
         tableView.deselectRow(at: indexPath, animated: true)
 //        self.navigationController?.pushViewController(viewController, animated: true)

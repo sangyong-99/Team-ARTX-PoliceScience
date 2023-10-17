@@ -471,7 +471,7 @@ extension HomeViewController {
         let partIndexString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
         let currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
         let totalQuizNumber = globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions.count
-        let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
+        let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber, indexPath: indexPath)
         
         if indexPath.section > 1 && !LocalState.isCodeActivated {
             HomeViewAlert.needActivateAlert(from: self)
