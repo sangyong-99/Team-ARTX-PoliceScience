@@ -44,6 +44,8 @@ class QuizModalViewController: UIViewController {
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.text = question.explanation
         }
+        
+        quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
     }
     
     func layout() {
@@ -87,5 +89,8 @@ class QuizModalViewController: UIViewController {
         ])
     }
     
+    @objc func nextQuestionButtonTapped() {
+        self.dismiss(animated: true)
+    }
 }
 
