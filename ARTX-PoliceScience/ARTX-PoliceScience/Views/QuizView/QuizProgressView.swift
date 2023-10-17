@@ -17,7 +17,7 @@ class QuizProgressView: UIView {
         view.progressTintColor = UIColor(resource: .barPoint)
         view.transform = CGAffineTransformScale(view.transform, 1, 0.2)
         view.progress = 0.0
-        view.setProgress(0.3, animated: true)
+        view.setProgress(0.0, animated: true)
         return view
     }()
 
