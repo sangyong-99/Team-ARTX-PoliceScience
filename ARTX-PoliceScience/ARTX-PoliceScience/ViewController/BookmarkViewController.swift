@@ -127,6 +127,10 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if bookmarkViewModel.chapterCount() == 0 {
+            return
+        }
+        
         let partNumber = bookmarkViewModel.partNumber()
         let partTitle = bookmarkViewModel.partTitle()
         let chapter = bookmarkViewModel.chapter()
