@@ -49,6 +49,7 @@ class QuizViewController: UIViewController {
         layout()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.nextQuiz(_:)), name: nextQuiz, object: nil)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     private func layout() {
@@ -164,6 +165,7 @@ extension QuizViewController {
         alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
             self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
             NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
         })
         
