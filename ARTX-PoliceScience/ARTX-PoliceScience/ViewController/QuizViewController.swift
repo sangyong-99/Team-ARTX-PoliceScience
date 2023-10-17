@@ -122,6 +122,7 @@ class QuizViewController: UIViewController {
     }
     
     private func update() {
+        print("여기는\(currentQuizNumber)")
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
         let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
         var progressbar = progressFraction
@@ -188,8 +189,6 @@ extension QuizViewController {
     
     @objc func nextQuiz(_ noti: Notification) {
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
-//        let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
-//        var progressbar = progressFraction
         if currentQuizNumber + 1 == totalQuestions {
             navigationController?.pushViewController(HomeViewController(), animated: true)
         } else {
@@ -198,10 +197,6 @@ extension QuizViewController {
             showToast(message: "토스트 실험")
             var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
-//            UIView.animate(withDuration: 1) {
-//                let updatedProgressFraction = Float(self.currentQuizNumber+1) / Float(totalQuestions)
-//                self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
-//            }
         }
     }
 }
