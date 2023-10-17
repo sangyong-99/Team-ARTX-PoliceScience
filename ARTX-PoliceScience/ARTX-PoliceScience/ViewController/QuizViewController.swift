@@ -29,7 +29,7 @@ class QuizViewController: UIViewController {
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
-        print(currentQuizNumber)
+//        print(currentQuizNumber)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -140,7 +140,6 @@ extension QuizViewController {
         navigationController?.isNavigationBarHidden = true
 
         NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-
     }
     
     @objc func nextQuestionButtonTapped() {
@@ -168,12 +167,12 @@ extension QuizViewController {
         currentQuizNumber += 1
         update()
         var solving = PartChapter.partIntToString(partIndex: partNumber, chapterIndex: viewmodel.chapterNumber(to: currentQuizNumber)-1)
-        print("currentQuizNumber = \(currentQuizNumber)")
-        print("solving = \(solving)")
+//        print("currentQuizNumber = \(currentQuizNumber)")
+//        print("solving = \(solving)")
         UserDefaults.standard.set(currentQuizNumber, forKey: solving)
-        print(self.currentQuizNumber, solving)
+//        print(self.currentQuizNumber, solving)
         for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-          print("\(key) = \(value) \n")
+//          print("\(key) = \(value) \n")
         }
         //print(self.currentQuizNumber)
         //print(solving)
