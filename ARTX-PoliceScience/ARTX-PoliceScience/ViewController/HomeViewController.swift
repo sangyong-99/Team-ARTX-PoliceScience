@@ -187,14 +187,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidAppear(animated)
         
-        switch calculateProgress() {
-        case ..<0.333:
-            progressImages.image = .gradeBadge0
-        case ..<0.666:
-            progressImages.image = .gradeBadge1
-        default:
-            progressImages.image = .gradeBadge2
-        }
+        progressImages.image = HomeViewModel.selectProgressImages(progress: calculateProgress())
         
         progressView.progress = calculateProgress()
         let newLeadingConstant = (progressView.frame.size.width * CGFloat(progressView.progress)) - 11
@@ -217,14 +210,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidLoad() {
-        switch calculateProgress() {
-        case ..<0.333:
-            progressImages.image = .gradeBadge0
-        case ..<0.666:
-            progressImages.image = .gradeBadge1
-        default:
-            progressImages.image = .gradeBadge2
-        }
+        progressImages.image = HomeViewModel.selectProgressImages(progress: calculateProgress())
         
         super.viewDidLoad()
         homeViewNavBar()
