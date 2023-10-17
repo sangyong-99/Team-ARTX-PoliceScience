@@ -21,7 +21,6 @@ class QuizViewController: UIViewController {
     private let quizView = QuizView()
     private let oxbuttonView = OXbuttonView()
     private let viewmodel: QuizViewModel
-    
     private let quizModal = QuizModalViewController()
     
     init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
@@ -29,7 +28,6 @@ class QuizViewController: UIViewController {
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
-//        print(currentQuizNumber)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,7 +47,6 @@ class QuizViewController: UIViewController {
         quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         update()
         layout()
-        //update()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.nextQuiz(_:)), name: nextQuiz, object: nil)
     }
@@ -125,13 +122,20 @@ class QuizViewController: UIViewController {
     }
     
     private func update() {
-        //title 관련 정보는 HomeView에서 넘어올때 받아오는걸로
-        //json파일에 quiznumber추가하면 업뎃 예정
-        titleView.chapterNumberLabel.text = String( viewmodel.chapterNumber(to: self.currentQuizNumber))
+        print("여기는\(currentQuizNumber)")
+        let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
+        let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
+        var progressbar = progressFraction
+        UIView.animate(withDuration: 1) {
+            let updatedProgressFraction = Float(self.currentQuizNumber) / Float(totalQuestions)
+            self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
+        }
+        titleView.chapterNumberLabel.text = "CHAPTER 0" + String( viewmodel.chapterNumber(to: self.currentQuizNumber))
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber)
     }
+    
     private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
@@ -149,47 +153,26 @@ class QuizViewController: UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
-//    func calculateProgress() -> Float{
-//        var totalQuestionNum = Float(totalQuestionNumber)
-//        var totalSolveQuestionNum = Float(PartChapter.totalCurrentSolveQuestionNum())
-//        return (totalSolveQuestionNum/totalQuestionNum)
-//    }
-//    
-//    func progressFunction() {
-//        observeProgress = observe(\.progress, options: [.new]) { [weak self] (object, change) in
-//            if let newValue = change.newValue {
-//                self?.updateViewsForProgress(newValue)
-//                self!.view.layoutIfNeeded()
-//            }
-//        }
-//    }
-//    func updateViewsForProgress(_ newProgress: Float) {
-//        let progressValueText = "\(Int(newProgress * 100))"
-//        progressValueLabel.text = progressValueText
-//        progressView.progress = newProgress
-//    }
 }
 
 extension QuizViewController {
     @objc func backButtonTapped() {
-        let alret = UIAlertController(title: "아직 학습이 남아있습니다", message: "현재 진행 상태를 저장하고 리스트 화면으로 돌아가시겠습니까?", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .default, handler: nil)
-        let back = UIAlertAction(title: "돌아가기", style: .destructive, handler: {_ in self.navigationController?.popViewController(animated: true)
+        let text = QuizBackAlertText.self
+        
+        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
+        alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
-            
             NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
         })
-        alret.addAction(cancel)
-        alret.addAction(back)
-        present(alret, animated: true, completion: nil)
+        
+        alert.show()
     }
     
     @objc func nextQuestionButtonTapped() {
-        //self.currentQuizNumber += 1
-        //if else로 마지막 문제인지 아닌지 판단해야하는데 어케할지 고민
         self.dismiss(animated: true) { [weak self] in
             NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
-            //print(self?.currentQuizNumber)
         }
     }
     
@@ -206,38 +189,17 @@ extension QuizViewController {
     }
     
     @objc func nextQuiz(_ noti: Notification) {
-        //print(globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count)
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
-        let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
-        var progressbar = progressFraction
-        
         if currentQuizNumber + 1 == totalQuestions {
             navigationController?.pushViewController(HomeViewController(), animated: true)
-            print("gogogo")
         } else {
             currentQuizNumber += 1
-            print(currentQuizNumber)
             update()
             showToast(message: "토스트 실험")
-            print(partNumber)
-            print(viewmodel.chapterNumber(to: currentQuizNumber))
             var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
-            print("a\(Float(progressbar))")
-            
-            UIView.animate(withDuration: 1) {
-                let updatedProgressFraction = Float(self.currentQuizNumber+1) / Float(totalQuestions)
-                self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
-            }
-            
-            //        print(self.currentQuizNumber, solving)
-            //                for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-            //                  print("\(key) = \(value) \n")
-            //            }
-
         }
     }
-    
 }
 
 extension QuizViewController: UIViewControllerTransitioningDelegate {
