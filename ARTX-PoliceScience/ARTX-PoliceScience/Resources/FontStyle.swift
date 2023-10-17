@@ -65,4 +65,7 @@ extension UIFont {
     static let caption2Bold = UIFont.systemFont(ofSize: FontSize.caption2, weight: .bold)
     
     static let partText = UIFont.systemFont(ofSize: FontSize.partText, weight: .heavy)
+    
+    static let gmarketBold = UIFont(name: "GmarketSansTTFBold", size: 34)
+    static let gmarketMedium = UIFont(name: "GmarketSansTTFMedium", size: 34)
 }

@@ -47,7 +47,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let titleLabel = UILabel()
         titleLabel.text = "조현 경찰학"
         titleLabel.textColor = .white
-        titleLabel.font = UIFont(name: "GmarketSansTTFBold", size: 34)
+        titleLabel.font = .gmarketBold
         return titleLabel
     }()
     
@@ -55,7 +55,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let subTitleLabel = UILabel()
         subTitleLabel.text = "OX 문제집"
         subTitleLabel.textColor = .white
-        subTitleLabel.font = UIFont(name: "GmarketSansTTFMedium", size: 34)
+        subTitleLabel.font = .gmarketMedium
         return subTitleLabel
     }()
     
