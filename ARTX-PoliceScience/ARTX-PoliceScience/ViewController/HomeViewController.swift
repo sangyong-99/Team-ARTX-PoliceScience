@@ -244,7 +244,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         newLeadingConstraint?.isActive = false
         
-        newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: 0)
+        newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: -11)
         newLeadingConstraint?.isActive = true
         
         progressFunction()
