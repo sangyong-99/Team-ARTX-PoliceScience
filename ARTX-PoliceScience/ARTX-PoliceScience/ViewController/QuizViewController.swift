@@ -132,14 +132,37 @@ class QuizViewController: UIViewController {
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber)
     }
+    private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
 }
 
 extension QuizViewController {
     @objc func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-        navigationController?.isNavigationBarHidden = true
-
-        NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+        let alret = UIAlertController(title: "아직 학습이 남아있습니다", message: "현재 진행 상태를 저장하고 리스트 화면으로 돌아가시겠습니까?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .default, handler: nil)
+        let back = UIAlertAction(title: "돌아가기", style: .destructive, handler: {_ in self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+            
+            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+        })
+        alret.addAction(cancel)
+        alret.addAction(back)
+        present(alret, animated: true, completion: nil)
     }
     
     @objc func nextQuestionButtonTapped() {
@@ -167,15 +190,17 @@ extension QuizViewController {
         currentQuizNumber += 1
         update()
         var solving = PartChapter.partIntToString(partIndex: partNumber, chapterIndex: viewmodel.chapterNumber(to: currentQuizNumber)-1)
-//        print("currentQuizNumber = \(currentQuizNumber)")
-//        print("solving = \(solving)")
+        print("currentQuizNumber = \(currentQuizNumber)")
+        print("solving = \(solving)")
         UserDefaults.standard.set(currentQuizNumber, forKey: solving)
-//        print(self.currentQuizNumber, solving)
+        print(self.currentQuizNumber, solving)
         for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
-//          print("\(key) = \(value) \n")
+          print("\(key) = \(value) \n")
         }
-        //print(self.currentQuizNumber)
-        //print(solving)
+//        print(self.currentQuizNumber, solving)
+//                for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+//                  print("\(key) = \(value) \n")
+//            }
     }
     
 }
