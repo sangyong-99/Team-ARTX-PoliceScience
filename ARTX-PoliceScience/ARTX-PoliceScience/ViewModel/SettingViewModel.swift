@@ -55,7 +55,9 @@ class SettingViewModel {
         ]))
         
         // MARK: - app reset alert 연결
-        models.append(SettingTableSection(title: "AppReset", options: [.staticCell(model: SettingsOption(title: "학습 기록 초기화", icon: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { tableView, indexPath in SettingViewAlert.appResetAlert()
+        models.append(SettingTableSection(title: "AppReset", options: [.staticCell(model: SettingsOption(title: "학습 기록 초기화", icon: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { tableView, indexPath in
+            SettingViewAlert.appResetAlert()
+            
         }))
             
         ]))

@@ -151,6 +151,7 @@ extension SettingViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         navigationController?.isNavigationBarHidden = true
+        NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
     }
 }
 

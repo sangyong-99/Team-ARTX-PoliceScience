@@ -25,7 +25,6 @@ class PartChapter {
             for (chapterIndex, _) in part.chapters.enumerated() {
                 
                 let partIndexString = partIntToString(partIndex: partIndex, chapterIndex: chapterIndex)
-                print(partIndexString)
                 totalNumber += UserDefaults.standard.integer(forKey: partIndexString)
                 
                 

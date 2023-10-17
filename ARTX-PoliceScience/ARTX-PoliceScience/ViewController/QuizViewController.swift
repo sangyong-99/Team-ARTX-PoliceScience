@@ -29,7 +29,7 @@ class QuizViewController: UIViewController {
         self.partTitle = partTitle
         self.viewmodel = QuizViewModel(chapter: chapter)
         self.currentQuizNumber = currentQuizNumber
-        print(currentQuizNumber)
+//        print(currentQuizNumber)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -182,11 +182,6 @@ extension QuizViewController {
         alret.addAction(cancel)
         alret.addAction(back)
         present(alret, animated: true, completion: nil)
-        //navigationController?.popViewController(animated: true)
-        //navigationController?.isNavigationBarHidden = true
-        
-        //NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-        
     }
     
     @objc func nextQuestionButtonTapped() {
@@ -239,6 +234,7 @@ extension QuizViewController {
             //                for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
             //                  print("\(key) = \(value) \n")
             //            }
+
         }
     }
     
