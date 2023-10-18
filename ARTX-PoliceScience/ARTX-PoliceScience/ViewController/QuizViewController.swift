@@ -49,8 +49,12 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
         
-        oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonOutsideTapped), for: .touchUpOutside)
-        oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonOutsideTapped), for: .touchUpOutside)
+        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpOutside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpOutside)
+        
+        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
+        
         update()
         layout()
         
@@ -258,23 +262,22 @@ extension QuizViewController {
         present(quizModal, animated: true, completion: nil)
     }
     
-    @objc func wrongButtonOutsideTapped() {
-        oxbuttonView.wrongButton.backgroundColor = .pointGray
-        
-        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
-        oxbuttonView.wrongButton.layer.shadowOpacity = 1
-        oxbuttonView.wrongButton.layer.shadowRadius = 4
-        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        
-    }
     
-    @objc func correctButtonOutsideTapped() {
+    
+    @objc func OutsideTapped() {
         oxbuttonView.correctButton.backgroundColor = .pointGray
         
         oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
         oxbuttonView.correctButton.layer.shadowOpacity = 1
         oxbuttonView.correctButton.layer.shadowRadius = 4
         oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+        oxbuttonView.wrongButton.backgroundColor = .pointGray
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     @objc func wrongButtonDownTapped() {
