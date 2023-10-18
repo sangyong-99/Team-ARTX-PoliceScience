@@ -60,6 +60,7 @@ class QuizView: UIView {
         label.numberOfLines = 0
         label.preferredMaxLayoutWidth = UIScreen.main.bounds.width / 2 - 15
         label.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        
         return label
     }()
 }

@@ -328,8 +328,8 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -22),
-            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
-            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
+            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
             studyProgressView.heightAnchor.constraint(equalToConstant: 148)
         ])
         
@@ -372,7 +372,7 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             progressView.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 16),
-            progressView.trailingAnchor.constraint(equalTo: progressValueLabel.leadingAnchor, constant: -22),
+            progressView.trailingAnchor.constraint(equalTo: studyProgressView.trailingAnchor, constant: -92),
             progressView.centerYAnchor.constraint(equalTo: progressViewLabel.centerYAnchor),
             progressView.heightAnchor.constraint(equalToConstant: 12),
         ])
