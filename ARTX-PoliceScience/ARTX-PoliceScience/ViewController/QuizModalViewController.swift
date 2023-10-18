@@ -9,14 +9,15 @@ import UIKit
 
 class QuizModalViewController: UIViewController {
     
+    let quizId: String
     let question: Question
     let selectedAnswer: Bool
     let quizModalView = QuizModalView()
     var quizeNumberPlusClosure: (() -> Void)?
 //    weak var delegate: DeliveryDataProtocol?
     
-    init(question: Question, selectedAnswer: Bool) {
-        
+    init(quizId: String, question: Question, selectedAnswer: Bool) {
+        self.quizId = quizId
         self.question = question
         self.selectedAnswer = selectedAnswer
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +31,18 @@ class QuizModalViewController: UIViewController {
         super.viewDidLoad()
         layout()
         view.backgroundColor = .white
+        
+        quizModalView.addBookmark = { isSelected in
+            var currentBookmarkList = LocalState.bookmarkList
+            
+            if isSelected {
+                currentBookmarkList.append(self.quizId)
+            } else {
+                guard let bookmarkIndex = currentBookmarkList.firstIndex(of: self.quizId) else { return }
+                currentBookmarkList.remove(at: bookmarkIndex)
+            }
+            LocalState.bookmarkList = currentBookmarkList
+        }
         
         if question.answer == selectedAnswer {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textBlue)
