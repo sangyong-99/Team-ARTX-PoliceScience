@@ -49,6 +49,10 @@ class QuizModalView: UIView {
         textview.translatesAutoresizingMaskIntoConstraints = false
         textview.text = "감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다."
         textview.textColor = UIColor(resource: .primaryBlack)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 5
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10, weight: .medium)]
+        textview.typingAttributes = attributes
         textview.isEditable = false
         textview.textContainer.lineFragmentPadding = 0
         textview.showsVerticalScrollIndicator = false

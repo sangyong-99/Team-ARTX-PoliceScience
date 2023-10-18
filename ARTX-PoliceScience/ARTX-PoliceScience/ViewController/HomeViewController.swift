@@ -527,6 +527,7 @@ extension HomeViewController {
             stackView.spacing = 8
             stackView.addArrangedSubview(partLabel)
             stackView.addArrangedSubview(partNameLabel)
+            stackView.distribution = .fillProportionally
             return stackView
         }()
         

@@ -28,6 +28,7 @@
 		5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF0882ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf */; };
 		5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF0892ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf */; };
 		5E5CF08D2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E5CF08A2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf */; };
+		5E809DDF2ADFEC2C00C62B89 /* UITextView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E809DDE2ADFEC2C00C62B89 /* UITextView+Utils.swift */; };
 		5E86FBC92ACD07AE00B01779 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBC82ACD07AE00B01779 /* FirebaseAnalytics */; };
 		5E86FBCB2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCA2ACD07AE00B01779 /* FirebaseAnalyticsOnDeviceConversion */; };
 		5E86FBCD2ACD07AE00B01779 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5E86FBCC2ACD07AE00B01779 /* FirebaseAnalyticsSwift */; };
@@ -119,6 +120,7 @@
 		5E5CF0882ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
 		5E5CF0892ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		5E5CF08A2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		5E809DDE2ADFEC2C00C62B89 /* UITextView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Utils.swift"; sourceTree = "<group>"; };
 		5E86FC062ACD0A9900B01779 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5E86FC082ACD0AC800B01779 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5E86FC0A2ACD0ADF00B01779 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */,
 				B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */,
+				5E809DDE2ADFEC2C00C62B89 /* UITextView+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */,
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
+				5E809DDF2ADFEC2C00C62B89 /* UITextView+Utils.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */,
 				FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */,
