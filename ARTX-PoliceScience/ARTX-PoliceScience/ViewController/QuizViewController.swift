@@ -43,6 +43,22 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
+        quizView.addBookmark = { isSelected in
+            var currentBookmarkList = LocalState.bookmarkList
+            
+            let quizId = String(format: "%02d", self.partNumber+1)
+            + String(format: "%02d", self.viewmodel.chapterNumber(to: 0))
+            + String(format: "%03d", self.currentQuizNumber+1)
+            
+            if isSelected {
+                currentBookmarkList.append(quizId)
+            } else {
+                guard let bookmarkIndex = currentBookmarkList.firstIndex(of: quizId) else { return }
+                currentBookmarkList.remove(at: bookmarkIndex)
+            }
+            LocalState.bookmarkList = currentBookmarkList
+        }
+        
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
         
@@ -146,6 +162,21 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber).question
+        
+        let quizId = String(format: "%02d", self.partNumber+1)
+        + String(format: "%02d", self.viewmodel.chapterNumber(to: 0))
+        + String(format: "%03d", self.currentQuizNumber+1)
+        
+        if LocalState.bookmarkList.contains(quizId) {
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.isSelected = true
+        } else {
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.isSelected = false
+        }
+        
+        
+        
         progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
     }
     
