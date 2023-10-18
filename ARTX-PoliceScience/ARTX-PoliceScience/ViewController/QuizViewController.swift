@@ -45,6 +45,12 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
+        
+        oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
+        
+        oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonOutsideTapped), for: .touchUpOutside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonOutsideTapped), for: .touchUpOutside)
         update()
         layout()
         
@@ -79,6 +85,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
             progressbarView.progressView.topAnchor.constraint(equalTo: titleView.chapterStackView.bottomAnchor, constant: 24),
             progressbarView.progressView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             progressbarView.progressView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -104),
+            progressbarView.progressView.heightAnchor.constraint(equalToConstant: 8),
             
             progressbarView.progressNumberLabel.centerYAnchor.constraint(equalTo: progressbarView.progressView.centerYAnchor),
             progressbarView.progressNumberLabel.leadingAnchor.constraint(equalTo: progressbarView.progressView.trailingAnchor, constant: 10),
@@ -101,11 +108,11 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
             quizView.quizNumberLabel.topAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.topAnchor, constant: 9),
             quizView.quizNumberLabel.bottomAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.bottomAnchor, constant: -9),
             quizView.quizNumberLabel.leadingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.leadingAnchor, constant: 10),
-            quizView.quizNumberLabel.trailingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.trailingAnchor, constant: -247),
+            //quizView.quizNumberLabel.trailingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.trailingAnchor, constant: -247),
             
             
             quizView.bookMarkButton.centerYAnchor.constraint(equalTo: quizView.quizNumberLabel.centerYAnchor),
-            quizView.bookMarkButton.leadingAnchor.constraint(equalTo: quizView.quizNumberLabel.trailingAnchor, constant: 217.5),
+            //quizView.bookMarkButton.leadingAnchor.constraint(equalTo: quizView.quizNumberLabel.trailingAnchor, constant: 217.5),
             quizView.bookMarkButton.trailingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.trailingAnchor, constant: -10.5),
             
             quizView.quizLabel.leadingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.leadingAnchor, constant: 8),
@@ -135,6 +142,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber).question
+        progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
     }
     
     private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
@@ -179,6 +187,19 @@ extension QuizViewController {
         self.dismiss(animated: true) { [weak self] in
             NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
         }
+        oxbuttonView.wrongButton.backgroundColor = .pointGray
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+        oxbuttonView.correctButton.backgroundColor = .pointGray
+        
+        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.correctButton.layer.shadowOpacity = 1
+        oxbuttonView.correctButton.layer.shadowRadius = 4
+        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     @objc func wrongButtonTapped() {
@@ -197,6 +218,43 @@ extension QuizViewController {
         quizModal.modalPresentationStyle = .custom
         quizModal.transitioningDelegate = self
         present(quizModal, animated: true, completion: nil)
+    }
+    
+    @objc func wrongButtonOutsideTapped() {
+        oxbuttonView.wrongButton.backgroundColor = .pointGray
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+    }
+    
+    @objc func correctButtonOutsideTapped() {
+        oxbuttonView.correctButton.backgroundColor = .pointGray
+        
+        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.correctButton.layer.shadowOpacity = 1
+        oxbuttonView.correctButton.layer.shadowRadius = 4
+        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+    }
+    
+    @objc func wrongButtonDownTapped() {
+        oxbuttonView.wrongButton.backgroundColor = .buttonRed
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.15).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+    }
+    
+    @objc func correctButtonDownTapped() {
+        oxbuttonView.correctButton.backgroundColor = .buttonBlue
+        
+        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.15).cgColor
+        oxbuttonView.correctButton.layer.shadowOpacity = 1
+        oxbuttonView.correctButton.layer.shadowRadius = 4
+        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     @objc func nextQuiz(_ noti: Notification) {
