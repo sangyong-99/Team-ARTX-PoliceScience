@@ -65,7 +65,12 @@ class QuizModalView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.white
         button.backgroundColor = UIColor(resource: .bgBlue)
-        button.setTitle("다음 문제", for: .normal)
+        
+        let attributedText = NSMutableAttributedString()
+        attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]))
+        
+        button.setAttributedTitle(attributedText, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
         button.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside )
         return button
