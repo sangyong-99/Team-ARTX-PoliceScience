@@ -13,7 +13,7 @@ class QuizProgressView: UIView {
     lazy var progressView: UIProgressView = {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.trackTintColor = .pointGray
+        view.trackTintColor = .white
         view.progressTintColor = UIColor(resource: .barPoint)
         view.layer.cornerRadius = 4
         view.clipsToBounds = true
