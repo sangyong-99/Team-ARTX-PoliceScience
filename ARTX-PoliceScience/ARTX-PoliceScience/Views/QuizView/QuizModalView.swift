@@ -50,6 +50,7 @@ class QuizModalView: UIView {
         textview.text = "감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다.감찰관은 관할구역 안에서 활동하는 것이 원칙이지만, 필요한 경우에는 밖에서도 활등이 가능합니다."
         textview.textColor = UIColor(resource: .primaryBlack)
         textview.isEditable = false
+        textview.textContainer.lineFragmentPadding = 0
         textview.showsVerticalScrollIndicator = false
         textview.font = .systemFont(ofSize: 16, weight: .regular)
         return textview

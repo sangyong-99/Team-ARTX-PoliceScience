@@ -79,7 +79,7 @@ class QuizModalViewController: UIViewController {
             
             quizModalView.explanationLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 8),
             quizModalView.explanationLabel.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -8),
-            quizModalView.explanationLabel.topAnchor.constraint(equalTo: quizModalView.correctLabel.bottomAnchor, constant: 16),
+            quizModalView.explanationLabel.topAnchor.constraint(equalTo: quizModalView.correctLabel.bottomAnchor, constant: 0),
             quizModalView.explanationLabel.heightAnchor.constraint(equalToConstant: 63),
             
             quizModalView.nextQuestionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
