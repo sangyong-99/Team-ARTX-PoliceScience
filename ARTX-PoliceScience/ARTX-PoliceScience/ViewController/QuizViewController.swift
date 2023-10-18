@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController,DeliveryDataProtocol {
     
     let partNumber: Int
     let partTitle: String
@@ -21,7 +21,6 @@ class QuizViewController: UIViewController {
     private let quizView = QuizView()
     private let oxbuttonView = OXbuttonView()
     private let viewmodel: QuizViewModel
-    private let quizModal = QuizModalViewController()
     
     init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
         self.partNumber = partNumber
@@ -44,7 +43,6 @@ class QuizViewController: UIViewController {
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
-        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         update()
         layout()
         
@@ -122,7 +120,7 @@ class QuizViewController: UIViewController {
     }
     
     private func update() {
-        print("여기는\(currentQuizNumber)")
+//        print("여기는\(currentQuizNumber)")
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
         let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
         var progressbar = progressFraction
@@ -133,7 +131,7 @@ class QuizViewController: UIViewController {
         titleView.chapterNumberLabel.text = "CHAPTER 0" + String( viewmodel.chapterNumber(to: self.currentQuizNumber))
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
-        quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber)
+        quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber).question
     }
     
     private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
@@ -153,6 +151,9 @@ class QuizViewController: UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+    func deliveryData(_ data: String) {
+            
+        }
 }
 
 extension QuizViewController {
@@ -177,12 +178,18 @@ extension QuizViewController {
     }
     
     @objc func wrongButtonTapped() {
+        let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
+//        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
+        quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .custom
         quizModal.transitioningDelegate = self
         present(quizModal, animated: true, completion: nil)
     }
     
     @objc func correctButtonTapped() {
+        let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
+//        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
+        quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .custom
         quizModal.transitioningDelegate = self
         present(quizModal, animated: true, completion: nil)
@@ -190,13 +197,15 @@ extension QuizViewController {
     
     @objc func nextQuiz(_ noti: Notification) {
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
+        var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
         if currentQuizNumber + 1 == totalQuestions {
+            print("여기는\(currentQuizNumber)")
+            UserDefaults.standard.set(currentQuizNumber + 1, forKey: solving)
             navigationController?.pushViewController(HomeViewController(), animated: true)
         } else {
             currentQuizNumber += 1
             update()
             showToast(message: "토스트 실험")
-            var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
         }
     }
@@ -206,4 +215,8 @@ extension QuizViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
+}
+
+protocol DeliveryDataProtocol: class {
+    func deliveryData(_ data: String)
 }
