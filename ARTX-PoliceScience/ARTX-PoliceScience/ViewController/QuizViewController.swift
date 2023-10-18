@@ -43,6 +43,20 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
+        quizView.addBookmark = { isSelected in
+            var currentBookmarkList = LocalState.bookmarkList
+            
+            let quizId = self.QuizId()
+            
+            if isSelected {
+                currentBookmarkList.append(quizId)
+            } else {
+                guard let bookmarkIndex = currentBookmarkList.firstIndex(of: quizId) else { return }
+                currentBookmarkList.remove(at: bookmarkIndex)
+            }
+            LocalState.bookmarkList = currentBookmarkList
+        }
+        
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
         
@@ -146,6 +160,18 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
         quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
         quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber).question
+        
+        let quizId = self.QuizId()
+        
+        
+       if LocalState.bookmarkList.contains(quizId) {
+           quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+           quizView.bookMarkButton.isSelected = true
+       } else {
+           quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+           quizView.bookMarkButton.isSelected = false
+       }
+    
         progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
     }
     
@@ -207,11 +233,21 @@ extension QuizViewController {
     }
     
     @objc func wrongButtonTapped() {
-        let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
+        let quizId = QuizId()
+        let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
 //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
+        
+        if LocalState.bookmarkList.contains(quizId) {
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.isSelected = true
+        } else {
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.isSelected = false
+        }
+        
         
         if let sheet = quizModal.sheetPresentationController {
             let height = view.frame.height
@@ -235,11 +271,21 @@ extension QuizViewController {
     }
     
     @objc func correctButtonTapped() {
-        let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
+        let quizId = QuizId()
+        let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
 //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
+        
+        if LocalState.bookmarkList.contains(quizId) {
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.isSelected = true
+        } else {
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.isSelected = false
+        }
+        
         
         if let sheet = quizModal.sheetPresentationController {
             let height = view.frame.height
@@ -313,6 +359,14 @@ extension QuizViewController {
             update()
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
         }
+    }
+    
+    func QuizId() -> String {
+        let quizId = String(format: "%02d", self.partNumber+1)
+        + String(format: "%02d", self.viewmodel.chapterNumber(to: 0))
+        + String(format: "%03d", self.currentQuizNumber+1)
+        
+        return quizId
     }
 }
 

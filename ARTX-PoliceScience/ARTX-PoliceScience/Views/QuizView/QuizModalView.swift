@@ -8,6 +8,7 @@
 import UIKit
 
 class QuizModalView: UIView {
+    var addBookmark: ((Bool) -> Void)?
     
     let labelBackgroundView: UIView = {
         let view = UIView()
@@ -77,7 +78,16 @@ class QuizModalView: UIView {
     }()
     
     @objc func bookmarkButtonTapped() {
-        
+        if bookMarkButton.isSelected == true {
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.isSelected = false
+            addBookmark?(false)
+        }
+        else {
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.isSelected = true
+            addBookmark?(true)
+        }
     }
     
     @objc func nextQuestionButtonTapped() {

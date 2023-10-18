@@ -7,7 +7,6 @@
 import UIKit
 
 class QuizView: UIView {
-    
     let quizBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,12 +40,18 @@ class QuizView: UIView {
         return button
     }()
     
+    var addBookmark: ((Bool) -> Void)?
+    
     @objc func myButtonTapped() {
         if bookMarkButton.isSelected == true {
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
             bookMarkButton.isSelected = false
+            addBookmark?(false)
         }
         else {
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
             bookMarkButton.isSelected = true
+            addBookmark?(true)
         }
     }
     

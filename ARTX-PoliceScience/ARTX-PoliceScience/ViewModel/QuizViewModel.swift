@@ -18,6 +18,7 @@ class QuizViewModel {
     func chapterNumber(to index: Int) -> Int {
         return self.chapter.chapter
     }
+    
     func chapterTitle(to index: Int) -> String {
         return self.chapter.chapter_name
     }

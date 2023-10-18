@@ -127,6 +127,9 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        bookmarkViewModel.changeCurrentPart(to: indexPath.section)
+        bookmarkViewModel.changeCurrentChapter(to: indexPath.row)
+        
         if bookmarkViewModel.chapterCount() == 0 {
             return
         }
@@ -138,7 +141,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         let viewController = QuizViewController(partNumber: partNumber, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0)
         
         tableView.deselectRow(at: indexPath, animated: true)
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
