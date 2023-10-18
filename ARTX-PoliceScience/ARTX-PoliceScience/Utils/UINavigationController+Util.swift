@@ -42,6 +42,7 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         interactivePopGestureRecognizer?.delegate = self
     }
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
         return viewControllers.count > 1
     }
     
