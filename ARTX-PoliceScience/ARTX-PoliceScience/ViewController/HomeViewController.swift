@@ -147,7 +147,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerBookmarkButton.layer.borderWidth = 1
         headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 10, weight: .semibold)
         if let image = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration) {
             headerBookmarkButton.setImage(image, for: .normal)
         }
@@ -372,7 +372,7 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             progressView.leadingAnchor.constraint(equalTo: studyProgressView.leadingAnchor, constant: 16),
-            progressView.trailingAnchor.constraint(equalTo: studyProgressView.trailingAnchor, constant: -92),
+            progressView.trailingAnchor.constraint(equalTo: studyProgressView.trailingAnchor, constant: -97),
             progressView.centerYAnchor.constraint(equalTo: progressViewLabel.centerYAnchor),
             progressView.heightAnchor.constraint(equalToConstant: 12),
         ])

@@ -39,7 +39,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.systemGray5
+        view.backgroundColor = .bgPrimary
         navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         

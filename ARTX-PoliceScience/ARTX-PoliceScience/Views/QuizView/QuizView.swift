@@ -50,17 +50,15 @@ class QuizView: UIView {
         }
     }
     
-    let quizLabel: UILabel = {
-        let label = UILabel()
+    let quizLabel: UITextView = {
+        let label = UITextView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "감찰관은 소속 경찰기관의 관할구역 안에서 활동하는 것을 원칙으로 한다. 다만, 필요한 경우에는 관할구역 밖에서도 활동할 수 있다"
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = UIColor(resource: .primaryBlack)
         //글자 수 제한 무제한
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = UIScreen.main.bounds.width / 2 - 15
         label.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        
+        label.isEditable = false
         return label
     }()
 }
