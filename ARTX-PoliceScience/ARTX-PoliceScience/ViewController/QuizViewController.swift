@@ -11,6 +11,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
     
     let partNumber: Int
     let partTitle: String
+    //let userdefaultNumber: UserDefaults.standard.integer(forKey: partIndexString)
     
     let nextQuiz: Notification.Name = Notification.Name("nextQuiz")
     
@@ -201,11 +202,13 @@ extension QuizViewController {
         if currentQuizNumber + 1 == totalQuestions {
             print("여기는\(currentQuizNumber)")
             UserDefaults.standard.set(currentQuizNumber + 1, forKey: solving)
-            navigationController?.pushViewController(HomeViewController(), animated: true)
+            self.navigationController?.popViewController(animated: true)
+//            navigationController?.pushViewController(HomeViewController(), animated: true)
+            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+            showToast(message: "토스트 실험")
         } else {
             currentQuizNumber += 1
             update()
-            showToast(message: "토스트 실험")
             UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
         }
     }
