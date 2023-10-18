@@ -16,6 +16,7 @@
 		0E4A90002ADA9A2300BBC335 /* QuizModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */; };
 		0E4A90022ADA9A3700BBC335 /* QuizModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A90012ADA9A3700BBC335 /* QuizModalViewController.swift */; };
 		0E4A90042ADAAB5600BBC335 /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A90032ADAAB5600BBC335 /* HalfModalPresentationController.swift */; };
+		4AA0763F2ADFE4B700A3B18B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA0763E2ADFE4B700A3B18B /* GoogleService-Info.plist */; };
 		4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924D2AD2963F006DB2BB /* Books.swift */; };
 		4AA092502AD296D3006DB2BB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924F2AD296D3006DB2BB /* Book.swift */; };
 		4AA092522AD29759006DB2BB /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA092512AD29759006DB2BB /* BookViewModel.swift */; };
@@ -76,7 +77,6 @@
 		B4ADA0302ADC329A00F4AD8A /* HomeViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA02F2ADC329A00F4AD8A /* HomeViewAlert.swift */; };
 		B4ADA0322ADC32A900F4AD8A /* AlertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA0312ADC32A900F4AD8A /* AlertText.swift */; };
 		B4ADA0342ADC390B00F4AD8A /* UIAlertController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */; };
-		B4E773102ADD33CD007B3AF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4E7730F2ADD33CD007B3AF3 /* GoogleService-Info.plist */; };
 		B4E773122ADD37FD007B3AF3 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E773112ADD37FD007B3AF3 /* example.json */; };
 		FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */; };
 		FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */; };
@@ -105,6 +105,7 @@
 		0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalView.swift; sourceTree = "<group>"; };
 		0E4A90012ADA9A3700BBC335 /* QuizModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalViewController.swift; sourceTree = "<group>"; };
 		0E4A90032ADAAB5600BBC335 /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		4AA0763E2ADFE4B700A3B18B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4AA0924D2AD2963F006DB2BB /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		4AA0924F2AD296D3006DB2BB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4AA092512AD29759006DB2BB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
@@ -140,7 +141,6 @@
 		B4ADA02F2ADC329A00F4AD8A /* HomeViewAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewAlert.swift; sourceTree = "<group>"; };
 		B4ADA0312ADC32A900F4AD8A /* AlertText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertText.swift; sourceTree = "<group>"; };
 		B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Util.swift"; sourceTree = "<group>"; };
-		B4E7730F2ADD33CD007B3AF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4E773112ADD37FD007B3AF3 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCellView.swift; sourceTree = "<group>"; };
@@ -237,10 +237,10 @@
 				5E44DC992ACD000F00DAC94A /* Model */,
 				5E44DC9C2ACD002D00DAC94A /* Resources */,
 				5E3451892AB42F33004A3047 /* AppDelegate.swift */,
-				B4E7730F2ADD33CD007B3AF3 /* GoogleService-Info.plist */,
 				5E3451922AB42F34004A3047 /* Assets.xcassets */,
 				5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */,
 				5E3451972AB42F34004A3047 /* Info.plist */,
+				4AA0763E2ADFE4B700A3B18B /* GoogleService-Info.plist */,
 			);
 			path = "ARTX-PoliceScience";
 			sourceTree = "<group>";
@@ -468,11 +468,11 @@
 			files = (
 				B4E773122ADD37FD007B3AF3 /* example.json in Resources */,
 				5E5CF08D2ADEBCEB00EAD4D7 /* GmarketSansTTFLight.ttf in Resources */,
-				B4E773102ADD33CD007B3AF3 /* GoogleService-Info.plist in Resources */,
 				5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */,
 				5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */,
 				5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */,
 				5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */,
+				4AA0763F2ADFE4B700A3B18B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

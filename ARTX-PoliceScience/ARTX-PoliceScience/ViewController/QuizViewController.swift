@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController,DeliveryDataProtocol {
+class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresentationControllerDelegate {
     
     let partNumber: Int
     let partTitle: String
@@ -206,8 +206,27 @@ extension QuizViewController {
         let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
 //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
-        quizModal.modalPresentationStyle = .custom
+        quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
+        
+        if let sheet = quizModal.sheetPresentationController {
+            let height = view.frame.height
+            let multiplier = 0.42
+            if #available(iOS 16.0, *) {
+                let fraction = UISheetPresentationController.Detent.custom { context in
+                    height * multiplier
+                }
+                sheet.detents = [fraction]
+            } else {
+                sheet.detents = [.medium()]
+                
+                sheet.delegate = self
+                sheet.prefersGrabberVisible = false
+            }
+           
+ 
+        }
+
         present(quizModal, animated: true, completion: nil)
     }
     
@@ -215,8 +234,27 @@ extension QuizViewController {
         let quizModal = QuizModalViewController(question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
 //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
-        quizModal.modalPresentationStyle = .custom
+        quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
+        
+        if let sheet = quizModal.sheetPresentationController {
+            let height = view.frame.height
+            let multiplier = 0.42
+            if #available(iOS 16.0, *) {
+                let fraction = UISheetPresentationController.Detent.custom { context in
+                    height * multiplier
+                }
+                sheet.detents = [fraction]
+            } else {
+                sheet.detents = [.medium()]
+                
+                sheet.delegate = self
+                sheet.prefersGrabberVisible = false
+            }
+           
+ 
+        }
+        
         present(quizModal, animated: true, completion: nil)
     }
     

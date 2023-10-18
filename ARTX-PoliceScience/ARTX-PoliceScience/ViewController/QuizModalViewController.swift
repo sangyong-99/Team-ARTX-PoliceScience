@@ -67,10 +67,9 @@ class QuizModalViewController: UIViewController {
             
             quizModalView.correctNotificationLabel.centerYAnchor.constraint(equalTo: quizModalView.labelBackgroundView.centerYAnchor),
             quizModalView.correctNotificationLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 10),
-            quizModalView.correctNotificationLabel.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -234),
+
             
             quizModalView.bookMarkButton.centerYAnchor.constraint(equalTo: quizModalView.correctNotificationLabel.centerYAnchor),
-            quizModalView.bookMarkButton.leadingAnchor.constraint(equalTo: quizModalView.correctNotificationLabel.trailingAnchor, constant: 204.5),
             quizModalView.bookMarkButton.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -10.5),
             
             quizModalView.correctLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 8),
