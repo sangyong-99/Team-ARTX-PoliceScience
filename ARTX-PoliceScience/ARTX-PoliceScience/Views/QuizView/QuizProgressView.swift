@@ -13,9 +13,10 @@ class QuizProgressView: UIView {
     lazy var progressView: UIProgressView = {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.trackTintColor = .white
+        view.trackTintColor = .pointGray
         view.progressTintColor = UIColor(resource: .barPoint)
-        view.transform = CGAffineTransformScale(view.transform, 1, 0.2)
+        view.layer.cornerRadius = 4
+        view.clipsToBounds = true
         view.progress = 0.0
         view.setProgress(0.0, animated: true)
         return view
@@ -33,7 +34,7 @@ class QuizProgressView: UIView {
     }()
     
     let imageView: UIImageView = {
-        let view = UIImageView(image: UIImage(systemName: "heart.fill"))
+        let view = UIImageView(image: UIImage.iconCompletionTrue)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
