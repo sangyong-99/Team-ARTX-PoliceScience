@@ -18,6 +18,7 @@ class HomeViewAlert {
             
             let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
             UserDefaults.standard.set(0, forKey: partChapterString)
+            targetViewController.delegate = viewController.self as? any QuizViewConrollerDelegate
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false
@@ -25,6 +26,7 @@ class HomeViewAlert {
         
         let boldButton = UIAlertAction(title: text.continueButton, style: .default) { _ in
             let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
+            targetViewController.delegate = viewController.self as? any QuizViewConrollerDelegate
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false
@@ -44,6 +46,7 @@ class HomeViewAlert {
             
             let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
             UserDefaults.standard.set(0, forKey: partChapterString)
+            targetViewController.delegate = viewController.self as? any QuizViewConrollerDelegate
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false

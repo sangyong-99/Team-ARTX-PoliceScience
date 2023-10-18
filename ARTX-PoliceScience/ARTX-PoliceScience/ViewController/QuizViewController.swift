@@ -22,6 +22,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol {
     private let quizView = QuizView()
     private let oxbuttonView = OXbuttonView()
     private let viewmodel: QuizViewModel
+    weak var delegate: QuizViewConrollerDelegate?
     
     init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
         self.partNumber = partNumber
@@ -207,7 +208,7 @@ extension QuizViewController {
             self.navigationController?.popViewController(animated: true)
 //            navigationController?.pushViewController(HomeViewController(), animated: true)
             NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-            showToast(message: "토스트 실험")
+            delegate?.chapterFinished()
         } else {
             currentQuizNumber += 1
             update()
@@ -224,4 +225,8 @@ extension QuizViewController: UIViewControllerTransitioningDelegate {
 
 protocol DeliveryDataProtocol: class {
     func deliveryData(_ data: String)
+}
+
+protocol QuizViewConrollerDelegate: AnyObject {
+    func chapterFinished()
 }
