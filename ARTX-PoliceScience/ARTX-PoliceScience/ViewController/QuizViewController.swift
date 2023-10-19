@@ -364,7 +364,7 @@ extension QuizViewController {
     func QuizId() -> String {
         let quizId = String(format: "%02d", self.partNumber+1)
         + String(format: "%02d", self.viewmodel.chapterNumber(to: 0))
-        + String(format: "%03d", self.currentQuizNumber+1)
+        + String(format: "%03d", self.viewmodel.question(to: self.currentQuizNumber).index)
         
         return quizId
     }
