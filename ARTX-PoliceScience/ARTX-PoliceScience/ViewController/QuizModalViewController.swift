@@ -13,6 +13,7 @@ class QuizModalViewController: UIViewController {
     let question: Question
     let selectedAnswer: Bool
     let quizModalView = QuizModalView()
+    let generator = UINotificationFeedbackGenerator()
     var quizeNumberPlusClosure: (() -> Void)?
 //    weak var delegate: DeliveryDataProtocol?
     
@@ -58,6 +59,7 @@ class QuizModalViewController: UIViewController {
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.text = question.explanation
+            generator.notificationOccurred(.error)
         }
         
         quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)

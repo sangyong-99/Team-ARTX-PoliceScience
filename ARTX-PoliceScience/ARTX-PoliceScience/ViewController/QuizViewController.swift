@@ -76,8 +76,8 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
         
-        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpOutside)
-        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpOutside)
+        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
@@ -340,6 +340,7 @@ extension QuizViewController {
         oxbuttonView.wrongButton.layer.shadowOpacity = 1
         oxbuttonView.wrongButton.layer.shadowRadius = 4
         oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxButtonUnpressed()
     }
     
     @objc func wrongButtonDownTapped() {
@@ -349,6 +350,7 @@ extension QuizViewController {
         oxbuttonView.wrongButton.layer.shadowOpacity = 1
         oxbuttonView.wrongButton.layer.shadowRadius = 4
         oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxButtonPressed()
     }
     
     @objc func correctButtonDownTapped() {
@@ -358,6 +360,7 @@ extension QuizViewController {
         oxbuttonView.correctButton.layer.shadowOpacity = 1
         oxbuttonView.correctButton.layer.shadowRadius = 4
         oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxButtonPressed()
     }
     
     @objc func nextQuiz(_ noti: Notification) {
