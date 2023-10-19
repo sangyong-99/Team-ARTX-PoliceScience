@@ -141,25 +141,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     let headerBookmarkButton: UIButton = {
-        let headerBookmarkButton = UIButton(type: .system)
+        let headerBookmarkButton = UIButton()
         headerBookmarkButton.layer.cornerRadius = 20
         headerBookmarkButton.clipsToBounds = true
         headerBookmarkButton.layer.borderWidth = 1
         headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 10, weight: .semibold)
-        if let image = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration) {
-            headerBookmarkButton.setImage(image, for: .normal)
-        }
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]))
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
+        let symbolImage = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration).withTintColor(.textBlue)
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = symbolImage
+        let imageString = NSAttributedString(attachment: textAttachment)
+        attributedText.append(imageString)
+//            headerBookmarkButton.setImage(image, for: .normal)
+        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .heavy)]))
+        
+        headerBookmarkButton.contentEdgeInsets = .init(top: 0, left: 0, bottom: 3, right: 0)
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
-        
         headerBookmarkButton.setTitleColor(.textBlue, for: .normal)
-        
-        headerBookmarkButton.contentHorizontalAlignment = .center
-        headerBookmarkButton.contentVerticalAlignment = .center
-        
         return headerBookmarkButton
     }()
     
@@ -309,8 +309,22 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             titleStackView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
-            titleStackView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 32)
+            titleStackView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 39),
+            titleStackView.heightAnchor.constraint(equalToConstant: 82)
         ])
+
+        // MARK: - studyProgressView 하얀색 뷰 UIView
+        
+        studyProgressView.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(studyProgressView)
+        
+        NSLayoutConstraint.activate([
+            studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -17),
+            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
+            studyProgressView.heightAnchor.constraint(equalToConstant: 142)
+        ])
+        
         // MARK: - bookintroduceButton 책 소개 버튼
         
         bookintroduceButton.addTarget(self, action: #selector(introduceButtonTapped), for: .touchUpInside)
@@ -319,20 +333,9 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             bookintroduceButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
-            bookintroduceButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 114)
+            bookintroduceButton.bottomAnchor.constraint(equalTo: studyProgressView.topAnchor, constant: -12)
+//            bookintroduceButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 114)
         ])
-        // MARK: - studyProgressView 하얀색 뷰 UIView
-        
-        studyProgressView.translatesAutoresizingMaskIntoConstraints = false
-        header.addSubview(studyProgressView)
-        
-        NSLayoutConstraint.activate([
-            studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -22),
-            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
-            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
-            studyProgressView.heightAnchor.constraint(equalToConstant: 148)
-        ])
-        
         
         // MARK: - progressTitleLabel 전체 학습 진행도
         
