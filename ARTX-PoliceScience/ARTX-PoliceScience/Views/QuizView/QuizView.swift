@@ -12,6 +12,11 @@ class QuizView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = 14
+        
+        view.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.1).cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 5
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
         return view
     }()
     
