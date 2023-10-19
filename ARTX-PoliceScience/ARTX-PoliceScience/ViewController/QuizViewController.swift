@@ -8,7 +8,7 @@
 import UIKit
 
 class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresentationControllerDelegate {
-    
+    var safeAreaLength = 0
     let partNumber: Int
     let partTitle: String
     //let userdefaultNumber: UserDefaults.standard.integer(forKey: partIndexString)
@@ -24,6 +24,15 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
     private let viewmodel: QuizViewModel
     weak var delegate: QuizViewConrollerDelegate?
     
+    private let navBackView: UIView = {
+        
+        let settingNavBackView = UIView()
+        settingNavBackView.translatesAutoresizingMaskIntoConstraints = false
+        settingNavBackView.backgroundColor = .bgBlue
+        
+        return settingNavBackView
+    }()
+    
     init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
         self.partNumber = partNumber
         self.partTitle = partTitle
@@ -38,6 +47,10 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let window = UIApplication.shared.windows.first {
+            safeAreaLength = Int(window.safeAreaInsets.top)
+        }
         
         view.backgroundColor = .bgPrimary
         navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
@@ -77,7 +90,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
     }
     
     private func layout() {
-        
+        view.addSubview(navBackView)
         view.addSubview(titleView.chapterStackView)
         view.addSubview(progressbarView.progressView)
         view.addSubview(progressbarView.progressNumberLabel)
@@ -97,6 +110,9 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         
         
         NSLayoutConstraint.activate([
+            navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength)),
+            
             titleView.chapterStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             titleView.chapterStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 26),
             
@@ -148,7 +164,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
     }
     
     private func update() {
-//        print("여기는\(currentQuizNumber)")
+        //        print("여기는\(currentQuizNumber)")
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
         let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
         var progressbar = progressFraction
@@ -164,14 +180,14 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         let quizId = self.QuizId()
         
         
-       if LocalState.bookmarkList.contains(quizId) {
-           quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
-           quizView.bookMarkButton.isSelected = true
-       } else {
-           quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
-           quizView.bookMarkButton.isSelected = false
-       }
-    
+        if LocalState.bookmarkList.contains(quizId) {
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.isSelected = true
+        } else {
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.isSelected = false
+        }
+        
         progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
     }
     
@@ -193,8 +209,8 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         })
     }
     func deliveryData(_ data: String) {
-            
-        }
+        
+    }
 }
 
 extension QuizViewController {
@@ -235,7 +251,7 @@ extension QuizViewController {
     @objc func wrongButtonTapped() {
         let quizId = QuizId()
         let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
-//        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
+        //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
@@ -263,17 +279,17 @@ extension QuizViewController {
                 sheet.delegate = self
                 sheet.prefersGrabberVisible = false
             }
-           
- 
+            
+            
         }
-
+        
         present(quizModal, animated: true, completion: nil)
     }
     
     @objc func correctButtonTapped() {
         let quizId = QuizId()
         let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
-//        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
+        //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
@@ -301,8 +317,8 @@ extension QuizViewController {
                 sheet.delegate = self
                 sheet.prefersGrabberVisible = false
             }
-           
- 
+            
+            
         }
         
         present(quizModal, animated: true, completion: nil)
@@ -351,7 +367,7 @@ extension QuizViewController {
             print("여기는\(currentQuizNumber)")
             UserDefaults.standard.set(currentQuizNumber + 1, forKey: solving)
             self.navigationController?.popViewController(animated: true)
-//            navigationController?.pushViewController(HomeViewController(), animated: true)
+            //            navigationController?.pushViewController(HomeViewController(), animated: true)
             NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
             delegate?.chapterFinished()
         } else {
