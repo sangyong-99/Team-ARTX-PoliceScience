@@ -340,7 +340,7 @@ extension QuizViewController {
         oxbuttonView.wrongButton.layer.shadowOpacity = 1
         oxbuttonView.wrongButton.layer.shadowRadius = 4
         oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        CustomHaptics.shared.oxButtonUnpressed()
+        CustomHaptics.shared.oxUntapped()
     }
     
     @objc func wrongButtonDownTapped() {
@@ -350,7 +350,7 @@ extension QuizViewController {
         oxbuttonView.wrongButton.layer.shadowOpacity = 1
         oxbuttonView.wrongButton.layer.shadowRadius = 4
         oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        CustomHaptics.shared.oxButtonPressed()
+        CustomHaptics.shared.oxTapped()
     }
     
     @objc func correctButtonDownTapped() {
@@ -360,7 +360,7 @@ extension QuizViewController {
         oxbuttonView.correctButton.layer.shadowOpacity = 1
         oxbuttonView.correctButton.layer.shadowRadius = 4
         oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        CustomHaptics.shared.oxButtonPressed()
+        CustomHaptics.shared.oxTapped()
     }
     
     @objc func nextQuiz(_ noti: Notification) {

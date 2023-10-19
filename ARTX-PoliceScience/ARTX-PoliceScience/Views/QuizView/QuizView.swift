@@ -47,13 +47,13 @@ class QuizView: UIView {
             bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
             bookMarkButton.isSelected = false
             addBookmark?(false)
-            CustomHaptics.shared.bookMarkPressed()
+            CustomHaptics.shared.bookMarkTapped()
         }
         else {
             bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
             bookMarkButton.isSelected = true
             addBookmark?(true)
-            CustomHaptics.shared.bookMarkPressed()
+            CustomHaptics.shared.bookMarkTapped()
         }
     }
     

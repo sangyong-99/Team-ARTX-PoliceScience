@@ -21,7 +21,7 @@ struct CustomHaptics {
         }
     }
     
-    func oxButtonPressed() {
+    func oxTapped() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.0)
@@ -30,7 +30,7 @@ struct CustomHaptics {
         startEvents(events)
     }
     
-    func oxButtonUnpressed() {
+    func oxUntapped() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.3)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
@@ -39,7 +39,7 @@ struct CustomHaptics {
         startEvents(events)
     }
     
-    func bookMarkPressed() {
+    func bookMarkTapped() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.7)
         let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1.0)
