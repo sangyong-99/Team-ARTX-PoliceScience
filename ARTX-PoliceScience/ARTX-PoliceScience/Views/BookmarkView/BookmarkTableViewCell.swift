@@ -33,7 +33,7 @@ class BookmarkTableViewCell: UITableViewCell {
     }
     
     private func configureBookmarkTableViewCell() {
-        self.contentView.backgroundColor = .white
+        self.contentView.backgroundColor = .clear
         [
             self.chapterNumberLabel,
             self.chapterTitleLabel,

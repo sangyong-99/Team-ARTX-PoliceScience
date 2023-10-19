@@ -46,14 +46,14 @@ class QuizModalViewController: UIViewController {
         
         if question.answer == selectedAnswer {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textBlue)
-            quizModalView.bookMarkButton.tintColor = UIColor(resource: .pointBlue)
+            quizModalView.bookMarkButton.tintColor = UIColor(resource: .textBlue)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
             quizModalView.correctNotificationLabel.text = "맞았습니다."
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.text = question.explanation
         } else {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
-            quizModalView.bookMarkButton.tintColor = UIColor(resource: .pointRed)
+            quizModalView.bookMarkButton.tintColor = UIColor(resource: .textRed)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"

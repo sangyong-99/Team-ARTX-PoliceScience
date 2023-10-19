@@ -123,6 +123,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.accessoryType = .disclosureIndicator
         cell.update(bookmarkViewModel: bookmarkViewModel)
+//        cell.selectionStyle = .none
         return cell
     }
     
