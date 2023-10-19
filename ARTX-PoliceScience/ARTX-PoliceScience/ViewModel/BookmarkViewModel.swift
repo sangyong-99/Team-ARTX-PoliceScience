@@ -1,4 +1,5 @@
-//
+
+git//
 //  BookmarkViewModel.swift
 //  ARTX-PoliceScience
 //
@@ -32,7 +33,7 @@ class BookmarkViewModel {
                     let quizId =
                         String(format: "%02d", quizNumber)
                         + String(format: "%02d", chapterNumber)
-                        + String(format: "%03d", index)
+                        + String(format: "%03d", chapter.questions[index].index)
                     if bookmarks.contains(quizId) {
                         newChapter.questions.append(chapter.questions[index])
                     }

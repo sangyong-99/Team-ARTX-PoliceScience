@@ -138,7 +138,7 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         let partTitle = bookmarkViewModel.partTitle()
         let chapter = bookmarkViewModel.chapter()
         
-        let viewController = QuizViewController(partNumber: partNumber, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0)
+        let viewController = QuizViewController(partNumber: partNumber-1, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0)
         
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(viewController, animated: true)
