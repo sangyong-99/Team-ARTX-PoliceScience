@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let settingViewButton: UIButton = {
         let settingButton = UIButton(type: .custom)
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 22)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.title2)
         settingButton.setImage(UIImage(systemName: "gearshape.fill", withConfiguration: symbolConfiguration), for: .normal)
         settingButton.tintColor = .white
         return settingButton
@@ -69,9 +69,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let bookintroduceButton = UIButton()
         
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "책 소개 ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .medium)]))
+        attributedText.append(NSAttributedString(string: "책 소개 ", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
         let symbolImage = UIImage(systemName: "arrowtriangle.forward.circle.fill")?.withConfiguration(symbolConfiguration).withTintColor(.white)
         let textAttachment = NSTextAttachment()
         textAttachment.image = symbolImage
@@ -102,13 +102,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let progressTitleLabel = UILabel()
         if let symbolImage = UIImage(systemName: "chart.bar.fill")?.withRenderingMode(.alwaysTemplate) {
             let symbolAttachment = NSTextAttachment()
-            let scaledImage = symbolImage.withConfiguration(UIImage.SymbolConfiguration(pointSize: 12, weight: .regular))
+            let scaledImage = symbolImage.withConfiguration(UIImage.SymbolConfiguration(font: UIFont.caption1))
             symbolAttachment.image = scaledImage
             let attributedString = NSMutableAttributedString(string: "")
             attributedString.append(NSAttributedString(attachment: symbolAttachment))
             attributedString.append(NSAttributedString(string: " 전체 학습 진행도"))
             progressTitleLabel.attributedText = attributedString
-            progressTitleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            progressTitleLabel.font = UIFont.caption1
             progressTitleLabel.textColor = .black
         }
         return progressTitleLabel
@@ -117,7 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressViewLabel: UILabel = {
         let progressViewLabel = UILabel()
         progressViewLabel.text = "%"
-        progressViewLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        progressViewLabel.font = UIFont.title3Bold
         
         return progressViewLabel
     }()
@@ -125,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressValueLabel: UILabel = {
         let progressValueLabel = UILabel()
         
-        progressValueLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        progressValueLabel.font = UIFont.title1Bold
         
         return progressValueLabel
     }()
@@ -148,14 +148,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
         
         let attributedText = NSMutableAttributedString()
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
         let symbolImage = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration).withTintColor(.textBlue)
         let textAttachment = NSTextAttachment()
         textAttachment.image = symbolImage
         let imageString = NSAttributedString(attachment: textAttachment)
         attributedText.append(imageString)
-//            headerBookmarkButton.setImage(image, for: .normal)
-        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .heavy)]))
+        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
         
         headerBookmarkButton.contentEdgeInsets = .init(top: 0, left: 0, bottom: 3, right: 0)
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
@@ -165,7 +164,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let progressImages: UIImageView = {
         let progressImage = UIImageView()
-//        progressImage.image = .gradeBadge0
         progressImage.frame = CGRect(x: 0, y: 0, width: 22, height: 22) // 원하는 크기로 설정
         
         return progressImage
@@ -507,7 +505,7 @@ extension HomeViewController {
         let partLabel: UILabel = {
             let label = UILabel()
             label.text = "PART \(quizPartModel.part)"
-            label.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
+            label.font = UIFont.partText
             label.textColor = .textBlue
             
             let attributedText = NSAttributedString(string: label.text ?? "", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
@@ -519,7 +517,7 @@ extension HomeViewController {
         let partNameLabel: UILabel = {
             let label = UILabel()
             label.text = quizPartModel.part_name
-            label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            label.font = UIFont.title3Bold
             return label
         }()
         
@@ -560,8 +558,7 @@ extension HomeViewController {
 // MARK: - navigation 관련 세팅
 extension HomeViewController {
     func homeViewNavBar() {
-        self.title = "조현 경찰학"
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .regular)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.headLine)
         let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
         
         let rightBarButtonItem = UIBarButtonItem(
@@ -571,6 +568,9 @@ extension HomeViewController {
             action: #selector(rightItemTapped)
         )
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        self.title = "조현 경찰학"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.bodyBold]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -589,7 +589,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController: QuizViewConrollerDelegate {
-    private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
+    private func showToast(message : String, font: UIFont = UIFont.callOut) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
