@@ -168,7 +168,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
         let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
         var progressbar = progressFraction
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             let updatedProgressFraction = Float(self.currentQuizNumber) / Float(totalQuestions)
             self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
         }

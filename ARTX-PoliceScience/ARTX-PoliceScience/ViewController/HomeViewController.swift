@@ -199,7 +199,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
         newLeadingConstraint?.isActive = true
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         }
         
