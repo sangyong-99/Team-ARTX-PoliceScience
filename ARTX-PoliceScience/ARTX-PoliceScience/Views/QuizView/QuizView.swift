@@ -36,12 +36,13 @@ class QuizView: UIView {
         return label
     }()
     
-    lazy var bookMarkButton: UIButton = {
-        let button = UIButton()
+    lazy var bookMarkButton: ExtendedTouchButton = {
+        let button = ExtendedTouchButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
         button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
         button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
+        
         return button
     }()
     

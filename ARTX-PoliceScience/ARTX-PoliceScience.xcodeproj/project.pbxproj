@@ -77,6 +77,7 @@
 		B4ADA0302ADC329A00F4AD8A /* HomeViewAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA02F2ADC329A00F4AD8A /* HomeViewAlert.swift */; };
 		B4ADA0322ADC32A900F4AD8A /* AlertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA0312ADC32A900F4AD8A /* AlertText.swift */; };
 		B4ADA0342ADC390B00F4AD8A /* UIAlertController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */; };
+		B4E162252AE270BD004DE39D /* UIButton+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E162242AE270BD004DE39D /* UIButton+Util.swift */; };
 		B4E773122ADD37FD007B3AF3 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E773112ADD37FD007B3AF3 /* example.json */; };
 		FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */; };
 		FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */; };
@@ -141,6 +142,7 @@
 		B4ADA02F2ADC329A00F4AD8A /* HomeViewAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewAlert.swift; sourceTree = "<group>"; };
 		B4ADA0312ADC32A900F4AD8A /* AlertText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertText.swift; sourceTree = "<group>"; };
 		B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Util.swift"; sourceTree = "<group>"; };
+		B4E162242AE270BD004DE39D /* UIButton+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Util.swift"; sourceTree = "<group>"; };
 		B4E773112ADD37FD007B3AF3 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableSectionHeaderView.swift; sourceTree = "<group>"; };
 		FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCellView.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */,
 				B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */,
 				5E809DDE2ADFEC2C00C62B89 /* UITextView+Utils.swift */,
+				B4E162242AE270BD004DE39D /* UIButton+Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				5E86FC072ACD0A9900B01779 /* HomeViewController.swift in Sources */,
 				5E86FC0F2ACD0B8A00B01779 /* View.swift in Sources */,
 				5E809DDF2ADFEC2C00C62B89 /* UITextView+Utils.swift in Sources */,
+				B4E162252AE270BD004DE39D /* UIButton+Util.swift in Sources */,
 				5E86FC0D2ACD0AF300B01779 /* BookViewController.swift in Sources */,
 				FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */,
 				FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */,
