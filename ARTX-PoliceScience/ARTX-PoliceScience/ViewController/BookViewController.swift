@@ -22,7 +22,7 @@ class BookViewController: UIViewController {
     let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.spacing = 5
         return stackView
     }()
     
