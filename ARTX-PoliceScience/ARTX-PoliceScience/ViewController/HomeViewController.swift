@@ -108,7 +108,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             attributedString.append(NSAttributedString(attachment: symbolAttachment))
             attributedString.append(NSAttributedString(string: " 전체 학습 진행도"))
             progressTitleLabel.attributedText = attributedString
-            progressTitleLabel.font = UIFont.caption1
+            progressTitleLabel.font = UIFont.caption1KR
             progressTitleLabel.textColor = .black
         }
         return progressTitleLabel
@@ -517,7 +517,7 @@ extension HomeViewController {
         let partNameLabel: UILabel = {
             let label = UILabel()
             label.text = quizPartModel.part_name
-            label.font = UIFont.title3Bold
+            label.font = UIFont.title3BoldKR
             return label
         }()
         
@@ -570,7 +570,7 @@ extension HomeViewController {
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
         self.title = "조현 경찰학"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.bodyBold]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headLineBoldKR]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

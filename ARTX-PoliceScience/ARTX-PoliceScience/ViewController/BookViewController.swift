@@ -59,7 +59,7 @@ class BookViewController: UIViewController {
     
     let introTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        label.font = .subHeadBoldKR
         label.textColor = UIColor(named: "PrimaryBlack")
         label.text = "출제경향의 핵심을 짚는 경찰전문가"
         label.lineBreakMode = .byWordWrapping
@@ -70,7 +70,7 @@ class BookViewController: UIViewController {
     
     let introSubLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.font = .subHeadKR
         label.textColor = UIColor(named: "PrimaryBlack")
         label.text = "(현)해커스경찰 경찰학 선생님\n(현)해커스소방 행정법 선생님"
         label.lineBreakMode = .byCharWrapping

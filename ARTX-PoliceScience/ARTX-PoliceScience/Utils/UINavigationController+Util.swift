@@ -22,7 +22,7 @@ extension UINavigationController {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .bgBlue
         appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.bodyBold, NSAttributedString.Key.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headLineBoldKR, NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
     }

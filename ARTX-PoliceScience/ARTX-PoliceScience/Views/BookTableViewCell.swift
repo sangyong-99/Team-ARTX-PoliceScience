@@ -15,7 +15,7 @@ class BookTableViewCell: UITableViewCell {
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 4
+        stackView.spacing = 1
         stackView.axis = .vertical
         return stackView
     }()
@@ -25,7 +25,7 @@ class BookTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.font = .subHeadBoldKR
         label.textColor = UIColor(named: "PrimaryBlack")
         label.numberOfLines = 0
         return label
@@ -36,7 +36,7 @@ class BookTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.lineBreakMode = .byCharWrapping
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .caption1KR
         label.textColor = UIColor.secondaryLabel
         label.numberOfLines = 0
         return label
@@ -54,7 +54,7 @@ class BookTableViewCell: UITableViewCell {
         button.layer.cornerRadius = 20
         button.backgroundColor = .pointBlue
         button.tintColor = .white
-        button.setImage(UIImage(systemName: "cart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15)), for: .normal)
+        button.setImage(UIImage(systemName: "cart", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.subHead)), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

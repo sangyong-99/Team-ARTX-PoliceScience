@@ -25,7 +25,7 @@ class HomeTableSectionHeaderView: UITableViewHeaderFooterView {
     
     private let partTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.title3Bold
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

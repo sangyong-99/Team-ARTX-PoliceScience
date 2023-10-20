@@ -31,7 +31,7 @@ class QuizView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Quiz 5"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.headLine
         label.textColor = UIColor(resource: .primaryBlack)
         return label
     }()
@@ -40,7 +40,7 @@ class QuizView: UIView {
         let button = ExtendedTouchButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
-        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
+        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
         button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
         
         return button
@@ -50,13 +50,13 @@ class QuizView: UIView {
     
     @objc func myButtonTapped() {
         if bookMarkButton.isSelected == true {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             bookMarkButton.isSelected = false
             addBookmark?(false)
             CustomHaptics.shared.bookMarkTapped()
         }
         else {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             bookMarkButton.isSelected = true
             addBookmark?(true)
             CustomHaptics.shared.bookMarkTapped()
@@ -67,10 +67,9 @@ class QuizView: UIView {
         let label = UITextView()
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 6
-        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .medium)]
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.quizText]
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "감찰관은 소속 경찰기관의 관할구역 안에서 활동하는 것을 원칙으로 한다. 다만, 필요한 경우에는 관할구역 밖에서도 활동할 수 있다"
-//        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = UIColor(resource: .primaryBlack)
         label.typingAttributes = attributes
         //글자 수 제한 무제한

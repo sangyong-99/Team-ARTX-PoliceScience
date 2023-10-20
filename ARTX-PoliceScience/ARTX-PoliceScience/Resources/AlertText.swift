@@ -100,7 +100,7 @@ struct NoRegisterCodeText {
 
 struct QuizBackAlertText {
     static let title = "아직 학습이 남아있습니다"
-    static let message = "현재 진행 상태를 저장하고 리스트 화면으로 돌아가시겠습니까?"
+    static let message = "현재 진행 상태를 저장하고\n리스트 화면으로 돌아가시겠습니까?"
     static let button = "돌아가기"
     static let cancelButton = "취소"
 }

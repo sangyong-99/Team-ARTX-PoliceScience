@@ -21,7 +21,7 @@ enum FontSize {
     static let caption2: CGFloat = 11
     
     static let partText: CGFloat = 12
-    static let quizText: CGFloat = 20
+    static let quizText: CGFloat = 18
     
     static let mainTitle: CGFloat = 34
 }
@@ -45,11 +45,10 @@ extension UIFont {
     static let title2BoldKR = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
     
     static let title3 = UIFont.systemFont(ofSize: FontSize.title3, weight: .regular)
-    static let title3Bold = UIFont.systemFont(ofSize: FontSize.title2, weight: .semibold)
-    static let title3BoldKR = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
+    static let title3Bold = UIFont.systemFont(ofSize: FontSize.title3, weight: .semibold)
+    static let title3BoldKR = UIFont.systemFont(ofSize: FontSize.title3, weight: .bold)
     
-    static let headLine = UIFont.systemFont(ofSize: FontSize.headLine, weight: .regular)
-    static let headLineBold = UIFont.systemFont(ofSize: FontSize.headLine, weight: .semibold)
+    static let headLine = UIFont.systemFont(ofSize: FontSize.headLine, weight: .semibold)
     static let headLineBoldKR = UIFont.systemFont(ofSize: FontSize.headLine, weight: .bold)
     
     static let body = UIFont.systemFont(ofSize: FontSize.body, weight: .regular)
@@ -79,6 +78,7 @@ extension UIFont {
     static let caption2Bold = UIFont.systemFont(ofSize: FontSize.caption2, weight: .semibold)
     
     static let partText = UIFont.systemFont(ofSize: FontSize.partText, weight: .heavy)
+    static let quizText = UIFont.systemFont(ofSize: FontSize.quizText, weight: .medium)
     
     static let gmarketBold = UIFont(name: "GmarketSansTTFBold", size: FontSize.mainTitle)
     static let gmarketMedium = UIFont(name: "GmarketSansTTFMedium", size: FontSize.mainTitle)

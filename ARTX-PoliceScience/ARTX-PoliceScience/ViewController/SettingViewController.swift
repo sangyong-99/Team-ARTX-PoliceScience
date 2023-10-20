@@ -24,7 +24,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         label.numberOfLines = 0 // 여러 줄을 허용합니다.
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = .footNote
         return label
     }()
     
