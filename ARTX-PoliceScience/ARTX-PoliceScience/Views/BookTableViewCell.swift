@@ -51,11 +51,11 @@ class BookTableViewCell: UITableViewCell {
     
     private lazy var purchaseButton: UIButton = {
         let button = UIButton()
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .pointBlue
+        button.tintColor = .white
+        button.setImage(UIImage(systemName: "cart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15)), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        if let symbolImage = Symbol.purchaseButton.image {
-            button.setImage(symbolImage, for: .normal) }
-        button.tintColor = UIColor(named: "ColorsBlue")
-        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -99,6 +99,8 @@ class BookTableViewCell: UITableViewCell {
             labelStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -72),
             
             purchaseButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            purchaseButton.widthAnchor.constraint(equalToConstant: 40),
+            purchaseButton.heightAnchor.constraint(equalToConstant: 40),
             purchaseButton.centerYAnchor.constraint(equalTo: labelStackView.centerYAnchor)
             
         ])
