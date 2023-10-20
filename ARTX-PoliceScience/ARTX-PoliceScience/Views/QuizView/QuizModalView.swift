@@ -31,7 +31,7 @@ class QuizModalView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
-        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
         button.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside )
         return button
     }()
@@ -79,12 +79,12 @@ class QuizModalView: UIView {
     
     @objc func bookmarkButtonTapped() {
         if bookMarkButton.isSelected == true {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             bookMarkButton.isSelected = false
             addBookmark?(false)
         }
         else {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             bookMarkButton.isSelected = true
             addBookmark?(true)
         }

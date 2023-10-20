@@ -181,10 +181,10 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizView.bookMarkButton.isSelected = true
         } else {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizView.bookMarkButton.isSelected = false
         }
         
@@ -257,10 +257,10 @@ extension QuizViewController {
         quizModal.transitioningDelegate = self
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = true
         } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = false
         }
         
@@ -295,10 +295,10 @@ extension QuizViewController {
         quizModal.transitioningDelegate = self
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = true
         } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = false
         }
         

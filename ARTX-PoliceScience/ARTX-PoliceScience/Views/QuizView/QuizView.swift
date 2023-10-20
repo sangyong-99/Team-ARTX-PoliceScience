@@ -40,7 +40,7 @@ class QuizView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
-        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
         button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
         return button
     }()
@@ -49,12 +49,12 @@ class QuizView: UIView {
     
     @objc func myButtonTapped() {
         if bookMarkButton.isSelected == true {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             bookMarkButton.isSelected = false
             addBookmark?(false)
         }
         else {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .semibold)), for: .normal)
             bookMarkButton.isSelected = true
             addBookmark?(true)
         }
