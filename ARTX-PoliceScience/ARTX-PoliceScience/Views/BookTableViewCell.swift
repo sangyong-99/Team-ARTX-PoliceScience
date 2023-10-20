@@ -24,7 +24,7 @@ class BookTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
-        label.lineBreakMode = .byCharWrapping
+        label.lineBreakMode = .byWordWrapping
         label.font = .systemFont(ofSize: 15, weight: .semibold)
         label.textColor = UIColor(named: "PrimaryBlack")
         label.numberOfLines = 0
