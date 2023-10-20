@@ -104,3 +104,10 @@ struct QuizBackAlertText {
     static let button = "돌아가기"
     static let cancelButton = "취소"
 }
+
+struct PurchaseAlertText {
+    static let title = "책 구매 페이지로 이동합니다"
+    static let message = "웹 페이지가 실행됩니다."
+    static let button = "이동하기"
+    static let cancelButton = "취소"
+}

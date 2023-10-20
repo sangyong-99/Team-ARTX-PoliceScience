@@ -105,8 +105,22 @@ class BookTableViewCell: UITableViewCell {
             
         ])
     }
-    
+}
+
+extension BookTableViewCell {
     @objc private func purchaseButtonTapped() {
+        let text = PurchaseAlertText.self
+        
+        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.button, style: .default, handler: { _ in
+            self.goToLink()
+        }))
+        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
+        
+        alert.show()
+    }
+    
+    private func goToLink() {
         let viewModel = BooksViewModel()
         
         // 책 구매 주소
