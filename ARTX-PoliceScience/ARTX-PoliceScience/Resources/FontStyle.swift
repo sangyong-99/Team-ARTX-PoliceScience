@@ -42,27 +42,38 @@ extension UIFont {
     
     static let title2 = UIFont.systemFont(ofSize: FontSize.title2, weight: .regular)
     static let title2Bold = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
+    static let title2BoldKR = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
     
     static let title3 = UIFont.systemFont(ofSize: FontSize.title3, weight: .regular)
-    static let title3Bold = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
+    static let title3Bold = UIFont.systemFont(ofSize: FontSize.title2, weight: .semibold)
+    static let title3BoldKR = UIFont.systemFont(ofSize: FontSize.title2, weight: .bold)
     
     static let headLine = UIFont.systemFont(ofSize: FontSize.headLine, weight: .regular)
-    static let headLineBold = UIFont.systemFont(ofSize: FontSize.headLine, weight: .bold)
+    static let headLineBold = UIFont.systemFont(ofSize: FontSize.headLine, weight: .semibold)
+    static let headLineBoldKR = UIFont.systemFont(ofSize: FontSize.headLine, weight: .bold)
     
     static let body = UIFont.systemFont(ofSize: FontSize.body, weight: .regular)
     static let bodyBold = UIFont.systemFont(ofSize: FontSize.body, weight: .bold)
+    static let bodyKR = UIFont.systemFont(ofSize: FontSize.body, weight: .regular)
     
     static let callOut = UIFont.systemFont(ofSize: FontSize.callOut, weight: .regular)
-    static let callOutBold = UIFont.systemFont(ofSize: FontSize.callOut, weight: .bold)
+    static let callOutBold = UIFont.systemFont(ofSize: FontSize.callOut, weight: .semibold)
+    static let callOutKR = UIFont.systemFont(ofSize: FontSize.callOut, weight: .regular)
+    static let callOutBoldKR = UIFont.systemFont(ofSize: FontSize.callOut, weight: .bold)
     
     static let subHead = UIFont.systemFont(ofSize: FontSize.subHead, weight: .regular)
-    static let subHeadBold = UIFont.systemFont(ofSize: FontSize.subHead, weight: .bold)
+    static let subHeadBold = UIFont.systemFont(ofSize: FontSize.subHead, weight: .semibold)
+    static let subHeadKR = UIFont.systemFont(ofSize: FontSize.subHead, weight: .regular)
+    static let subHeadBoldKR = UIFont.systemFont(ofSize: FontSize.subHead, weight: .bold)
     
     static let footNote = UIFont.systemFont(ofSize: FontSize.footNote, weight: .regular)
-    static let footNoteBold = UIFont.systemFont(ofSize: FontSize.footNote, weight: .bold)
+    static let footNoteBold = UIFont.systemFont(ofSize: FontSize.footNote, weight: .semibold)
+    static let footNoteBoldKR = UIFont.systemFont(ofSize: FontSize.footNote, weight: .regular)
     
     static let caption1 = UIFont.systemFont(ofSize: FontSize.caption1, weight: .regular)
-    static let caption1Bold = UIFont.systemFont(ofSize: FontSize.caption1, weight: .semibold)
+    static let caption1Bold = UIFont.systemFont(ofSize: FontSize.caption1, weight: .medium)
+    static let caption1KR = UIFont.systemFont(ofSize: FontSize.caption1, weight: .regular)
+    static let caption1BoldKR = UIFont.systemFont(ofSize: FontSize.caption1, weight: .semibold)
     
     static let caption2 = UIFont.systemFont(ofSize: FontSize.caption2, weight: .regular)
     static let caption2Bold = UIFont.systemFont(ofSize: FontSize.caption2, weight: .semibold)
