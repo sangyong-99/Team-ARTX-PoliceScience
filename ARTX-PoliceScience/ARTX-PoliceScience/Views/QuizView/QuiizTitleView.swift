@@ -15,7 +15,7 @@ class QuizTitleView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         let text = "CHAPTER 01"
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.font = UIFont.caption1Bold
         label.textColor = UIColor(resource: .textBlue)
         
         return label
@@ -26,7 +26,7 @@ class QuizTitleView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         let text = "경찰 개념의 연혁"
         label.text = text
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.title3BoldKR
         label.textColor = UIColor(resource: .primaryBlack)
         
         return label

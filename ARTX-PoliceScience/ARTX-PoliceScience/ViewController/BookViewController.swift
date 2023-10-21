@@ -22,7 +22,7 @@ class BookViewController: UIViewController {
     let mainStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
-        stackView.spacing = 0
+        stackView.spacing = 5
         return stackView
     }()
     
@@ -59,10 +59,10 @@ class BookViewController: UIViewController {
     
     let introTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.font = .subHeadBoldKR
         label.textColor = UIColor(named: "PrimaryBlack")
-        label.text = "헤드라인 헤드라인 헤드라인 헤드라인 헤드라인"
-        label.lineBreakMode = .byCharWrapping
+        label.text = "출제경향의 핵심을 짚는 경찰전문가"
+        label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -70,9 +70,9 @@ class BookViewController: UIViewController {
     
     let introSubLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.font = .subHeadKR
         label.textColor = UIColor(named: "PrimaryBlack")
-        label.text = "상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명 상세 설명"
+        label.text = "(현)해커스경찰 경찰학 선생님\n(현)해커스소방 행정법 선생님"
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
         label.textAlignment = .left

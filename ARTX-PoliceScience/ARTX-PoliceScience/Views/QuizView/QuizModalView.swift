@@ -22,16 +22,16 @@ class QuizModalView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "맞았습니다."
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = .headLineBoldKR
         label.textColor = UIColor(resource: .textBlue)
         return label
     }()
     
-    lazy var bookMarkButton: UIButton = {
-        let button = UIButton()
+    lazy var bookMarkButton: ExtendedTouchButton = {
+        let button = ExtendedTouchButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .textBlue)
-        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
         button.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside )
         return button
     }()
@@ -41,7 +41,7 @@ class QuizModalView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "정답: X"
         label.textColor = UIColor(resource: .primaryBlack)
-        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.font = .title2BoldKR
         return label
     }()
     
@@ -52,12 +52,12 @@ class QuizModalView: UIView {
         textview.textColor = UIColor(resource: .primaryBlack)
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 5
-        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10, weight: .medium)]
+        let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.callOutKR]
         textview.typingAttributes = attributes
         textview.isEditable = false
         textview.textContainer.lineFragmentPadding = 0
         textview.showsVerticalScrollIndicator = false
-        textview.font = .systemFont(ofSize: 16, weight: .regular)
+        textview.font = .callOutKR
         return textview
     }()
     
@@ -68,7 +68,7 @@ class QuizModalView: UIView {
         button.backgroundColor = UIColor(resource: .bgBlue)
         
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]))
+        attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.subHeadBoldKR]))
         
         button.setAttributedTitle(attributedText, for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -79,13 +79,13 @@ class QuizModalView: UIView {
     
     @objc func bookmarkButtonTapped() {
         if bookMarkButton.isSelected == true {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             bookMarkButton.isSelected = false
             addBookmark?(false)
             CustomHaptics.shared.bookMarkTapped()
         }
         else {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             bookMarkButton.isSelected = true
             addBookmark?(true)
             CustomHaptics.shared.bookMarkTapped()

@@ -37,7 +37,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let settingViewButton: UIButton = {
         let settingButton = UIButton(type: .custom)
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 22)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.title2)
         settingButton.setImage(UIImage(systemName: "gearshape.fill", withConfiguration: symbolConfiguration), for: .normal)
         settingButton.tintColor = .white
         return settingButton
@@ -69,9 +69,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let bookintroduceButton = UIButton()
         
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "책 소개 ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .medium)]))
+        attributedText.append(NSAttributedString(string: "책 소개 ", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
         let symbolImage = UIImage(systemName: "arrowtriangle.forward.circle.fill")?.withConfiguration(symbolConfiguration).withTintColor(.white)
         let textAttachment = NSTextAttachment()
         textAttachment.image = symbolImage
@@ -102,13 +102,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let progressTitleLabel = UILabel()
         if let symbolImage = UIImage(systemName: "chart.bar.fill")?.withRenderingMode(.alwaysTemplate) {
             let symbolAttachment = NSTextAttachment()
-            let scaledImage = symbolImage.withConfiguration(UIImage.SymbolConfiguration(pointSize: 12, weight: .regular))
+            let scaledImage = symbolImage.withConfiguration(UIImage.SymbolConfiguration(font: UIFont.caption1))
             symbolAttachment.image = scaledImage
             let attributedString = NSMutableAttributedString(string: "")
             attributedString.append(NSAttributedString(attachment: symbolAttachment))
             attributedString.append(NSAttributedString(string: " 전체 학습 진행도"))
             progressTitleLabel.attributedText = attributedString
-            progressTitleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            progressTitleLabel.font = UIFont.caption1KR
             progressTitleLabel.textColor = .black
         }
         return progressTitleLabel
@@ -117,7 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressViewLabel: UILabel = {
         let progressViewLabel = UILabel()
         progressViewLabel.text = "%"
-        progressViewLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        progressViewLabel.font = UIFont.title3Bold
         
         return progressViewLabel
     }()
@@ -125,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressValueLabel: UILabel = {
         let progressValueLabel = UILabel()
         
-        progressValueLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        progressValueLabel.font = UIFont.title1Bold
         
         return progressValueLabel
     }()
@@ -141,31 +141,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }()
     
     let headerBookmarkButton: UIButton = {
-        let headerBookmarkButton = UIButton(type: .system)
+        let headerBookmarkButton = UIButton()
         headerBookmarkButton.layer.cornerRadius = 20
         headerBookmarkButton.clipsToBounds = true
         headerBookmarkButton.layer.borderWidth = 1
         headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
         
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 10, weight: .semibold)
-        if let image = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration) {
-            headerBookmarkButton.setImage(image, for: .normal)
-        }
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .heavy)]))
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
+        let symbolImage = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration).withTintColor(.textBlue)
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = symbolImage
+        let imageString = NSAttributedString(attachment: textAttachment)
+        attributedText.append(imageString)
+        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
+        
+        headerBookmarkButton.contentEdgeInsets = .init(top: 0, left: 0, bottom: 3, right: 0)
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
-        
         headerBookmarkButton.setTitleColor(.textBlue, for: .normal)
-        
-        headerBookmarkButton.contentHorizontalAlignment = .center
-        headerBookmarkButton.contentVerticalAlignment = .center
-        
         return headerBookmarkButton
     }()
     
     let progressImages: UIImageView = {
         let progressImage = UIImageView()
-//        progressImage.image = .gradeBadge0
         progressImage.frame = CGRect(x: 0, y: 0, width: 22, height: 22) // 원하는 크기로 설정
         
         return progressImage
@@ -199,7 +197,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         newLeadingConstraint = progressImages.leadingAnchor.constraint(equalTo: progressView.leadingAnchor, constant: newLeadingConstant)
         newLeadingConstraint?.isActive = true
         
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         }
         
@@ -309,8 +307,22 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             titleStackView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 24),
-            titleStackView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 32)
+            titleStackView.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 39),
+            titleStackView.heightAnchor.constraint(equalToConstant: 82)
         ])
+
+        // MARK: - studyProgressView 하얀색 뷰 UIView
+        
+        studyProgressView.translatesAutoresizingMaskIntoConstraints = false
+        header.addSubview(studyProgressView)
+        
+        NSLayoutConstraint.activate([
+            studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -17),
+            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
+            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
+            studyProgressView.heightAnchor.constraint(equalToConstant: 142)
+        ])
+        
         // MARK: - bookintroduceButton 책 소개 버튼
         
         bookintroduceButton.addTarget(self, action: #selector(introduceButtonTapped), for: .touchUpInside)
@@ -319,20 +331,9 @@ extension HomeViewController {
         
         NSLayoutConstraint.activate([
             bookintroduceButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
-            bookintroduceButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 114)
+            bookintroduceButton.bottomAnchor.constraint(equalTo: studyProgressView.topAnchor, constant: -12)
+//            bookintroduceButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 114)
         ])
-        // MARK: - studyProgressView 하얀색 뷰 UIView
-        
-        studyProgressView.translatesAutoresizingMaskIntoConstraints = false
-        header.addSubview(studyProgressView)
-        
-        NSLayoutConstraint.activate([
-            studyProgressView.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -22),
-            studyProgressView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
-            studyProgressView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -16),
-            studyProgressView.heightAnchor.constraint(equalToConstant: 148)
-        ])
-        
         
         // MARK: - progressTitleLabel 전체 학습 진행도
         
@@ -504,7 +505,7 @@ extension HomeViewController {
         let partLabel: UILabel = {
             let label = UILabel()
             label.text = "PART \(quizPartModel.part)"
-            label.font = UIFont.systemFont(ofSize: 12, weight: .heavy)
+            label.font = UIFont.partText
             label.textColor = .textBlue
             
             let attributedText = NSAttributedString(string: label.text ?? "", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
@@ -516,7 +517,7 @@ extension HomeViewController {
         let partNameLabel: UILabel = {
             let label = UILabel()
             label.text = quizPartModel.part_name
-            label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+            label.font = UIFont.title3BoldKR
             return label
         }()
         
@@ -557,8 +558,7 @@ extension HomeViewController {
 // MARK: - navigation 관련 세팅
 extension HomeViewController {
     func homeViewNavBar() {
-        self.title = "조현 경찰학"
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 17, weight: .regular)
+        let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.headLine)
         let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
         
         let rightBarButtonItem = UIBarButtonItem(
@@ -568,6 +568,9 @@ extension HomeViewController {
             action: #selector(rightItemTapped)
         )
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        self.title = "조현 경찰학"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headLineBoldKR]
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -586,16 +589,16 @@ extension HomeViewController {
 }
 
 extension HomeViewController: QuizViewConrollerDelegate {
-    private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+    private func showToast(message : String, font: UIFont = UIFont.callOut) {
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 175, height: 32))
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.font = font
-        toastLabel.textAlignment = .center;
+        toastLabel.textAlignment = .center
         toastLabel.text = message
         toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
         self.view.addSubview(toastLabel)
         UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
             toastLabel.alpha = 0.0

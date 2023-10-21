@@ -15,7 +15,7 @@ class BookTableViewCell: UITableViewCell {
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.spacing = 4
+        stackView.spacing = 1
         stackView.axis = .vertical
         return stackView
     }()
@@ -24,8 +24,8 @@ class BookTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
-        label.lineBreakMode = .byCharWrapping
-        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        label.lineBreakMode = .byWordWrapping
+        label.font = .subHeadBoldKR
         label.textColor = UIColor(named: "PrimaryBlack")
         label.numberOfLines = 0
         return label
@@ -36,7 +36,7 @@ class BookTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         label.lineBreakMode = .byCharWrapping
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .caption1KR
         label.textColor = UIColor.secondaryLabel
         label.numberOfLines = 0
         return label
@@ -51,11 +51,11 @@ class BookTableViewCell: UITableViewCell {
     
     private lazy var purchaseButton: UIButton = {
         let button = UIButton()
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .pointBlue
+        button.tintColor = .white
+        button.setImage(UIImage(systemName: "cart", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.subHead)), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        if let symbolImage = Symbol.purchaseButton.image {
-            button.setImage(symbolImage, for: .normal) }
-        button.tintColor = UIColor(named: "ColorsBlue")
-        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -99,12 +99,28 @@ class BookTableViewCell: UITableViewCell {
             labelStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -72),
             
             purchaseButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            purchaseButton.widthAnchor.constraint(equalToConstant: 40),
+            purchaseButton.heightAnchor.constraint(equalToConstant: 40),
             purchaseButton.centerYAnchor.constraint(equalTo: labelStackView.centerYAnchor)
             
         ])
     }
-    
+}
+
+extension BookTableViewCell {
     @objc private func purchaseButtonTapped() {
+        let text = PurchaseAlertText.self
+        
+        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.button, style: .default, handler: { _ in
+            self.goToLink()
+        }))
+        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
+        
+        alert.show()
+    }
+    
+    private func goToLink() {
         let viewModel = BooksViewModel()
         
         // 책 구매 주소

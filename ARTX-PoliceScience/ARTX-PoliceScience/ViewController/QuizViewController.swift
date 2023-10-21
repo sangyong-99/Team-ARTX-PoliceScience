@@ -129,7 +129,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
             progressbarView.imageView.leadingAnchor.constraint(equalTo: progressbarView.progressNumberLabel.trailingAnchor, constant: 10),
             progressbarView.imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            quizView.quizBackgroundView.topAnchor.constraint(equalTo: progressbarView.progressView.bottomAnchor, constant: 16),
+            quizView.quizBackgroundView.topAnchor.constraint(equalTo: progressbarView.progressView.bottomAnchor, constant: 26),
             quizView.quizBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             quizView.quizBackgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             quizView.quizBackgroundView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -206),
@@ -168,7 +168,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
         let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
         var progressbar = progressFraction
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             let updatedProgressFraction = Float(self.currentQuizNumber) / Float(totalQuestions)
             self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
         }
@@ -181,33 +181,16 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizView.bookMarkButton.isSelected = true
         } else {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizView.bookMarkButton.isSelected = false
         }
         
         progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
     }
     
-    private func showToast(message : String, font: UIFont = UIFont.systemFont(ofSize: 14.0)) {
-        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
     func deliveryData(_ data: String) {
         
     }
@@ -257,10 +240,10 @@ extension QuizViewController {
         quizModal.transitioningDelegate = self
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = true
         } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = false
         }
         
@@ -295,10 +278,10 @@ extension QuizViewController {
         quizModal.transitioningDelegate = self
         
         if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = true
         } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17)), for: .normal)
+            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
             quizModal.quizModalView.bookMarkButton.isSelected = false
         }
         

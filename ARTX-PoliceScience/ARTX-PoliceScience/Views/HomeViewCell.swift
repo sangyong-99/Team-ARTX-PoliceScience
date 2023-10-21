@@ -18,7 +18,7 @@ class HomeViewCell: UITableViewCell {
     
     private let chapterLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        label.font = UIFont.caption2Bold
         label.textColor = .textBlue
         return label
     }()
@@ -26,13 +26,13 @@ class HomeViewCell: UITableViewCell {
     private let chapterNameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.font = UIFont.subHeadBoldKR
         return label
     }()
     
     private let questionProgressCountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.font = UIFont.caption1
         label.textColor = .black60
         return label
     }()
@@ -100,7 +100,7 @@ class HomeViewCell: UITableViewCell {
         } else {
             let attributedString = NSMutableAttributedString(string: "")
             let imageAttachment = NSTextAttachment()
-            imageAttachment.image = UIImage(systemName: "lock", withConfiguration: UIImage.SymbolConfiguration(pointSize: 12))?.withTintColor(.black60)
+            imageAttachment.image = UIImage(systemName: "lock", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.caption1))?.withTintColor(.black60)
             attributedString.append(NSAttributedString(attachment: imageAttachment))
             questionProgressCountLabel.attributedText = attributedString
             
