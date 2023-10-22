@@ -14,7 +14,7 @@ class SettingTableViewCell: UITableViewCell {
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .pointBlue
+        imageView.tintColor = .pointText
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

@@ -239,15 +239,6 @@ extension QuizViewController {
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
         
-        if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = true
-        } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = false
-        }
-        
-        
         if let sheet = quizModal.sheetPresentationController {
             let height = view.frame.height
             let multiplier = 0.42
@@ -276,15 +267,6 @@ extension QuizViewController {
         quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
         quizModal.modalPresentationStyle = .pageSheet
         quizModal.transitioningDelegate = self
-        
-        if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = true
-        } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = false
-        }
-        
         
         if let sheet = quizModal.sheetPresentationController {
             let height = view.frame.height

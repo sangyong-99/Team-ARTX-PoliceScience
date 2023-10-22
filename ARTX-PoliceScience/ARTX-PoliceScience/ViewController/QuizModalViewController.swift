@@ -32,29 +32,15 @@ class QuizModalViewController: UIViewController {
         super.viewDidLoad()
         layout()
         view.backgroundColor = .white
-        
-        quizModalView.addBookmark = { isSelected in
-            var currentBookmarkList = LocalState.bookmarkList
-            
-            if isSelected {
-                currentBookmarkList.append(self.quizId)
-            } else {
-                guard let bookmarkIndex = currentBookmarkList.firstIndex(of: self.quizId) else { return }
-                currentBookmarkList.remove(at: bookmarkIndex)
-            }
-            LocalState.bookmarkList = currentBookmarkList
-        }
-        
+                
         if question.answer == selectedAnswer {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textBlue)
-            quizModalView.bookMarkButton.tintColor = UIColor(resource: .textBlue)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
             quizModalView.correctNotificationLabel.text = "맞았습니다."
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.text = question.explanation
         } else {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
-            quizModalView.bookMarkButton.tintColor = UIColor(resource: .textRed)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = question.answer ? "정답: O" : "정답 X"
@@ -69,7 +55,6 @@ class QuizModalViewController: UIViewController {
         
         view.addSubview(quizModalView.labelBackgroundView)
         view.addSubview(quizModalView.correctNotificationLabel)
-        view.addSubview(quizModalView.bookMarkButton)
         view.addSubview(quizModalView.correctLabel)
         view.addSubview(quizModalView.explanationLabel)
         view.addSubview(quizModalView.nextQuestionButton)
@@ -83,10 +68,6 @@ class QuizModalViewController: UIViewController {
             quizModalView.correctNotificationLabel.centerYAnchor.constraint(equalTo: quizModalView.labelBackgroundView.centerYAnchor),
             quizModalView.correctNotificationLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 10),
 
-            
-            quizModalView.bookMarkButton.centerYAnchor.constraint(equalTo: quizModalView.correctNotificationLabel.centerYAnchor),
-            quizModalView.bookMarkButton.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -10.5),
-            
             quizModalView.correctLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 8),
             quizModalView.correctLabel.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -8),
             quizModalView.correctLabel.topAnchor.constraint(equalTo: quizModalView.labelBackgroundView.bottomAnchor, constant: 16),
