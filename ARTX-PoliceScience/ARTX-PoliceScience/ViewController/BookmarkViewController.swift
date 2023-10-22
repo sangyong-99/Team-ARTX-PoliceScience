@@ -31,7 +31,7 @@ final class BookmarkViewController: UIViewController {
         self.layoutBookmarkViewController()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("BackToOxview"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didFinishTestNotification(_:)), name: NSNotification.Name("BackToOxListview"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(didFinishTestNotification(_:)), name: NSNotification.Name("BackToOxListview"), object: nil)
 
     }
     

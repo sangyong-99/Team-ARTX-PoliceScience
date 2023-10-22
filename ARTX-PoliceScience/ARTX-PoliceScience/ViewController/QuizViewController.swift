@@ -60,7 +60,6 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         
         navigationController?.configureNavigationBar(withTitle: "0\(partPath.part) \(partPath.part_name)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         if showBookmarkedOnly {
             currentQuizNumber = 0
@@ -88,6 +87,8 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("CurentQuizNumberDidChange"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(goToHomeView(_:)), name: NSNotification.Name("QuizToHomeView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backButtonTapped), name: NSNotification.Name("changeQuizToHomeview"), object: nil)
 
     }
     
@@ -146,9 +147,8 @@ extension QuizViewController {
         alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
             self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
+//            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+//            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
         })
         
         alert.show()
