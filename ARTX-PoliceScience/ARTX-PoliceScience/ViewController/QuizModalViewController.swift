@@ -53,13 +53,13 @@ class QuizModalViewController: UIViewController {
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
             quizModalView.correctNotificationLabel.text = "맞았습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
-            quizModalView.explanationLabel.text = questions[number].explanation
+            quizModalView.explanationLabel.text = questions[number].explanation == "" ? "해설 없음." : questions[number].explanation
         } else {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
-            quizModalView.explanationLabel.text = questions[number].explanation
+            quizModalView.explanationLabel.text = questions[number].explanation == "" ? "해설 없음." : questions[number].explanation
         }
         
         quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
