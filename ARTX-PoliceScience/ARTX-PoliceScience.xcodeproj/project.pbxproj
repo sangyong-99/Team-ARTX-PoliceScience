@@ -628,7 +628,7 @@
 				DEVELOPMENT_TEAM = V5NZ4978W9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARTX-PoliceScience/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "조현 경찰학OX";
+				INFOPLIST_KEY_CFBundleDisplayName = "애플 아카데미OX";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -639,7 +639,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ARTX.PoliceScience;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ARTX.AppleAcademy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -661,7 +661,7 @@
 				DEVELOPMENT_TEAM = V5NZ4978W9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARTX-PoliceScience/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "조현 경찰학OX";
+				INFOPLIST_KEY_CFBundleDisplayName = "애플 아카데미OX";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -672,7 +672,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ARTX.PoliceScience;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ARTX.AppleAcademy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
