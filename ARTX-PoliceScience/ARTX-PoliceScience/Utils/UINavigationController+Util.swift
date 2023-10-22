@@ -26,7 +26,7 @@ extension UINavigationController {
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
     }
-
+    
     func addBackButton(target: UIViewController, action: Selector) {
         let backArrowImage = UIImage(systemName: "chevron.backward", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         let backButton = UIBarButtonItem(image: backArrowImage, style: .plain, target: target, action: action)
@@ -41,11 +41,17 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self
     }
+    
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-        return viewControllers.count > 1
+        guard viewControllers.count > 1 else { return false }
+
+        if let _ = topViewController as? QuizViewController,
+           gestureRecognizer == self.interactivePopGestureRecognizer {
+            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+            return false
+        }
+        
+        return true
     }
-    
-    
 }
 

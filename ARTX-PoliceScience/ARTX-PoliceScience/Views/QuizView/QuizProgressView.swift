@@ -67,7 +67,9 @@ class QuizProgressView: UIView {
     
     private func updateProgress() {
         let progress = progressNum
-        progressView.progress = progress
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.progressView.setProgress(progress, animated: true)
+        }
     }
 
 }

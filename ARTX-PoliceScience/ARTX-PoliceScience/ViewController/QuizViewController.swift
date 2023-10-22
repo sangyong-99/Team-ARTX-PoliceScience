@@ -60,7 +60,6 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         
         navigationController?.configureNavigationBar(withTitle: "0\(partPath.part) \(partPath.part_name)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
         if showBookmarkedOnly {
             currentQuizNumber = 0
@@ -75,10 +74,21 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
         quizView.bookMarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
         
+        oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
+        
+        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
+        
+        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
+        
         // 업데이트 Observer
         NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("CurentQuizNumberDidChange"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(goToHomeView(_:)), name: NSNotification.Name("QuizToHomeView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backButtonTapped), name: NSNotification.Name("changeQuizToHomeview"), object: nil)
 
     }
     
@@ -137,8 +147,7 @@ extension QuizViewController {
         alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
             self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+//            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
             NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
         })
         
@@ -257,6 +266,45 @@ extension QuizViewController {
     @objc func goToHomeView(_ notification: Notification) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @objc func OutsideTapped() {
+        oxbuttonView.correctButton.backgroundColor = .pointGray
+        
+        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.correctButton.layer.shadowOpacity = 1
+        oxbuttonView.correctButton.layer.shadowRadius = 4
+        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        
+        oxbuttonView.wrongButton.backgroundColor = .pointGray
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxUntapped()
+    }
+    
+    @objc func wrongButtonDownTapped() {
+        oxbuttonView.wrongButton.backgroundColor = .buttonRed
+        
+        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.15).cgColor
+        oxbuttonView.wrongButton.layer.shadowOpacity = 1
+        oxbuttonView.wrongButton.layer.shadowRadius = 4
+        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxTapped()
+    }
+    
+    @objc func correctButtonDownTapped() {
+        oxbuttonView.correctButton.backgroundColor = .buttonBlue
+        
+        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.15).cgColor
+        oxbuttonView.correctButton.layer.shadowOpacity = 1
+        oxbuttonView.correctButton.layer.shadowRadius = 4
+        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        CustomHaptics.shared.oxTapped()
+    }
+    
     
     func QuizId() -> String {
         let quizId = String(format: "%02d", partPath.part)
