@@ -14,7 +14,7 @@ class QuizProgressView: UIView {
         let view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.trackTintColor = .white
-        view.progressTintColor = UIColor(resource: .barPoint)
+        view.progressTintColor = UIColor(resource: .PointBar)
         view.layer.cornerRadius = 4
         view.clipsToBounds = true
         view.progress = 0.0

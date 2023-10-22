@@ -30,7 +30,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let navBackView: UIView = {
         let settingNavBackView = UIView()
-        settingNavBackView.backgroundColor = .bgBlue
+        settingNavBackView.backgroundColor = .PointBg
         
         return settingNavBackView
     }()

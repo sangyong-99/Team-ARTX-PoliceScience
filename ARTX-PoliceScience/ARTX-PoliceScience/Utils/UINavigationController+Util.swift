@@ -20,7 +20,7 @@ extension UINavigationController {
     func configureNavigationBar(withTitle title: String) {
         topViewController?.title = title
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .bgBlue
+        appearance.backgroundColor = .pointBg
         appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         appearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headLineBoldKR, NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationBar.standardAppearance = appearance

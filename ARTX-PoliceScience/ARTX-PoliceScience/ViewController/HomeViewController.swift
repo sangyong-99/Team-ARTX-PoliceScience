@@ -133,7 +133,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressView: UIProgressView = {
         let progressView = UIProgressView()
         progressView.trackTintColor = .pointGray
-        progressView.progressTintColor = .barPoint
+        progressView.progressTintColor = .PointBar
         
         progressView.layer.cornerRadius = 6
         progressView.clipsToBounds = true

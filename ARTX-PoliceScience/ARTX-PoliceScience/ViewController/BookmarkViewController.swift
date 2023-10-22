@@ -14,7 +14,7 @@ final class BookmarkViewController: UIViewController {
     private var safeAreaLength = 0
     private let navBackView: UIView = {
         let settingNavBackView = UIView()
-        settingNavBackView.backgroundColor = .bgBlue
+        settingNavBackView.backgroundColor = .PointBg
         
         return settingNavBackView
     }()

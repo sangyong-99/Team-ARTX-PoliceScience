@@ -65,7 +65,7 @@ class QuizModalView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.white
-        button.backgroundColor = UIColor(resource: .bgBlue)
+        button.backgroundColor = UIColor(resource: .pointBg)
         
         let attributedText = NSMutableAttributedString()
         attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.subHeadBoldKR]))
