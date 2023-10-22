@@ -25,6 +25,8 @@ class QuizModalViewController: UIViewController {
     lazy var quizCount = questions.count - 1
     weak var delegate: QuizViewConrollerDelegate?
     
+    let generator = UINotificationFeedbackGenerator()
+    
     init(indexPath: IndexPath, selectedAnswer: Bool, partIndexString: String, questions: [Question], showBookmarkedOnly: Bool, bookmarkQuizNumber: Int) {
         self.indexPath = indexPath
         self.selectedAnswer = selectedAnswer
@@ -59,7 +61,9 @@ class QuizModalViewController: UIViewController {
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
+
             quizModalView.explanationLabel.text = questions[number].explanation == "" ? "해설 없음." : questions[number].explanation
+            generator.notificationOccurred(.error)
         }
         
         quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
