@@ -10,7 +10,6 @@ import UIKit
 class BookViewController: UIViewController {
     
     var safeAreaLength = 0
-    private lazy var bookViewModel = BooksViewModel()
     
     private let navBackView: UIView = {
         let settingNavBackView = UIView()

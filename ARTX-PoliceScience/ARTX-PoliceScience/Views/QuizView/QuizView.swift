@@ -7,6 +7,19 @@
 import UIKit
 
 class QuizView: UIView {
+    
+    var quizNumber: Int = 0 {
+        didSet {
+            updatequizNumberLabel()
+        }
+    }
+    
+    var quiz: String = "" {
+        didSet {
+            updatequizLabel()
+        }
+    }
+    
     let quizBackgroundView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -29,8 +42,9 @@ class QuizView: UIView {
     
     let quizNumberLabel: UILabel = {
         let label = UILabel()
+        let quizNumber = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Quiz 5"
+        label.text = "Quiz \(quizNumber)"
         label.font = UIFont.headLine
         label.textColor = UIColor(resource: .primaryBlack)
         return label
@@ -41,7 +55,7 @@ class QuizView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor(resource: .pointText)
         button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-        button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
+//        button.addTarget(self, action: #selector(myButtonTapped), for: .touchUpInside )
         
         return button
     }()
@@ -69,7 +83,6 @@ class QuizView: UIView {
         style.lineSpacing = 6
         let attributes = [NSAttributedString.Key.paragraphStyle: style, NSAttributedString.Key.font: UIFont.quizText]
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "감찰관은 소속 경찰기관의 관할구역 안에서 활동하는 것을 원칙으로 한다. 다만, 필요한 경우에는 관할구역 밖에서도 활동할 수 있다"
         label.textColor = UIColor(resource: .primaryBlack)
         label.typingAttributes = attributes
         //글자 수 제한 무제한
@@ -77,23 +90,14 @@ class QuizView: UIView {
         label.isEditable = false
         return label
     }()
-}
-
-extension UIColor {
-    convenience init(hex: String, alpha: CGFloat = 1.0) {
-        var hexValue = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
-        
-        if hexValue.hasPrefix("#") {
-            hexValue.remove(at: hexValue.startIndex)
-        }
-        
-        var rgbValue: UInt64 = 0
-        Scanner(string: hexValue).scanHexInt64(&rgbValue)
-        
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-        
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    
+    private func updatequizNumberLabel() {
+        let text = "Quiz \(quizNumber + 1)"
+        quizNumberLabel.text = text
+    }
+    
+    private func updatequizLabel() {
+        let text = quiz
+        quizLabel.text = text
     }
 }

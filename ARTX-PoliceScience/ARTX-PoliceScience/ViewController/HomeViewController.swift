@@ -154,7 +154,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         textAttachment.image = symbolImage
         let imageString = NSAttributedString(attachment: textAttachment)
         attributedText.append(imageString)
-        attributedText.append(NSAttributedString(string: " 오답 노트", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
+        attributedText.append(NSAttributedString(string: " 북마크", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
         
         headerBookmarkButton.contentEdgeInsets = .init(top: 0, left: 0, bottom: 3, right: 0)
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
@@ -181,16 +181,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func viewDidAppear(_ animated: Bool) {
-        //        print("ViewDidAppear 실행")
-        
         super.viewDidAppear(animated)
         
         progressImages.image = HomeViewModel.selectProgressImages(progress: calculateProgress())
         
         progressView.progress = calculateProgress()
         let newLeadingConstant = (progressView.frame.size.width * CGFloat(progressView.progress)) - 11
-        print(progressImages.frame.size.width)
-        
         // Deactivate the old constraint before creating a new one
         newLeadingConstraint?.isActive = false
         
@@ -200,9 +196,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         }
-        
-        
-        print(newLeadingConstant)
     }
     
     
@@ -253,9 +246,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateViewsForProgress(_ newProgress: Float) {
         let progressValueText = "\(Int(newProgress * 100))"
         progressValueLabel.text = progressValueText
-        //        progressView.progress = newProgress
-        print(progressView.frame.size.width)
-        
         
     }
     
@@ -473,13 +463,12 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        print("\(indexPath.section), \(indexPath.row)")
         tableView.deselectRow(at: indexPath, animated: true)
         
         let partIndexString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
         let currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
         let totalQuizNumber = globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions.count
-        let quizViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
+        let quizViewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: false, questions: globalQuestion.quiz[indexPath[0]].chapters[indexPath[1]].questions)
         
         if indexPath.section > 1 && !LocalState.isCodeActivated {
             HomeViewAlert.needActivateAlert(from: self)

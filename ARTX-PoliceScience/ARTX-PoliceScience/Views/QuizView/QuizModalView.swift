@@ -14,7 +14,7 @@ class QuizModalView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         // 여기 나중에 바꿔주세요 -> 에셋값으로
-        view.backgroundColor = UIColor(hex: "007AFF").withAlphaComponent(0.26)
+        view.backgroundColor = UIColor(resource: .bgPrimary)
         return view
     }()
     
@@ -57,19 +57,9 @@ class QuizModalView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.white
         button.backgroundColor = UIColor(resource: .pointBg)
-        
-        let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.subHeadBoldKR]))
-        
-        button.setAttributedTitle(attributedText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
-        button.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside )
         return button
     }()
-    
-    @objc func nextQuestionButtonTapped() {
-        
-    }
     
 }
