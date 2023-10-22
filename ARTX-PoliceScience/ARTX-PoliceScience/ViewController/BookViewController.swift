@@ -19,13 +19,6 @@ class BookViewController: UIViewController {
         return settingNavBackView
     }()
     
-    let mainStackView: UIStackView = {
-        let stackView = UIStackView(frame: .zero)
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        return stackView
-    }()
-    
     let labelStackView: UIStackView = {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
@@ -79,14 +72,12 @@ class BookViewController: UIViewController {
         return label
     }()
     
-    private lazy var tableView: UITableView = {
-        let tv =  UITableView(frame: .zero, style: .insetGrouped)
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.backgroundColor = .bgPrimary
-        tv.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.cellId)
-        tv.sectionFooterHeight = 12
-        tv.sectionHeaderHeight = 0
-        return tv
+    let logoImageView: UIImageView = {
+        let image = UIImageView()
+        image.image = .artxLogo
+        image.heightAnchor.constraint(equalToConstant: 308).isActive = true
+        image.contentMode = .scaleAspectFit
+        return image
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,61 +99,40 @@ class BookViewController: UIViewController {
     
     private func setup() {
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         labelStackView.addArrangedSubview(mainImageView)
         labelStackView.addArrangedSubview(introLabelStack)
         
         introLabelStack.addArrangedSubview(introTitleLabel)
         introLabelStack.addArrangedSubview(introSubLabel)
     
-        mainStackView.addArrangedSubview(labelStackView)
-        mainStackView.addArrangedSubview(tableView)
-        
         view.addSubview(navBackView)
-        view.addSubview(mainStackView)
+        view.addSubview(labelStackView)
+        view.addSubview(logoImageView)
         
     }
     
     private func layout() {
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
         
         navBackView.translatesAutoresizingMaskIntoConstraints = false
+        labelStackView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
-        ])
-    }
-}
+            navBackView.topAnchor.constraint(equalTo: view.topAnchor),
+            navBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength)),
 
-extension BookViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return bookViewModel.books.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let book = bookViewModel.books[indexPath.section]
-        let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.cellId, for: indexPath) as! BookTableViewCell
-        cell.selectionStyle = .none
-        cell.setup(with: book, at: indexPath.section)
-        cell.layer.cornerRadius = 14
+            labelStackView.topAnchor.constraint(equalTo: navBackView.bottomAnchor),
+            labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+
+            logoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 70),
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
         
-        return cell
     }
-    
 }
 
 extension BookViewController {
