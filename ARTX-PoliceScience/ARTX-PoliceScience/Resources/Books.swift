@@ -54,7 +54,7 @@ extension NavigationTitle {
     var title: String {
         switch self {
         case .bookView:
-            return "조현 경찰학이란?"
+            return "애플 아카데미 OX 퀴즈란?"
         case .bookmarkView:
             return "오답노트"
         }

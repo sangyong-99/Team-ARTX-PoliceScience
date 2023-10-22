@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "조현 경찰학"
+        titleLabel.text = "애플 아카데미"
         titleLabel.textColor = .white
         titleLabel.font = .gmarketBold
         return titleLabel
@@ -53,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let subTitleLabel: UILabel = {
         let subTitleLabel = UILabel()
-        subTitleLabel.text = "OX 문제집"
+        subTitleLabel.text = "OX 퀴즈"
         subTitleLabel.textColor = .white
         subTitleLabel.font = .gmarketMedium
         return subTitleLabel
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let bookintroduceButton = UIButton()
         
         let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "책 소개 ", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
+        attributedText.append(NSAttributedString(string: "OX 퀴즈 앱 소개 ", attributes: [NSAttributedString.Key.font: UIFont.caption1Bold]))
         
         let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
         let symbolImage = UIImage(systemName: "arrowtriangle.forward.circle.fill")?.withConfiguration(symbolConfiguration).withTintColor(.white)
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             symbolAttachment.image = scaledImage
             let attributedString = NSMutableAttributedString(string: "")
             attributedString.append(NSAttributedString(attachment: symbolAttachment))
-            attributedString.append(NSAttributedString(string: " 전체 학습 진행도"))
+            attributedString.append(NSAttributedString(string: " 아카데미 정복도"))
             progressTitleLabel.attributedText = attributedString
             progressTitleLabel.font = UIFont.caption1KR
             progressTitleLabel.textColor = .black
@@ -297,7 +297,7 @@ extension HomeViewController {
             settingViewButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
             settingViewButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 4)
         ])
-        // MARK: - titleStackView 조현 경찰학 OX 문제집
+        // MARK: - titleStackView 애플 아카데미 OX 문제집
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subTitleLabel)
@@ -559,7 +559,7 @@ extension HomeViewController {
 extension HomeViewController {
     func homeViewNavBar() {
         let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.headLine)
-        let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
+        let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate)
         
         let rightBarButtonItem = UIBarButtonItem(
             image: symbolImage,
@@ -567,9 +567,12 @@ extension HomeViewController {
             target: self,
             action: #selector(rightItemTapped)
         )
+        
+        rightBarButtonItem.tintColor = .pointText
+        
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
-        self.title = "조현 경찰학"
+        self.title = "애플 아카데미 OX 퀴즈"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.headLineBoldKR]
     }
     
