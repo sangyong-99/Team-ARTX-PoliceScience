@@ -14,7 +14,7 @@ class HomeViewAlert {
         
         let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: text.restartButton, style: .default) { _ in
-            let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: 0)
+            let targetViewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: false, questions: globalQuestion.quiz[indexPath[0]].chapters[indexPath[1]].questions)
             
             let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
             UserDefaults.standard.set(0, forKey: partChapterString)
@@ -25,7 +25,7 @@ class HomeViewAlert {
         })
         
         let boldButton = UIAlertAction(title: text.continueButton, style: .default) { _ in
-            let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: currentQuizNumber)
+            let targetViewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: false, questions: globalQuestion.quiz[indexPath[0]].chapters[indexPath[1]].questions)
             targetViewController.delegate = viewController.self as? any QuizViewConrollerDelegate
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
@@ -42,7 +42,7 @@ class HomeViewAlert {
         
         let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
-            let targetViewController = QuizViewController(partNumber: indexPath.section, partTitle: globalQuestion.quiz[indexPath.section].part_name, chapter: globalQuestion.quiz[indexPath.section].chapters[indexPath.row], currentQuizNumber: 0)
+            let targetViewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: false, questions: globalQuestion.quiz[indexPath[0]].chapters[indexPath[1]].questions)
             
             let partChapterString = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
             UserDefaults.standard.set(0, forKey: partChapterString)
@@ -50,6 +50,7 @@ class HomeViewAlert {
             
             viewController.navigationController?.pushViewController(targetViewController, animated: true)
             viewController.navigationController?.isNavigationBarHidden = false
+            
         })
         
         alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))

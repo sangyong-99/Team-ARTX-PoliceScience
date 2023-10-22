@@ -62,14 +62,4 @@ class OXbuttonView:UIView {
         return button
     }()
     
-//    @objc func rightButtonTapped() {
-//        //alpha값 세팅된거 나오면 고칠 예정...
-//        correctButton.backgroundColor = UIColor(hex: "#007AFF", alpha: 0.7)
-//    }
-//    
-//    @objc func wrongButtonTapped() {
-//        //alpha값 세팅된거 나오면 고칠 예정...
-//        wrongButton.backgroundColor = UIColor(hex: "#FF3B30", alpha: 0.7)
-//    }
-    
 }

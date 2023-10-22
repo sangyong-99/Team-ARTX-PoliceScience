@@ -16,7 +16,6 @@ class BookmarkViewModel {
 
     init() {
         let bookmarks = LocalState.bookmarkList
-        
         var quizzes: [Quiz] = []
         
         for quiz in globalQuestion.quiz {

@@ -30,20 +30,18 @@ final class BookmarkViewController: UIViewController {
         self.configureNavigationBar()
         self.layoutBookmarkViewController()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("BackToOxview"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didFinishTestNotification(_:)), name: NSNotification.Name("BackToOxListview"), object: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupData()
         super.viewWillAppear(animated)
         navigationController?.configureNavigationBar(withTitle: "오답 노트")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         navigationController?.isNavigationBarHidden = false
     }
     
-    private func setupData() {
-        
-    }
     
     private func configureTableView() {
         self.bookmarkTableView.separatorStyle = .singleLine
@@ -68,7 +66,6 @@ final class BookmarkViewController: UIViewController {
     
     private func configureNavigationBar() {
         self.navigationItem.title = NavigationTitle.bookmarkView.title
-        
     }
     
     private func layoutBookmarkViewController() {
@@ -135,14 +132,27 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        let partNumber = bookmarkViewModel.partNumber()
-        let partTitle = bookmarkViewModel.partTitle()
-        let chapter = bookmarkViewModel.chapter()
+        let questions = bookmarkViewModel.chapter().questions
         
-        let viewController = QuizViewController(partNumber: partNumber-1, partTitle: partTitle, chapter: chapter, currentQuizNumber: 0)
+        let viewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: true, questions: questions)
         
         tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func didRecieveTestNotification(_ notification: Notification) {
+        OperationQueue.main.addOperation { // DispatchQueue도 가능.
+            self.bookmarkViewModel = BookmarkViewModel()
+            self.bookmarkTableView.reloadData()
+        }
+    }
+    
+    @objc func didFinishTestNotification(_ notification: Notification) {
+        print("로드다시해")
+        OperationQueue.main.addOperation { // DispatchQueue도 가능.
+            self.bookmarkViewModel = BookmarkViewModel()
+            self.bookmarkTableView.reloadData()
+        }
     }
 }
 
