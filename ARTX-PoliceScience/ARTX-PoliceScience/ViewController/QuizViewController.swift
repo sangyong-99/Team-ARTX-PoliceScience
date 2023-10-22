@@ -148,7 +148,7 @@ extension QuizViewController {
             self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
 //            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-//            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
         })
         
         alert.show()
