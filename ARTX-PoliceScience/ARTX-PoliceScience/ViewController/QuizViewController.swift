@@ -96,7 +96,6 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         
         
             let number = showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber
-            print("index \(questions[number].index)")
             quizView.quizNumber = questions[number].index
             quizView.quiz = questions[number].question
             progressbarView.currentQuizNumber = number
