@@ -10,11 +10,22 @@ import UIKit
 
 class QuizTitleView: UIView {
     
+    var chapterNumber: Int = 0 {
+        didSet {
+            updateChapterNumberLabel()
+        }
+    }
+    
+    var chapterName: String = "" {
+        didSet {
+            updateChapterName()
+        }
+    }
+    
     let chapterNumberLabel: UILabel = {
         let label = UILabel()
+        let chapterNumber = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        let text = "CHAPTER 01"
-        label.text = text
         label.font = UIFont.caption1Bold
         label.textColor = UIColor(resource: .textBlue)
         
@@ -24,8 +35,6 @@ class QuizTitleView: UIView {
     let chapterTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let text = "경찰 개념의 연혁"
-        label.text = text
         label.font = UIFont.title3BoldKR
         label.textColor = UIColor(resource: .primaryBlack)
         
@@ -41,4 +50,15 @@ class QuizTitleView: UIView {
         
         return view
     }()
+    
+    
+    private func updateChapterNumberLabel() {
+        let text = "CHAPTER \(chapterNumber)"
+        chapterNumberLabel.text = text
+    }
+    
+    private func updateChapterName() {
+        let text = "\(chapterName)"
+        chapterTitleLabel.text = text
+    }
 }
