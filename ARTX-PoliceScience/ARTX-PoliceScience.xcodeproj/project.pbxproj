@@ -49,7 +49,7 @@
 		5ECE29FC2ACF088F00083E93 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FB2ACF088F00083E93 /* SettingModel.swift */; };
 		5ECE29FE2ACF08C000083E93 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */; };
 		5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDDA5622ACD11E2006E13DE /* LocalState.swift */; };
-		B43CF4DD2AE4FDB200003B71 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = B43CF4DC2AE4FDB200003B71 /* example.json */; };
+		B43CF4DF2AE541C900003B71 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = B43CF4DE2AE541C800003B71 /* example.json */; };
 		B4922AFE2AE1508B00AC0DEC /* CustomHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4922AFD2AE1508B00AC0DEC /* CustomHaptics.swift */; };
 		B49D4A7B2AD422080047CCE9 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7A2AD422080047CCE9 /* HomeModel.swift */; };
 		B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */; };
@@ -114,7 +114,7 @@
 		5ECE29FB2ACF088F00083E93 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		5ECE29FD2ACF08C000083E93 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		5EDDA5622ACD11E2006E13DE /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
-		B43CF4DC2AE4FDB200003B71 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		B43CF4DE2AE541C800003B71 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		B4922AFD2AE1508B00AC0DEC /* CustomHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHaptics.swift; sourceTree = "<group>"; };
 		B49D4A7A2AD422080047CCE9 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		B49D4A7C2AD42B9D0047CCE9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5CF0872ADEBCA500EAD4D7 /* Font */,
-				B43CF4DC2AE4FDB200003B71 /* example.json */,
+				B43CF4DE2AE541C800003B71 /* example.json */,
 				5E86FC142ACD0D4A00B01779 /* Resources.swift */,
 				4AA0924D2AD2963F006DB2BB /* Books.swift */,
 				FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */,
@@ -408,7 +408,7 @@
 				5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */,
 				5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */,
 				5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */,
-				B43CF4DD2AE4FDB200003B71 /* example.json in Resources */,
+				B43CF4DF2AE541C900003B71 /* example.json in Resources */,
 				5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */,
 				4AA076432AE0AD6800A3B18B /* GoogleService-Info.plist in Resources */,
 			);
