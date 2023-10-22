@@ -16,7 +16,7 @@ class QuizTitleView: UIView {
         let text = "CHAPTER 01"
         label.text = text
         label.font = UIFont.caption1Bold
-        label.textColor = UIColor(resource: .textBlue)
+        label.textColor = UIColor(resource: .pointText)
         
         return label
     }()

@@ -14,7 +14,7 @@ class BookViewController: UIViewController {
     
     private let navBackView: UIView = {
         let settingNavBackView = UIView()
-        settingNavBackView.backgroundColor = .PointBg
+        settingNavBackView.backgroundColor = .pointBg
         
         return settingNavBackView
     }()

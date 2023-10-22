@@ -133,7 +133,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let progressView: UIProgressView = {
         let progressView = UIProgressView()
         progressView.trackTintColor = .pointGray
-        progressView.progressTintColor = .PointBar
+        progressView.progressTintColor = .pointBar
         
         progressView.layer.cornerRadius = 6
         progressView.clipsToBounds = true
@@ -145,11 +145,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerBookmarkButton.layer.cornerRadius = 20
         headerBookmarkButton.clipsToBounds = true
         headerBookmarkButton.layer.borderWidth = 1
-        headerBookmarkButton.layer.borderColor = UIColor.textBlue.cgColor
+        headerBookmarkButton.layer.borderColor = UIColor.pointText.cgColor
         
         let attributedText = NSMutableAttributedString()
         let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.caption1Bold)
-        let symbolImage = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration).withTintColor(.textBlue)
+        let symbolImage = UIImage(systemName: "book.fill")?.withConfiguration(symbolConfiguration).withTintColor(.pointText)
         let textAttachment = NSTextAttachment()
         textAttachment.image = symbolImage
         let imageString = NSAttributedString(attachment: textAttachment)
@@ -158,7 +158,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         headerBookmarkButton.contentEdgeInsets = .init(top: 0, left: 0, bottom: 3, right: 0)
         headerBookmarkButton.setAttributedTitle(attributedText, for: .normal)
-        headerBookmarkButton.setTitleColor(.textBlue, for: .normal)
+        headerBookmarkButton.setTitleColor(.pointText, for: .normal)
         return headerBookmarkButton
     }()
     
@@ -506,7 +506,7 @@ extension HomeViewController {
             let label = UILabel()
             label.text = "PART \(quizPartModel.part)"
             label.font = UIFont.partText
-            label.textColor = .textBlue
+            label.textColor = .pointText
             
             let attributedText = NSAttributedString(string: label.text ?? "", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
             label.attributedText = attributedText

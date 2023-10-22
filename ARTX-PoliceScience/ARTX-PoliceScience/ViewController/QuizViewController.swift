@@ -28,7 +28,7 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         
         let settingNavBackView = UIView()
         settingNavBackView.translatesAutoresizingMaskIntoConstraints = false
-        settingNavBackView.backgroundColor = .PointBg
+        settingNavBackView.backgroundColor = .pointBg
         
         return settingNavBackView
     }()

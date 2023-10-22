@@ -21,7 +21,7 @@ class PartNumberLabel: UILabel {
     private func configureLabel() {
         self.textAlignment = .left
         self.font = .partText
-        self.textColor = .textBlue
+        self.textColor = .pointText
         
         let attributedString = NSMutableAttributedString.init(string: "Apply UnderLining")
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 0, length: attributedString.length))

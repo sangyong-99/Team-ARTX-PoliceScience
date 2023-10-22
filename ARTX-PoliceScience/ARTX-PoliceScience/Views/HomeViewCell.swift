@@ -19,7 +19,7 @@ class HomeViewCell: UITableViewCell {
     private let chapterLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.caption2Bold
-        label.textColor = .textBlue
+        label.textColor = .pointText
         return label
     }()
     

@@ -21,7 +21,7 @@ class ChapterNumberLabel: UILabel {
     private func configureLabel() {
         self.textAlignment = .left
         self.font = .caption2Bold
-        self.textColor = .textBlue
+        self.textColor = .pointText
     }
     
     func updateText(to number: Int) {
