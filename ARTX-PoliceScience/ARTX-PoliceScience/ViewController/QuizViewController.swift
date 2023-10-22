@@ -7,25 +7,29 @@
 
 import UIKit
 
-class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresentationControllerDelegate {
+class QuizViewController: UIViewController, UISheetPresentationControllerDelegate {
+    
     var safeAreaLength = 0
-    let partNumber: Int
-    let partTitle: String
-    //let userdefaultNumber: UserDefaults.standard.integer(forKey: partIndexString)
+    var indexPath: IndexPath
+    var showBookmarkedOnly: Bool = false
+    var questions: [Question]
+    var bookmarkQuizNumber = 0
+    lazy var partIndex = indexPath[0]
+    lazy var chapterIndex = indexPath[1]
+    lazy var partPath = globalQuestion.quiz[partIndex]
+    lazy var chapterPath = partPath.chapters[chapterIndex]
+    lazy var partIndexString = PartChapter.partIntToString(partIndex: partIndex, chapterIndex: chapterIndex)
+    lazy var currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
+
+
+    weak var delegate: QuizViewConrollerDelegate?
     
-    let nextQuiz: Notification.Name = Notification.Name("nextQuiz")
-    
-    private var currentQuizNumber: Int = 0
-    
+    //MARK: - View
     private let titleView = QuizTitleView()
     private let progressbarView = QuizProgressView()
     private let quizView = QuizView()
     private let oxbuttonView = OXbuttonView()
-    private let viewmodel: QuizViewModel
-    weak var delegate: QuizViewConrollerDelegate?
-    
     private let navBackView: UIView = {
-        
         let settingNavBackView = UIView()
         settingNavBackView.translatesAutoresizingMaskIntoConstraints = false
         settingNavBackView.backgroundColor = .bgBlue
@@ -33,11 +37,11 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         return settingNavBackView
     }()
     
-    init(partNumber: Int, partTitle: String, chapter: Chapter, currentQuizNumber: Int) {
-        self.partNumber = partNumber
-        self.partTitle = partTitle
-        self.viewmodel = QuizViewModel(chapter: chapter)
-        self.currentQuizNumber = currentQuizNumber
+    //MARK: - init
+    init(indexPath: IndexPath, showBookmarkedOnly: Bool, questions: [Question]) {
+        self.indexPath = indexPath
+        self.showBookmarkedOnly = showBookmarkedOnly
+        self.questions = questions
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -45,6 +49,8 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,26 +58,21 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
             safeAreaLength = Int(window.safeAreaInsets.top)
         }
         
-        view.backgroundColor = .bgPrimary
-        navigationController?.configureNavigationBar(withTitle: "0\(partNumber+1) \(partTitle)")
+        navigationController?.configureNavigationBar(withTitle: "0\(partPath.part) \(partPath.part_name)")
         navigationController?.addBackButton(target: self, action: #selector(backButtonTapped))
         
-        quizView.addBookmark = { isSelected in
-            var currentBookmarkList = LocalState.bookmarkList
-            
-            let quizId = self.QuizId()
-            
-            if isSelected {
-                currentBookmarkList.append(quizId)
-            } else {
-                guard let bookmarkIndex = currentBookmarkList.firstIndex(of: quizId) else { return }
-                currentBookmarkList.remove(at: bookmarkIndex)
-            }
-            LocalState.bookmarkList = currentBookmarkList
+        if showBookmarkedOnly {
+            currentQuizNumber = 0
+        } else {
+            currentQuizNumber = UserDefaults.standard.integer(forKey: partIndexString)
         }
         
+        update()
+        layout()
+
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonTapped), for: .touchUpInside)
+        quizView.bookMarkButton.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside)
         
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
@@ -82,14 +83,81 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
         
-        update()
-        layout()
+        // 업데이트 Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("CurentQuizNumberDidChange"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.nextQuiz(_:)), name: nextQuiz, object: nil)
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(goToHomeView(_:)), name: NSNotification.Name("QuizToHomeView"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backButtonTapped), name: NSNotification.Name("changeQuizToHomeview"), object: nil)
+
+    }
+    
+    // 업데이트 함수
+    private func update() {
+            let number = showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber
+            print("index \(questions[number].index)")
+            quizView.quizNumber = questions[number].index
+            quizView.quiz = questions[number].question
+            progressbarView.currentQuizNumber = number
+            progressbarView.totalNumber = questions.count
+            progressbarView.progressNum = Float(number) / Float(questions.count)
+
+        
+        let imageName = LocalState.bookmarkList.contains(QuizId()) ? "bookmark.fill" : "bookmark"
+        let configuration = UIImage.SymbolConfiguration(font: UIFont.bodyBold)
+        let image = UIImage(systemName: imageName, withConfiguration: configuration)
+        quizView.bookMarkButton.setImage(image, for: .normal)
+    }
+}
+
+
+extension QuizViewController {
+    
+    @objc func wrongButtonTapped() {
+        presentQuizModal(selectedAnswer: false)
+    }
+    
+    @objc func correctButtonTapped() {
+        presentQuizModal(selectedAnswer: true)
+    }
+    
+    @objc func bookmarkButtonTapped() {
+        let quizId = QuizId()
+        CustomHaptics.shared.bookMarkTapped()
+        
+        if !LocalState.bookmarkList.contains(quizId) {
+            LocalState.bookmarkList.append(quizId)
+        } else {
+            LocalState.bookmarkList = LocalState.bookmarkList.filter { $0 != quizId }
+        }
+        update()
+    }
+    
+    func bookmarkDidChange() {
+        // 북마크 상태가 변경되었을 때 UI를 업데이트하거나 필요한 동작을 수행
+        let quizId = QuizId()
+        quizView.bookMarkButton.isSelected = LocalState.bookmarkList.contains(quizId)
+    }
+    
+    @objc func backButtonTapped() {
+        let text = QuizBackAlertText.self
+        
+        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
+        alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+//            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
+        })
+        
+        alert.show()
     }
     
     private func layout() {
+        
+        view.backgroundColor = .bgPrimary
+        
         view.addSubview(navBackView)
         view.addSubview(titleView.chapterStackView)
         view.addSubview(progressbarView.progressView)
@@ -101,13 +169,15 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         view.addSubview(quizView.bookMarkButton)
         view.addSubview(quizView.quizLabel)
         view.addSubview(oxbuttonView.buttonStackView)
-        
+
         titleView.chapterStackView.addArrangedSubview(titleView.chapterNumberLabel)
         titleView.chapterStackView.addArrangedSubview(titleView.chapterTitleLabel)
         
         oxbuttonView.buttonStackView.addArrangedSubview(oxbuttonView.correctButton)
         oxbuttonView.buttonStackView.addArrangedSubview(oxbuttonView.wrongButton)
         
+        titleView.chapterNumber = chapterPath.chapter
+        titleView.chapterName = chapterPath.chapter_name
         
         NSLayoutConstraint.activate([
             navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
@@ -142,8 +212,6 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
             quizView.quizNumberLabel.topAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.topAnchor, constant: 9),
             quizView.quizNumberLabel.bottomAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.bottomAnchor, constant: -9),
             quizView.quizNumberLabel.leadingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.leadingAnchor, constant: 10),
-            //quizView.quizNumberLabel.trailingAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.trailingAnchor, constant: -247),
-            
             
             quizView.bookMarkButton.centerYAnchor.constraint(equalTo: quizView.quizNumberLabel.centerYAnchor),
             //quizView.bookMarkButton.leadingAnchor.constraint(equalTo: quizView.quizNumberLabel.trailingAnchor, constant: 217.5),
@@ -154,7 +222,6 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
             quizView.quizLabel.topAnchor.constraint(equalTo: quizView.quizTitlBackgroundView.bottomAnchor, constant: 16),
             quizView.quizLabel.bottomAnchor.constraint(equalTo: quizView.quizBackgroundView.bottomAnchor, constant: -26),
             
-            
             oxbuttonView.buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             oxbuttonView.buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             oxbuttonView.buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -21),
@@ -163,94 +230,11 @@ class QuizViewController: UIViewController,DeliveryDataProtocol, UISheetPresenta
         ])
     }
     
-    private func update() {
-        //        print("여기는\(currentQuizNumber)")
-        let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
-        let progressFraction = Float(currentQuizNumber+1) / Float(totalQuestions)
-        var progressbar = progressFraction
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
-            let updatedProgressFraction = Float(self.currentQuizNumber) / Float(totalQuestions)
-            self.progressbarView.progressView.setProgress(updatedProgressFraction, animated: true)
-        }
-        titleView.chapterNumberLabel.text = "CHAPTER 0" + String( viewmodel.chapterNumber(to: self.currentQuizNumber))
-        titleView.chapterTitleLabel.text = viewmodel.chapterTitle(to: self.currentQuizNumber)
-        quizView.quizNumberLabel.text = ("Quiz \(self.currentQuizNumber+1)")
-        quizView.quizLabel.text = viewmodel.question(to: self.currentQuizNumber).question
-        
-        let quizId = self.QuizId()
-        
-        
-        if LocalState.bookmarkList.contains(quizId) {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizView.bookMarkButton.isSelected = true
-        } else {
-            quizView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizView.bookMarkButton.isSelected = false
-        }
-        
-        progressbarView.progressNumberLabel.text = "\(currentQuizNumber) / \(totalQuestions)"
-    }
-    
-    func deliveryData(_ data: String) {
-        
-    }
-}
-
-extension QuizViewController {
-    @objc func backButtonTapped() {
-        let text = QuizBackAlertText.self
-        
-        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
-        alert.addAction(UIAlertAction(title: text.button, style: .default) { _ in
-            self.navigationController?.popViewController(animated: true)
-            self.navigationController?.isNavigationBarHidden = true
-            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-        })
-        
-        alert.show()
-    }
-    
-    @objc func nextQuestionButtonTapped() {
-        self.dismiss(animated: true) { [weak self] in
-            NotificationCenter.default.post(name: self!.nextQuiz, object: nil, userInfo: nil)
-        }
-        oxbuttonView.wrongButton.backgroundColor = .pointGray
-        
-        oxbuttonView.wrongButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
-        oxbuttonView.wrongButton.layer.shadowOpacity = 1
-        oxbuttonView.wrongButton.layer.shadowRadius = 4
-        oxbuttonView.wrongButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        
-        oxbuttonView.correctButton.backgroundColor = .pointGray
-        
-        oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
-        oxbuttonView.correctButton.layer.shadowOpacity = 1
-        oxbuttonView.correctButton.layer.shadowRadius = 4
-        oxbuttonView.correctButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-    }
-    
-    @objc func wrongButtonTapped() {
-        let quizId = QuizId()
-        let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: false)
-        //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
-        quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
-        quizModal.modalPresentationStyle = .pageSheet
-        quizModal.transitioningDelegate = self
-        
-        if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = true
-        } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = false
-        }
-        
-        
+    func setupSheetPresentation(for quizModal: QuizModalViewController) {
         if let sheet = quizModal.sheetPresentationController {
             let height = view.frame.height
             let multiplier = 0.42
+            
             if #available(iOS 16.0, *) {
                 let fraction = UISheetPresentationController.Detent.custom { context in
                     height * multiplier
@@ -258,55 +242,30 @@ extension QuizViewController {
                 sheet.detents = [fraction]
             } else {
                 sheet.detents = [.medium()]
-                
                 sheet.delegate = self
                 sheet.prefersGrabberVisible = false
             }
-            
-            
         }
-        
+    }
+    
+    private func presentQuizModal(selectedAnswer: Bool) {
+        let quizModal = QuizModalViewController(indexPath: indexPath, selectedAnswer: selectedAnswer, partIndexString: partIndexString, questions: questions, showBookmarkedOnly: showBookmarkedOnly, bookmarkQuizNumber: bookmarkQuizNumber)
+        setupSheetPresentation(for: quizModal)
         present(quizModal, animated: true, completion: nil)
     }
     
-    @objc func correctButtonTapped() {
-        let quizId = QuizId()
-        let quizModal = QuizModalViewController(quizId: quizId, question: viewmodel.question(to: self.currentQuizNumber), selectedAnswer: true)
-        //        quizModal.quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
-        quizModal.quizeNumberPlusClosure = nextQuestionButtonTapped
-        quizModal.modalPresentationStyle = .pageSheet
-        quizModal.transitioningDelegate = self
-        
-        if LocalState.bookmarkList.contains(quizId) {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = true
+    @objc func didRecieveTestNotification(_ notification: Notification) {
+        if showBookmarkedOnly {
+            self.bookmarkQuizNumber += 1
         } else {
-            quizModal.quizModalView.bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            quizModal.quizModalView.bookMarkButton.isSelected = false
+            self.currentQuizNumber += 1
         }
-        
-        
-        if let sheet = quizModal.sheetPresentationController {
-            let height = view.frame.height
-            let multiplier = 0.42
-            if #available(iOS 16.0, *) {
-                let fraction = UISheetPresentationController.Detent.custom { context in
-                    height * multiplier
-                }
-                sheet.detents = [fraction]
-            } else {
-                sheet.detents = [.medium()]
-                
-                sheet.delegate = self
-                sheet.prefersGrabberVisible = false
-            }
-            
-            
-        }
-        
-        present(quizModal, animated: true, completion: nil)
+        update()
     }
     
+    @objc func goToHomeView(_ notification: Notification) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     @objc func OutsideTapped() {
@@ -346,40 +305,14 @@ extension QuizViewController {
         CustomHaptics.shared.oxTapped()
     }
     
-    @objc func nextQuiz(_ noti: Notification) {
-        let totalQuestions = globalQuestion.quiz[partNumber].chapters[viewmodel.chapterNumber(to: currentQuizNumber)-1].questions.count
-        var solving = PartChapter.partIntToString(partIndex: self.partNumber, chapterIndex: self.viewmodel.chapterNumber(to: self.currentQuizNumber)-1)
-        if currentQuizNumber + 1 == totalQuestions {
-            print("여기는\(currentQuizNumber)")
-            UserDefaults.standard.set(currentQuizNumber + 1, forKey: solving)
-            self.navigationController?.popViewController(animated: true)
-            //            navigationController?.pushViewController(HomeViewController(), animated: true)
-            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-            delegate?.chapterFinished()
-        } else {
-            currentQuizNumber += 1
-            update()
-            UserDefaults.standard.set(self.currentQuizNumber, forKey: solving)
-        }
-    }
     
     func QuizId() -> String {
-        let quizId = String(format: "%02d", self.partNumber+1)
-        + String(format: "%02d", self.viewmodel.chapterNumber(to: 0))
-        + String(format: "%03d", self.viewmodel.question(to: self.currentQuizNumber).index)
+        let quizId = String(format: "%02d", partPath.part)
+        + String(format: "%02d", chapterPath.chapter)
+        + String(format: "%03d", questions[showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber].index)
         
         return quizId
     }
-}
-
-extension QuizViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-protocol DeliveryDataProtocol: class {
-    func deliveryData(_ data: String)
 }
 
 protocol QuizViewConrollerDelegate: AnyObject {

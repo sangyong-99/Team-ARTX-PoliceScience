@@ -14,7 +14,7 @@ class QuizModalView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         // 여기 나중에 바꿔주세요 -> 에셋값으로
-        view.backgroundColor = UIColor(hex: "007AFF").withAlphaComponent(0.26)
+        view.backgroundColor = UIColor(resource: .bgPrimary)
         return view
     }()
     
@@ -25,15 +25,6 @@ class QuizModalView: UIView {
         label.font = .headLineBoldKR
         label.textColor = UIColor(resource: .textBlue)
         return label
-    }()
-    
-    lazy var bookMarkButton: ExtendedTouchButton = {
-        let button = ExtendedTouchButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = UIColor(resource: .textBlue)
-        button.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-        button.addTarget(self, action: #selector(bookmarkButtonTapped), for: .touchUpInside )
-        return button
     }()
     
     let correctLabel: UILabel = {
@@ -66,34 +57,9 @@ class QuizModalView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.white
         button.backgroundColor = UIColor(resource: .bgBlue)
-        
-        let attributedText = NSMutableAttributedString()
-        attributedText.append(NSAttributedString(string: "다음 문제", attributes: [NSAttributedString.Key.font: UIFont.subHeadBoldKR]))
-        
-        button.setAttributedTitle(attributedText, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 25
-        button.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside )
         return button
     }()
-    
-    @objc func bookmarkButtonTapped() {
-        if bookMarkButton.isSelected == true {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            bookMarkButton.isSelected = false
-//            addBookmark?(false)
-            CustomHaptics.shared.bookMarkTapped()
-        }
-        else {
-            bookMarkButton.setImage(UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.bodyBold)), for: .normal)
-            bookMarkButton.isSelected = true
-//            addBookmark?(true)
-            CustomHaptics.shared.bookMarkTapped()
-        }
-    }
-    
-    @objc func nextQuestionButtonTapped() {
-        
-    }
     
 }

@@ -9,6 +9,19 @@ import Foundation
 import UIKit
 
 class QuizProgressView: UIView {
+    
+    var totalNumber: Int = 0 {
+        didSet {
+            updateProgressTotalNumber()
+        }
+    }
+    var currentQuizNumber : Int = 0
+    
+    var progressNum: Float = 0.0 {
+        didSet {
+            updateProgress()
+        }
+    }
 
     lazy var progressView: UIProgressView = {
         let view = UIProgressView()
@@ -25,7 +38,6 @@ class QuizProgressView: UIView {
     let progressNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = " 0/30"
         label.textAlignment = .right
         label.font = UIFont.caption1
         label.textColor = .black60
@@ -48,4 +60,16 @@ class QuizProgressView: UIView {
         return view
     }()
     
+    private func updateProgressTotalNumber() {
+        let text = " \(currentQuizNumber) / \(totalNumber)"
+        progressNumberLabel.text = text
+    }
+    
+    private func updateProgress() {
+        let progress = progressNum
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.progressView.setProgress(progress, animated: true)
+        }
+    }
+
 }
