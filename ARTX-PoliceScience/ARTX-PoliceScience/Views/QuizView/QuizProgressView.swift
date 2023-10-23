@@ -60,7 +60,7 @@ class QuizProgressView: UIView {
     }()
     
     private func updateProgressTotalNumber() {
-        let text = " \(currentQuizNumber) / \(totalNumber)"
+        let text = "\(currentQuizNumber) / \(totalNumber)"
         progressNumberLabel.text = text
     }
     
