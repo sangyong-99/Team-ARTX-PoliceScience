@@ -551,7 +551,7 @@ extension HomeViewController {
 extension HomeViewController {
     func homeViewNavBar() {
         let symbolConfiguration = UIImage.SymbolConfiguration(font: UIFont.headLine)
-        let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)
+        let symbolImage = UIImage(systemName: "book.fill", withConfiguration: symbolConfiguration)?.withRenderingMode(.alwaysTemplate)
         
         let rightBarButtonItem = UIBarButtonItem(
             image: symbolImage,
@@ -559,6 +559,9 @@ extension HomeViewController {
             target: self,
             action: #selector(rightItemTapped)
         )
+        
+        rightBarButtonItem.tintColor = .blue
+        
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
         self.title = "조현 경찰학"
