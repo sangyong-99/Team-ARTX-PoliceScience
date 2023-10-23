@@ -53,7 +53,8 @@ class QuizTitleView: UIView {
     
     
     private func updateChapterNumberLabel() {
-        let text = "CHAPTER \(chapterNumber)"
+        let str = String(format: "%02d", chapterNumber)
+        let text = "CHAPTER \(str)"
         chapterNumberLabel.text = text
     }
     
