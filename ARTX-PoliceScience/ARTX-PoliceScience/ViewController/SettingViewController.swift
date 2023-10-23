@@ -20,7 +20,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private let settingLabel: UILabel = {
         let label = UILabel()
-        label.text = "버전 정보\nVer 1.0\nDeveloped by Team ARTX"
+        label.text = "버전 정보 Ver 1.0\nDeveloped by Team ARTX"
         label.numberOfLines = 0 // 여러 줄을 허용합니다.
         label.textColor = UIColor.secondaryLabel
         label.textAlignment = .center
