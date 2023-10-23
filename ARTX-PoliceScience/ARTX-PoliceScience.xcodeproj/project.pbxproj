@@ -10,7 +10,7 @@
 		0E426AC32AD5E2E700C5A60E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E426AC22AD5E2E700C5A60E /* QuizView.swift */; };
 		0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */; };
 		0E4A8FF72ADA5FF800BBC335 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */; };
-		0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */; };
+		0E4A8FFA2ADA776400BBC335 /* QuizTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */; };
 		0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */; };
 		0E4A8FFE2ADA780000BBC335 /* OXbuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */; };
 		0E4A90002ADA9A2300BBC335 /* QuizModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */; };
@@ -20,7 +20,7 @@
 		4AA092502AD296D3006DB2BB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA0924F2AD296D3006DB2BB /* Book.swift */; };
 		4AA092522AD29759006DB2BB /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA092512AD29759006DB2BB /* BookViewModel.swift */; };
 		4AA092542AD29F64006DB2BB /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */; };
-		4AB474852AE3D2CD00088982 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AB474842AE3D2CD00088982 /* GoogleService-Info.plist */; };
+		4AD2F3292AE5F7900008E4ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD2F3282AE5F7900008E4ED /* GoogleService-Info.plist */; };
 		5E34518A2AB42F33004A3047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3451892AB42F33004A3047 /* AppDelegate.swift */; };
 		5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451922AB42F34004A3047 /* Assets.xcassets */; };
 		5E3451962AB42F34004A3047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */; };
@@ -58,9 +58,6 @@
 		B4ADA0342ADC390B00F4AD8A /* UIAlertController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4ADA0332ADC390B00F4AD8A /* UIAlertController+Util.swift */; };
 		B4E162252AE270BD004DE39D /* UIButton+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E162242AE270BD004DE39D /* UIButton+Util.swift */; };
 		B4E773122ADD37FD007B3AF3 /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = B4E773112ADD37FD007B3AF3 /* example.json */; };
-		FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */; };
-		FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */; };
-		FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */; };
 		FF2C67A62ADA2E7B00F40863 /* UINavigationController+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */; };
 		FF41EADA2AD8031E002FD4A9 /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */; };
 		FF41EAE72AD81C0F002FD4A9 /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */; };
@@ -79,7 +76,7 @@
 		0E426AC22AD5E2E700C5A60E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuiizTitleView.swift; sourceTree = "<group>"; };
+		0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTitleView.swift; sourceTree = "<group>"; };
 		0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProgressView.swift; sourceTree = "<group>"; };
 		0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXbuttonView.swift; sourceTree = "<group>"; };
 		0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalView.swift; sourceTree = "<group>"; };
@@ -89,7 +86,8 @@
 		4AA0924F2AD296D3006DB2BB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		4AA092512AD29759006DB2BB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		4AA092532AD29F64006DB2BB /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
-		4AB474842AE3D2CD00088982 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AD2F3282AE5F7900008E4ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AD2F32A2AE621810008E4ED /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5E3451862AB42F33004A3047 /* ARTX-PoliceScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARTX-PoliceScience.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E3451892AB42F33004A3047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E3451922AB42F34004A3047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -125,9 +123,6 @@
 		B4CD724D2AE3A2C400E3691E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B4E162242AE270BD004DE39D /* UIButton+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Util.swift"; sourceTree = "<group>"; };
 		B4E773112ADD37FD007B3AF3 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
-		FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableSectionHeaderView.swift; sourceTree = "<group>"; };
-		FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableCellView.swift; sourceTree = "<group>"; };
-		FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderView.swift; sourceTree = "<group>"; };
 		FF2C67A52ADA2E7B00F40863 /* UINavigationController+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Util.swift"; sourceTree = "<group>"; };
 		FF41EAD92AD8031E002FD4A9 /* FontStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		FF41EAE62AD81C0F002FD4A9 /* BookmarkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
@@ -161,7 +156,7 @@
 		0E4A8FF82ADA625F00BBC335 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
-				0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */,
+				0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */,
 				0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */,
 				0E426AC22AD5E2E700C5A60E /* QuizView.swift */,
 				0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */,
@@ -201,7 +196,7 @@
 				5E3451922AB42F34004A3047 /* Assets.xcassets */,
 				5E3451942AB42F34004A3047 /* LaunchScreen.storyboard */,
 				5E3451972AB42F34004A3047 /* Info.plist */,
-				4AB474842AE3D2CD00088982 /* GoogleService-Info.plist */,
+				4AD2F3282AE5F7900008E4ED /* GoogleService-Info.plist */,
 			);
 			path = "ARTX-PoliceScience";
 			sourceTree = "<group>";
@@ -234,7 +229,6 @@
 		5E44DC9B2ACD001A00DAC94A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF2C67952ADA2D4A00F40863 /* HomeView */,
 				FF41EAEA2AD81CBA002FD4A9 /* BookmarkView */,
 				0E4A8FF82ADA625F00BBC335 /* QuizView */,
 				5E86FC0E2ACD0B8A00B01779 /* View.swift */,
@@ -300,16 +294,6 @@
 				5E5477762ADD3AC30085638F /* PartChapter.swift */,
 			);
 			path = UserDefault;
-			sourceTree = "<group>";
-		};
-		FF2C67952ADA2D4A00F40863 /* HomeView */ = {
-			isa = PBXGroup;
-			children = (
-				FF2C679D2ADA2D7000F40863 /* HomeTableCellView.swift */,
-				FF2C679E2ADA2D7000F40863 /* HomeTableHeaderView.swift */,
-				FF2C679C2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift */,
-			);
-			path = HomeView;
 			sourceTree = "<group>";
 		};
 		FF2C67A42ADA2E6A00F40863 /* Utils */ = {
@@ -413,7 +397,7 @@
 				5E3451932AB42F34004A3047 /* Assets.xcassets in Resources */,
 				5E5CF08B2ADEBCEB00EAD4D7 /* GmarketSansTTFMedium.ttf in Resources */,
 				5E5CF08C2ADEBCEB00EAD4D7 /* GmarketSansTTFBold.ttf in Resources */,
-				4AB474852AE3D2CD00088982 /* GoogleService-Info.plist in Resources */,
+				4AD2F3292AE5F7900008E4ED /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +415,6 @@
 				5ECE29FA2ACEE6E100083E93 /* SettingTableViewCell.swift in Sources */,
 				5EA61BE82AD06A8600F6D771 /* FirestoreManager.swift in Sources */,
 				5EA61BEA2AD073A800F6D771 /* SettingViewAlert.swift in Sources */,
-				FF2C67A12ADA2D7000F40863 /* HomeTableHeaderView.swift in Sources */,
 				B49D4A7D2AD42B9D0047CCE9 /* HomeViewModel.swift in Sources */,
 				B4922AFE2AE1508B00AC0DEC /* CustomHaptics.swift in Sources */,
 				0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */,
@@ -441,8 +424,7 @@
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
-				0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */,
-				FF2C67A02ADA2D7000F40863 /* HomeTableCellView.swift in Sources */,
+				0E4A8FFA2ADA776400BBC335 /* QuizTitleView.swift in Sources */,
 				0E4A90022ADA9A3700BBC335 /* QuizModalViewController.swift in Sources */,
 				FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
@@ -459,7 +441,6 @@
 				FF2C67A62ADA2E7B00F40863 /* UINavigationController+Util.swift in Sources */,
 				FF41EAF22AD820F5002FD4A9 /* BookmarkTableViewCell.swift in Sources */,
 				0E4A90042ADAAB5600BBC335 /* HalfModalPresentationController.swift in Sources */,
-				FF2C679F2ADA2D7000F40863 /* HomeTableSectionHeaderView.swift in Sources */,
 				FF41EB262AD96DD4002FD4A9 /* PartTitleLabel.swift in Sources */,
 				4AA0924E2AD2963F006DB2BB /* Books.swift in Sources */,
 				FF41EB242AD96DCA002FD4A9 /* PartNumberLabel.swift in Sources */,

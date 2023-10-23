@@ -213,6 +213,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeQuizToHomeview"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeToHomeview"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeSettingToHomeview"), object: nil)
+        
         view.addSubview(homeTableView)
         homeTableView.delegate = self
         homeTableView.dataSource = self

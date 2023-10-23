@@ -82,7 +82,7 @@ class BookmarkViewModel {
         return quizzes[self.currentPart].chapters.count
     }
     
-    func bookmarkQuizeCount() -> Int {
+    func bookmarkQuizCount() -> Int {
         return quizzes[self.currentPart].chapters[self.currentChapter].questions.count
     }
 }
