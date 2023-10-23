@@ -56,7 +56,7 @@ extension NavigationTitle {
         case .bookView:
             return "애플 아카데미 OX 퀴즈란?"
         case .bookmarkView:
-            return "오답노트"
+            return "북마크"
         }
     }
 }

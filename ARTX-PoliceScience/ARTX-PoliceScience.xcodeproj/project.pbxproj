@@ -10,7 +10,7 @@
 		0E426AC32AD5E2E700C5A60E /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E426AC22AD5E2E700C5A60E /* QuizView.swift */; };
 		0E4A8FF52ADA5EF100BBC335 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */; };
 		0E4A8FF72ADA5FF800BBC335 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */; };
-		0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */; };
+		0E4A8FFA2ADA776400BBC335 /* QuizTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */; };
 		0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */; };
 		0E4A8FFE2ADA780000BBC335 /* OXbuttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */; };
 		0E4A90002ADA9A2300BBC335 /* QuizModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */; };
@@ -73,7 +73,7 @@
 		0E426AC22AD5E2E700C5A60E /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		0E4A8FF42ADA5EF100BBC335 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		0E4A8FF62ADA5FF800BBC335 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
-		0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuiizTitleView.swift; sourceTree = "<group>"; };
+		0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTitleView.swift; sourceTree = "<group>"; };
 		0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizProgressView.swift; sourceTree = "<group>"; };
 		0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXbuttonView.swift; sourceTree = "<group>"; };
 		0E4A8FFF2ADA9A2300BBC335 /* QuizModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizModalView.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		0E4A8FF82ADA625F00BBC335 /* QuizView */ = {
 			isa = PBXGroup;
 			children = (
-				0E4A8FF92ADA776400BBC335 /* QuiizTitleView.swift */,
+				0E4A8FF92ADA776400BBC335 /* QuizTitleView.swift */,
 				0E4A8FFB2ADA77B300BBC335 /* QuizProgressView.swift */,
 				0E426AC22AD5E2E700C5A60E /* QuizView.swift */,
 				0E4A8FFD2ADA780000BBC335 /* OXbuttonView.swift */,
@@ -413,7 +413,7 @@
 				FF41EAE92AD81C6C002FD4A9 /* BookmarkViewController.swift in Sources */,
 				0E4A8FFC2ADA77B300BBC335 /* QuizProgressView.swift in Sources */,
 				5E86FC152ACD0D4A00B01779 /* Resources.swift in Sources */,
-				0E4A8FFA2ADA776400BBC335 /* QuiizTitleView.swift in Sources */,
+				0E4A8FFA2ADA776400BBC335 /* QuizTitleView.swift in Sources */,
 				0E4A90022ADA9A3700BBC335 /* QuizModalViewController.swift in Sources */,
 				FF41EAEE2AD81DCA002FD4A9 /* ChapterTitleLabel.swift in Sources */,
 				5EDDA5632ACD11E2006E13DE /* LocalState.swift in Sources */,
@@ -592,7 +592,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = V5NZ4978W9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARTX-PoliceScience/Info.plist";
@@ -625,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = V5NZ4978W9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ARTX-PoliceScience/Info.plist";

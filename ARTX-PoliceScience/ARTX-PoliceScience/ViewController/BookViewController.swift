@@ -92,6 +92,10 @@ class BookViewController: UIViewController {
             safeAreaLength = Int(window.safeAreaInsets.top)
         }
         view.backgroundColor = .bgPrimary
+        logoImageView.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        logoImageView.addGestureRecognizer(tapRecognizer)
+        self.view.addSubview(logoImageView)
         setup()
         layout()
     }
@@ -103,7 +107,7 @@ class BookViewController: UIViewController {
         
         introLabelStack.addArrangedSubview(introTitleLabel)
         introLabelStack.addArrangedSubview(introSubLabel)
-    
+        
         view.addSubview(navBackView)
         view.addSubview(labelStackView)
         view.addSubview(logoImageView)
@@ -121,11 +125,11 @@ class BookViewController: UIViewController {
             navBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength)),
-
+            
             labelStackView.topAnchor.constraint(equalTo: navBackView.bottomAnchor),
             labelStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
+            
             logoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 70),
             logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -138,5 +142,36 @@ extension BookViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func imageTapped() {
+        let text = LinkAlertText.self
+        
+        let alert = UIAlertController(title: text.title, message: text.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.button, style: .default, handler: { _ in
+            self.goToLink()
+        }))
+        alert.addAction(UIAlertAction(title: text.cancelButton, style: .cancel))
+        
+        alert.show()
+    }
+    
+    private func goToLink() {
+        
+        guard let artxURL = URL(string: "https://artx.imweb.me/") else { return }
+        let bookErrorURL = URL(string: "https://developeracademy.postech.ac.kr/")!
+        
+        let task = URLSession.shared.dataTask(with: artxURL) { (_, response, _) in
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(artxURL, options: [:], completionHandler: nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(bookErrorURL, options: [:], completionHandler: nil)
+                }
+            }
+        }
+        task.resume()
     }
 }
