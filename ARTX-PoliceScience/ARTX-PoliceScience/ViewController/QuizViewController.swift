@@ -94,14 +94,15 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
     
     // 업데이트 함수
     private func update() {
+        
+        
             let number = showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber
-            print("index \(questions[number].index)")
             quizView.quizNumber = questions[number].index
             quizView.quiz = questions[number].question
             progressbarView.currentQuizNumber = number
             progressbarView.totalNumber = questions.count
             progressbarView.progressNum = Float(number) / Float(questions.count)
-
+            animateProgressBar()
         
         let imageName = LocalState.bookmarkList.contains(QuizId()) ? "bookmark.fill" : "bookmark"
         let configuration = UIImage.SymbolConfiguration(font: UIFont.bodyBold)
@@ -265,6 +266,9 @@ extension QuizViewController {
     
     @objc func goToHomeView(_ notification: Notification) {
         self.navigationController?.popViewController(animated: true)
+        progressbarView.progressNum = 1.0
+        progressbarView.progressNumberLabel.text = " \(questions.count) / \(questions.count)"
+        animateProgressBar()
     }
     
     
@@ -312,6 +316,12 @@ extension QuizViewController {
         + String(format: "%03d", questions[showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber].index)
         
         return quizId
+    }
+    
+    private func animateProgressBar() {
+        UIView.animate(withDuration: 0.5) {
+            self.progressbarView.progressView.layoutIfNeeded()
+        }
     }
 }
 
