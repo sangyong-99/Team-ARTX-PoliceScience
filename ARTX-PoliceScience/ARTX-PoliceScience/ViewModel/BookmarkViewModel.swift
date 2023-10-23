@@ -16,7 +16,6 @@ class BookmarkViewModel {
 
     init() {
         let bookmarks = LocalState.bookmarkList
-        
         var quizzes: [Quiz] = []
         
         for quiz in globalQuestion.quiz {
@@ -83,7 +82,7 @@ class BookmarkViewModel {
         return quizzes[self.currentPart].chapters.count
     }
     
-    func bookmarkQuizeCount() -> Int {
+    func bookmarkQuizCount() -> Int {
         return quizzes[self.currentPart].chapters[self.currentChapter].questions.count
     }
 }

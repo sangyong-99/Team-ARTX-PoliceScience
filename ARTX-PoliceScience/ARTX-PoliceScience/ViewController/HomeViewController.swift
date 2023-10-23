@@ -213,6 +213,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeQuizToHomeview"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeToHomeview"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rerenderTableCell), name: Notification.Name("changeSettingToHomeview"), object: nil)
+        
         view.addSubview(homeTableView)
         homeTableView.delegate = self
         homeTableView.dataSource = self
@@ -287,7 +290,7 @@ extension HomeViewController {
             settingViewButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -24),
             settingViewButton.topAnchor.constraint(equalTo: header.safeAreaLayoutGuide.topAnchor, constant: 4)
         ])
-        // MARK: - titleStackView 애플 아카데미 OX 문제집
+        // MARK: - titleStackView 조현 경찰학 OX 문제집
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subTitleLabel)

@@ -148,7 +148,6 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     @objc func didFinishTestNotification(_ notification: Notification) {
-        print("로드다시해")
         OperationQueue.main.addOperation { // DispatchQueue도 가능.
             self.bookmarkViewModel = BookmarkViewModel()
             self.bookmarkTableView.reloadData()

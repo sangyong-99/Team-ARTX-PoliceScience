@@ -31,7 +31,6 @@ class QuizProgressView: UIView {
         view.layer.cornerRadius = 4
         view.clipsToBounds = true
         view.progress = 0.0
-        view.setProgress(0.0, animated: true)
         return view
     }()
 

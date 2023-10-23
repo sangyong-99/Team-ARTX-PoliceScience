@@ -51,6 +51,8 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
             return false
         }
         
+        NotificationCenter.default.post(name: Notification.Name("changeSettingToHomeview"), object: nil)
+        
         return true
     }
 }
