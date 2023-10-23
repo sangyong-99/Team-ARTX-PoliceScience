@@ -26,7 +26,7 @@ class SquareBackgroundLabel: UILabel {
         self.backgroundColor = .markRed
     }
     
-    func updateText(to quizeCount: Int) {
-        self.text = " \(quizeCount) "
+    func updateText(to quizCount: Int) {
+        self.text = " \(quizCount) "
     }
 }

@@ -77,11 +77,11 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         oxbuttonView.correctButton.addTarget(self, action: #selector(correctButtonDownTapped), for: .touchDown)
         oxbuttonView.wrongButton.addTarget(self, action: #selector(wrongButtonDownTapped), for: .touchDown)
         
-        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
-        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchDragExit)
+        oxbuttonView.correctButton.addTarget(self, action: #selector(outsideTapped), for: .touchDragExit)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(outsideTapped), for: .touchDragExit)
         
-        oxbuttonView.correctButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
-        oxbuttonView.wrongButton.addTarget(self, action: #selector(OutsideTapped), for: .touchUpInside)
+        oxbuttonView.correctButton.addTarget(self, action: #selector(outsideTapped), for: .touchUpInside)
+        oxbuttonView.wrongButton.addTarget(self, action: #selector(outsideTapped), for: .touchUpInside)
         
         // 업데이트 Observer
         NotificationCenter.default.addObserver(self, selector: #selector(didRecieveTestNotification(_:)), name: NSNotification.Name("CurentQuizNumberDidChange"), object: nil)
@@ -102,7 +102,7 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
             progressbarView.currentQuizNumber = number
             progressbarView.totalNumber = questions.count
             progressbarView.progressNum = Float(number) / Float(questions.count)
-            animateProgressBar()
+//            animateProgressBar()
         
         let imageName = LocalState.bookmarkList.contains(QuizId()) ? "bookmark.fill" : "bookmark"
         let configuration = UIImage.SymbolConfiguration(font: UIFont.bodyBold)
@@ -149,7 +149,11 @@ extension QuizViewController {
             self.navigationController?.popViewController(animated: true)
             self.navigationController?.isNavigationBarHidden = true
 //            NotificationCenter.default.post(name: Notification.Name("changeQuizToHomeview"), object: nil)
-            NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
+            if self.showBookmarkedOnly {
+                NotificationCenter.default.post(name: Notification.Name("BackToOxListview"), object: nil)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("changeToHomeview"), object: nil)
+            }
         })
         
         alert.show()
@@ -268,11 +272,10 @@ extension QuizViewController {
         self.navigationController?.popViewController(animated: true)
         progressbarView.progressNum = 1.0
         progressbarView.progressNumberLabel.text = " \(questions.count) / \(questions.count)"
-        animateProgressBar()
     }
     
     
-    @objc func OutsideTapped() {
+    @objc func outsideTapped() {
         oxbuttonView.correctButton.backgroundColor = .pointGray
         
         oxbuttonView.correctButton.layer.shadowColor = UIColor(red: 0.102, green: 0.176, blue: 0.561, alpha: 0.25).cgColor
@@ -317,12 +320,12 @@ extension QuizViewController {
         
         return quizId
     }
-    
-    private func animateProgressBar() {
-        UIView.animate(withDuration: 0.5) {
-            self.progressbarView.progressView.layoutIfNeeded()
-        }
-    }
+//    
+//    private func animateProgressBar() {
+//        UIView.animate(withDuration: 0.4) {
+//            self.progressbarView.progressView.layoutIfNeeded()
+//        }
+//    }
 }
 
 protocol QuizViewConrollerDelegate: AnyObject {

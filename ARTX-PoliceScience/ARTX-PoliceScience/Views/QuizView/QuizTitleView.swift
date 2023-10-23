@@ -1,5 +1,5 @@
 //
-//  QuiizTitle.swift
+//  QuizTitle.swift
 //  ARTX-PoliceScience
 //
 //  Created by yusang on 10/14/23.
