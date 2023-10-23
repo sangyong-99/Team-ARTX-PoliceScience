@@ -560,7 +560,7 @@ extension HomeViewController {
             action: #selector(rightItemTapped)
         )
         
-        rightBarButtonItem.tintColor = .blue
+        rightBarButtonItem.tintColor = .pointBlue
         
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         

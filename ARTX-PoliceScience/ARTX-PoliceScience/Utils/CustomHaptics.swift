@@ -6,8 +6,9 @@
 //
 
 import CoreHaptics
+import UIKit
 
-struct CustomHaptics {
+class CustomHaptics {
     static let shared = CustomHaptics()
     var engine: CHHapticEngine?
     
@@ -16,8 +17,19 @@ struct CustomHaptics {
         do {
             engine = try CHHapticEngine()
             try engine?.start()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(restartEngine), name: UIApplication.didBecomeActiveNotification, object: nil)
         } catch {
             print("Haptic engine not supported")
+        }
+    }
+    
+    @objc func restartEngine() {
+        guard let engine = engine else { return }
+        do {
+            try engine.start()
+        } catch {
+            print("Haptic engine not restarted")
         }
     }
     
