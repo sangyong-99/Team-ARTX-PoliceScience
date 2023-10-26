@@ -55,14 +55,14 @@ class QuizModalViewController: UIViewController {
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
             quizModalView.correctNotificationLabel.text = "맞았습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
-            quizModalView.explanationLabel.text = questions[number].explanation == "" ? "해설 없음." : questions[number].explanation
+            quizModalView.explanationLabel.attributedText = highlightTextWithExtraction(inputText: questions[number].explanation, color: .red)
+            
         } else {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
-
-            quizModalView.explanationLabel.text = questions[number].explanation == "" ? "해설 없음." : questions[number].explanation
+            quizModalView.explanationLabel.attributedText = highlightTextWithExtraction(inputText: questions[number].explanation, color: .red)
             generator.notificationOccurred(.error)
         }
         
@@ -155,6 +155,38 @@ class QuizModalViewController: UIViewController {
         
     }
     
+    func extractTarget(_ inputText: String) -> String? {
+        let pattern = "\\$([^$]+)\\$"
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+
+        let matches = regex.matches(in: inputText, options: [], range: NSRange(location: 0, length: inputText.utf16.count))
+
+        if let match = matches.first, match.numberOfRanges >= 2 {
+            let range = match.range(at: 1)
+            if let swiftRange = Range(range, in: inputText) {
+                return String(inputText[swiftRange])
+            }
+        }
+
+        return nil
+    }
     
+    func highlightTextWithExtraction(inputText: String, color: UIColor) -> NSAttributedString {
+        guard let targetText = extractTarget(inputText) else {
+            // 대상 문자열이 없으면 원래 문자열을 NSAttributedString으로 변환하여 반환
+            return NSAttributedString(string: inputText == "" ? "해설 없음." : inputText, attributes: [.font: UIFont.callOutKR])
+        }
+        
+        //달러표시 제거
+        let inputText = inputText.replacingOccurrences(of: "$", with: "")
+
+        // 대상 문자열이 있는 경우
+        let attributedString = NSMutableAttributedString(string: inputText, attributes: [.font: UIFont.callOutKR])
+
+        // 대상 문자열을 빨간색으로 강조 표시
+        attributedString.addAttribute(.foregroundColor, value: color, range: (inputText as NSString).range(of: targetText))
+        return attributedString
+    }
+
 }
 

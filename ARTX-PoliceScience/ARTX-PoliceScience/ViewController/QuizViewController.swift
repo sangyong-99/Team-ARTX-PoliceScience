@@ -104,6 +104,8 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
             progressbarView.progressNum = Float(number) / Float(questions.count)
 //            animateProgressBar()
         
+        print(LocalState.bookmarkList)
+        print(QuizId())
         let imageName = LocalState.bookmarkList.contains(QuizId()) ? "bookmark.fill" : "bookmark"
         let configuration = UIImage.SymbolConfiguration(font: UIFont.bodyBold)
         let image = UIImage(systemName: imageName, withConfiguration: configuration)
