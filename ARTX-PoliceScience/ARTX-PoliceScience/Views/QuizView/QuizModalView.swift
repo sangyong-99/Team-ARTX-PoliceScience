@@ -29,10 +29,9 @@ class QuizModalView: UIView {
     
     let correctLabel: UILabel = {
         let label = UILabel()
+        let font = UIFont.title2BoldKR
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "정답: X"
-        label.textColor = UIColor(resource: .primaryBlack)
-        label.font = .title2BoldKR
+        label.attributedText = NSAttributedString(string: "정답: X", attributes: [.font: UIFont.title2BoldKR, .foregroundColor: UIColor(resource: .primaryBlack)])
         return label
     }()
     
