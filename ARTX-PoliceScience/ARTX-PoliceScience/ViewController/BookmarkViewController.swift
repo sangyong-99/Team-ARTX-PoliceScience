@@ -11,7 +11,7 @@ final class BookmarkViewController: UIViewController {
     
     private var bookmarkTableView = UITableView(frame: .zero, style: .insetGrouped)
     private var bookmarkViewModel = BookmarkViewModel()
-    private var safeAreaLength = 0
+    private var safeAreaLength: Double = 0
     private let navBackView: UIView = {
         let settingNavBackView = UIView()
         settingNavBackView.backgroundColor = .bgBlue
@@ -22,7 +22,7 @@ final class BookmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let window = UIApplication.shared.windows.first {
-            safeAreaLength = Int(window.safeAreaInsets.top)
+            safeAreaLength = Double((window.windowScene?.statusBarManager?.statusBarFrame.height)!)
         }
         self.bookmarkTableView.delegate = self
         self.bookmarkTableView.dataSource = self
@@ -81,8 +81,10 @@ final class BookmarkViewController: UIViewController {
         navBackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            navBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBackView.topAnchor.constraint(equalTo: view.topAnchor),
             navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + Double(safeAreaLength))
         ])
     }
 }

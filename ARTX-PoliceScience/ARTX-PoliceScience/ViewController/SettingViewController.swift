@@ -9,7 +9,7 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var safeAreaLength = 0
+    var safeAreaLength: Double = 0.0
     
     private let settingTableView: UITableView = {
         let table = UITableView(frame:.zero, style: .insetGrouped)
@@ -44,9 +44,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         if let window = UIApplication.shared.windows.first {
-            safeAreaLength = Int(window.safeAreaInsets.top)
+            safeAreaLength = Double((window.windowScene?.statusBarManager?.statusBarFrame.height)!)
         }
-        
         
         SettingViewModel.configure()
         
@@ -57,9 +56,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 extension SettingViewController {
     func style() {
-        
-        //네비게이션바 세팅
-//        view.backgroundColor = .bgGroupedPrimary
         
         //tableview 설정
         settingTableView.isScrollEnabled = false
@@ -84,8 +80,10 @@ extension SettingViewController {
         navBackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            navBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBackView.topAnchor.constraint(equalTo: view.topAnchor),
             navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + Double(safeAreaLength))
         ])
     }
 }

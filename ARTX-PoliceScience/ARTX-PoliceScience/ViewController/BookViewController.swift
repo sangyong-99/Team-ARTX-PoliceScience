@@ -9,7 +9,7 @@ import UIKit
 
 class BookViewController: UIViewController {
     
-    var safeAreaLength = 0
+    var safeAreaLength:Double = 0.0
     private lazy var bookViewModel = BooksViewModel()
     
     private let navBackView: UIView = {
@@ -99,7 +99,7 @@ class BookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let window = UIApplication.shared.windows.first {
-            safeAreaLength = Int(window.safeAreaInsets.top)
+            safeAreaLength = Double((window.windowScene?.statusBarManager?.statusBarFrame.height)!)
         }
         view.backgroundColor = .bgPrimary
         setup()
@@ -138,8 +138,10 @@ class BookViewController: UIViewController {
         navBackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            navBackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navBackView.topAnchor.constraint(equalTo: view.topAnchor),
             navBackView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + CGFloat(safeAreaLength))
+            navBackView.heightAnchor.constraint(equalToConstant: navigationController!.navigationBar.frame.size.height + Double(safeAreaLength))
         ])
     }
 }
