@@ -9,7 +9,7 @@ import UIKit
 
 class QuizViewController: UIViewController, UISheetPresentationControllerDelegate {
     
-    var safeAreaLength = 0
+    var safeAreaLength: Double = 0.0
     var indexPath: IndexPath
     var showBookmarkedOnly: Bool = false
     var questions: [Question]
@@ -55,7 +55,7 @@ class QuizViewController: UIViewController, UISheetPresentationControllerDelegat
         super.viewDidLoad()
         
         if let window = UIApplication.shared.windows.first {
-            safeAreaLength = Int(window.safeAreaInsets.top)
+            safeAreaLength = Double((window.windowScene?.statusBarManager?.statusBarFrame.height)!)
         }
         
         navigationController?.configureNavigationBar(withTitle: "0\(partPath.part) \(partPath.part_name)")
