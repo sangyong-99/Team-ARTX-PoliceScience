@@ -319,12 +319,7 @@ extension QuizViewController {
         
         return quizId
     }
-//    
-//    private func animateProgressBar() {
-//        UIView.animate(withDuration: 0.4) {
-//            self.progressbarView.progressView.layoutIfNeeded()
-//        }
-//    }
+
 }
 
 protocol QuizViewConrollerDelegate: AnyObject {

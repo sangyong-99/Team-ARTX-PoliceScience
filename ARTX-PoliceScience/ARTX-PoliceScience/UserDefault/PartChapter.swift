@@ -39,5 +39,25 @@ class PartChapter {
         
         return partIndexString
     }
+    
+    
+    static func homeGenerateAccuracyFormat(partIndex: Int, chapterIndex: Int) -> String {
+        let accuracyRateId =  String("!") + String(format: "%02d", partIndex) + String(format: "%02d", chapterIndex)
+        return accuracyRateId
+    }
+    
+    static func removeValueForExistingKey(key: String) {
+        if let index = LocalState.accuracyRateList.firstIndex(where: { $0.keys.contains(key) }) {
+            LocalState.accuracyRateList.remove(at: index)
+        }
+        
+    }
+    
+    static func returnValueForExistingKey(key: String) -> Int {
+        guard let accuracy = LocalState.accuracyRateList.lazy.compactMap({ $0[key] }).first else {
+               return 0
+           }
+           return accuracy
+    }
 
 }

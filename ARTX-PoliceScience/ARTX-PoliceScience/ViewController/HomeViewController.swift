@@ -176,7 +176,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         isScrollEnabled = true
         navigationController?.isNavigationBarHidden = true
         navigationController?.homeViewconfigureNavigationBar()
-        
     }
     
     
@@ -196,13 +195,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         }
+        
     }
     
     
     
     override func viewDidLoad() {
         progressImages.image = HomeViewModel.selectProgressImages(progress: calculateProgress())
-        
         super.viewDidLoad()
         homeViewNavBar()
         navigationController?.isNavigationBarHidden = true
@@ -228,7 +227,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         newLeadingConstraint?.isActive = true
         
         progressFunction()
-        
     }
     
     func calculateProgress() -> Float{
@@ -437,6 +435,10 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let quizChapterModel = globalQuestion.quiz[indexPath.section].chapters[indexPath.row]
         
+        //이거 보고 하시면 됩니다. 상용씨
+        let accuracyRateId = PartChapter.homeGenerateAccuracyFormat(partIndex: indexPath.section + 1, chapterIndex: indexPath.row + 1)
+        print(PartChapter.returnValueForExistingKey(key: accuracyRateId))
+        
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: HomeViewCell.identifier,
             for: indexPath
@@ -446,7 +448,6 @@ extension HomeViewController {
         cell.separatorInset = UIEdgeInsets.zero
         
         let partChaper = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
-        
         if LocalState.isCodeActivated {
             cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true)
         } else {
@@ -579,7 +580,6 @@ extension HomeViewController {
             }
         }
     }
-    
     
 }
 

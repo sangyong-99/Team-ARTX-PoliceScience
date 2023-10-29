@@ -148,6 +148,7 @@ class SettingViewAlert {
                 if success {
                     successappResetAlert()
                     // ("성공")
+                    LocalState.accuracyRateList = []
                 } else {
                     failappResetAlert()
                     // ("실패")

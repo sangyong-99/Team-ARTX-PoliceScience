@@ -13,6 +13,7 @@ public class LocalState {
         case authenticationCode
         case bookmark
         case firstInstall
+        case accuracyRate
     }
     
     public static var isCodeActivated: Bool {
@@ -48,6 +49,16 @@ public class LocalState {
         }
         set(newValue) {
             UserDefaults.standard.set(newValue, forKey: Keys.bookmark.rawValue)
+        }
+    }
+    
+    
+    public static var accuracyRateList: [[String: Int]] {
+        get {
+            return UserDefaults.standard.array(forKey: Keys.accuracyRate.rawValue) as? [[String: Int]] ?? [[String: Int]]()
+        }
+        set(newList) {
+            UserDefaults.standard.set(newList, forKey: Keys.accuracyRate.rawValue)
         }
     }
 }
