@@ -133,13 +133,15 @@ extension BookmarkViewController: UITableViewDataSource, UITableViewDelegate {
         if bookmarkViewModel.chapterCount() == 0 {
             return
         }
-        
+    
         let questions = bookmarkViewModel.chapter().questions
         
-        let viewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: true, questions: questions)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        navigationController?.pushViewController(viewController, animated: true)
+        if let path = indexPathForSelectedRow() {
+            let viewController = QuizViewController(indexPath: path, showBookmarkedOnly: true, questions: questions)
+            tableView.deselectRow(at: indexPath, animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+
     }
     
     @objc func didRecieveTestNotification(_ notification: Notification) {
@@ -161,5 +163,14 @@ extension BookmarkViewController {
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
         navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func indexPathForSelectedRow() -> IndexPath? {
+        guard let selectedIndexPath = bookmarkTableView.indexPathForSelectedRow else {
+            return nil
+        }
+
+        let path: IndexPath = [bookmarkViewModel.partNumber() - 1, bookmarkViewModel.chapterNumber() - 1]
+        return path
     }
 }
