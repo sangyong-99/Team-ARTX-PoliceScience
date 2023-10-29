@@ -56,20 +56,30 @@ class QuizModalViewController: UIViewController {
             quizModalView.correctNotificationLabel.text = "맞았습니다."
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.attributedText = highlightTextWithExtraction(inputText: questions[number].explanation, color: .red)
-            
+        
         } else {
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textRed)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleRed)
             quizModalView.correctNotificationLabel.text = "틀렸습니다."
+            
             quizModalView.correctLabel.text = questions[number].answer ? "정답: O" : "정답 X"
             quizModalView.explanationLabel.attributedText = highlightTextWithExtraction(inputText: questions[number].explanation, color: .red)
             generator.notificationOccurred(.error)
+            
         }
         
         quizModalView.nextQuestionButton.addTarget(self, action: #selector(nextQuestionButtonTapped), for: .touchUpInside)
     }
     
     @objc func nextQuestionButtonTapped() {
+        
+        if quizPath.answer == selectedAnswer{
+            if !showBookmarkedOnly {
+                let accuracyRateId = generateAccuracyFormat()
+                incrementValueForExistingKey(key: accuracyRateId)
+            }
+        }
+    
         if showBookmarkedOnly{
             if bookmarkQuizNumber < quizCount {
                 self.dismiss(animated: true)
@@ -124,7 +134,7 @@ class QuizModalViewController: UIViewController {
             quizModalView.nextQuestionButton.setAttributedTitle(attributedText, for: .normal)
         }
         
-    
+        
         NSLayoutConstraint.activate([
             quizModalView.labelBackgroundView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 26),
             quizModalView.labelBackgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 32),
@@ -133,7 +143,7 @@ class QuizModalViewController: UIViewController {
             
             quizModalView.correctNotificationLabel.centerYAnchor.constraint(equalTo: quizModalView.labelBackgroundView.centerYAnchor),
             quizModalView.correctNotificationLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 10),
-
+            
             
             quizModalView.correctLabel.leadingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.leadingAnchor, constant: 8),
             quizModalView.correctLabel.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -8),
@@ -144,7 +154,7 @@ class QuizModalViewController: UIViewController {
             quizModalView.explanationLabel.trailingAnchor.constraint(equalTo: quizModalView.labelBackgroundView.trailingAnchor, constant: -8),
             quizModalView.explanationLabel.topAnchor.constraint(equalTo: quizModalView.correctLabel.bottomAnchor, constant: 0),
             quizModalView.explanationLabel.bottomAnchor.constraint(equalTo: quizModalView.nextQuestionButton.topAnchor, constant: -16),
-//            quizModalView.explanationLabel.heightAnchor.constraint(equalToConstant: 105),
+            //            quizModalView.explanationLabel.heightAnchor.constraint(equalToConstant: 105),
             
             quizModalView.nextQuestionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             quizModalView.nextQuestionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -158,16 +168,16 @@ class QuizModalViewController: UIViewController {
     func extractTarget(_ inputText: String) -> String? {
         let pattern = "\\$([^$]+)\\$"
         let regex = try! NSRegularExpression(pattern: pattern, options: [])
-
+        
         let matches = regex.matches(in: inputText, options: [], range: NSRange(location: 0, length: inputText.utf16.count))
-
+        
         if let match = matches.first, match.numberOfRanges >= 2 {
             let range = match.range(at: 1)
             if let swiftRange = Range(range, in: inputText) {
                 return String(inputText[swiftRange])
             }
         }
-
+        
         return nil
     }
     
@@ -179,14 +189,34 @@ class QuizModalViewController: UIViewController {
         
         //달러표시 제거
         let inputText = inputText.replacingOccurrences(of: "$", with: "")
-
+        
         // 대상 문자열이 있는 경우
         let attributedString = NSMutableAttributedString(string: inputText, attributes: [.font: UIFont.callOutKR])
-
+        
         // 대상 문자열을 빨간색으로 강조 표시
         attributedString.addAttribute(.foregroundColor, value: color, range: (inputText as NSString).range(of: targetText))
         return attributedString
     }
-
+    
+    func generateAccuracyFormat() -> String {
+        let accuracyRateId =  String("!") + String(format: "%02d", partPath.part) + String(format: "%02d", chapterPath.chapter)
+        return accuracyRateId
+    }
+    
+    func isKeyInAccuracyRateList(keyToCheck: String) -> Bool {
+        return LocalState.accuracyRateList.contains { dictionary in
+            return dictionary.keys.contains(keyToCheck)
+        }
+    }
+    
+    func incrementValueForExistingKey(key: String) {
+        if let index = LocalState.accuracyRateList.firstIndex(where: { $0.keys.contains(key) }) {
+            LocalState.accuracyRateList[index][key]! += 1
+        } else {
+            let newDictionary = [key: 1]
+            LocalState.accuracyRateList.append(newDictionary)
+        }
+    }
+    
 }
 
