@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let homeTableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(HomeViewCell.self, forCellReuseIdentifier: HomeViewCell.identifier)
+        table.register(HomeViewUnlockCell.self, forCellReuseIdentifier: HomeViewUnlockCell.identifier)
         return table
     }()
     
@@ -435,35 +436,42 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let quizChapterModel = globalQuestion.quiz[indexPath.section].chapters[indexPath.row]
         
-        //이거 보고 하시면 됩니다. 상용씨
-        let accuracyRateId = PartChapter.homeGenerateAccuracyFormat(partIndex: indexPath.section + 1, chapterIndex: indexPath.row + 1)
-        print(PartChapter.returnValueForExistingKey(key: accuracyRateId))
-        
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: HomeViewCell.identifier,
-            for: indexPath
-        ) as? HomeViewCell else {
-            return UITableViewCell()
-        }
-        cell.separatorInset = UIEdgeInsets.zero
-        
         let partChaper = PartChapter.partIntToString(partIndex: indexPath.section, chapterIndex: indexPath.row)
+        
         if LocalState.isCodeActivated {
-            cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true)
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: HomeViewUnlockCell.identifier,
+                for: indexPath
+            ) as? HomeViewUnlockCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true, indexPath: indexPath)
+            cell.separatorInset = UIEdgeInsets.zero
+            return cell
         } else {
             if indexPath.section <= 1 {
-                cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true)
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: HomeViewUnlockCell.identifier,
+                    for: indexPath
+                ) as? HomeViewUnlockCell else {
+                    return UITableViewCell()
+                }
+                cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: true, indexPath: indexPath)
+                cell.separatorInset = UIEdgeInsets.zero
+                return cell
             } else {
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: HomeViewCell.identifier,
+                    for: indexPath
+                ) as? HomeViewCell else {
+                    return UITableViewCell()
+                }
                 cell.configure(with: quizChapterModel, partChapter: partChaper, undisabled: false)
+                cell.separatorInset = UIEdgeInsets.zero
+                return cell
             }
         }
         
-        if indexPath.section <= 1 {
-            
-            
-        }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

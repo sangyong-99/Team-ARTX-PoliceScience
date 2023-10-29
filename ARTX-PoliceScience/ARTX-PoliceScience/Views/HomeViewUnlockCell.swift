@@ -1,14 +1,14 @@
 //
-//  MainViewCell.swift
+//  HomeViewUnlockCell.swift
 //  ARTX-PoliceScience
 //
-//  Created by 신상용 on 10/11/23.
+//  Created by 신상용 on 10/29/23.
 //
 
 import UIKit
 
-class HomeViewCell: UITableViewCell {
-    static let identifier = "HomeViewCell"
+class HomeViewUnlockCell: UITableViewCell {
+    static let identifier = "HomeViewUnlockCell"
     
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -46,11 +46,28 @@ class HomeViewCell: UITableViewCell {
         return stackView
     }()
     
+    private let rightStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .trailing
+        stackView.spacing = 0
+        
+        return stackView
+    }()
+    
+    private let chapterScoreLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.caption1
+        label.textColor = .black60
+        
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(iconImageView)
         contentView.addSubview(stackView)
-        contentView.addSubview(questionProgressCountLabel)
+        contentView.addSubview(rightStackView)
         
         contentView.clipsToBounds = true
         accessoryType = .disclosureIndicator
@@ -82,27 +99,41 @@ class HomeViewCell: UITableViewCell {
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
         ])
         
-        questionProgressCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        rightStackView.addArrangedSubview(chapterScoreLabel)
+        rightStackView.addArrangedSubview(questionProgressCountLabel)
+        
+        rightStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            questionProgressCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            questionProgressCountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            rightStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            rightStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
     
-    public func configure(with chapter: Chapter, partChapter: String, undisabled: Bool) {
+    public func configure(with chapter: Chapter, partChapter: String, undisabled: Bool, indexPath: IndexPath) {
         chapterNameLabel.text = chapter.chapter_name
         chapterLabel.text = "CHAPTER 0\(chapter.chapter)"
         
         // 풀은 갯수 추가
         let currentChapterSolveNum = UserDefaults.standard.integer(forKey: partChapter)
-        let attributedString = NSMutableAttributedString(string: "")
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "lock", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.caption1))?.withTintColor(.black60)
-        attributedString.append(NSAttributedString(attachment: imageAttachment))
-        questionProgressCountLabel.attributedText = attributedString
+        
+
+        questionProgressCountLabel.text = "\(currentChapterSolveNum) / \(chapter.questions.count)"
+        
         if currentChapterSolveNum == chapter.questions.count {
+            
+            let accuracyRateId = PartChapter.homeGenerateAccuracyFormat(partIndex: indexPath.section + 1, chapterIndex: indexPath.row + 1)
+            let score = Int(Double(PartChapter.returnValueForExistingKey(key: accuracyRateId)) / Double(chapter.questions.count) * 100)
+            chapterScoreLabel.text = "\(score)점"
+            if score == 100 {
+                chapterScoreLabel.textColor = .textBlue
+            } else {
+                chapterScoreLabel.textColor = .textRed
+            }
             iconImageView.image = .iconCompletionTrue
         } else {
+            chapterScoreLabel.text = "미완료"
+            chapterScoreLabel.textColor = .black60
             iconImageView.image = .iconCompletionFalse
         }
     }
