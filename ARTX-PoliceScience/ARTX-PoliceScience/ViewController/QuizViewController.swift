@@ -268,6 +268,7 @@ extension QuizViewController {
     }
     
     @objc func goToHomeView(_ notification: Notification) {
+        delegate?.chapterFinished()
         self.navigationController?.popViewController(animated: true)
         progressbarView.progressNum = 1.0
         progressbarView.progressNumberLabel.text = " \(questions.count) / \(questions.count)"

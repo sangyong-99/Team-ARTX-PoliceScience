@@ -602,12 +602,14 @@ extension HomeViewController: QuizViewConrollerDelegate {
         toastLabel.alpha = 1.0
         toastLabel.layer.cornerRadius = 10
         toastLabel.clipsToBounds = true
-        self.view.addSubview(toastLabel)
-        UIView.animate(withDuration: 10.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
+        if let keyWindow = UIApplication.shared.keyWindow {
+                        keyWindow.addSubview(toastLabel)
+            UIView.animate(withDuration: 2.5, delay: 0.5, options: .curveEaseOut, animations: {
+                            toastLabel.alpha = 0.0
+                        }, completion: { _ in
+                            toastLabel.removeFromSuperview()
+                        })
+                    }
     }
     
     func chapterFinished() {
