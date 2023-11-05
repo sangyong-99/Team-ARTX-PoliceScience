@@ -72,7 +72,7 @@ class BookViewController: UIViewController {
         let label = UILabel()
         label.font = .subHeadKR
         label.textColor = UIColor(named: "PrimaryBlack")
-        label.text = "(현)해커스경찰 경찰학 선생님\n(현)해커스소방 행정법 선생님"
+        label.text = "(현)해커스경찰 경찰학 선생님\n(현)해커스소방 행정법 선생님\n한양대학교 법과대학 박사과정 수료\n한양대학교 법과대학 석사"
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
         label.textAlignment = .left

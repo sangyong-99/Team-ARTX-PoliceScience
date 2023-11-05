@@ -449,7 +449,7 @@ extension HomeViewController {
             cell.separatorInset = UIEdgeInsets.zero
             return cell
         } else {
-            if indexPath.section <= 1 {
+            if indexPath.section <= 0 {
                 guard let cell = tableView.dequeueReusableCell(
                     withIdentifier: HomeViewUnlockCell.identifier,
                     for: indexPath
@@ -482,7 +482,7 @@ extension HomeViewController {
         let totalQuizNumber = globalQuestion.quiz[indexPath.section].chapters[indexPath.row].questions.count
         let quizViewController = QuizViewController(indexPath: indexPath, showBookmarkedOnly: false, questions: globalQuestion.quiz[indexPath[0]].chapters[indexPath[1]].questions)
         
-        if indexPath.section > 1 && !LocalState.isCodeActivated {
+        if indexPath.section > 0 && !LocalState.isCodeActivated {
             HomeViewAlert.needActivateAlert(from: self)
         } else {
             switch currentQuizNumber {
