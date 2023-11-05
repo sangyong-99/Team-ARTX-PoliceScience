@@ -58,8 +58,12 @@ class SettingViewModel {
         models.append(SettingTableSection(title: "AppReset", options: [.staticCell(model: SettingsOption(title: "학습 기록 초기화", icon: UIImage(systemName: "arrow.triangle.2.circlepath"), handler: { tableView, indexPath in
             SettingViewAlert.appResetAlert()
             
-        }))
-            
-        ]))
+        }))]))
+        
+        models.append(SettingTableSection(title: "External Links", options: [.staticCell(model: SettingsOption(title: "인증코드 및 오류 문의", icon: UIImage(systemName: "exclamationmark.triangle"), handler: { tableView, indexPath in
+            if let url = URL(string: "https://cafe.naver.com/khneng") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }))]))
     }
 }
