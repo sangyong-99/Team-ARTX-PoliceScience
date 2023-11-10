@@ -49,7 +49,7 @@ class QuizModalViewController: UIViewController {
         let number = showBookmarkedOnly ? bookmarkQuizNumber : currentQuizNumber
         
         
-        if quizPath.answer == selectedAnswer {
+        if questions[number].answer == selectedAnswer {
             
             quizModalView.correctNotificationLabel.textColor = UIColor(resource: .textBlue)
             quizModalView.labelBackgroundView.backgroundColor = UIColor(.bgPaleBlue)
